@@ -9,6 +9,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: kontor-shop\n"
 
+#: kontor-shop-updates.php:103
+msgid "Club shop for WordPress: products with variants, stock, bank-transfer checkout, pickup and a cashier workflow."
+msgstr ""
+
+#: kontor-shop-updates.php:199
+msgid "Automatic updates via GitHub"
+msgstr ""
+
+#. translators: %s: date and time
+#: kontor-shop-updates.php:203
+msgid "last checked %s"
+msgstr ""
+
+#. translators: %s: version number
+#: kontor-shop-updates.php:206
+msgid "newest version %s"
+msgstr ""
+
+#. translators: %s: error message
+#: kontor-shop-updates.php:208
+msgid "GitHub not reachable: %s"
+msgstr ""
+
+#. translators: 1: time, 2: error
+#: kontor-shop-updates.php:211
+#: src/Admin/ShopSnapshot.php:206
+#: src/Pro__premium_only/Health/HealthAlarm.php:177
+msgid "Check now"
+msgstr ""
+
 #. translators: 1: running version, 2: plugin folder of the running copy, 3: version of this copy, 4: plugin folder of this copy
 #: kontor-shop.php:40
 msgid "Kontor Shop is installed twice. Version %1$s from the folder “%2$s” is running; version %3$s from the folder “%4$s” stays switched off. Please deactivate and delete the copy you no longer need under Plugins."
@@ -4572,12 +4602,6 @@ msgstr ""
 #. translators: 1: time, 2: error
 #: src/Admin/ShopSnapshot.php:203
 msgid "Last email failed on %1$s (“%2$s”). Customers may not be getting confirmations."
-msgstr ""
-
-#. translators: 1: time, 2: error
-#: src/Admin/ShopSnapshot.php:206
-#: src/Pro__premium_only/Health/HealthAlarm.php:177
-msgid "Check now"
 msgstr ""
 
 #: src/Admin/ShopSnapshot.php:208
@@ -12527,7 +12551,11 @@ msgstr ""
 msgid "Every warehouse can have a warehouse manager: they book that warehouse’s stock, ship its orders and get its “Shipping order to warehouse” emails. The permission is granted and revoked automatically."
 msgstr ""
 
-#: src/freemius.php:305
+#: src/freemius.php:252
+msgid "The key was accepted, but it does not unlock Pro on this site. Is it a test licence from the sandbox, or already used on another website?"
+msgstr ""
+
+#: src/freemius.php:312
 msgid "Kontor Shop test build: Pro runs without a licence. Only for your own test sites – never install this ZIP on a customer site."
 msgstr ""
 

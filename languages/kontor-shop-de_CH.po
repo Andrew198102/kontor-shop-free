@@ -9,6 +9,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Domain: kontor-shop\n"
 
+#: kontor-shop-updates.php:103
+msgid "Club shop for WordPress: products with variants, stock, bank-transfer checkout, pickup and a cashier workflow."
+msgstr "Vereinsshop für WordPress: Artikel mit Varianten, Lager, Vorkasse, Abholung und Kassier-Ablauf."
+
+#: kontor-shop-updates.php:199
+msgid "Automatic updates via GitHub"
+msgstr "Automatische Updates über GitHub"
+
+#. translators: %s: date and time
+#: kontor-shop-updates.php:203
+msgid "last checked %s"
+msgstr "zuletzt geprüft %s"
+
+#. translators: %s: version number
+#: kontor-shop-updates.php:206
+msgid "newest version %s"
+msgstr "neueste Version %s"
+
+#. translators: %s: error message
+#: kontor-shop-updates.php:208
+msgid "GitHub not reachable: %s"
+msgstr "GitHub nicht erreichbar: %s"
+
+#. translators: 1: time, 2: error
+#: kontor-shop-updates.php:211
+#: src/Admin/ShopSnapshot.php:206
+#: src/Pro__premium_only/Health/HealthAlarm.php:177
+msgid "Check now"
+msgstr "Jetzt prüfen"
+
 #. translators: 1: running version, 2: plugin folder of the running copy, 3: version of this copy, 4: plugin folder of this copy
 #: kontor-shop.php:40
 msgid "Kontor Shop is installed twice. Version %1$s from the folder “%2$s” is running; version %3$s from the folder “%4$s” stays switched off. Please deactivate and delete the copy you no longer need under Plugins."
@@ -4573,12 +4603,6 @@ msgstr "Mailversand gestört"
 #: src/Admin/ShopSnapshot.php:203
 msgid "Last email failed on %1$s (“%2$s”). Customers may not be getting confirmations."
 msgstr "Letzte Mail fehlgeschlagen am %1$s („%2$s“). Kunden bekommen womöglich keine Bestätigungen."
-
-#. translators: 1: time, 2: error
-#: src/Admin/ShopSnapshot.php:206
-#: src/Pro__premium_only/Health/HealthAlarm.php:177
-msgid "Check now"
-msgstr "Jetzt prüfen"
 
 #: src/Admin/ShopSnapshot.php:208
 msgid "Email sending uncertain"
@@ -12527,7 +12551,11 @@ msgstr "Sobald eine Vorkasse-Bestellung bezahlt ist: je Lager eine Mail mit dess
 msgid "Every warehouse can have a warehouse manager: they book that warehouse’s stock, ship its orders and get its “Shipping order to warehouse” emails. The permission is granted and revoked automatically."
 msgstr "Jedes Lager kann einen Lagerverwalter haben: Er bucht den Bestand des Lagers, versendet dessen Bestellungen und bekommt dessen Mails „Versandauftrag ans Lager“. Die Berechtigung wird automatisch vergeben und wieder entzogen."
 
-#: src/freemius.php:305
+#: src/freemius.php:252
+msgid "The key was accepted, but it does not unlock Pro on this site. Is it a test licence from the sandbox, or already used on another website?"
+msgstr "Der Schlüssel wurde angenommen, schaltet Pro auf dieser Seite aber nicht frei. Ist es eine Testlizenz aus dem Sandkasten oder ist er schon auf einer anderen Website in Verwendung?"
+
+#: src/freemius.php:312
 msgid "Kontor Shop test build: Pro runs without a licence. Only for your own test sites – never install this ZIP on a customer site."
 msgstr "Kontor Shop Test-Build: Pro läuft ohne Lizenz. Nur für eigene Testseiten – dieses ZIP nie auf einer Kundenseite installieren."
 

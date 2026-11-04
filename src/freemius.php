@@ -234,10 +234,14 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
                 $error = $e->getMessage();
             }
         }
+        // Angenommen, aber weder verbunden noch wartend auf die Bestaetigungs-Mail und ohne Pro-Recht:
+        // dann klar sagen, statt ins Leere zu fuehren (z. B. Testlizenz aus dem Sandkasten auf einer echten Seite).
+        if ( $error === null && !kontor_shop_fs()->can_use_premium_code() && !kontor_shop_fs()->is_pending_activation() ) {
+            $error = __( 'The key was accepted, but it does not unlock Pro on this site. Is it a test licence from the sandbox, or already used on another website?', 'kontor-shop' );
+        }
+        // Pläne & Preise zeigt den Stand: E-Mail bestaetigen oder Pro wird im Hintergrund installiert.
         if ( $error === null ) {
-            wp_safe_redirect( kontor_shop_fs()->get_account_url( false, [
-                'auto_install' => 'true',
-            ] ) );
+            wp_safe_redirect( \Kontor\Shop\Admin\Upgrade\PricingPage::url() );
             exit;
         }
         set_transient( \Kontor\Shop\Admin\Upgrade\PricingPage::LICENCE_RESULT . '_' . get_current_user_id(), $error, 5 * MINUTE_IN_SECONDS );
