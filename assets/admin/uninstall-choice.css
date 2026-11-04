@@ -1,0 +1,6 @@
+/* Kontor Shop - Frage beim Deaktivieren (Plugin-Liste; admin.css ist dort nicht geladen). */
+.ks-uc { width: calc(100% - 32px); max-width: 560px; padding: 20px 24px; border: 0; border-radius: 6px; }
+.ks-uc__title { margin-top: 0; }
+.ks-uc__option { display: block; margin: .75em 0; padding: .6em .8em; border: 1px solid #c3c4c7; border-radius: 4px; cursor: pointer; }
+.ks-uc__notice { padding: 8px 12px; }
+.ks-uc__actions { display: flex; gap: 8px; justify-content: flex-end; margin-bottom: 0; }
