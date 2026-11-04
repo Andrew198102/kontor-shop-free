@@ -84,7 +84,8 @@ final class StartArticles
                     __('New order: to you (the shop owner address) for every order.', 'kontor-shop'),
                     __('Payment received: to the customer as soon as the order is marked as paid.', 'kontor-shop'),
                     __('Shipping order to warehouse: when a prepayment order is paid, or right away for an order on invoice.', 'kontor-shop'),
-                    __('Shipped / ready for pickup: to the customer when the shipment or pickup is recorded, for parcels with the tracking link.', 'kontor-shop'),
+                    __('Ready for pickup: for pickup orders, when you click “Ready for pickup” in the order.', 'kontor-shop'),
+                    __('Shipped / picked up: to the customer when the shipment or pickup is recorded, for parcels with the tracking link.', 'kontor-shop'),
                     __('Order cancelled: to the customer when you cancel and leave “Notify customer” ticked.', 'kontor-shop'),
                     __('You can switch each email on or off and change its text under Settings → Email templates.', 'kontor-shop'),
                 ],
@@ -94,7 +95,7 @@ final class StartArticles
                         'paragraphs' => [
                             __('Prepayment (bank transfer): the customer pays first, and the goods leave after the money has arrived. Once the payment deadline has passed, the order shows as “overdue”.', 'kontor-shop'),
                             __('On invoice (if you switch it on under Settings → Payment & sales tax): the warehouse gets the shipping order right away, and the customer pays after receiving the goods.', 'kontor-shop'),
-                            __('Cash at pickup: when the customer pays in cash, click “Paid ✓” and choose “cash”, then record the pickup. For an order on invoice, record the pickup first and the payment afterwards.', 'kontor-shop'),
+                            __('Cash on pickup (if you switch it on under Settings → Payment & sales tax, only with self pickup): the goods are set aside right away, the customer pays when collecting, and recording the pickup books the cash payment too.', 'kontor-shop'),
                         ],
                     ],
                     [

@@ -39,7 +39,7 @@ final class ProArticles
                 ],
                 'effect'   => [
                     __('Pro replaces the free plugin. Afterwards there is only one plugin, and products, orders, customers and settings stay as they are.', 'kontor-shop'),
-                    __('Some automations start right away: daily payment reminders from day 2, cancellation of unpaid prepayment orders and the alarm email. Check them under Settings → Payment & sales tax and Settings → System.', 'kontor-shop'),
+                    __('Payment reminders and auto-cancellation start switched off – switch them on under Settings → Payment & sales tax. The alarm email is on from the start; you find it under Settings → System.', 'kontor-shop'),
                     __('Everything else, such as member prices, warehouse managers or the AI assistant, only does something once you set it up.', 'kontor-shop'),
                     __('The PRO badge next to Kontor Shop in the admin menu shows the licence: gold while it is active, crossed out when it has expired.', 'kontor-shop'),
                 ],
@@ -308,7 +308,7 @@ final class ProArticles
                 'faq'      => [
                     [
                         'q' => __('Is this switched on right after activating Pro?', 'kontor-shop'),
-                        'a' => __('Yes. Reminders start 2 days after ordering at 9 o’clock, auto-cancellation is on and the grace period is 2 days. Check these values before you rely on them.', 'kontor-shop'),
+                        'a' => __('No. Reminders for prepayment and auto-cancellation start switched off, so nothing is sent or cancelled without your decision. Good values to start with: first reminder 2 days after ordering at 9 o’clock, grace period 2 days. Reminders for orders on invoice run as soon as you offer payment on invoice.', 'kontor-shop'),
                     ],
                     [
                         'q' => __('Can a customer who paid on time be cancelled?', 'kontor-shop'),

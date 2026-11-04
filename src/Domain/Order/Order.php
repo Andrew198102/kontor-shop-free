@@ -80,6 +80,21 @@ final class Order
         return $this->payment_method === PaymentMethod::INVOICE;
     }
 
+    /** Barzahlung bei der Abholung. */
+    public function is_cash_on_pickup(): bool
+    {
+        return $this->payment_method === PaymentMethod::CASH;
+    }
+
+    /**
+     * Ware geht vor der Zahlung raus bzw. wird zurueckgelegt: auf Rechnung
+     * und Barzahlung bei Abholung.
+     */
+    public function pays_on_handover(): bool
+    {
+        return $this->is_invoice() || $this->is_cash_on_pickup();
+    }
+
     /**
      * Gesamtsumme 0 € (z. B. Rabattcode deckt den Warenwert, Versand entfaellt
      * bei Abholung/Gratisversand): es gibt nichts zu bezahlen - die Bestellung
@@ -104,7 +119,7 @@ final class Order
     {
         return $this->paid_at !== null
             || $this->status === OrderStatus::PAID
-            || ($this->is_dispatched() && !$this->is_invoice());
+            || ($this->is_dispatched() && !$this->pays_on_handover());
     }
 
     /**
@@ -113,7 +128,7 @@ final class Order
      */
     public function can_ship(): bool
     {
-        return $this->status === OrderStatus::PAID || ($this->status === OrderStatus::OPEN && $this->is_invoice());
+        return $this->status === OrderStatus::PAID || ($this->status === OrderStatus::OPEN && $this->pays_on_handover());
     }
 
     /**
@@ -122,7 +137,7 @@ final class Order
     public function awaits_payment(): bool
     {
         return $this->status === OrderStatus::OPEN
-            || ($this->is_invoice() && $this->is_dispatched() && $this->paid_at === null && $this->total > 0);
+            || ($this->pays_on_handover() && $this->is_dispatched() && $this->paid_at === null && $this->total > 0);
     }
 
     /** Kann ein Zahlungseingang gebucht werden? */

@@ -484,7 +484,7 @@ final class OrderDetailView
 
     private function render_actions(Order $order, bool $can_manage, bool $can_pay, bool $can_ship, bool $full, bool $partial = false, bool $can_cancel = false, bool $can_return = false): void
     {
-        echo '<h2>' . esc_html__('Campaigns', 'kontor-shop') . '</h2><div class="ks-actions ks-actions--center">';
+        echo '<h2>' . esc_html__('Actions', 'kontor-shop') . '</h2><div class="ks-actions ks-actions--center">';
 
         // Zahlungen bucht die fuehrende Kassa (Gegenstelle) - hier nur fuer WP-Admins als Notausgang (unten).
         $owned = ExternalPayments::active();
@@ -506,6 +506,14 @@ final class OrderDetailView
             echo '<a class="button" href="' . esc_url(OrdersPage::url(['cancel_order' => (int) $order->id])) . '">' . esc_html__('Cancel order', 'kontor-shop') . '</a>';
         }
 
+        if ($can_ship && $order->self_pickup) {
+            $this->action_form($order, 'ready_for_pickup', __('Ready for pickup', 'kontor-shop'), sprintf(
+                /* translators: %s: email */
+                __('Send %s the email “Ready for pickup” now?', 'kontor-shop'),
+                $order->customer_email
+            ));
+        }
+
         if ($can_ship) {
             echo ShipmentDialog::open_button($order, $partial); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- ShipmentDialog::open_button() liefert escaptes HTML
         }
@@ -525,8 +533,14 @@ final class OrderDetailView
             $this->action_form($order, 'refund_done', sprintf(__('Refund %s € done', 'kontor-shop'), number_format_i18n($order->refund_pending(), 2)), __('Did you transfer the amount back to the customer?', 'kontor-shop'), true);
         }
 
+        // Korrektur: versehentlich als bezahlt markiert (nur solange nichts raus ist).
+        if ($full && !$owned && $order->status === OrderStatus::PAID
+            && !(new Fulfilment($order, $this->orders->items_for_order((int) $order->id)))->has_shipped_items()) {
+            $this->action_form($order, 'undo_paid', __('Undo payment', 'kontor-shop'), __('Set this order back to “open”? Use this if it was marked as paid by mistake. The customer is not notified.', 'kontor-shop'));
+        }
+
         if ($can_manage) {
-            $this->action_form($order, 'delete', __('Delete order', 'kontor-shop'), __('Permanently delete this order? This can’t be undone.', 'kontor-shop'));
+            $this->action_form($order, 'delete', __('Delete order', 'kontor-shop'), __('Permanently delete this order? Products that have not been shipped go back to the warehouse. This can’t be undone.', 'kontor-shop'));
         }
 
         echo '</div>';

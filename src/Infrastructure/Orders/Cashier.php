@@ -94,6 +94,39 @@ final class Cashier
     }
 
     /**
+     * Zahlung zuruecknehmen (Korrektur, z. B. falsche Bestellung als bezahlt
+     * markiert): bezahlt -> offen, Zahlungsangaben werden geleert. Nur
+     * solange nichts versendet/abgeholt ist. Keine Mail an den Kunden; der
+     * Verlauf haelt fest, wer es wann warum gemacht hat.
+     */
+    public function undo_payment(Order $order, Actor $actor, string $reason = ''): CashierResult
+    {
+        if ($order->status !== OrderStatus::PAID || (new Fulfilment($order, $this->orders->items_for_order((int) $order->id)))->has_shipped_items()) {
+            return CashierResult::fail(CashierResult::INVALID_STATE, __('Only paid orders that have not been shipped or picked up yet can be set back to open.', 'kontor-shop'));
+        }
+
+        $log = __('Payment taken back – the order is open again.', 'kontor-shop') . ($reason !== '' ? ' – ' . $reason : '');
+
+        try {
+            $done = $this->orders->update_status((int) $order->id, OrderStatus::OPEN, $actor->user_id, $log, [
+                'paid_at'         => null,
+                'paid_by_user_id' => null,
+                'paid_via'        => null,
+                'paid_by_name'    => null,
+                'paid_with'       => null,
+            ], $actor->label(), OrderStatus::PAID);
+        } catch (\Throwable $e) {
+            return $this->failed($e, 'Zahlung konnte nicht zurueckgenommen werden', $order);
+        }
+
+        if (!$done) {
+            return CashierResult::fail(CashierResult::CONFLICT, __('The order has been changed in the meantime – please reload.', 'kontor-shop'));
+        }
+
+        return CashierResult::ok(['order' => $this->orders->find((int) $order->id)]);
+    }
+
+    /**
      * Storniert die ganze Bestellung ($item_ids = null) oder einzelne, noch
      * nicht versendete Positionen.
      *
@@ -457,6 +490,35 @@ final class Cashier
      *
      * @return string Kurzbeschreibung fuer den Statusverlauf
      */
+    /**
+     * Vor dem endgueltigen Loeschen einer Bestellung: Ware, die noch nicht
+     * versendet und nicht storniert ist, zurueck ins Lager buchen - sonst
+     * bliebe der Verkauf im Bestand stehen, obwohl es die Bestellung nicht
+     * mehr gibt. Ohne Statuswechsel und ohne Mails (die Bestellung
+     * verschwindet gleich); die Buchungen bleiben im Lager-Protokoll.
+     *
+     * @return int Anzahl zurueckgebuchter Positionen
+     */
+    public function restock_before_delete(Order $order, Actor $actor): int
+    {
+        if (!in_array($order->status, [OrderStatus::OPEN, OrderStatus::PAID], true)) {
+            return 0;
+        }
+
+        $items = (new Fulfilment($order, $this->orders->items_for_order((int) $order->id)))->cancellable_items();
+        $note  = sprintf(
+            /* translators: %s: order number */
+            __('Order %s deleted – goods back to the warehouse', 'kontor-shop'),
+            $order->order_number
+        );
+
+        foreach ($items as $item) {
+            $this->stock->record($item->product_id, MovementType::CANCEL_RESTOCK, $item->quantity, (int) $order->id, $note, $actor->user_id, $item->variant_id);
+        }
+
+        return count($items);
+    }
+
     private function book_cancel_stock(Order $order, OrderItem $item, string $choice, ?int $user_id): string
     {
         $note = sprintf(

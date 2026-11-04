@@ -361,6 +361,7 @@ final class TemplatesPage
             'delivery_info'          => __('Delivery/address', 'kontor-shop'),
             'next_step'              => __('Next step', 'kontor-shop'),
             'shipping_note'          => __('Shipping note', 'kontor-shop'),
+            'pickup_info'            => __('Pickup location', 'kontor-shop'),
             'refund_note'            => __('Refund note', 'kontor-shop'),
             'cancelled_items'        => __('Cancelled products', 'kontor-shop'),
             'cancel_reason'          => __('Cancellation reason', 'kontor-shop'),

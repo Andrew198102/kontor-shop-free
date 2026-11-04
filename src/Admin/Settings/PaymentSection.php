@@ -67,6 +67,7 @@ final class PaymentSection extends Section
     {
         $prepayment = !empty($_POST['prepayment_enabled']); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
         $invoice    = !empty($_POST['invoice_enabled']); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
+        $cash       = !empty($_POST['cash_enabled']); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
 
         /**
          * Filter kontor_shop/settings/payment/save: eigene Felder aus
@@ -104,6 +105,7 @@ final class PaymentSection extends Section
             'accounts'                              => $this->collect_accounts((array) map_deep(wp_unslash($_POST['accounts'] ?? []), 'sanitize_text_field')), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
             'prepayment_enabled'                    => $prepayment,
             'invoice_enabled'                       => $invoice,
+            'cash_enabled'                          => $cash,
             'invoice_days'                          => PaymentTerms::sanitize_invoice_days(intval($_POST['invoice_days'] ?? PaymentTerms::DEFAULT_INVOICE_DAYS)), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
             // abgeloest durch invoice_enabled (mit Pro: invoice_members_only)
             'allow_invoice_on_delivery_for_members' => false,
@@ -241,6 +243,12 @@ final class PaymentSection extends Section
             . esc_html__('Offer purchase on invoice', 'kontor-shop') . '</label></p>';
         $this->extra_fields('invoice_method');
         echo '<p class="description">' . esc_html__('The goods ship right away: with the order, the warehouse gets the shipping job without waiting for payment. Payment is due after receipt within the payment term (below). A shipped order is never cancelled – unpaid invoices only get reminders.', 'kontor-shop') . '</p>'
+            . '</td></tr>';
+        echo '<tr><th>' . esc_html__('Cash on pickup', 'kontor-shop') . '</th><td>'
+            . '<label><input type="checkbox" name="cash_enabled" value="1"' . checked((bool) $this->settings->get('payment.cash_enabled', false), true, false) . ' /> '
+            . esc_html__('Offer cash payment on pickup', 'kontor-shop') . '</label>'
+            . '<p class="description">' . esc_html__('Only shown at checkout when the customer chooses self pickup. The warehouse gets the order to set the goods aside right away. The customer pays in cash when collecting; “Record pickup” books the cash payment at the same time. No payment deadline, no reminders, no automatic cancellation.', 'kontor-shop') . '</p>'
+            . ((bool) $this->settings->get('shipping.allow_self_pickup', true) ? '' : '<p class="description"><strong>' . esc_html__('Self pickup is switched off under Shipping & returns – cash on pickup is not offered until you switch it on.', 'kontor-shop') . '</strong></p>')
             . '<p class="description">' . esc_html__('At least one payment method must apply to all buyers – otherwise prepayment stays enabled.', 'kontor-shop') . '</p></td></tr>';
         echo '</tbody></table>';
 

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Admin\Settings;
 
+use Kontor\Shop\Infrastructure\Checkout\SpamGuard;
+
 /**
  * Rechtstexte, Pflicht-Checkboxen, Texte am Bestell-Button und Aufbewahrung
  * (Gewaehrleistung: Pro, ueber kontor_shop/settings/forms).
@@ -55,7 +57,9 @@ final class LegalSection extends Section
             'privacy_label'      => sanitize_text_field(wp_unslash($_POST['privacy_label'] ?? '')), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
             'price_note'         => sanitize_text_field(wp_unslash($_POST['price_note'] ?? '')), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
             'order_button_label' => sanitize_text_field(wp_unslash($_POST['order_button_label'] ?? '')), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
-        ]), 'privacy' => [
+        ]), 'checkout' => [
+            'rate_limit' => SpamGuard::sanitize_limit(sanitize_text_field(wp_unslash((string) ($_POST['rate_limit'] ?? SpamGuard::RATE_LIMIT_MAX)))), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
+        ], 'privacy' => [
             'retention_years' => min(30, max(0, absint($_POST['retention_years'] ?? 7))), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
         ]]);
 
@@ -137,6 +141,14 @@ final class LegalSection extends Section
             . esc_attr((string) $this->settings->get('privacy.retention_years', 7)) . '" /> ' . esc_html__('years', 'kontor-shop');
         echo '<p class="description">' . esc_html__(
             'Order and invoice data are accounting records (in Austria usually 7 years). Nothing is ever deleted automatically. If someone requests erasure via WordPress → Tools → Erase Personal Data, their orders are only anonymized after this period has passed. You can find suggested text for the privacy policy under Settings → Privacy.',
+            'kontor-shop'
+        ) . '</p></td></tr>';
+        echo '<tr><th><label for="ks-rate-limit">' . esc_html__('Spam protection', 'kontor-shop') . '</label></th><td>';
+        echo esc_html__('at most', 'kontor-shop') . ' <input type="number" id="ks-rate-limit" name="rate_limit" class="small-text" min="0" max="' . (int) SpamGuard::RATE_LIMIT_CEILING . '" value="'
+            . esc_attr((string) SpamGuard::sanitize_limit($this->settings->get('checkout.rate_limit', SpamGuard::RATE_LIMIT_MAX))) . '" /> '
+            . esc_html__('orders per internet connection in 15 minutes', 'kontor-shop');
+        echo '<p class="description">' . esc_html__(
+            'Stops bots from blocking your stock with fake orders. Everyone in the same Wi-Fi (e.g. at a club evening) shares one internet connection – raise the number for such events. Logged-in customers count per account, not per connection. 0 = no limit.',
             'kontor-shop'
         ) . '</p></td></tr>';
         echo '</tbody></table>';

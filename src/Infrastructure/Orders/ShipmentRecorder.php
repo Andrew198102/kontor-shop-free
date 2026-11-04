@@ -9,6 +9,7 @@ use Kontor\Shop\Domain\Order\Fulfilment;
 use Kontor\Shop\Domain\Order\Order;
 use Kontor\Shop\Domain\Order\OrderItem;
 use Kontor\Shop\Domain\Order\OrderStatus;
+use Kontor\Shop\Domain\Order\PaidWith;
 use Kontor\Shop\Domain\Order\Shipment;
 use Kontor\Shop\Infrastructure\Logging\Logger;
 use Kontor\Shop\Infrastructure\Repositories\OrderRepository;
@@ -142,10 +143,26 @@ final class ShipmentRecorder
             $log   = $label . ': ' . implode('; ', $summary) . ($note !== '' ? ' – ' . $note : '');
 
             if ($after->is_complete()) {
-                $this->orders->update_status((int) $order->id, $target_status, $user_id, $log, [
+                $fields = [
                     'shipped_at'         => current_time('mysql'),
                     'shipped_by_user_id' => $user_id,
-                ]);
+                ];
+
+                // Bar bei Abholung: wer die Uebergabe erfasst, hat das Geld bekommen - Zahlung gleich mitbuchen.
+                if ($order->is_cash_on_pickup() && $order->paid_at === null && !$order->nothing_to_pay()) {
+                    $fields += [
+                        'paid_at'         => current_time('mysql'),
+                        'paid_by_user_id' => $user_id,
+                        'paid_with'       => PaidWith::CASH,
+                    ];
+                    $log .= ' – ' . sprintf(
+                        /* translators: %s: amount */
+                        __('paid in cash: %s €', 'kontor-shop'),
+                        number_format_i18n($order->total, 2)
+                    );
+                }
+
+                $this->orders->update_status((int) $order->id, $target_status, $user_id, $log, $fields);
             } else {
                 $this->orders->add_log_note((int) $order->id, $user_id, __('Partial', 'kontor-shop') . ' ' . $log);
             }

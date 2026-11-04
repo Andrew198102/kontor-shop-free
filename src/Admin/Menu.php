@@ -379,7 +379,10 @@ final class Menu implements Registerable
         $products_hook            = $this->submenu(ProductsPage::SLUG, __('Product', 'kontor-shop'), self::CAPABILITY, [$this->products_page, 'render'], 'products', [$this->products_page, 'handle_request']);
         $this->products_page_hook = $products_hook;
 
-        $this->stock_page_hook = $this->submenu(StockPage::SLUG, __('Stock', 'kontor-shop'), Capabilities::ACCESS, [$this->stock_page, 'render'], 'stock', [$this->stock_page, 'handle_request']);
+        // Bestand nur fuer Shop-Manager und Lagerverwalter - ein reiner Kassier saehe sonst einen Menuepunkt, der "Keine Berechtigung" meldet.
+        if (Capabilities::is_warehouse_manager()) {
+            $this->stock_page_hook = $this->submenu(StockPage::SLUG, __('Stock', 'kontor-shop'), Capabilities::ACCESS, [$this->stock_page, 'render'], 'stock', [$this->stock_page, 'handle_request']);
+        }
 
         do_action('kontor_shop/admin/menu', $this, self::GROUP_DAILY);
 

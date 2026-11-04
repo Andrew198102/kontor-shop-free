@@ -27,6 +27,12 @@ final class PaymentOptions
         return (bool) $this->settings->get('payment.prepayment_enabled', true);
     }
 
+    /** Barzahlung bei Abholung anbieten (wirkt nur, wenn Selbstabholung erlaubt ist). */
+    public function cash_enabled(): bool
+    {
+        return (bool) $this->settings->get('payment.cash_enabled', false) && (bool) $this->settings->get('shipping.allow_self_pickup', true);
+    }
+
     public function invoice_enabled(): bool
     {
         return (bool) $this->settings->get('payment.invoice_enabled', false) || $this->legacy_invoice();

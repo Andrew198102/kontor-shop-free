@@ -575,7 +575,8 @@ final class OrdersList
             default                             => __('ready to pack', 'kontor-shop'),
         };
         $label     = match (true) {
-            $progress === 3 && $order->is_invoice() => $out . ' · ' . __('paid', 'kontor-shop'),
+            $progress === 3 && $order->pays_on_handover() => $out . ' · ' . __('paid', 'kontor-shop'),
+            $order->is_cash_on_pickup()             => $shipping,
             $progress === 3                         => $out,
             $order->is_invoice() && $progress === 2 => $queue->is_overdue() ? __('Invoice overdue', 'kontor-shop') : __('Invoice open', 'kontor-shop'),
             $order->is_invoice()                    => $shipping,
@@ -611,6 +612,10 @@ final class OrdersList
         }
 
         if ($order->awaits_payment()) {
+            if ($order->is_cash_on_pickup()) {
+                return '<span class="ks-pay">' . esc_html__('Cash on pickup', 'kontor-shop') . '<br /><span class="ks-muted">' . esc_html__('paid on handover', 'kontor-shop') . '</span></span>';
+            }
+
             if ($order->is_invoice() && !$order->is_dispatched()) {
                 return '<span class="ks-pay">' . esc_html__('On invoice', 'kontor-shop') . '<br /><span class="ks-muted">' . esc_html__('due after shipping', 'kontor-shop') . '</span></span>';
             }

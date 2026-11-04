@@ -22,6 +22,7 @@ final class DefaultTemplates
     public const INVOICE_REMINDER   = 'invoice_reminder';
     public const INVOICE_SHIP_ORDER = 'invoice_ship_order';
     public const SHIPPED            = 'shipped';
+    public const READY_FOR_PICKUP   = 'ready_for_pickup';
     public const ORDER_CANCELLED    = 'order_cancelled';
     public const ITEMS_CANCELLED    = 'items_cancelled';
     public const RETURN_RECEIVED    = 'return_received';
@@ -46,7 +47,7 @@ final class DefaultTemplates
                 'label'                   => $labels[$event],
                 'description'             => $descriptions[$event],
                 'customer'                => in_array($event, [
-                    self::ORDER_CONFIRMATION, self::PAYMENT_REMINDER, self::INVOICE_REMINDER, self::PAYMENT_RECEIVED, self::SHIPPED, self::ORDER_CANCELLED, self::ITEMS_CANCELLED, self::RETURN_RECEIVED,
+                    self::ORDER_CONFIRMATION, self::PAYMENT_REMINDER, self::INVOICE_REMINDER, self::PAYMENT_RECEIVED, self::SHIPPED, self::READY_FOR_PICKUP, self::ORDER_CANCELLED, self::ITEMS_CANCELLED, self::RETURN_RECEIVED,
                 ], true),
                 'placeholders'            => $placeholders[$event],
                 'subject'                 => $template['subject'],
@@ -155,8 +156,9 @@ final class DefaultTemplates
             self::INVOICE_REMINDER   => __('Invoice payment reminder', 'kontor-shop'),
             self::PAYMENT_RECEIVED   => __('Payment received', 'kontor-shop'),
             self::PAYMENT_CONFIRMED  => __('Shipping order to warehouse', 'kontor-shop'),
-            self::INVOICE_SHIP_ORDER => __('Shipping order to warehouse (on invoice)', 'kontor-shop'),
-            self::SHIPPED            => __('Shipped / ready for pickup', 'kontor-shop'),
+            self::INVOICE_SHIP_ORDER => __('Shipping order to warehouse (pay later)', 'kontor-shop'),
+            self::SHIPPED            => __('Shipped / picked up', 'kontor-shop'),
+            self::READY_FOR_PICKUP   => __('Ready for pickup', 'kontor-shop'),
             self::ORDER_CANCELLED    => __('Order cancelled', 'kontor-shop'),
             self::ITEMS_CANCELLED    => __('Product cancelled', 'kontor-shop'),
             self::RETURN_RECEIVED    => __('Return received', 'kontor-shop'),
@@ -176,8 +178,9 @@ final class DefaultTemplates
             self::INVOICE_REMINDER   => __('To the customer when an order shipped on invoice hasn\'t been paid after the payment due date – sent with the “Send payment reminder” button in the order. Without a cancellation warning (the goods are already with the customer).', 'kontor-shop'),
             self::PAYMENT_RECEIVED   => __('To the customer as soon as an order is marked as “paid” in the backend.', 'kontor-shop'),
             self::PAYMENT_CONFIRMED  => __('As soon as a prepayment order is paid: one email per warehouse with its products as an order to ship/set aside – to the recipients selected below.', 'kontor-shop'),
-            self::INVOICE_SHIP_ORDER => __('Immediately for an order on invoice (without waiting for payment): one email per warehouse with its products as an order to ship/set aside. Recipients are set as for the “Shipping order to warehouse”.', 'kontor-shop'),
+            self::INVOICE_SHIP_ORDER => __('Immediately for an order on invoice or with cash on pickup (without waiting for payment): one email per warehouse with its products as an order to ship/set aside. Recipients are set as for the “Shipping order to warehouse”.', 'kontor-shop'),
             self::SHIPPED            => __('To the customer as soon as the order is marked as “shipped” or “picked up”.', 'kontor-shop'),
+            self::READY_FOR_PICKUP   => __('To the customer of a pickup order when you click “Ready for pickup” in the order – with what is ready and where to collect it (address of the warehouse).', 'kontor-shop'),
             self::ORDER_CANCELLED    => __('To the customer when the whole order is cancelled – with a note about the refund.', 'kontor-shop'),
             self::ITEMS_CANCELLED    => __('To the customer when individual products are cancelled (e.g. not deliverable) – with the new amount or refund.', 'kontor-shop'),
             self::RETURN_RECEIVED    => __('To the customer when returned goods are recorded as a return in the backend – with the refund or new invoice amount.', 'kontor-shop'),
@@ -216,6 +219,9 @@ final class DefaultTemplates
             ],
             self::SHIPPED => [
                 'shop_name', 'customer_name', 'order_number', 'shipping_note', 'items', 'tracking_info', 'remaining_note', 'payment_note', 'order_status_url',
+            ],
+            self::READY_FOR_PICKUP => [
+                'shop_name', 'customer_name', 'order_number', 'items', 'pickup_info', 'payment_note', 'order_status_url',
             ],
             self::ORDER_CANCELLED => [
                 'shop_name', 'customer_name', 'order_number', 'total', 'cancel_reason', 'refund_note', 'order_status_url',
@@ -281,9 +287,9 @@ final class DefaultTemplates
                 ),
             ],
             self::INVOICE_SHIP_ORDER => [
-                'subject' => __('Shipping request (invoice): order {{order_number}}', 'kontor-shop'),
+                'subject' => __('Shipping request (pay later): order {{order_number}}', 'kontor-shop'),
                 'body'    => __(
-                    '<p>Hi {{warehouse_manager_name}},</p><p>order <strong>{{order_number}}</strong> is on invoice – it ships right away without waiting for payment. Please prepare it for shipping/pickup:</p><h3>Products</h3><p>{{items}}</p><p>{{delivery_info}}</p><p>{{shop_name}}</p>',
+                    '<p>Hi {{warehouse_manager_name}},</p><p>order <strong>{{order_number}}</strong> is paid later (on invoice or in cash on pickup) – please prepare it right away without waiting for payment:</p><h3>Products</h3><p>{{items}}</p><p>{{delivery_info}}</p><p>{{shop_name}}</p>',
                     'kontor-shop'
                 ),
             ],
@@ -291,6 +297,13 @@ final class DefaultTemplates
                 'subject' => __('Your order {{order_number}} is on its way', 'kontor-shop'),
                 'body'    => __(
                     '<p>Hi {{customer_name}},</p><p>good news about your order <strong>{{order_number}}</strong>: {{shipping_note}}</p><h3>In this package</h3><p>{{items}}</p><p>{{tracking_info}}</p><p>{{remaining_note}}</p><p>{{payment_note}}</p><p>View your order status anytime: {{order_status_url}}</p><p>Best regards<br>your {{shop_name}} team</p>',
+                    'kontor-shop'
+                ),
+            ],
+            self::READY_FOR_PICKUP => [
+                'subject' => __('Your order {{order_number}} is ready for pickup', 'kontor-shop'),
+                'body'    => __(
+                    '<p>Hi {{customer_name}},</p><p>your order <strong>{{order_number}}</strong> is ready for pickup.</p><h3>Ready for you</h3><p>{{items}}</p><p>{{pickup_info}}</p><p>{{payment_note}}</p><p>View your order status anytime: {{order_status_url}}</p><p>Best regards<br>your {{shop_name}} team</p>',
                     'kontor-shop'
                 ),
             ],
@@ -446,6 +459,7 @@ final class DefaultTemplates
             'amount_note'            => 'Den Betrag von 12,00 Euro überweisen wir dir in den nächsten Tagen auf dein Konto zurück.',
             'order_url'              => 'https://example.org/wp-admin/admin.php?page=kontor-shop-orders&order=123',
             'pack_url'               => 'https://example.org/wp-admin/admin.php?page=kontor-shop-orders&pack=123',
+            'pickup_info'            => "Abholung bei: Lager Jagd\nMusterstraße 5, 1010 Wien",
         ] + $samples;
     }
 }

@@ -166,6 +166,14 @@ final class NotificationsModule implements Registerable
             return [$this->invoice_payment_text($order, $terms, $due_text), $due_text];
         }
 
+        if ($order->is_cash_on_pickup()) {
+            return [sprintf(
+                /* translators: %s: amount */
+                __('Please pay %s € in cash when you pick up your order. We\'ll let you know by email as soon as it\'s ready.', 'kontor-shop'),
+                number_format_i18n($order->total, 2)
+            ), ''];
+        }
+
         $text = sprintf(
                 "Bitte ueberweise %s Euro%s an:\n%s\nIBAN: %s\nBIC: %s\nZahlungsreferenz (bitte unbedingt angeben): %s",
                 number_format($order->total, 2, ',', '.'),
@@ -367,7 +375,13 @@ final class NotificationsModule implements Registerable
             'total'                => number_format($order->total, 2, ',', '.'),
             'payment_method_label' => PaymentMethod::label($order->payment_method),
             'delivery_info'        => $order->self_pickup
-                ? __('Self pickup', 'kontor-shop')
+                ? ($order->is_cash_on_pickup() && !$order->nothing_to_pay()
+                ? sprintf(
+                    /* translators: %s: amount */
+                    __('Self pickup – the customer pays %s € in cash on pickup', 'kontor-shop'),
+                    number_format_i18n($order->total, 2)
+                )
+                : __('Self pickup', 'kontor-shop'))
                 : __('Delivery address:', 'kontor-shop') . "\n" . (string) $order->delivery_address,
             'orders_url'           => admin_url('admin.php?page=kontor-shop-orders'),
         ];
@@ -560,6 +574,14 @@ final class NotificationsModule implements Registerable
             return '';
         }
 
+        if ($order->is_cash_on_pickup()) {
+            return sprintf(
+                /* translators: %s: new amount */
+                __('Please pay only the new amount of %s euros in cash when you pick up your order.', 'kontor-shop'),
+                number_format($order->total, 2, ',', '.')
+            );
+        }
+
         return $order->payment_method === PaymentMethod::PREPAYMENT
             ? sprintf(
                 /* translators: 1: amount, 2: payment reference */
@@ -596,8 +618,8 @@ final class NotificationsModule implements Registerable
 
     public function send_payment_confirmed(Order $order): void
     {
-        // Auf Rechnung hat das Lager den Auftrag schon mit der Bestellung bekommen.
-        if ($order->is_invoice()) {
+        // Auf Rechnung und bar bei Abholung hat das Lager den Auftrag schon mit der Bestellung bekommen.
+        if ($order->pays_on_handover()) {
             return;
         }
 
@@ -610,7 +632,7 @@ final class NotificationsModule implements Registerable
      */
     public function send_invoice_ship_order(Order $order): void
     {
-        if ($order->is_invoice()) {
+        if ($order->pays_on_handover()) {
             $this->send_ship_order($order, DefaultTemplates::INVOICE_SHIP_ORDER);
         }
     }
@@ -622,7 +644,7 @@ final class NotificationsModule implements Registerable
      */
     public function send_free_ship_order(Order $order): void
     {
-        if (!$order->is_invoice() && $order->status === OrderStatus::PAID && $order->nothing_to_pay()) {
+        if (!$order->pays_on_handover() && $order->status === OrderStatus::PAID && $order->nothing_to_pay()) {
             $this->send_ship_order($order, DefaultTemplates::PAYMENT_CONFIRMED);
         }
     }
@@ -650,7 +672,13 @@ final class NotificationsModule implements Registerable
         }
 
         $delivery_info = $order->self_pickup
-            ? __('Self pickup', 'kontor-shop')
+            ? ($order->is_cash_on_pickup() && !$order->nothing_to_pay()
+                ? sprintf(
+                    /* translators: %s: amount */
+                    __('Self pickup – the customer pays %s € in cash on pickup', 'kontor-shop'),
+                    number_format_i18n($order->total, 2)
+                )
+                : __('Self pickup', 'kontor-shop'))
             : __('Delivery address:', 'kontor-shop') . "\n" . (string) $order->delivery_address;
         $config        = $this->recipient_config(DefaultTemplates::PAYMENT_CONFIRMED);
         $copies        = $this->extra_recipients(DefaultTemplates::PAYMENT_CONFIRMED);
@@ -846,6 +874,58 @@ final class NotificationsModule implements Registerable
                 : ($open !== [] ? __('Part of your order is on its way to you.', 'kontor-shop') : __('Your order is on its way to you.', 'kontor-shop')),
             'payment_note'   => $this->shipped_payment_note($order, $open !== []),
         ]);
+    }
+
+    /**
+     * "Abholbereit": Kunde einer Abhol-Bestellung erfaehrt, was bereitliegt
+     * und wo (Name und Adresse der Lager mit offenen Artikeln). Bisher kam bei
+     * Abholung erst nach der Uebergabe eine Mail. Verlaufseintrag als Nachweis.
+     */
+    public function send_ready_for_pickup(Order $order, ?int $user_id): bool
+    {
+        if (!$order->self_pickup || !$this->is_enabled(DefaultTemplates::READY_FOR_PICKUP)) {
+            return false;
+        }
+
+        $open = (new Fulfilment($order, $this->orders->items_for_order((int) $order->id)))->open_items();
+
+        if ($open === []) {
+            return false;
+        }
+
+        $places = [];
+
+        foreach (array_unique(array_map(static fn (OrderItem $item): int => $item->warehouse_id, $open)) as $warehouse_id) {
+            $warehouse = $this->warehouses->find($warehouse_id);
+
+            if ($warehouse !== null) {
+                $places[] = trim($warehouse->name . ($warehouse->address !== null && trim($warehouse->address) !== '' ? "\n" . trim($warehouse->address) : ''));
+            }
+        }
+
+        $this->send_templated(DefaultTemplates::READY_FOR_PICKUP, $order->customer_email, $order->customer_name, [
+            'shop_name'        => $this->shop_name(),
+            'customer_name'    => $order->customer_name,
+            'order_number'     => $order->order_number,
+            'order_status_url' => OrderStatusLink::url($order, $this->settings),
+            'items'            => implode("\n", array_map(static fn (OrderItem $item): string => sprintf('- %dx %s', $item->quantity, $item->product_name), $open)),
+            'pickup_info'      => $places !== [] ? __('Pickup at:', 'kontor-shop') . ' ' . implode("\n\n", $places) : '',
+            'payment_note'     => $order->awaits_payment()
+                ? sprintf(
+                    /* translators: %s: open amount */
+                    __('Still to pay: %s €.', 'kontor-shop'),
+                    number_format_i18n($order->total, 2)
+                )
+                : '',
+        ]);
+
+        $this->orders->add_log_note((int) $order->id, $user_id, sprintf(
+            /* translators: %s: email address */
+            __('“Ready for pickup” sent to %s.', 'kontor-shop'),
+            $order->customer_email
+        ));
+
+        return true;
     }
 
     /**

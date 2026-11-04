@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,7 +20,7 @@ Members and guests order online, pay by bank transfer or in cash on pickup, and 
 
 * **Products with variants:** sizes, colours, pictures, categories and search, each product with its own page and address.
 * **Cart and checkout:** guest orders without an account, stock is reserved while the customer checks out.
-* **Payment without a provider:** bank transfer (prepayment) and cash on pickup. Your bank details appear in the confirmation and the e-mail.
+* **Payment without a provider:** bank transfer (prepayment), on invoice and cash on pickup – each can be switched on separately. Your bank details appear in the confirmation and the e-mail.
 * **Shipping:** flat rate, free shipping above an amount, self pickup.
 * **Stock:** one warehouse with a full stock ledger, so every change can be traced.
 * **Orders:** clear status workflow (open, paid, shipped, picked up, cancelled) and a cashier role that can mark payments.
@@ -99,6 +99,16 @@ Kontor Shop does not contact any other external service. Shop data, orders and c
 
 == Changelog ==
 
+= 2.1.1 =
+* New: cash on pickup as a payment method (Settings → Payment, only shown with self pickup). The goods are set aside right away; recording the pickup books the cash payment too. No deadline, reminders or automatic cancellation.
+* New: “Ready for pickup” button in pickup orders – the customer gets an email with what is ready and the warehouse address (field “Address and pickup times”).
+* New: “Undo payment” for orders marked as paid by mistake (as long as nothing has been shipped).
+* Changed (Pro): automatic payment reminders and auto-cancellation now start switched off – nothing is sent or cancelled until you switch it on under Settings → Payment.
+* Changed: spam protection allows 20 orders per internet connection in 15 minutes (was 5) and is adjustable under Settings → Legal; logged-in customers count per account – no more blocked orders at club evenings on shared Wi-Fi.
+* Fixed: deleting an order now books products that were not shipped back into stock.
+* Fixed: bulk “Mark as paid” / “shipped” reports failed bookings with order number and reason instead of counting them as done.
+* Fixed: cashiers without stock rights no longer see the “Stock” menu item; the order actions heading reads “Actions”.
+
 = 2.1.0 =
 * New: Help centre (Kontor Shop → Help) with step-by-step guides for every task – what a setting is for and what happens when you use it. Search, a “First steps” list that stays after setup, Pro features explained and marked. The help tab on each page links to the matching guide.
 * New: Design settings with live preview of your real shop page (computer and phone): basic style, colour scheme light/dark, corners, products per row, image format (landscape, square, portrait), font of product names, custom CSS and a ready-made CSS block for web developers.
@@ -156,6 +166,9 @@ Kontor Shop does not contact any other external service. Shop data, orders and c
 * Changed: member prices, several warehouses, discount codes, back-in-stock requests, automatic reminders, CSV export, key figures, change log, cashier API and search-engine extras are now part of Kontor Shop Pro. Your data stays when you switch between Free and Pro.
 
 == Upgrade Notice ==
+
+= 2.1.1 =
+Pro: automatic payment reminders and auto-cancellation are now off until you switch them on (Settings → Payment). New: cash on pickup and “Ready for pickup” email.
 
 = 2.1.0 =
 New help centre and design settings with live preview. If your shop ignores your theme colour, open Settings → Design and click “Use theme color”.

@@ -11,8 +11,10 @@ use Kontor\Shop\Settings\Repository;
  * Welche Zahlungsarten stehen dem aktuellen Kaeufer zur Auswahl (Abschnitt
  * 6.3): Vorkasse und "Auf Rechnung" lassen sich unter Einstellungen →
  * Zahlung einzeln ein- und ausschalten (mit Pro: Rechnung optional nur fuer
- * erkannte Mitglieder). Bleibt fuer einen Kaeufer nichts uebrig (sollte die
- * Einstellungsseite verhindern), gilt Vorkasse - so kann nie niemand bestellen.
+ * erkannte Mitglieder), dazu Barzahlung bei Abholung (nur mit Selbstabholung).
+ * Bleibt fuer einen Kaeufer ausser Bar nichts uebrig (sollte die
+ * Einstellungsseite verhindern), gilt zusaetzlich Vorkasse - so kann nie
+ * niemand bestellen, auch nicht mit Versand.
  */
 final class PaymentMethodResolver
 {
@@ -38,6 +40,11 @@ final class PaymentMethodResolver
             $methods[] = PaymentMethod::INVOICE;
         }
 
+        // Nur mit Selbstabholung - die Kasse blendet es bei Versand aus (cash_needs_pickup()).
+        if ($this->options->cash_enabled()) {
+            $methods[] = PaymentMethod::CASH;
+        }
+
         /**
          * Filter kontor_shop/payment/available_methods: Zahlungsarten fuer
          * diesen Kaeufer einschraenken, z. B. Pro: "Auf Rechnung" nur fuer
@@ -49,9 +56,10 @@ final class PaymentMethodResolver
          */
         $methods = array_values(array_filter(
             array_map('strval', (array) apply_filters('kontor_shop/payment/available_methods', $methods, $is_member)),
-            static fn (string $method): bool => in_array($method, [PaymentMethod::PREPAYMENT, PaymentMethod::INVOICE], true)
+            static fn (string $method): bool => PaymentMethod::is_known($method)
         ));
 
-        return $methods !== [] ? $methods : [PaymentMethod::PREPAYMENT];
+        // Bar bei Abholung passt nicht fuer jede Bestellung (Versand) - es zaehlt nicht als "fuer alle".
+        return array_diff($methods, [PaymentMethod::CASH]) !== [] ? $methods : array_merge([PaymentMethod::PREPAYMENT], $methods);
     }
 }

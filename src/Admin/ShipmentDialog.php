@@ -106,6 +106,16 @@ final class ShipmentDialog
             . '<button type="button" class="ks-dialog__close" data-ks-dialog-close aria-label="' . esc_attr__('Close', 'kontor-shop') . '">&times;</button></header>';
 
         echo '<div class="ks-dialog__body">';
+
+        // Bar bei Abholung: beim Erfassen der Uebergabe wird die Barzahlung mitgebucht (ShipmentRecorder).
+        if ($pickup && $order->is_cash_on_pickup() && $order->awaits_payment() && !$order->nothing_to_pay()) {
+            echo '<div class="notice notice-info inline"><p><strong>' . esc_html(sprintf(
+                /* translators: %s: amount */
+                __('Collect %s € in cash.', 'kontor-shop'),
+                number_format_i18n($order->total, 2)
+            )) . '</strong> ' . esc_html__('When the whole order is picked up, the payment is booked as cash at the same time.', 'kontor-shop') . '</p></div>';
+        }
+
         echo '<ol class="ks-wizard-steps" aria-hidden="true">'
             . '<li data-step-pill="1"' . ($skip ? ' hidden' : '') . '>' . esc_html__('Warehouse', 'kontor-shop') . '</li>'
             . '<li data-step-pill="2">' . esc_html__('Product', 'kontor-shop') . '</li>'

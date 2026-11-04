@@ -42,6 +42,11 @@ final class PaymentTerms
      */
     public function due_date(Order $order): ?string
     {
+        // Bar bei Abholung: bezahlt wird bei der Uebergabe - keine Frist.
+        if ($order->is_cash_on_pickup()) {
+            return null;
+        }
+
         if (!$order->is_invoice()) {
             return PaymentDeadline::due_date($order->created_at, $this->prepayment_days);
         }
@@ -54,6 +59,10 @@ final class PaymentTerms
      */
     public function is_overdue(Order $order, string $today): bool
     {
+        if ($order->is_cash_on_pickup()) {
+            return false;
+        }
+
         if (!$order->is_invoice()) {
             return PaymentDeadline::is_overdue($order, $this->prepayment_days, $today);
         }

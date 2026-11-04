@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Infrastructure\Checkout;
 
+use Kontor\Shop\Settings\Repository;
+
 /**
  * Einfacher Spam-/Missbrauchsschutz fuer den Gast-Checkout (ohne Captcha,
  * ohne externe Dienste):
  *  - Honeypot-Feld, das Menschen nie ausfuellen,
  *  - signierter Zeitstempel: zu schnell abgeschickte Formulare (Bots) und
  *    Formulare, die aelter als 24 h sind, werden abgelehnt,
- *  - Begrenzung erfolgreicher Bestellungen pro IP und Zeitfenster
- *    (Transient), damit sich Reservierungen/Bestand nicht massenhaft
+ *  - Begrenzung erfolgreicher Bestellungen pro IP (angemeldet: pro Konto)
+ *    und 15 Minuten (Transient, Einstellung checkout.rate_limit unter
+ *    Rechtliches), damit sich Reservierungen/Bestand nicht massenhaft
  *    blockieren lassen.
  * Die Pruefung selbst (evaluate) ist reine Logik und unit-testbar.
  */
@@ -22,7 +25,10 @@ final class SpamGuard
 
     private const MIN_SECONDS      = 3;
     private const MAX_SECONDS      = DAY_IN_SECONDS;
-    private const RATE_LIMIT_MAX   = 5;
+    /** Standard fuer checkout.rate_limit (bis 2.1.0 fest 5 - zu wenig fuer einen Vereinsabend im selben WLAN). */
+    public const RATE_LIMIT_MAX    = 20;
+
+    public const RATE_LIMIT_CEILING = 500;
     private const RATE_LIMIT_WINDOW = 15 * MINUTE_IN_SECONDS;
 
     public static function field_html(): string
@@ -101,15 +107,30 @@ final class SpamGuard
         return null;
     }
 
+    /** Einstellung checkout.rate_limit bereinigen (0 = keine Grenze). */
+    public static function sanitize_limit(mixed $value): int
+    {
+        return is_numeric($value) ? max(0, min(self::RATE_LIMIT_CEILING, (int) $value)) : self::RATE_LIMIT_MAX;
+    }
+
     private static function is_rate_limited(): bool
     {
-        $max = (int) apply_filters('kontor_shop/spam/rate_limit', self::RATE_LIMIT_MAX);
+        $setting = (new Repository())->get('checkout.rate_limit', self::RATE_LIMIT_MAX);
+        $max     = (int) apply_filters('kontor_shop/spam/rate_limit', self::sanitize_limit($setting));
 
         return $max > 0 && (int) get_transient(self::rate_key()) >= $max;
     }
 
     private static function rate_key(): string
     {
+        // Angemeldete Kunden (z. B. Mitglieder) zaehlen je Konto: viele Bestellungen aus einem
+        // Vereins-WLAN sind dann kein Problem, Bots bleiben je Anschluss begrenzt.
+        $user_id = function_exists('get_current_user_id') ? get_current_user_id() : 0;
+
+        if ($user_id > 0) {
+            return 'kontor_shop_rl_u' . $user_id;
+        }
+
         // Hinter Reverse-Proxys kann die echte Client-IP per Filter geliefert werden.
         $ip = (string) apply_filters('kontor_shop/spam/client_ip', isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash((string) $_SERVER['REMOTE_ADDR'])) : '');
 

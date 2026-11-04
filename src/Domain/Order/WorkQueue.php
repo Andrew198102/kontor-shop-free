@@ -82,7 +82,8 @@ final class WorkQueue
      */
     public function payment_needs_action(): bool
     {
-        return $this->awaits_payment() && (!$this->order->is_invoice() || $this->is_overdue());
+        // Bar bei Abholung: bezahlt wird bei der Uebergabe, vorher ist nichts zu tun.
+        return $this->awaits_payment() && !$this->order->is_cash_on_pickup() && (!$this->order->is_invoice() || $this->is_overdue());
     }
 
     /** Versandbereit (bezahlt bzw. auf Rechnung), und fuer die Lager des Benutzers ist noch etwas offen. */
@@ -158,12 +159,12 @@ final class WorkQueue
     public function next_step(bool $can_pay, bool $can_ship): ?string
     {
         // Auf Rechnung geht der Versand vor: bezahlt wird erst nach Erhalt.
-        if ($this->order->is_invoice() && $can_ship && ($this->to_ship() || $this->to_pickup())) {
+        if ($this->order->pays_on_handover() && $can_ship && ($this->to_ship() || $this->to_pickup())) {
             return $this->to_pickup() ? self::STEP_PICKUP : self::STEP_SHIP;
         }
 
         // Rechnung vor dem Versand: Hauptknopf erst, wenn sie raus ist (bezahlen geht trotzdem in den Details).
-        if ($can_pay && $this->awaits_payment() && (!$this->order->is_invoice() || $this->is_done())) {
+        if ($can_pay && $this->awaits_payment() && (!$this->order->pays_on_handover() || $this->is_done())) {
             return self::STEP_PAY;
         }
 
@@ -192,7 +193,7 @@ final class WorkQueue
             return 0;
         }
 
-        if ($this->order->is_invoice()) {
+        if ($this->order->pays_on_handover()) {
             return match (true) {
                 $this->is_done() && !$this->awaits_payment() => 3,
                 $this->is_done()                             => 2,
@@ -214,7 +215,7 @@ final class WorkQueue
      */
     public function steps(): array
     {
-        return $this->order->is_invoice() ? ['out', 'pay'] : ['pay', 'out'];
+        return $this->order->pays_on_handover() ? ['out', 'pay'] : ['pay', 'out'];
     }
 
     /**

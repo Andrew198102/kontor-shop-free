@@ -433,6 +433,8 @@ final class CheckoutModule implements Registerable
 
         if (!PaymentMethod::is_known($payment_method) || !in_array($payment_method, $allowed, true)) {
             $errors['payment_method'] = __('Please select a payment method.', 'kontor-shop');
+        } elseif ($payment_method === PaymentMethod::CASH && empty($values['self_pickup'])) {
+            $errors['payment_method'] = __('Cash payment is only possible if you pick up the order yourself. Please choose another payment method or self pickup.', 'kontor-shop');
         }
 
         if ((bool) $this->settings->get('legal.require_terms', true) && empty($post['accept_terms'])) {
@@ -927,8 +929,10 @@ final class CheckoutModule implements Registerable
         $method_labels = [
             PaymentMethod::PREPAYMENT => __('Prepayment (bank transfer)', 'kontor-shop'),
             PaymentMethod::INVOICE    => __('On invoice', 'kontor-shop'),
+            PaymentMethod::CASH       => __('Cash on pickup', 'kontor-shop'),
         ];
         $method_hints  = [
+            PaymentMethod::CASH       => __('We set your order aside, and you pay in cash when you pick it up.', 'kontor-shop'),
             PaymentMethod::PREPAYMENT => __('You transfer first, and we ship after we receive your payment.', 'kontor-shop'),
             PaymentMethod::INVOICE    => $invoice_days > 0
                 ? sprintf(
@@ -941,9 +945,15 @@ final class CheckoutModule implements Registerable
 
         $html .= '<fieldset class="kontor-shop-fieldset' . (isset($this->field_errors['payment_method']) ? ' has-error' : '') . '" id="ks-field-payment_method"><legend>' . esc_html__('Payment method', 'kontor-shop') . '</legend>';
 
+        // Bar bei Abholung nur sichtbar, solange "Ich hole selbst ab" angehakt ist (checkout.js schaltet um).
+        $default_method = current(array_diff($allowed_methods, [PaymentMethod::CASH])) ?: PaymentMethod::PREPAYMENT;
+        $chosen_method  = isset($_POST['payment_method']) ? sanitize_text_field(wp_unslash($_POST['payment_method'])) : $default_method; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nur Wiederanzeige der eigenen Eingaben; verarbeitet wird erst nach der Nonce-Pruefung in handle_submit()
+
         foreach ($allowed_methods as $method) {
-            $html .= '<label class="kontor-shop-choice"><input type="radio" name="payment_method" value="'
-                . esc_attr($method) . '" ' . checked($method, isset($_POST['payment_method']) ? sanitize_text_field(wp_unslash($_POST['payment_method'])) : ($allowed_methods[0] ?? PaymentMethod::PREPAYMENT), false) . ' /> <span>' // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nur Wiederanzeige der eigenen Eingaben; verarbeitet wird erst nach der Nonce-Pruefung in handle_submit()
+            $pickup_only = $method === PaymentMethod::CASH;
+
+            $html .= '<label class="kontor-shop-choice"' . ($pickup_only ? ' data-ks-pickup-only' . ($is_pickup ? '' : ' hidden') : '') . '><input type="radio" name="payment_method" value="'
+                . esc_attr($method) . '" ' . checked($method, $chosen_method, false) . ' /> <span>'
                 . esc_html($method_labels[$method] ?? $method)
                 . (count($allowed_methods) > 1 && isset($method_hints[$method]) ? ' <small class="kontor-shop-choice__hint">' . esc_html($method_hints[$method]) . '</small>' : '')
                 . '</span></label>';
@@ -1427,6 +1437,12 @@ final class CheckoutModule implements Registerable
             ) . '</p></div>';
         } elseif ($order->is_invoice() && $order->awaits_payment() && $order->total > 0) {
             $html .= $this->render_invoice_payment($order);
+        } elseif ($order->is_cash_on_pickup() && $order->awaits_payment() && $order->total > 0) {
+            $html .= '<div class="kontor-shop-order-confirmation__payment"><h3>' . esc_html__('Pay on pickup: in cash', 'kontor-shop') . '</h3><p>' . esc_html(sprintf(
+                /* translators: %s: amount */
+                __('Please bring %s € in cash when you pick up your order. We\'ll let you know by email as soon as it\'s ready.', 'kontor-shop'),
+                number_format_i18n($order->total, 2)
+            )) . '</p></div>';
         } elseif ($order->nothing_to_pay() && $order->status !== OrderStatus::CANCELLED) {
             $html .= '<div class="kontor-shop-order-confirmation__payment is-free"><h3>' . esc_html__('Nothing to pay', 'kontor-shop') . '</h3><p>' . esc_html($order->self_pickup
                 ? __('Your discount code covers the full amount. We\'ll set your order aside for pickup.', 'kontor-shop')

@@ -85,8 +85,8 @@ final class SetupArticles
                 [
                     'title'      => __('Cash on pickup', 'kontor-shop'),
                     'paragraphs' => [
-                        __('Checkout has no separate “cash” method. Customers choose “Self pickup” (see Shipping) and a payment method. When someone pays you in cash, open the order, click “Paid ✓” and choose “cash” under “Paid with”.', 'kontor-shop'),
-                        __('Good to know: checkout tells customers that they pay by bank transfer, for prepayment and for “On invoice”. If your club usually takes cash, say so on your shop page or in the “Additional price text” (Legal).', 'kontor-shop'),
+                        __('Tick “Offer cash payment on pickup” under Payment methods. Customers see “Cash on pickup” at checkout only when they choose self pickup (Shipping & returns must allow it).', 'kontor-shop'),
+                        __('The warehouse gets the order to set the goods aside right away. Click “Ready for pickup” in the order when everything is ready. When the customer collects and pays, record the pickup – the cash payment is booked at the same time. There is no payment deadline, no reminder and no automatic cancellation.', 'kontor-shop'),
                     ],
                 ],
                 [
@@ -412,7 +412,8 @@ final class SetupArticles
                         __('Payment reminder and invoice payment reminder: to the customer when you click “Send payment reminder” in the order.', 'kontor-shop'),
                         __('Payment received: to the customer when you mark the order as paid.', 'kontor-shop'),
                         __('Shipping order to warehouse: internal, one email per warehouse with its products. For prepayment after the payment, for “On invoice” right after ordering.', 'kontor-shop'),
-                        __('Shipped / ready for pickup: to the customer when the order is marked as shipped or picked up.', 'kontor-shop'),
+                        __('Shipped / picked up: to the customer when the order is marked as shipped or picked up.', 'kontor-shop'),
+                        __('Ready for pickup: to the customer of a pickup order when you click “Ready for pickup” in the order, with the warehouse address.', 'kontor-shop'),
                         __('Order cancelled, Product cancelled and Return received: to the customer, with the refund or the new amount.', 'kontor-shop'),
                         __('Cancellation / refund: internal, e.g. so the cashier takes care of the refund.', 'kontor-shop'),
                         __('Pro adds more emails, e.g. for back-in-stock requests.', 'kontor-shop'),

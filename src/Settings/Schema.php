@@ -49,6 +49,8 @@ final class Schema
                 // (Mitgliedschaft, Mitglieder-Freiversand und "Rechnung nur fuer Mitglieder": Pro, Pro::defaults().)
                 'prepayment_enabled'   => true,
                 'invoice_enabled'      => false,
+                // Barzahlung bei Abholung (nur mit Selbstabholung); aus, bis der Verein es einschaltet.
+                'cash_enabled'         => false,
                 // Auf Rechnung: Zahlungsziel in Tagen ab Versand/Abholung (0 = keines), danach gilt sie als
                 // ueberfaellig. Nie Autostorno. (Automatische Erinnerungen: Pro, Pro::defaults().)
                 'invoice_days'              => 14,
@@ -109,6 +111,9 @@ final class Schema
                 'reservation_minutes' => 15,
                 // Bestellstatus-Link fuer Kunden: gueltig, solange die Bestellung laeuft, danach noch so viele Tage.
                 'order_link_days'     => 30,
+                // Spamschutz: hoechstens so viele Bestellungen je Internetanschluss in 15 Minuten (0 = keine Grenze).
+                // Angemeldete Benutzer zaehlen je Konto, nicht je Anschluss (Vereinsabend im selben WLAN).
+                'rate_limit'          => 20,
             ],
 
             'catalog' => [

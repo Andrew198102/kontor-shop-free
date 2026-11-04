@@ -102,6 +102,21 @@
 
         toggleBlock(delivery, !isPickup);
 
+        // "Bar bei Abholung" nur bei Selbstabholung; war es gewaehlt, auf die erste andere Zahlungsart wechseln.
+        root.querySelectorAll('[data-ks-pickup-only]').forEach(function (choice) {
+            var radio = choice.querySelector('input[type="radio"]');
+
+            choice.hidden = !isPickup;
+
+            if (!isPickup && radio && radio.checked) {
+                var other = root.querySelector('.kontor-shop-choice:not([data-ks-pickup-only]) input[name="payment_method"]');
+
+                if (other) {
+                    other.checked = true;
+                }
+            }
+        });
+
         if (billingToggle) {
             toggleBlock(billing, billingToggle.checked);
         }

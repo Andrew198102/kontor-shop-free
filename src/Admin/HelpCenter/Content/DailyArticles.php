@@ -97,7 +97,7 @@ final class DailyArticles
                 ],
                 'faq'        => [
                     ['q' => __('The customer transferred too little.', 'kontor-shop'), 'a' => __('The shop doesn’t check amounts. Clarify it with the customer and only mark the order as paid when the full amount has arrived.', 'kontor-shop')],
-                    ['q' => __('I marked the wrong order as paid.', 'kontor-shop'), 'a' => __('A payment can’t be undone with a button. Write an internal note in the quick view so nobody ships the order by mistake, and clarify it with the customer. If the order should not be delivered at all, cancel it and set the refund to 0.', 'kontor-shop')],
+                    ['q' => __('I marked the wrong order as paid.', 'kontor-shop'), 'a' => __('Open the order and click “Undo payment”. The order is open again; the customer is not notified. This works as long as nothing has been shipped or picked up. If the warehouse already got the shipping order, tell them not to ship.', 'kontor-shop')],
                     ['q' => __('How do I remind a customer who hasn’t paid?', 'kontor-shop'), 'a' => __('Click ⋯ → “Send payment reminder” in the order list. The customer gets the payment details again. Kontor Shop Pro can send reminders automatically.', 'kontor-shop')],
                     ['q' => __('Instead of “Paid ✓” I see “book in …”.', 'kontor-shop'), 'a' => __('Your shop is connected to a cashier system. Payments are booked there and then show up in the shop as “paid”.', 'kontor-shop')],
                 ],
@@ -121,7 +121,7 @@ final class DailyArticles
                 ],
                 'effect'     => [
                     __('The order changes to “shipped” or “picked up” and leaves the “To do” list.', 'kontor-shop'),
-                    __('The customer gets the email “Shipped / ready for pickup”, for parcels with carrier, tracking number and tracking link.', 'kontor-shop'),
+                    __('The customer gets the email “Shipped / picked up”, for parcels with carrier, tracking number and tracking link.', 'kontor-shop'),
                     __('The stock doesn’t change again: it already went down when the order was placed.', 'kontor-shop'),
                     __('For an order on invoice, the payment term starts now, and the shipping email contains the payment details.', 'kontor-shop'),
                 ],
@@ -135,6 +135,7 @@ final class DailyArticles
                     ],
                 ],
                 'faq'        => [
+                    ['q' => __('How does the customer know the goods are ready to collect?', 'kontor-shop'), 'a' => __('Once you have set the goods aside, open the order and click “Ready for pickup”. The customer gets an email with what is ready and the address of the warehouse. Enter the address (and opening hours if you like) under Kontor Shop → Warehouse.', 'kontor-shop')],
                     ['q' => __('The button “Record shipment …” is missing.', 'kontor-shop'), 'a' => __('With prepayment, the order has to be paid first; look under “Payment open”. Cashiers can’t record shipments; an administrator, shop manager or warehouse manager does that.', 'kontor-shop')],
                     ['q' => __('I entered a wrong tracking number.', 'kontor-shop'), 'a' => __('A recorded shipment can’t be changed. Add the correct number as an internal note in the quick view and send it to the customer yourself.', 'kontor-shop')],
                     ['q' => __('Can I mark several orders as shipped at once?', 'kontor-shop'), 'a' => __('Yes: tick them in the list and click “Mark as shipped/picked up”. All open products go out, without tracking numbers, and the customers are notified.', 'kontor-shop')],
@@ -181,7 +182,7 @@ final class DailyArticles
                         'title'      => __('Deleting an order', 'kontor-shop'),
                         'paragraphs' => [
                             __('Order data usually has to be kept for several years because of tax and accounting rules. That is why you can only delete an order in its details: click the order number, then “Delete order”. Only administrators and shop managers see this button.', 'kontor-shop'),
-                            __('Deleting doesn’t book any stock back. Cancel a test order with “Back to the warehouse (goods are fine)” first, then delete it.', 'kontor-shop'),
+                            __('When you delete an order, products that have not been shipped go back to the warehouse automatically. Shipped goods stay booked out.', 'kontor-shop'),
                         ],
                     ],
                 ],

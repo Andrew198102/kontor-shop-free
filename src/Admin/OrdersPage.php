@@ -286,12 +286,20 @@ final class OrdersPage
             return $this->handle_refund_done($order, $can_manage, $is_cashier);
         }
 
+        if ($action === 'undo_paid') {
+            return $this->handle_undo_paid($order, $can_manage, $is_cashier);
+        }
+
         if ($action === 'ship' || $action === 'mark_shipped' || $action === 'mark_picked_up') {
             return $this->handle_ship($order, $can_manage, false);
         }
 
         if ($action === 'delete') {
             return $this->handle_delete($order, $can_manage);
+        }
+
+        if ($action === 'ready_for_pickup') {
+            return $this->handle_ready_for_pickup($order, $can_manage, $is_cashier);
         }
 
         if ($action === 'payment_reminder') {
@@ -381,7 +389,7 @@ final class OrdersPage
         }
 
         return sprintf(
-            $order->is_invoice()
+            $order->pays_on_handover()
                 /* translators: %s: order number */
                 ? __('%s marked as paid – the customer gets the payment confirmation.', 'kontor-shop')
                 /* translators: %s: order number */
@@ -406,6 +414,32 @@ final class OrdersPage
         return sprintf(
             /* translators: 1: order number, 2: email */
             __('%1$s: Payment reminder sent to %2$s.', 'kontor-shop'),
+            $order->order_number,
+            $order->customer_email
+        );
+    }
+
+    /**
+     * "Abholbereit": Kunde einer Abhol-Bestellung per Mail benachrichtigen
+     * (Shop-Manager, Kassier oder Lagerverwalter eines betroffenen Lagers).
+     */
+    private function handle_ready_for_pickup(Order $order, bool $can_manage, bool $is_cashier): ?string
+    {
+        if (!$can_manage && !$is_cashier && !$this->order_touches_warehouses((int) $order->id, $this->my_warehouse_ids(false))) {
+            wp_die(esc_html__('No permission.', 'kontor-shop'));
+        }
+
+        if (!$order->self_pickup || !$order->can_ship()) {
+            return $this->fail(__('“Ready for pickup” is only available for pickup orders that are paid (or on invoice) and not yet picked up.', 'kontor-shop'));
+        }
+
+        if (!$this->notifications->send_ready_for_pickup($order, get_current_user_id() ?: null)) {
+            return $this->fail(__('The email “Ready for pickup” is switched off under Settings → Email templates, or nothing is left to pick up.', 'kontor-shop'));
+        }
+
+        return sprintf(
+            /* translators: 1: order number, 2: email */
+            __('%1$s: “Ready for pickup” sent to %2$s.', 'kontor-shop'),
             $order->order_number,
             $order->customer_email
         );
@@ -480,13 +514,16 @@ final class OrdersPage
             wp_die(esc_html__('No permission.', 'kontor-shop'));
         }
 
+        // Noch nicht versendete Ware zurueck ins Lager, sonst fehlt sie dauerhaft im Bestand.
+        $restocked = $this->cashier->restock_before_delete($order, Actor::user(get_current_user_id() ?: null));
+
         $this->orders->delete((int) $order->id);
 
         return sprintf(
             /* translators: %s: order number */
             __('Order %s was deleted.', 'kontor-shop'),
             $order->order_number
-        );
+        ) . ($restocked > 0 ? ' ' . __('Products that had not been shipped were booked back to the warehouse.', 'kontor-shop') : '');
     }
 
     private function handle_cancel(Order $order, bool $can_manage, bool $is_cashier): ?string
@@ -611,6 +648,28 @@ final class OrdersPage
     /**
      * Rueckzahlung an den Kunden ist erfolgt.
      */
+    /**
+     * "Zahlung zuruecknehmen": versehentlich als bezahlt markierte Bestellung wieder auf offen.
+     */
+    private function handle_undo_paid(Order $order, bool $can_manage, bool $is_cashier): ?string
+    {
+        if (!$can_manage && !$is_cashier) {
+            wp_die(esc_html__('No permission.', 'kontor-shop'));
+        }
+
+        if (($blocked = $this->owner_blocks()) !== null) {
+            return $blocked;
+        }
+
+        $result = $this->cashier->undo_payment($order, Actor::user(get_current_user_id() ?: null));
+
+        if (!$result->ok) {
+            return $this->fail($result->message);
+        }
+
+        return __('Payment taken back – the order is open again. The customer was not notified. If the warehouse already received a shipping order, tell them not to ship.', 'kontor-shop');
+    }
+
     private function handle_refund_done(Order $order, bool $can_manage, bool $is_cashier): ?string
     {
         if (!$can_manage && !$is_cashier) {
@@ -797,6 +856,8 @@ final class OrdersPage
 
         $done    = 0;
         $skipped = 0;
+        /** @var array<string, string> $failed Bestellnummer => Grund (Buchung abgelehnt, z. B. Datum, fuehrende Kassa) */
+        $failed  = [];
 
         foreach ($ids as $id) {
             $target = $this->orders->find($id);
@@ -809,8 +870,7 @@ final class OrdersPage
 
             if ($action === 'mark_paid') {
                 if (($can_manage || $is_cashier) && $target->can_mark_paid() && !ExternalPayments::active()) {
-                    $this->handle_mark_paid($target, $can_manage, $is_cashier);
-                    $done++;
+                    $this->bulk_result($this->handle_mark_paid($target, $can_manage, $is_cashier), $target, $done, $failed);
                 } else {
                     $skipped++;
                 }
@@ -820,8 +880,7 @@ final class OrdersPage
 
             if ($action === 'ship') {
                 if (($can_manage || $this->order_touches_warehouses($id, $my_warehouse_ids)) && $target->can_ship()) {
-                    $this->handle_ship($target, $can_manage, true);
-                    $done++;
+                    $this->bulk_result($this->handle_ship($target, $can_manage, true), $target, $done, $failed);
                 } else {
                     $skipped++;
                 }
@@ -846,6 +905,36 @@ final class OrdersPage
             );
         }
 
-        Flash::redirect($back, $message, $done > 0 ? 'success' : 'warning');
+        if ($failed !== []) {
+            $first   = reset($failed);
+            $message .= ' ' . sprintf(
+                /* translators: 1: number of failed orders, 2: order numbers, 3: reason of the first failure */
+                _n('%1$d failed (%2$s): %3$s', '%1$d failed (%2$s): %3$s', count($failed), 'kontor-shop'),
+                count($failed),
+                implode(', ', array_keys($failed)),
+                $first
+            );
+        }
+
+        Flash::redirect($back, $message, $failed !== [] ? 'error' : ($done > 0 ? 'success' : 'warning'));
+    }
+
+    /**
+     * Ergebnis einer Einzelbuchung in der Sammelaktion zaehlen: fail() setzt
+     * notice_type auf "error" - dann zaehlt die Bestellung als fehlgeschlagen,
+     * nicht als erledigt.
+     *
+     * @param array<string, string> $failed
+     */
+    private function bulk_result(?string $message, Order $order, int &$done, array &$failed): void
+    {
+        if ($this->notice_type === 'error') {
+            $failed[$order->order_number] = (string) $message;
+            $this->notice_type            = 'success';
+
+            return;
+        }
+
+        $done++;
     }
 }

@@ -354,7 +354,7 @@ final class WarehousesPage
         Form::card_open(__('Warehouse', 'kontor-shop'));
         Form::field(__('Name', 'kontor-shop'), 'ks-wh-name', '<input type="text" id="ks-wh-name" name="name" class="regular-text" required value="' . esc_attr((string) $get('name', $editing->name ?? '')) . '" />', __('E.g. “Main warehouse” or “North club”.', 'kontor-shop'), true);
         Form::field(__('Contact name', 'kontor-shop'), 'ks-wh-contact', '<input type="text" id="ks-wh-contact" name="contact_name" class="regular-text" value="' . esc_attr((string) $get('contact_name', $editing->contact_name ?? '')) . '" />', __('Contact person for this warehouse (optional).', 'kontor-shop'));
-        Form::field(__('Sender/return address', 'kontor-shop'), 'ks-wh-address', '<textarea id="ks-wh-address" name="address" class="large-text" rows="3">' . esc_textarea((string) $get('address', $editing->address ?? '')) . '</textarea>', __('Appears as the sender on shipping documents.', 'kontor-shop'));
+        Form::field(__('Address and pickup times', 'kontor-shop'), 'ks-wh-address', '<textarea id="ks-wh-address" name="address" class="large-text" rows="3">' . esc_textarea((string) $get('address', $editing->address ?? '')) . '</textarea>', __('Customers see this as the pickup location in the email “Ready for pickup”. Add pickup times if you like, e.g. “Pickup Wed 6–8 pm”.', 'kontor-shop'));
 
         /**
          * Aktion kontor_shop/admin/warehouse_form/fields: weitere Felder im
