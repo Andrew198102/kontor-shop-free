@@ -50,6 +50,10 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
     kontor_shop_fs()->add_action( 'after_uninstall', [\Kontor\Shop\Core\Uninstaller::class, 'run'] );
     // Symbol auf Upgrade-, Konto- und Opt-in-Seite (sonst zeigt Freemius einen Stecker).
     kontor_shop_fs()->add_filter( 'plugin_icon', static fn(): string => KONTOR_SHOP_PATH . 'assets/admin/plugin-icon.png' );
+    // Beim Deaktivieren nur unser Dialog (Admin\UninstallChoice: Daten behalten oder loeschen) -
+    // nicht zusaetzlich Freemius' Feedback- und Abo-Kuendigen-Fenster.
+    kontor_shop_fs()->add_filter( 'show_deactivation_feedback_form', '__return_false' );
+    kontor_shop_fs()->add_filter( 'show_deactivation_subscription_cancellation', '__return_false' );
     // Kurzer Name in Freemius-Hinweisen statt "Kontor Shop – Club Shop with Bank Transfer & Pickup".
     kontor_shop_fs()->add_filter( 'plugin_title', static fn(): string => 'Kontor Shop' );
     // Freemius bringt nur freemius-de_DE.mo mit. Seit WP 6.5 gilt eine Uebersetzung nur fuer die
@@ -61,11 +65,12 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
         }
     }, 2 );
     /*
-     * Nach Opt-in-Bestaetigung oder Lizenz-Aktivierung: ist die Lizenz aktiv, Pro aber
-     * noch nicht installiert, direkt auf Pläne & Preise mit "Pro jetzt installieren".
+     * Nach Opt-in-Bestaetigung oder Lizenz-Aktivierung: ist die Lizenz aktiv, Pro aber noch nicht
+     * installiert, auf die Uebersicht - dort installiert die Karte "Pro wird installiert …" Pro.
+     * Nicht auf Pläne & Preise: die blendet Freemius mit gueltiger Lizenz aus ("nicht berechtigt").
      */
     kontor_shop_fs()->add_filter( 'after_connect_url', static function ( string $url ) : string {
-        return ( kontor_shop_fs()->can_use_premium_code() && !kontor_shop_fs()->is_premium() ? \Kontor\Shop\Admin\Upgrade\PricingPage::url() : $url );
+        return ( kontor_shop_fs()->can_use_premium_code() && !kontor_shop_fs()->is_premium() ? admin_url( 'admin.php?page=kontor-shop' ) : $url );
     } );
     do_action( 'kontor_shop_fs_loaded' );
     /*
@@ -142,45 +147,76 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
             ] : [] ),
         ];
     } );
-    // Auf Kontor-Seiten ersetzen unsere Karten (Admin\Upgrade\ProStatus) die Freemius-Hinweise zu Bestaetigung,
-    // Download-Anleitung und "W00t! Premium ... activated".
+    // Unsere Karten (Admin\Upgrade\ProStatus) ersetzen die Freemius-Hinweise zu Download-Anleitung und
+    // "W00t! Premium ... activated" ueberall, den zur Bestaetigungs-Mail auf Kontor-Seiten.
     kontor_shop_fs()->add_filter(
         'show_admin_notice',
         static function ( $show, $msg ) {
+            $id = (string) ($msg['id'] ?? '');
+            // "Lade Pro herunter und lade es hoch" und "W00t!": nirgends - Pro installiert sich selbst, Willkommen kommt von uns.
+            if ( in_array( $id, ['plan_upgraded', 'premium_activated'], true ) ) {
+                return false;
+            }
             $screen = ( function_exists( 'get_current_screen' ) ? get_current_screen() : null );
-            return ( is_object( $screen ) && str_contains( (string) $screen->id, 'kontor-shop' ) && in_array( $msg['id'] ?? '', ['activation_pending', 'plan_upgraded', 'premium_activated'], true ) ? false : $show );
+            return ( is_object( $screen ) && str_contains( (string) $screen->id, 'kontor-shop' ) && $id === 'activation_pending' ? false : $show );
         },
         10,
         2
     );
+    /*
+     * Nach dem Upgrade nur noch EIN Plugin: laeuft Pro (Ordner kontor-shop-premium) mit gueltiger
+     * Lizenz, die abgeschaltete Free-Kopie (Ordner kontor-shop) still entfernen - nur die Dateien,
+     * ohne Deinstallation (die wuerde je nach Einstellung Shop-Daten loeschen). Laeuft die Lizenz
+     * spaeter aus, arbeitet Pro als normaler Shop weiter; Free wird nicht mehr gebraucht. Ein
+     * Test-Build oder die Entwicklungs-Kopie laufen selbst aus kontor-shop und sind nie betroffen.
+     */
+    add_action( 'admin_init', static function () : void {
+        $fs = kontor_shop_fs();
+        $free = 'kontor-shop/kontor-shop.php';
+        if ( !$fs->is_premium() || dirname( KONTOR_SHOP_BASENAME ) === 'kontor-shop' || !$fs->can_use_premium_code() || !current_user_can( 'delete_plugins' ) || !is_readable( WP_PLUGIN_DIR . '/' . $free ) ) {
+            return;
+        }
+        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        $header = get_file_data( WP_PLUGIN_DIR . '/' . $free, [
+            'domain' => 'Text Domain',
+        ] );
+        if ( ($header['domain'] ?? '') !== 'kontor-shop' || is_plugin_active( $free ) || !WP_Filesystem() ) {
+            return;
+        }
+        global $wp_filesystem;
+        $wp_filesystem->delete( WP_PLUGIN_DIR . '/kontor-shop', true );
+        wp_clean_plugins_cache( false );
+    } );
+    // Automatische Updates fuer Pro von Anfang an an (einmal - schaltet man sie spaeter aus, bleibt das so).
+    add_action( 'admin_init', static function () : void {
+        if ( !kontor_shop_fs()->is_premium() || get_option( 'kontor_shop_auto_update_set' ) === KONTOR_SHOP_BASENAME ) {
+            return;
+        }
+        $auto = (array) get_site_option( 'auto_update_plugins', [] );
+        if ( !in_array( KONTOR_SHOP_BASENAME, $auto, true ) ) {
+            $auto[] = KONTOR_SHOP_BASENAME;
+            update_site_option( 'auto_update_plugins', array_values( array_unique( $auto ) ) );
+        }
+        update_option( 'kontor_shop_auto_update_set', KONTOR_SHOP_BASENAME, false );
+    } );
     // Pro wurde gerade aktiviert: einmal "Willkommen bei Kontor Shop Pro" zeigen (ProStatus).
     kontor_shop_fs()->add_action( 'after_premium_version_activation', static function () : void {
         update_option( \Kontor\Shop\Admin\Upgrade\ProStatus::WELCOME, time(), false );
     } );
     /*
-     * Pro im Hintergrund installieren (ProStatus-Karte). Eine Sperre verhindert, dass zwei
-     * Tabs gleichzeitig in denselben Ordner kopieren; ein Pro-Ordner von einem abgebrochenen
+     * Pro installieren und aktivieren (Download von Freemius). Eine Sperre verhindert, dass zwei
+     * Aufrufe gleichzeitig in denselben Ordner kopieren; ein Pro-Ordner von einem abgebrochenen
      * Versuch wird vorher entfernt (sonst bricht WordPress mit "Ordner existiert" ab).
+     * Rueckgabe: null = erledigt (oder nichts zu tun), 'running' = laeuft schon, sonst Fehlertext.
      */
-    add_action( 'wp_ajax_kontor_shop_pro_install', static function () : void {
-        check_ajax_referer( 'kontor_shop_pro_install', 'nonce' );
-        if ( !current_user_can( 'install_plugins' ) || !current_user_can( 'activate_plugins' ) ) {
-            wp_send_json_error( [
-                'code'    => 'forbidden',
-                'message' => __( 'No permission.', 'kontor-shop' ),
-            ], 403 );
-        }
+    function kontor_shop_install_pro() : ?string {
         $fs = kontor_shop_fs();
         if ( $fs->is_premium() || !$fs->can_use_premium_code() ) {
-            wp_send_json_success( [
-                'state' => 'done',
-            ] );
+            return null;
         }
         if ( get_transient( 'kontor_shop_pro_installing' ) ) {
-            wp_send_json_error( [
-                'code'    => 'install_running',
-                'message' => '',
-            ] );
+            return 'running';
         }
         set_transient( 'kontor_shop_pro_installing', 1, 5 * MINUTE_IN_SECONDS );
         try {
@@ -195,21 +231,58 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
         } catch ( \Throwable $e ) {
             $result = [
                 'message' => $e->getMessage(),
-                'code'    => 'exception',
             ];
         } finally {
             delete_transient( 'kontor_shop_pro_installing' );
         }
         if ( is_array( $result ) && !empty( $result['message'] ) ) {
+            $error = wp_strip_all_tags( (string) $result['message'] );
+            set_transient( 'kontor_shop_pro_install_failed', $error, HOUR_IN_SECONDS );
+            return $error;
+        }
+        delete_transient( 'kontor_shop_pro_install_failed' );
+        return null;
+    }
+
+    // Karte "Pro wird installiert …" (pro-status.js): Installation per AJAX, Ergebnis als JSON.
+    add_action( 'wp_ajax_kontor_shop_pro_install', static function () : void {
+        check_ajax_referer( 'kontor_shop_pro_install', 'nonce' );
+        if ( !current_user_can( 'install_plugins' ) || !current_user_can( 'activate_plugins' ) ) {
             wp_send_json_error( [
-                'code'    => (string) ($result['code'] ?? ''),
-                'message' => wp_strip_all_tags( (string) $result['message'] ),
+                'code'    => 'forbidden',
+                'message' => __( 'No permission.', 'kontor-shop' ),
+            ], 403 );
+        }
+        $error = kontor_shop_install_pro();
+        if ( $error === 'running' ) {
+            wp_send_json_error( [
+                'code'    => 'install_running',
+                'message' => '',
             ] );
         }
-        wp_send_json_success( [
+        ( $error === null ? wp_send_json_success( [
             'state' => 'done',
-        ] );
+        ] ) : wp_send_json_error( [
+            'code'    => 'failed',
+            'message' => $error,
+        ] ) );
     } );
+    /*
+     * Lizenz aktiv, aber noch Free: beim naechsten Admin-Seitenaufruf - egal welche Seite - Pro
+     * selbst installieren und zur Kontor-Uebersicht ("Willkommen bei Pro") wechseln. Ist der
+     * letzte Versuch gescheitert, nicht bei jedem Aufruf erneut (die Karte bietet "Nochmal versuchen").
+     */
+    add_action( 'admin_init', static function () : void {
+        $fs = kontor_shop_fs();
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nur Lesen: Freemius-Aktion laeuft gerade
+        if ( wp_doing_ajax() || wp_doing_cron() || ($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET' || isset( $_GET['fs_action'] ) || !current_user_can( 'install_plugins' ) || !current_user_can( 'activate_plugins' ) || $fs->is_premium() || !$fs->is_registered() || !$fs->can_use_premium_code() || get_transient( 'kontor_shop_pro_install_failed' ) ) {
+            return;
+        }
+        if ( kontor_shop_install_pro() === null ) {
+            wp_safe_redirect( admin_url( 'admin.php?page=kontor-shop' ) );
+            exit;
+        }
+    }, 99 );
     /*
      * "Pro schon gekauft?" auf Pläne & Preise: Lizenzschluessel in der Free-Version
      * aktivieren (Freemius bietet das Feld erst in Pro an). Danach installiert
@@ -239,9 +312,10 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
         if ( $error === null && !kontor_shop_fs()->can_use_premium_code() && !kontor_shop_fs()->is_pending_activation() ) {
             $error = __( 'The key was accepted, but it does not unlock Pro on this site. Is it a test licence from the sandbox, or already used on another website?', 'kontor-shop' );
         }
-        // Pläne & Preise zeigt den Stand: E-Mail bestaetigen oder Pro wird im Hintergrund installiert.
+        // Die Uebersicht zeigt den Stand: E-Mail bestaetigen oder Pro wird im Hintergrund installiert.
+        // (Pläne & Preise blendet Freemius mit gueltiger Lizenz aus.)
         if ( $error === null ) {
-            wp_safe_redirect( \Kontor\Shop\Admin\Upgrade\PricingPage::url() );
+            wp_safe_redirect( admin_url( 'admin.php?page=kontor-shop' ) );
             exit;
         }
         set_transient( \Kontor\Shop\Admin\Upgrade\PricingPage::LICENCE_RESULT . '_' . get_current_user_id(), $error, 5 * MINUTE_IN_SECONDS );

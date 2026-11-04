@@ -10,6 +10,7 @@ msgstr ""
 "X-Domain: kontor-shop\n"
 
 #: kontor-shop-updates.php:103
+#: src/Core/I18n.php:35
 msgid "Club shop for WordPress: products with variants, stock, bank-transfer checkout, pickup and a cashier workflow."
 msgstr "Vereinsshop für WordPress: Artikel mit Varianten, Lager, Vorkasse, Abholung und Kassier-Ablauf."
 
@@ -6243,7 +6244,7 @@ msgid "The installation did not work"
 msgstr "Die Installation hat nicht geklappt"
 
 #: src/Admin/Upgrade/ProStatus.php:122
-#: src/freemius.php:243
+#: src/freemius.php:335
 msgid "Unknown error."
 msgstr "Unbekannter Fehler."
 
@@ -6513,6 +6514,14 @@ msgstr "Lager ist aktiv"
 #: src/Admin/WarehousesPage.php:391
 msgid "Inactive warehouses are kept along with their products."
 msgstr "Inaktive Lager bleiben mit ihren Artikeln erhalten."
+
+#: src/Core/I18n.php:33
+msgid "Kontor Shop – Club Shop with Bank Transfer & Pickup"
+msgstr "Kontor Shop – Vereinsshop mit Vorkasse & Abholung"
+
+#: src/Core/I18n.php:34
+msgid "Kontor Shop – Club Shop with Bank Transfer & Pickup Pro"
+msgstr "Kontor Shop Pro – Vereinsshop mit Vorkasse & Abholung"
 
 #: src/Core/Lifecycle.php:175
 msgid "Shop manager"
@@ -12551,11 +12560,11 @@ msgstr "Sobald eine Vorkasse-Bestellung bezahlt ist: je Lager eine Mail mit dess
 msgid "Every warehouse can have a warehouse manager: they book that warehouse’s stock, ship its orders and get its “Shipping order to warehouse” emails. The permission is granted and revoked automatically."
 msgstr "Jedes Lager kann einen Lagerverwalter haben: Er bucht den Bestand des Lagers, versendet dessen Bestellungen und bekommt dessen Mails „Versandauftrag ans Lager“. Die Berechtigung wird automatisch vergeben und wieder entzogen."
 
-#: src/freemius.php:252
+#: src/freemius.php:344
 msgid "The key was accepted, but it does not unlock Pro on this site. Is it a test licence from the sandbox, or already used on another website?"
 msgstr "Der Schlüssel wurde angenommen, schaltet Pro auf dieser Seite aber nicht frei. Ist es eine Testlizenz aus dem Sandkasten oder ist er schon auf einer anderen Website in Verwendung?"
 
-#: src/freemius.php:312
+#: src/freemius.php:405
 msgid "Kontor Shop test build: Pro runs without a licence. Only for your own test sites – never install this ZIP on a customer site."
 msgstr "Kontor Shop Test-Build: Pro läuft ohne Lizenz. Nur für eigene Testseiten – dieses ZIP nie auf einer Kundenseite installieren."
 

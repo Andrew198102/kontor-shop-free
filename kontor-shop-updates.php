@@ -232,3 +232,19 @@ final class Kontor_Shop_Free_Updates
 }
 
 Kontor_Shop_Free_Updates::register();
+
+// Automatische Updates von Anfang an an (einmal - schaltet man sie spaeter aus, bleibt das so).
+add_action('admin_init', static function (): void {
+    if (get_option('kontor_shop_auto_update_set') === KONTOR_SHOP_BASENAME) {
+        return;
+    }
+
+    $auto = (array) get_site_option('auto_update_plugins', []);
+
+    if (!in_array(KONTOR_SHOP_BASENAME, $auto, true)) {
+        $auto[] = KONTOR_SHOP_BASENAME;
+        update_site_option('auto_update_plugins', array_values(array_unique($auto)));
+    }
+
+    update_option('kontor_shop_auto_update_set', KONTOR_SHOP_BASENAME, false);
+});
