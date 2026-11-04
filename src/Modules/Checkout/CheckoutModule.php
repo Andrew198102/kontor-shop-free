@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Modules\Checkout;
 
+use Kontor\Shop\Domain\Payment\BankAccount;
+use Kontor\Shop\Domain\Payment\EpcQr;
 use Kontor\Shop\Settings\TextDefaults;
 use Kontor\Shop\Context\Membership;
 use Kontor\Shop\Context\RequestContext;
@@ -1432,6 +1434,7 @@ final class CheckoutModule implements Registerable
             $html .= $this->copy_row('BIC', (string) ($account->bic ?? ''));
             $html .= $this->copy_row(__('Payment reference', 'kontor-shop'), $order->payment_reference);
             $html .= '</dl>';
+            $html .= $this->qr_figure($order, $account);
             $html .= '<p class="kontor-shop-order-confirmation__hint">' . esc_html__(
                 'Please be sure to include the payment reference with your transfer – it\'s the only way we can match your payment.',
                 'kontor-shop'
@@ -1569,11 +1572,33 @@ final class CheckoutModule implements Registerable
         $html .= $this->copy_row('BIC', (string) ($account->bic ?? ''));
         $html .= $this->copy_row(__('Payment reference', 'kontor-shop'), $order->payment_reference);
         $html .= '</dl>';
+        $html .= $this->qr_figure($order, $account);
 
         return $html . '<p class="kontor-shop-order-confirmation__hint">' . esc_html__(
             'Please be sure to include the payment reference with your transfer – it\'s the only way we can match your payment.',
             'kontor-shop'
         ) . '</p></div>';
+    }
+
+    /**
+     * Ueberweisungs-QR-Code (EPC): Banking-App scannt Empfaenger, IBAN, Betrag
+     * und Zahlungsreferenz. Leer, wenn abgeschaltet oder kein gueltiger Code
+     * moeglich ist (z. B. IBAN fehlt).
+     */
+    private function qr_figure(Order $order, ?BankAccount $account): string
+    {
+        if ($account === null || !PaymentOptions::qr_enabled($this->settings)) {
+            return '';
+        }
+
+        $svg = EpcQr::svg($account, $order->total, $order->payment_reference, __('QR code for the bank transfer', 'kontor-shop'));
+
+        if ($svg === '') {
+            return '';
+        }
+
+        return '<figure class="kontor-shop-order-confirmation__qr">' . $svg // phpcs:ignore -- SVG aus QrCode::svg (nur Zahlen und feste Attribute, Titel escaped)
+            . '<figcaption>' . esc_html__('Scan with your banking app – amount, IBAN and payment reference are filled in automatically.', 'kontor-shop') . '</figcaption></figure>';
     }
 
     /**

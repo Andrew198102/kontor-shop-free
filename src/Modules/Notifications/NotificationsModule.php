@@ -9,6 +9,8 @@ use Kontor\Shop\Domain\Notifications\DefaultTemplates;
 use Kontor\Shop\Domain\Notifications\MailMessage;
 use Kontor\Shop\Domain\Notifications\Recipients;
 use Kontor\Shop\Domain\Notifications\Template;
+use Kontor\Shop\Domain\Payment\EpcQr;
+use Kontor\Shop\Domain\Payment\BankAccount;
 use Kontor\Shop\Domain\Order\Carrier;
 use Kontor\Shop\Domain\Order\Fulfilment;
 use Kontor\Shop\Domain\Order\ItemCancellation;
@@ -174,17 +176,18 @@ final class NotificationsModule implements Registerable
             ), ''];
         }
 
-        $text = sprintf(
-                "Bitte ueberweise %s Euro%s an:\n%s\nIBAN: %s\nBIC: %s\nZahlungsreferenz (bitte unbedingt angeben): %s",
-                number_format($order->total, 2, ',', '.'),
-                $due_text !== '' ? ' bis spaetestens ' . $due_text . (PaymentOptions::auto_cancel_active()
-                    ? ' (so lange ist die Ware fuer dich reserviert, danach wird die Bestellung automatisch storniert)'
-                    : ' (so lange ist die Ware fuer dich reserviert)') : '',
-                $account->recipient ?? '',
-                $account->iban ?? '',
-                $account->bic ?? '',
-                $order->payment_reference
-            );
+        $deadline = $due_text !== ''
+            ? sprintf(
+                /* translators: %s: date */
+                __('by %s at the latest', 'kontor-shop'),
+                $due_text
+            ) . ' ' . (PaymentOptions::auto_cancel_active()
+                ? __('(the goods are reserved for you until then; after that, the order is cancelled automatically)', 'kontor-shop')
+                : __('(the goods are reserved for you until then)', 'kontor-shop'))
+            : '';
+
+        $text = $this->transfer_request($order->total, $deadline) . "\n" . $this->bank_lines($account, $order)
+            . $this->qr_hint($order, $account);
 
         return [$text, $due_text];
     }
@@ -196,13 +199,7 @@ final class NotificationsModule implements Registerable
     private function invoice_payment_text(Order $order, PaymentTerms $terms, string $due_text): string
     {
         $account = (new BankAccounts($this->settings))->resolve($order->bank_account_id);
-        $bank    = sprintf(
-            "%s\nIBAN: %s\nBIC: %s\nZahlungsreferenz (bitte unbedingt angeben): %s",
-            $account->recipient ?? '',
-            $account->iban ?? '',
-            $account->bic ?? '',
-            $order->payment_reference
-        );
+        $bank    = $this->bank_lines($account, $order);
 
         if (!$order->is_dispatched()) {
             return ($terms->invoice_days > 0
@@ -215,13 +212,60 @@ final class NotificationsModule implements Registerable
                 . "\n" . $bank;
         }
 
-        return sprintf(
-            "Bitte ueberweise %s Euro%s an:\n%s",
-            number_format($order->total, 2, ',', '.'),
-            // ueberfaellig: kein "bis spaetestens" mit vergangenem Datum (die Erinnerung nennt die Faelligkeit)
-            $due_text !== '' && !$terms->is_overdue($order, current_time('Y-m-d')) ? ' bis spaetestens ' . $due_text : '',
-            $bank
-        );
+        // ueberfaellig: kein "bis spaetestens" mit vergangenem Datum (die Erinnerung nennt die Faelligkeit)
+        $deadline = $due_text !== '' && !$terms->is_overdue($order, current_time('Y-m-d'))
+            /* translators: %s: date */
+            ? sprintf(__('by %s at the latest', 'kontor-shop'), $due_text)
+            : '';
+
+        return $this->transfer_request($order->total, $deadline) . "\n" . $bank . $this->qr_hint($order, $account);
+    }
+
+    /**
+     * "Bitte ueberweise 34,50 Euro bis spaetestens …" (Frist optional).
+     */
+    private function transfer_request(float $total, string $deadline): string
+    {
+        $amount = number_format($total, 2, ',', '.');
+
+        return $deadline !== ''
+            /* translators: 1: amount, 2: deadline, e.g. "by 08.10.2026 at the latest (…)" */
+            ? sprintf(__('Please transfer %1$s euros %2$s to:', 'kontor-shop'), $amount, $deadline)
+            /* translators: %s: amount */
+            : sprintf(__('Please transfer %s euros to:', 'kontor-shop'), $amount);
+    }
+
+    /**
+     * Empfaenger, IBAN, BIC und Zahlungsreferenz, je eine Zeile.
+     */
+    private function bank_lines(?BankAccount $account, Order $order): string
+    {
+        return implode("\n", [
+            $account->recipient ?? '',
+            'IBAN: ' . ($account->iban ?? ''),
+            'BIC: ' . ($account->bic ?? ''),
+            /* translators: %s: payment reference */
+            sprintf(__('Payment reference (please be sure to include it): %s', 'kontor-shop'), $order->payment_reference),
+        ]);
+    }
+
+    /**
+     * Hinweis auf den Ueberweisungs-QR-Code auf der Bestellseite (Mails
+     * zeigen keine Grafiken zuverlaessig an) - nur wenn ein Code moeglich ist.
+     */
+    private function qr_hint(Order $order, ?BankAccount $account): string
+    {
+        if ($account === null || !PaymentOptions::qr_enabled($this->settings) || EpcQr::payload($account, $order->total, $order->payment_reference) === null) {
+            return '';
+        }
+
+        $url = OrderStatusLink::url($order, $this->settings);
+
+        return $url !== '' ? "\n\n" . sprintf(
+            /* translators: %s: link to the order page */
+            __('Tip: your order page has a QR code – scan it with your banking app and all payment details are filled in: %s', 'kontor-shop'),
+            $url
+        ) : '';
     }
 
     private function terms(): PaymentTerms
@@ -287,7 +331,8 @@ final class NotificationsModule implements Registerable
 
         foreach ($items as $item) {
             $items_lines[] = sprintf(
-                '- %dx %s (%s Euro/Stk.)',
+                /* translators: 1: quantity, 2: product, 3: unit price */
+                __('- %1$dx %2$s (%3$s euros each)', 'kontor-shop'),
                 $item->quantity,
                 $item->product_name,
                 number_format($item->unit_price, 2, ',', '.')
@@ -354,7 +399,8 @@ final class NotificationsModule implements Registerable
         $items_lines = [];
 
         foreach ($this->orders->items_for_order((int) $order->id) as $item) {
-            $items_lines[] = sprintf('- %dx %s (%s Euro/Stk.)', $item->quantity, $item->product_name, number_format($item->unit_price, 2, ',', '.'));
+            /* translators: 1: quantity, 2: product, 3: unit price */
+            $items_lines[] = sprintf(__('- %1$dx %2$s (%3$s euros each)', 'kontor-shop'), $item->quantity, $item->product_name, number_format($item->unit_price, 2, ',', '.'));
         }
 
         $values = [
@@ -530,7 +576,8 @@ final class NotificationsModule implements Registerable
             'customer_name'    => $order->customer_name,
             'order_number'     => $order->order_number,
             'returned_items'   => implode("\n", array_map(static fn (array $line): string => sprintf(
-                '- %dx %s (%s Euro)',
+                /* translators: 1: quantity, 2: product, 3: amount */
+                __('- %1$dx %2$s (%3$s euros)', 'kontor-shop'),
                 $line['quantity'],
                 $line['item']->product_name,
                 number_format($line['item']->unit_price * $line['quantity'], 2, ',', '.')
@@ -599,7 +646,8 @@ final class NotificationsModule implements Registerable
     private function item_lines(array $items): string
     {
         return implode("\n", array_map(
-            static fn (OrderItem $item): string => sprintf('- %dx %s (%s Euro)', $item->quantity, $item->product_name, number_format($item->line_total, 2, ',', '.')),
+            /* translators: 1: quantity, 2: product, 3: amount */
+            static fn (OrderItem $item): string => sprintf(__('- %1$dx %2$s (%3$s euros)', 'kontor-shop'), $item->quantity, $item->product_name, number_format($item->line_total, 2, ',', '.')),
             $items
         ));
     }

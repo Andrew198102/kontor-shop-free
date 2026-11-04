@@ -176,9 +176,9 @@ final class ShopArticles
                 'what'       => __('When Kontor Shop is activated, it creates the pages Shop, Cart and Checkout. This explains how to put them in your menu or show the shop somewhere else.', 'kontor-shop'),
                 'steps'      => [
                     ['text' => __('Add the pages “Shop” and “Cart” to your menu under Appearance → Menus (block themes: Appearance → Editor → Navigation).', 'kontor-shop'), 'url' => admin_url('nav-menus.php')],
-                    __('To show the shop on another page, insert a Shortcode block there with [kontor_shop_catalog].', 'kontor-shop'),
-                    __('Only a part of the catalog: [kontor_shop_catalog per_page="24"] splits it into pages with 24 products each.', 'kontor-shop'),
-                    __('Cart icon in your own header: [kontor_shop_cart_icon]. Then switch off the floating cart button under Settings → Design.', 'kontor-shop'),
+                    __('To show the shop on another page, add the block “Shop” there (block category “Kontor Shop”). In the classic editor, use the shortcode [kontor_shop_catalog] instead.', 'kontor-shop'),
+                    __('Split the catalog into pages: in the block settings on the right, set “Products per page”, or use [kontor_shop_catalog per_page="24"].', 'kontor-shop'),
+                    __('Cart icon in your own header: block “Cart icon” (or [kontor_shop_cart_icon]). Then switch off the floating cart button under Settings → Design.', 'kontor-shop'),
                 ],
                 'effect'     => [
                     __('Every product also has its own page with its own address, which you can share or link to.', 'kontor-shop'),

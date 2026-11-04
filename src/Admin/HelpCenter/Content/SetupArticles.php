@@ -111,6 +111,7 @@ final class SetupArticles
                 ],
             ],
             'faq'        => [
+                ['q' => __('What is the QR code on the order page?', 'kontor-shop'), 'a' => __('A “GiroCode” with all payment details. Customers scan it with their banking app, and recipient, IBAN, amount and payment reference are filled in – nobody mistypes the reference, so payments are easier to match. You can switch it off under Payment methods. It needs a valid IBAN and works for transfers in euros.', 'kontor-shop')],
                 ['q' => __('Do I need a payment provider like PayPal?', 'kontor-shop'), 'a' => __('No. Customers transfer the money to your club account, and you mark the order as paid once it has arrived. The shop doesn’t look into your bank account itself.', 'kontor-shop')],
                 ['q' => __('I see a warning about my IBAN. Was it saved?', 'kontor-shop'), 'a' => __('Yes. The warning only means that the length or the checksum looks wrong. Correct the IBAN and save again.', 'kontor-shop')],
                 ['q' => __('Which account does a customer transfer to?', 'kontor-shop'), 'a' => __('To the account of the warehouse the products come from. Warehouses without their own account use the default account. If a cart has products for different accounts, it is split into several orders, each with its own bank details.', 'kontor-shop')],

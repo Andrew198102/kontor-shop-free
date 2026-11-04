@@ -27,6 +27,12 @@ final class PaymentOptions
         return (bool) $this->settings->get('payment.prepayment_enabled', true);
     }
 
+    /** Ueberweisungs-QR-Code (EPC) auf Bestellseite und in der Kasse zeigen (Standard: an). */
+    public static function qr_enabled(Repository $settings): bool
+    {
+        return (bool) $settings->get('payment.qr_enabled', true);
+    }
+
     /** Barzahlung bei Abholung anbieten (wirkt nur, wenn Selbstabholung erlaubt ist). */
     public function cash_enabled(): bool
     {

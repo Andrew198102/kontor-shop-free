@@ -1786,3 +1786,33 @@
     font-size: .9rem;
     opacity: .8;
 }
+
+/* Ueberweisungs-QR-Code (EPC) auf der Bestellseite */
+.kontor-shop-order-confirmation__qr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem 1rem;
+    margin: 1rem 0 0;
+}
+
+.kontor-shop-order-confirmation__qr svg {
+    width: 168px;
+    height: 168px;
+    flex: none;
+    background: #fff;
+    border-radius: 6px;
+}
+
+.kontor-shop-order-confirmation__qr figcaption {
+    flex: 1 1 12rem;
+    color: var(--ks-muted);
+    font-size: .9rem;
+}
+
+@media print {
+    .kontor-shop-order-confirmation__qr svg {
+        width: 3.5cm;
+        height: 3.5cm;
+    }
+}

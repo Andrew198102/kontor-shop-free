@@ -51,6 +51,8 @@ final class Schema
                 'invoice_enabled'      => false,
                 // Barzahlung bei Abholung (nur mit Selbstabholung); aus, bis der Verein es einschaltet.
                 'cash_enabled'         => false,
+                // Ueberweisungs-QR-Code (EPC/GiroCode) auf der Bestellseite, Hinweis darauf in der Mail.
+                'qr_enabled'           => true,
                 // Auf Rechnung: Zahlungsziel in Tagen ab Versand/Abholung (0 = keines), danach gilt sie als
                 // ueberfaellig. Nie Autostorno. (Automatische Erinnerungen: Pro, Pro::defaults().)
                 'invoice_days'              => 14,

@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.1.2
+Stable tag: 2.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,12 +20,13 @@ Members and guests order online, pay by bank transfer or in cash on pickup, and 
 
 * **Products with variants:** sizes, colours, pictures, categories and search, each product with its own page and address.
 * **Cart and checkout:** guest orders without an account, stock is reserved while the customer checks out.
-* **Payment without a provider:** bank transfer (prepayment), on invoice and cash on pickup – each can be switched on separately. Your bank details appear in the confirmation and the e-mail.
+* **Payment without a provider:** bank transfer (prepayment), on invoice and cash on pickup – each can be switched on separately. Your bank details appear in the confirmation and the e-mail, with a QR code for banking apps.
 * **Shipping:** flat rate, free shipping above an amount, self pickup.
 * **Stock:** one warehouse with a full stock ledger, so every change can be traced.
 * **Orders:** clear status workflow (open, paid, shipped, picked up, cancelled) and a cashier role that can mark payments.
 * **E-mails:** editable templates for every step. Mails go through WordPress, so any SMTP plugin (WP Mail SMTP, FluentSMTP, Post SMTP …) works automatically. Undelivered mails wait in an outbox and are retried automatically.
 * **Legal and privacy:** legal notice block in checkout, spam protection without captcha, personal data export and erasure through the WordPress privacy tools.
+* **Blocks:** Shop, Cart, Checkout and Cart icon as blocks for the block editor (shortcodes still work).
 * **Design:** picks up your theme colours, fonts and dark backgrounds; adjust style, colours, corners, columns and image format with a live preview – no code needed. Shop pages are created on activation. Works with classic and block themes.
 * **Help built in:** a help centre with step-by-step guides for volunteers who rarely use WordPress.
 
@@ -98,6 +99,16 @@ Kontor Shop does not contact any other external service. Shop data, orders and c
 6. Settings: payment, shipping and e-mail.
 
 == Changelog ==
+
+= 2.4.0 =
+* New: QR code for the bank transfer (“GiroCode”, EPC standard) on the order page – customers scan it with their banking app, and recipient, IBAN, amount and payment reference are filled in. The order email points to it. Can be switched off under Settings → Payment.
+* Fixed: payment details and product lines in emails were German on every site – they now follow the site language.
+
+= 2.3.0 =
+* New: blocks for the block editor – “Shop” (with products per page and, with Pro, a shop area), “Cart”, “Checkout” and “Cart icon” in the block category “Kontor Shop”. They show the same as the shortcodes, which keep working.
+
+= 2.2.0 =
+* New (Pro): recognize members without an add-on – by WordPress user role (also works with Ultimate Member and other plugins that assign roles), Paid Memberships Pro or MemberPress. Members get member prices, free shipping and payment on invoice after logging in; their profile details are prefilled at checkout.
 
 = 2.1.2 =
 * Fixed: checkbox texts at checkout, the order button and the VAT exemption note were German on every site – they now follow the site language (your own texts stay as saved).

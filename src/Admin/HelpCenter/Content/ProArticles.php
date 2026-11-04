@@ -97,8 +97,8 @@ final class ProArticles
                 'keywords' => __('member members membership member price discount provider login club fee free shipping invoice benefits recognized', 'kontor-shop'),
                 'what'     => __('Club members get benefits in the shop: a member price per product, free shipping and payment on invoice. For that, the shop has to recognize members. A membership provider does this by connecting the shop to your member management.', 'kontor-shop'),
                 'steps'    => [
-                    ['text' => __('Open Settings → Membership and choose your membership provider.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=membership')],
-                    __('Under “Membership benefits apply to”, choose “all active members” or “only members with a paid fee for the current year”.', 'kontor-shop'),
+                    ['text' => __('Open Settings → Membership and choose how the shop recognizes members: “WordPress user roles” (e.g. a role “Member”, also with Ultimate Member), Paid Memberships Pro or MemberPress.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=membership')],
+                    __('With roles, tick the roles that count as members. With Paid Memberships Pro or MemberPress, enter the level IDs that count, or leave the field empty for every active level.', 'kontor-shop'),
                     __('With the paid fee rule, enter until which day last year’s fee still counts, for example 31.03. Then save.', 'kontor-shop'),
                     ['text' => __('Open a product and set the “Member discount” in the “Price & tax” card, in percent or in euros. Save the product.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-products')],
                     ['text' => __('Optional: under Settings → Shipping & returns, tick “Members don’t pay shipping”.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=shipping')],
@@ -113,8 +113,8 @@ final class ProArticles
                 ],
                 'faq'      => [
                     [
-                        'q' => __('The list only offers “No membership provider”. Why?', 'kontor-shop'),
-                        'a' => __('The shop has no member login of its own. The connection to your member management comes as an add-on, for example from your club software. Once it is installed and active, it appears in the list. Until then, all customers are treated as guests.', 'kontor-shop'),
+                        'q' => __('Which provider should I choose?', 'kontor-shop'),
+                        'a' => __('If your members already have a WordPress account with their own role, choose “WordPress user roles”. If you manage memberships with Paid Memberships Pro or MemberPress, choose that plugin – it appears in the list once it is active. Club software with its own login can connect through an add-on.', 'kontor-shop'),
                     ],
                     [
                         'q' => __('A member is logged in but doesn’t get the member price.', 'kontor-shop'),

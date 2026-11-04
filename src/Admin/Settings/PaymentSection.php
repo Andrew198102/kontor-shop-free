@@ -69,6 +69,7 @@ final class PaymentSection extends Section
         $prepayment = !empty($_POST['prepayment_enabled']); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
         $invoice    = !empty($_POST['invoice_enabled']); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
         $cash       = !empty($_POST['cash_enabled']); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
+        $qr         = !empty($_POST['qr_enabled']); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
 
         /**
          * Filter kontor_shop/settings/payment/save: eigene Felder aus
@@ -107,6 +108,7 @@ final class PaymentSection extends Section
             'prepayment_enabled'                    => $prepayment,
             'invoice_enabled'                       => $invoice,
             'cash_enabled'                          => $cash,
+            'qr_enabled'                            => $qr,
             'invoice_days'                          => PaymentTerms::sanitize_invoice_days(intval($_POST['invoice_days'] ?? PaymentTerms::DEFAULT_INVOICE_DAYS)), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
             // abgeloest durch invoice_enabled (mit Pro: invoice_members_only)
             'allow_invoice_on_delivery_for_members' => false,
@@ -239,6 +241,10 @@ final class PaymentSection extends Section
             . '<label><input type="checkbox" name="prepayment_enabled" value="1"' . checked($options->prepayment_enabled(), true, false) . ' /> '
             . esc_html__('Offer prepayment (bank transfer)', 'kontor-shop') . '</label>'
             . '<p class="description">' . esc_html__('The customer pays first, and the order ships after the payment arrives. After the payment deadline (see below), unpaid orders count as overdue.', 'kontor-shop') . '</p></td></tr>';
+        echo '<tr><th>' . esc_html__('QR code for the transfer', 'kontor-shop') . '</th><td>'
+            . '<label><input type="checkbox" name="qr_enabled" value="1"' . checked(PaymentOptions::qr_enabled($this->settings), true, false) . ' /> '
+            . esc_html__('Show a QR code with the payment details', 'kontor-shop') . '</label>'
+            . '<p class="description">' . esc_html__('On the order page after ordering and on the order status page. Customers scan it with their banking app (“GiroCode”, standard of the European Payments Council): recipient, IBAN, amount and payment reference are filled in, nobody mistypes the reference. The order email points to it. Works with euro and a valid IBAN.', 'kontor-shop') . '</p></td></tr>';
         echo '<tr><th>' . esc_html__('On invoice', 'kontor-shop') . '</th><td>'
             . '<p><label><input type="checkbox" name="invoice_enabled" value="1"' . checked($options->invoice_enabled(), true, false) . ' /> '
             . esc_html__('Offer purchase on invoice', 'kontor-shop') . '</label></p>';
