@@ -200,6 +200,11 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
         }
         update_option( 'kontor_shop_auto_update_set', KONTOR_SHOP_BASENAME, false );
     } );
+    // PRO-Abzeichen im Admin-Menue (Admin\Menu): gold mit Lizenz, durchgestrichen ohne; Free ohne Abzeichen.
+    add_filter( 'kontor_shop/admin/pro_badge', static function () : string {
+        $fs = kontor_shop_fs();
+        return ( $fs->is_premium() ? ( $fs->can_use_premium_code() ? 'pro' : 'expired' ) : '' );
+    } );
     // Pro wurde gerade aktiviert: einmal "Willkommen bei Kontor Shop Pro" zeigen (ProStatus).
     kontor_shop_fs()->add_action( 'after_premium_version_activation', static function () : void {
         update_option( \Kontor\Shop\Admin\Upgrade\ProStatus::WELCOME, time(), false );

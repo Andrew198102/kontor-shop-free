@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.0.11
+Stable tag: 2.0.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,9 @@ Kontor Shop does not contact any other external service. Shop data, orders and c
 6. Settings: payment, shipping and e-mail.
 
 == Changelog ==
+
+= 2.0.12 =
+* New: Kontor Shop Pro shows a small PRO badge in the admin menu (crossed out when the licence has expired).
 
 = 2.0.11 =
 * New: after buying Pro, Pro installs itself in the background on the next admin page and the free copy is removed – only one plugin remains, your data stays.

@@ -134,7 +134,7 @@ msgstr ""
 #: src/Admin/CategoriesPage.php:272
 #: src/Admin/CategoriesPage.php:331
 #: src/Admin/Help.php:86
-#: src/Admin/Menu.php:357
+#: src/Admin/Menu.php:382
 #: src/Modules/Catalog/CatalogModule.php:210
 msgid "Categories"
 msgstr ""
@@ -176,7 +176,7 @@ msgstr ""
 
 #: src/Admin/CategoriesPage.php:292
 #: src/Admin/Help.php:65
-#: src/Admin/Menu.php:349
+#: src/Admin/Menu.php:374
 #: src/Admin/OrderDetailView.php:186
 #: src/Admin/OrdersList.php:265
 msgid "Product"
@@ -367,8 +367,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/Admin/DashboardWidget.php:44
-#: src/Admin/Menu.php:337
-#: src/Admin/Menu.php:338
+#: src/Admin/Menu.php:362
+#: src/Admin/Menu.php:363
 #: src/Modules/Agents/AbilitiesBridge.php:34
 #: src/Modules/Privacy/PrivacyModule.php:192
 msgid "Kontor Shop"
@@ -465,7 +465,7 @@ msgid "Move back"
 msgstr ""
 
 #: src/Admin/Help.php:49
-#: src/Admin/Menu.php:346
+#: src/Admin/Menu.php:371
 msgid "Dashboard"
 msgstr ""
 
@@ -482,7 +482,7 @@ msgid "The “Set up your shop” checklist disappears as soon as everything req
 msgstr ""
 
 #: src/Admin/Help.php:56
-#: src/Admin/Menu.php:347
+#: src/Admin/Menu.php:372
 #: src/Admin/OrdersList.php:183
 #: src/Pro__premium_only/Agents/AgentsPage.php:458
 #: src/Pro__premium_only/Dashboard/TrendCard.php:39
@@ -522,8 +522,8 @@ msgid "Bulk actions apply to all checked products. Permanent deletion is only po
 msgstr ""
 
 #: src/Admin/Help.php:72
-#: src/Admin/Menu.php:186
-#: src/Admin/Menu.php:352
+#: src/Admin/Menu.php:211
+#: src/Admin/Menu.php:377
 #: src/Admin/OrderDetailView.php:372
 #: src/Admin/OrderDetailView.php:454
 msgid "Stock"
@@ -546,7 +546,7 @@ msgid "Record delivery books in several products at once. During a stock count, 
 msgstr ""
 
 #: src/Admin/Help.php:80
-#: src/Admin/Menu.php:358
+#: src/Admin/Menu.php:383
 #: src/Admin/OrderDetailView.php:186
 #: src/Admin/OrderDetailView.php:319
 #: src/Admin/OrdersList.php:444
@@ -568,7 +568,7 @@ msgstr ""
 #. translators: %s: settings section
 #: src/Admin/Help.php:91
 #: src/Admin/LogPage.php:196
-#: src/Admin/Menu.php:362
+#: src/Admin/Menu.php:387
 #: src/Admin/SettingsPage.php:136
 #: src/Modules/Agents/OfferPage.php:151
 msgid "Settings"
@@ -591,13 +591,13 @@ msgid "Errors & warnings"
 msgstr ""
 
 #: src/Admin/LogPage.php:76
-#: src/Admin/Menu.php:363
+#: src/Admin/Menu.php:388
 #: src/Pro__premium_only/Audit/AuditPage.php:111
 msgid "Logs"
 msgstr ""
 
 #: src/Admin/LogPage.php:77
-#: src/Admin/Menu.php:367
+#: src/Admin/Menu.php:392
 #: src/Admin/ReportPage.php:65
 msgid "Report a problem"
 msgstr ""
@@ -850,123 +850,127 @@ msgstr ""
 msgid "Setup"
 msgstr ""
 
-#: src/Admin/Menu.php:139
+#: src/Admin/Menu.php:137
+msgid "Pro licence expired – Pro features are off"
+msgstr ""
+
+#: src/Admin/Menu.php:164
 msgid "Connection error – please try again."
 msgstr ""
 
-#: src/Admin/Menu.php:140
+#: src/Admin/Menu.php:165
 msgid "Saving failed."
 msgstr ""
 
-#: src/Admin/Menu.php:141
+#: src/Admin/Menu.php:166
 msgid "Saved."
 msgstr ""
 
-#: src/Admin/Menu.php:142
+#: src/Admin/Menu.php:167
 msgid "Sort order saved."
 msgstr ""
 
-#: src/Admin/Menu.php:143
+#: src/Admin/Menu.php:168
 msgid "Permanently delete the selected products? This can’t be undone."
 msgstr ""
 
-#: src/Admin/Menu.php:144
+#: src/Admin/Menu.php:169
 #: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:357
 msgid "Copied."
 msgstr ""
 
-#: src/Admin/Menu.php:145
+#: src/Admin/Menu.php:170
 #: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:358
 msgid "Text selected – now copy with Ctrl/⌘+C."
 msgstr ""
 
-#: src/Admin/Menu.php:154
+#: src/Admin/Menu.php:179
 msgid "Record payment"
 msgstr ""
 
-#: src/Admin/Menu.php:155
+#: src/Admin/Menu.php:180
 msgid "Ref."
 msgstr ""
 
-#: src/Admin/Menu.php:156
+#: src/Admin/Menu.php:181
 msgid "Paid with"
 msgstr ""
 
-#: src/Admin/Menu.php:157
+#: src/Admin/Menu.php:182
 msgid "Payment received on"
 msgstr ""
 
-#: src/Admin/Menu.php:158
+#: src/Admin/Menu.php:183
 msgid "The customer gets the payment confirmation, the warehouse gets the shipping order."
 msgstr ""
 
-#: src/Admin/Menu.php:159
-#: src/Admin/Menu.php:192
+#: src/Admin/Menu.php:184
+#: src/Admin/Menu.php:217
 #: src/Admin/OrderDetailView.php:397
 #: src/Admin/OrderDetailView.php:479
 #: src/Admin/OrdersPage.php:727
 msgid "Cancel"
 msgstr ""
 
-#: src/Admin/Menu.php:160
+#: src/Admin/Menu.php:185
 #: src/Admin/OrderDetailView.php:493
 #: src/Admin/OrdersList.php:223
 msgid "Mark as paid"
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/Menu.php:162
-#: src/Admin/Menu.php:199
+#: src/Admin/Menu.php:187
+#: src/Admin/Menu.php:224
 msgid "%d selected"
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/Menu.php:164
+#: src/Admin/Menu.php:189
 msgid "Mark %d orders as paid?"
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/Menu.php:166
+#: src/Admin/Menu.php:191
 msgid "Mark %d orders completely as shipped/picked up?"
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/Menu.php:167
+#: src/Admin/Menu.php:192
 msgid "Address copied."
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/Menu.php:168
+#: src/Admin/Menu.php:193
 msgid "Address selected – now copy it."
 msgstr ""
 
-#: src/Admin/Menu.php:178
+#: src/Admin/Menu.php:203
 msgid "Book stock in"
 msgstr ""
 
-#: src/Admin/Menu.php:179
+#: src/Admin/Menu.php:204
 msgid "Book stock out"
 msgstr ""
 
-#: src/Admin/Menu.php:180
+#: src/Admin/Menu.php:205
 #: src/Admin/StockPage.php:175
 #: src/Admin/StockPage.php:809
 msgid "What happened?"
 msgstr ""
 
-#: src/Admin/Menu.php:181
-#: src/Admin/Menu.php:227
+#: src/Admin/Menu.php:206
+#: src/Admin/Menu.php:252
 #: src/Admin/ProductVariantsCard.php:122
 #: src/Admin/StockPage.php:179
 #: src/Admin/StockPage.php:703
 msgid "Variant"
 msgstr ""
 
-#: src/Admin/Menu.php:182
+#: src/Admin/Menu.php:207
 msgid "Please choose a variant."
 msgstr ""
 
-#: src/Admin/Menu.php:183
+#: src/Admin/Menu.php:208
 #: src/Admin/OrderDetailView.php:186
 #: src/Admin/OrdersPage.php:689
 #: src/Admin/StockOverview.php:911
@@ -974,211 +978,211 @@ msgstr ""
 msgid "Quantity"
 msgstr ""
 
-#: src/Admin/Menu.php:184
+#: src/Admin/Menu.php:209
 msgid "less"
 msgstr ""
 
-#: src/Admin/Menu.php:185
+#: src/Admin/Menu.php:210
 msgid "more"
 msgstr ""
 
-#: src/Admin/Menu.php:187
+#: src/Admin/Menu.php:212
 msgid "Note, e.g. delivery note 2026-118 (optional)"
 msgstr ""
 
-#: src/Admin/Menu.php:188
+#: src/Admin/Menu.php:213
 msgid "Reason for the correction (required)"
 msgstr ""
 
-#: src/Admin/Menu.php:189
+#: src/Admin/Menu.php:214
 #: src/Admin/StockPage.php:264
 #: src/Admin/StockPage.php:327
 #: src/Pro__premium_only/Agents/Tools/StockTools.php:236
 msgid "A note is required for a correction."
 msgstr ""
 
-#: src/Admin/Menu.php:190
+#: src/Admin/Menu.php:215
 msgid "The quantity must be greater than 0."
 msgstr ""
 
-#: src/Admin/Menu.php:191
+#: src/Admin/Menu.php:216
 #: src/Admin/StockOverview.php:432
 msgid "Book"
 msgstr ""
 
-#: src/Admin/Menu.php:193
+#: src/Admin/Menu.php:218
 msgid "Enter books · Esc closes"
 msgstr ""
 
-#: src/Admin/Menu.php:194
+#: src/Admin/Menu.php:219
 msgid "Warning: stock will go negative."
 msgstr ""
 
-#: src/Admin/Menu.php:195
+#: src/Admin/Menu.php:220
 msgid "write off only"
 msgstr ""
 
-#: src/Admin/Menu.php:196
+#: src/Admin/Menu.php:221
 #: src/Admin/StockOverview.php:612
 msgid "▸ Variants"
 msgstr ""
 
-#: src/Admin/Menu.php:197
+#: src/Admin/Menu.php:222
 msgid "▾ collapse"
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/Menu.php:201
+#: src/Admin/Menu.php:226
 msgid "For %d selected products."
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/Menu.php:202
+#: src/Admin/Menu.php:227
 msgid "Remove row"
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/Menu.php:203
+#: src/Admin/Menu.php:228
 msgid "No matching SKU/EAN found."
 msgstr ""
 
-#: src/Admin/Menu.php:204
+#: src/Admin/Menu.php:229
 #: src/Admin/StockOverview.php:914
 msgid "Book delivery"
 msgstr ""
 
 #. translators: %d: pieces
-#: src/Admin/Menu.php:206
+#: src/Admin/Menu.php:231
 msgid "Book delivery (%d pcs.)"
 msgstr ""
 
 #. translators: %d: pieces
-#: src/Admin/Menu.php:207
+#: src/Admin/Menu.php:232
 #: src/Admin/StockOverview.php:973
 msgid "Nothing counted yet."
 msgstr ""
 
 #. translators: 1: counted rows, 2: differences
-#: src/Admin/Menu.php:209
+#: src/Admin/Menu.php:234
 msgid "%1$d counted · %2$d differences"
 msgstr ""
 
 #. translators: 1: counted rows, 2: differences
-#: src/Admin/Menu.php:210
+#: src/Admin/Menu.php:235
 msgid "matches"
 msgstr ""
 
 #. translators: 1: counted rows, 2: differences
-#: src/Admin/Menu.php:211
+#: src/Admin/Menu.php:236
 msgid "Creating …"
 msgstr ""
 
-#: src/Admin/Menu.php:212
+#: src/Admin/Menu.php:237
 msgid "Booking …"
 msgstr ""
 
-#: src/Admin/Menu.php:213
+#: src/Admin/Menu.php:238
 msgid "File downloaded."
 msgstr ""
 
-#: src/Admin/Menu.php:214
+#: src/Admin/Menu.php:239
 msgid "Export failed. Please reload the page and try again."
 msgstr ""
 
 #. translators: %d: number of variants
-#: src/Admin/Menu.php:229
+#: src/Admin/Menu.php:254
 #: src/Admin/ProductForm.php:126
 msgid "%d variants"
 msgstr ""
 
 #. translators: %d: number of variants being dropped
-#: src/Admin/Menu.php:231
+#: src/Admin/Menu.php:256
 msgid "%d will be dropped when you save"
 msgstr ""
 
 #. translators: %d: number of variants being dropped
-#: src/Admin/Menu.php:232
+#: src/Admin/Menu.php:257
 msgid "Please enter at least one attribute with values."
 msgstr ""
 
 #. translators: 1: count, 2: maximum number
-#: src/Admin/Menu.php:234
+#: src/Admin/Menu.php:259
 msgid "Too many combinations: %1$d (at most %2$s). Please reduce the values."
 msgstr ""
 
 #. translators: 1: count, 2: maximum number
-#: src/Admin/Menu.php:235
+#: src/Admin/Menu.php:260
 msgid "Unit price:"
 msgstr ""
 
 #. translators: 1: count, 2: maximum number
-#: src/Admin/Menu.php:236
+#: src/Admin/Menu.php:261
 msgid "Unit price = selling price (not shown separately)"
 msgstr ""
 
-#: src/Admin/Menu.php:237
+#: src/Admin/Menu.php:262
 msgid "Add images"
 msgstr ""
 
-#: src/Admin/Menu.php:238
+#: src/Admin/Menu.php:263
 msgid "Image for the variant"
 msgstr ""
 
-#: src/Admin/Menu.php:239
+#: src/Admin/Menu.php:264
 msgid "Turn off variants? When you save, all variants are deactivated and the product is sold without variants again (variant stock stays saved and comes back if you turn them on again)."
 msgstr ""
 
-#: src/Admin/Menu.php:240
+#: src/Admin/Menu.php:265
 #: src/Admin/ProductVariantsCard.php:111
 msgid "all variants"
 msgstr ""
 
 #. translators: %s: list of renamed items
-#: src/Admin/Menu.php:242
+#: src/Admin/Menu.php:267
 msgid "renamed: %s – stock, price and image are kept"
 msgstr ""
 
 #. translators: %d: number of variants
-#: src/Admin/Menu.php:244
+#: src/Admin/Menu.php:269
 msgid "Price entered for %d variants – apply with “Save”."
 msgstr ""
 
 #. translators: %d: number of SKUs
-#: src/Admin/Menu.php:246
+#: src/Admin/Menu.php:271
 msgid "%d SKUs generated (empty fields only)."
 msgstr ""
 
 #. translators: %d: number of SKUs
-#: src/Admin/Menu.php:247
+#: src/Admin/Menu.php:272
 msgid "Automatically from the variant name"
 msgstr ""
 
 #. translators: %d: number of SKUs
-#: src/Admin/Menu.php:248
+#: src/Admin/Menu.php:273
 msgid "Choose the product image:"
 msgstr ""
 
-#: src/Admin/Menu.php:249
+#: src/Admin/Menu.php:274
 msgid "Another image from the media library …"
 msgstr ""
 
-#: src/Admin/Menu.php:250
+#: src/Admin/Menu.php:275
 msgid "The file is too large."
 msgstr ""
 
-#: src/Admin/Menu.php:251
+#: src/Admin/Menu.php:276
 msgid "Uploading …"
 msgstr ""
 
-#: src/Admin/Menu.php:252
+#: src/Admin/Menu.php:277
 msgid "Uploaded. Apply with “Save”."
 msgstr ""
 
-#: src/Admin/Menu.php:253
+#: src/Admin/Menu.php:278
 msgid "Upload failed."
 msgstr ""
 
-#: src/Admin/Menu.php:254
+#: src/Admin/Menu.php:279
 msgid "Please wait until all images have been uploaded."
 msgstr ""
 
@@ -6244,7 +6248,7 @@ msgid "The installation did not work"
 msgstr ""
 
 #: src/Admin/Upgrade/ProStatus.php:122
-#: src/freemius.php:335
+#: src/freemius.php:347
 msgid "Unknown error."
 msgstr ""
 
@@ -12560,11 +12564,11 @@ msgstr ""
 msgid "Every warehouse can have a warehouse manager: they book that warehouse’s stock, ship its orders and get its “Shipping order to warehouse” emails. The permission is granted and revoked automatically."
 msgstr ""
 
-#: src/freemius.php:344
+#: src/freemius.php:356
 msgid "The key was accepted, but it does not unlock Pro on this site. Is it a test licence from the sandbox, or already used on another website?"
 msgstr ""
 
-#: src/freemius.php:405
+#: src/freemius.php:417
 msgid "Kontor Shop test build: Pro runs without a licence. Only for your own test sites – never install this ZIP on a customer site."
 msgstr ""
 

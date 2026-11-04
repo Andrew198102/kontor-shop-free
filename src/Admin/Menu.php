@@ -112,7 +112,33 @@ final class Menu implements Registerable
         foreach (array_keys(self::hidden_pages()) as $hidden) {
             echo '#adminmenu .wp-submenu li:has(> a[href$="page=' . esc_attr($hidden) . '"]){display:none;}';
         }
+
+        // PRO-Abzeichen neben "Kontor Shop" (self::badge()).
+        echo '#adminmenu .toplevel_page_kontor-shop .wp-menu-name{white-space:nowrap;}'
+            . '#adminmenu .ks-pro-badge{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:999px;vertical-align:1px;'
+            . 'background:linear-gradient(180deg,#ebc47a,#e0b25b);color:#241a06;font-size:9px;font-weight:800;line-height:15px;letter-spacing:.08em;}'
+            . '#adminmenu .ks-pro-badge.is-off{background:transparent;color:inherit;opacity:.55;box-shadow:inset 0 0 0 1px currentColor;text-decoration:line-through;}';
         echo '</style>';
+    }
+
+    /**
+     * Abzeichen hinter "Kontor Shop" im Admin-Menue: "pro" = gueltige Lizenz (gold),
+     * "expired" = Pro installiert, Lizenz abgelaufen (durchgestrichen). Den Stand
+     * liefert src/freemius.php (kontor_shop/admin/pro_badge); Free zeigt nichts.
+     */
+    private static function badge(): string
+    {
+        $state = (string) apply_filters('kontor_shop/admin/pro_badge', '');
+
+        if ($state === 'pro') {
+            return ' <span class="ks-pro-badge">PRO</span>';
+        }
+
+        if ($state === 'expired') {
+            return ' <span class="ks-pro-badge is-off" title="' . esc_attr__('Pro licence expired – Pro features are off', 'kontor-shop') . '">PRO</span>';
+        }
+
+        return '';
     }
 
     public function enqueue_assets(string $hook_suffix): void
@@ -335,7 +361,7 @@ final class Menu implements Registerable
     {
         $dashboard_hook = add_menu_page(
             __('Kontor Shop', 'kontor-shop'),
-            __('Kontor Shop', 'kontor-shop'),
+            __('Kontor Shop', 'kontor-shop') . self::badge(),
             Capabilities::ACCESS,
             DashboardPage::SLUG,
             [$this->dashboard_page, 'render'],
