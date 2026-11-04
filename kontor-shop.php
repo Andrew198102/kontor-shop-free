@@ -3,7 +3,7 @@
  * Plugin Name:       Kontor Shop – Club Shop with Bank Transfer & Pickup
  * Plugin URI:        https://veyra-assistant.com/kontor-shop/
  * Description:       Club shop for WordPress: products with variants, stock, bank-transfer checkout, pickup and a cashier workflow.
- * Version:           2.1.1
+ * Version:           2.1.2
  * Requires at least: 6.4
  * Requires PHP:      8.1
  * Author:            Veyra
@@ -48,7 +48,7 @@ if (defined('KONTOR_SHOP_VERSION')) {
     return;
 }
 
-define('KONTOR_SHOP_VERSION', '2.1.1');
+define('KONTOR_SHOP_VERSION', '2.1.2');
 define('KONTOR_SHOP_FILE', __FILE__);
 define('KONTOR_SHOP_PATH', plugin_dir_path(__FILE__));
 define('KONTOR_SHOP_URL', plugin_dir_url(__FILE__));

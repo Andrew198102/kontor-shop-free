@@ -655,7 +655,7 @@ final class SetupArticles
             'keywords'   => 'warehouse storage location sender return address bank account color inactive several warehouses warehouse manager',
             'what'       => __('Every product belongs to a warehouse: the place where it is stored and shipped from. The warehouse also decides which bank account customers transfer the money to.', 'kontor-shop'),
             'steps'      => [
-                ['text' => __('Open Kontor Shop → Warehouse.', 'kontor-shop'), 'url' => WarehousesPage::url()],
+                ['text' => __('Open Kontor Shop → Warehouses.', 'kontor-shop'), 'url' => WarehousesPage::url()],
                 __('Click “Add new warehouse”, or “Edit” on your existing warehouse.', 'kontor-shop'),
                 __('Enter a name, e.g. “Main warehouse”, and a contact name if you like.', 'kontor-shop'),
                 __('Enter the “Sender/return address”.', 'kontor-shop'),

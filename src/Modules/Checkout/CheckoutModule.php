@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Modules\Checkout;
 
+use Kontor\Shop\Settings\TextDefaults;
 use Kontor\Shop\Context\Membership;
 use Kontor\Shop\Context\RequestContext;
 use Kontor\Shop\Core\Registerable;
@@ -974,14 +975,14 @@ final class CheckoutModule implements Registerable
                                 : __('All prices plus shipping.', 'kontor-shop')) . '</p>';
 
         if ($has_exempt) {
-            $exempt_note = trim((string) $this->settings->get('tax.exempt_note', ''));
+            $exempt_note = TextDefaults::or_default((string) $this->settings->get('tax.exempt_note', ''), TextDefaults::exempt_note());
 
             if ($exempt_note !== '') {
                 $html .= '<p class="kontor-shop-checkout__note">' . esc_html($exempt_note) . '</p>';
             }
         }
 
-        $button_label = trim((string) $this->settings->get('legal.order_button_label', '')) ?: __('Place order with obligation to pay', 'kontor-shop');
+        $button_label = TextDefaults::or_default((string) $this->settings->get('legal.order_button_label', ''), TextDefaults::order_button_label());
 
         if ($price_note !== '') {
             $html .= '<p class="kontor-shop-checkout__note">' . esc_html($price_note) . '</p>';
@@ -1194,13 +1195,13 @@ final class CheckoutModule implements Registerable
         if ((bool) $this->settings->get('legal.require_terms', true)) {
             $html .= '<label class="kontor-shop-choice kontor-shop-choice--check"><input type="checkbox" id="ks-field-accept_terms" name="accept_terms" value="1" required '
                 . checked(!empty($_POST['accept_terms']), true, false) . ' /> <span>' // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nur Wiederanzeige der eigenen Eingaben; verarbeitet wird erst nach der Nonce-Pruefung in handle_submit()
-                . LegalText::render((string) $this->settings->get('legal.terms_label', ''), $links) . '</span></label>' . $this->field_error_html('accept_terms');
+                . LegalText::render(TextDefaults::or_default((string) $this->settings->get('legal.terms_label', ''), TextDefaults::terms_label()), $links) . '</span></label>' . $this->field_error_html('accept_terms');
         }
 
         if ((bool) $this->settings->get('legal.require_privacy', true)) {
             $html .= '<label class="kontor-shop-choice kontor-shop-choice--check"><input type="checkbox" id="ks-field-accept_privacy" name="accept_privacy" value="1" required '
                 . checked(!empty($_POST['accept_privacy']), true, false) . ' /> <span>' // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nur Wiederanzeige der eigenen Eingaben; verarbeitet wird erst nach der Nonce-Pruefung in handle_submit()
-                . LegalText::render((string) $this->settings->get('legal.privacy_label', ''), $links) . '</span></label>' . $this->field_error_html('accept_privacy');
+                . LegalText::render(TextDefaults::or_default((string) $this->settings->get('legal.privacy_label', ''), TextDefaults::privacy_label()), $links) . '</span></label>' . $this->field_error_html('accept_privacy');
         }
 
         return $html;
@@ -1426,7 +1427,7 @@ final class CheckoutModule implements Registerable
 
             $html .= '<dl class="kontor-shop-order-confirmation__bank">';
             $html .= $this->copy_row(__('Amount', 'kontor-shop'), number_format_i18n($order->total, 2) . ' €', number_format($order->total, 2, ',', ''));
-            $html .= $this->copy_row(__('Recipients', 'kontor-shop'), (string) ($account->recipient ?? ''));
+            $html .= $this->copy_row(__('Account holder', 'kontor-shop'), (string) ($account->recipient ?? ''));
             $html .= $this->copy_row('IBAN', (string) ($account->iban ?? ''));
             $html .= $this->copy_row('BIC', (string) ($account->bic ?? ''));
             $html .= $this->copy_row(__('Payment reference', 'kontor-shop'), $order->payment_reference);
@@ -1563,7 +1564,7 @@ final class CheckoutModule implements Registerable
 
         $html .= '<dl class="kontor-shop-order-confirmation__bank">';
         $html .= $this->copy_row(__('Amount', 'kontor-shop'), number_format_i18n($order->total, 2) . ' €', number_format($order->total, 2, ',', ''));
-        $html .= $this->copy_row(__('Recipients', 'kontor-shop'), (string) ($account->recipient ?? ''));
+        $html .= $this->copy_row(__('Account holder', 'kontor-shop'), (string) ($account->recipient ?? ''));
         $html .= $this->copy_row('IBAN', (string) ($account->iban ?? ''));
         $html .= $this->copy_row('BIC', (string) ($account->bic ?? ''));
         $html .= $this->copy_row(__('Payment reference', 'kontor-shop'), $order->payment_reference);

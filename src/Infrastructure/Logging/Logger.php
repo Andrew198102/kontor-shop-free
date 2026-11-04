@@ -27,6 +27,18 @@ use Kontor\Shop\Settings\Repository;
  */
 final class Logger
 {
+    /**
+     * Praefix der Fehlernummern, die Kunden und Admins sehen. Bis 2.1.1 "KS-" -
+     * zu leicht mit der Zahlungsreferenz (ebenfalls KS-…) zu verwechseln.
+     */
+    public const REFERENCE_PREFIX = 'ERR-';
+
+    /** Fehlernummer neu (ERR-…) oder aus aelteren Versionen (KS-…). */
+    public static function is_reference(string $value): bool
+    {
+        return preg_match('/^(ERR|KS)-[A-Z0-9]{4,16}$/', $value) === 1;
+    }
+
     public const DEBUG    = 'debug';
     public const INFO     = 'info';
     public const WARNING  = 'warning';
@@ -151,9 +163,9 @@ final class Logger
     public static function new_reference(): string
     {
         try {
-            return 'KS-' . strtoupper(bin2hex(random_bytes(3)));
+            return self::REFERENCE_PREFIX . strtoupper(bin2hex(random_bytes(3)));
         } catch (\Throwable $e) {
-            return 'KS-' . strtoupper(substr(md5((string) microtime(true)), 0, 6));
+            return self::REFERENCE_PREFIX . strtoupper(substr(md5((string) microtime(true)), 0, 6));
         }
     }
 

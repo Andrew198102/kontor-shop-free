@@ -377,6 +377,7 @@ final class CategoriesPage
             __('Status', 'kontor-shop'),
             '',
             '<label><input type="checkbox" name="active" value="1" ' . checked((bool) $get('active', $editing === null || $editing->active), true, false) . ' /> ' . esc_html__('Category can be selected in the catalog', 'kontor-shop') . '</label>'
+                . '<p class="description">' . esc_html__('Switched off, the category and all its products disappear from the shop. The products are kept and come back when you switch the category on again.', 'kontor-shop') . '</p>'
         );
         Form::card_close();
 

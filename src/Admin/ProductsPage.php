@@ -486,7 +486,7 @@ final class ProductsPage
                 Flash::redirect(
                     $this->back_url(),
                     /* translators: %s: product name */
-                    sprintf(__('“%s” archived – no longer visible in the shop but still saved (“Archive” view).', 'kontor-shop'), $name)
+                    sprintf(__('“%s” archived – no longer visible in the shop but still saved (view “Archived”).', 'kontor-shop'), $name)
                 );
 
                 // no break
@@ -511,6 +511,11 @@ final class ProductsPage
 
                 // no break
             default:
+                // Endgueltig loeschen nur aus dem Archiv (wie in der Liste angeboten) - schuetzt vor Fehlklicks und alten Links.
+                if ($product === null || !$product->archived) {
+                    Flash::redirect($this->back_url(), __('Only archived products can be deleted permanently. Archive the product first.', 'kontor-shop'), 'error');
+                }
+
                 $old_images = $this->image_ids_of($id);
 
                 $this->products->delete($id);
@@ -614,12 +619,16 @@ final class ProductsPage
                 break;
 
             case 'delete':
+                $deleted = 0;
+
                 foreach ($ids as $id) {
                     $product = $this->products->find($id);
 
                     if ($product === null || !$product->archived) {
                         continue; // nur archivierte Artikel duerfen endgueltig geloescht werden
                     }
+
+                    $deleted++;
 
                     $old_images = $this->image_ids_of($id);
 
@@ -631,7 +640,15 @@ final class ProductsPage
                 }
 
                 /* translators: %d: number of products */
-                $message = sprintf(_n('%d product permanently deleted.', '%d products permanently deleted.', $count, 'kontor-shop'), $count);
+                $message = sprintf(_n('%d product permanently deleted.', '%d products permanently deleted.', $deleted, 'kontor-shop'), $deleted);
+
+                if ($deleted < $count) {
+                    $message .= ' ' . sprintf(
+                        /* translators: %d: number of skipped products */
+                        _n('%d skipped – only archived products can be deleted.', '%d skipped – only archived products can be deleted.', $count - $deleted, 'kontor-shop'),
+                        $count - $deleted
+                    );
+                }
 
                 break;
 

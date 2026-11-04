@@ -247,7 +247,7 @@ final class WarehousesPage
         }
 
         PageHeader::render(
-            __('Warehouse', 'kontor-shop'),
+            __('Warehouses', 'kontor-shop'),
             $warehouses !== [] && $this->warehouses->can_create() ? [['label' => __('Add new warehouse', 'kontor-shop'), 'url' => self::url(['do' => 'new']), 'primary' => true]] : [],
             __('A warehouse is the place products are shipped from. Each product belongs to exactly one warehouse.', 'kontor-shop')
         );

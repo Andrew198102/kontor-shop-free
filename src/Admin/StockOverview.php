@@ -951,7 +951,7 @@ final class StockOverview
         $rows = $this->rows($scope, ['warehouse_id' => $wh]);
 
         echo '<h1 class="wp-heading-inline">' . esc_html__('Stock count', 'kontor-shop') . '</h1> ';
-        echo '<a href="' . esc_url(StockPage::url()) . '" class="page-title-action">' . esc_html__('Cancel, back to dashboard', 'kontor-shop') . '</a><hr class="wp-header-end" />';
+        echo '<a href="' . esc_url(StockPage::url()) . '" class="page-title-action">' . esc_html__('Cancel, back to stock overview', 'kontor-shop') . '</a><hr class="wp-header-end" />';
         echo '<div class="ks-count-intro"><p>' . esc_html__('Count what is actually on the shelf and enter it. “Expected on shelf” includes goods that are already sold but not yet shipped or picked up – count those too. Empty fields are not booked; only differences are saved as a correction with the note “Stock count”.', 'kontor-shop') . '</p>';
 
         if ($this->show_warehouse($scope)) {

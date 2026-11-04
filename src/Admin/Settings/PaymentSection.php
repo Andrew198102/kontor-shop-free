@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Admin\Settings;
 
+use Kontor\Shop\Settings\TextDefaults;
 use Kontor\Shop\Domain\Order\PaymentDeadline;
 use Kontor\Shop\Domain\Order\PaymentTerms;
 use Kontor\Shop\Domain\Payment\BankAccount;
@@ -377,7 +378,7 @@ final class PaymentSection extends Section
 
         echo '<tr><th><label for="ks-tax-exempt">' . esc_html__('Notice for tax exemption', 'kontor-shop') . '</label></th><td>';
         echo '<input type="text" id="ks-tax-exempt" name="exempt_note" class="large-text" value="'
-            . esc_attr((string) $this->settings->get('tax.exempt_note', '')) . '" />';
+            . esc_attr((string) $this->settings->get('tax.exempt_note', '')) . '" placeholder="' . esc_attr(TextDefaults::exempt_note()) . '" />';
         echo '<p class="description">' . esc_html__(
             'Shown at checkout when there are products without a tax rate in the cart. You set the exact wording (e.g. a reference to the legal basis) together with your tax advisor.',
             'kontor-shop'

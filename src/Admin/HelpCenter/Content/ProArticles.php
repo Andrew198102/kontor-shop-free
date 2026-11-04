@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Admin\HelpCenter\Content;
 
+use Kontor\Shop\Core\Edition;
+
 /**
  * Artikel des Hilfe-Centers (Schema: Admin\HelpCenter\HelpCenter).
  *
@@ -31,7 +33,8 @@ final class ProArticles
                 'keywords' => __('pro upgrade premium licence license key buy activate plans pricing features downgrade expire freemius', 'kontor-shop'),
                 'what'     => __('Kontor Shop Pro adds features for larger clubs and for less manual work to the free shop. Your products, orders and settings stay as they are; Pro builds on them.', 'kontor-shop'),
                 'steps'    => [
-                    ['text' => __('Open Kontor Shop → Plans & pricing.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-pricing')],
+                    // Mit gueltiger Lizenz blendet Freemius "Plaene & Preise" aus - dann kein Link ins Leere.
+                    ['text' => __('Open Kontor Shop → Plans & pricing.', 'kontor-shop'), 'url' => Edition::is_pro() ? '' : admin_url('admin.php?page=kontor-shop-pricing')],
                     __('Choose a plan and click “Get Pro now”. You pay in the Freemius checkout by credit card or PayPal.', 'kontor-shop'),
                     __('Already have a licence key? Enter it under “Already bought Pro?” and click “Activate licence”.', 'kontor-shop'),
                     __('If the shop asks you to, confirm your email address with the button in the email from Freemius.', 'kontor-shop'),
@@ -48,7 +51,7 @@ final class ProArticles
                         'title'      => __('What Pro adds, sorted by need', 'kontor-shop'),
                         'list'       => [
                             __('Selling to members: member prices, free shipping and payment on invoice for members only. Settings → Membership.', 'kontor-shop'),
-                            __('Several warehouses: as many warehouses as you need, each with its own warehouse manager. Kontor Shop → Warehouse.', 'kontor-shop'),
+                            __('Several warehouses: as many warehouses as you need, each with its own warehouse manager. Kontor Shop → Warehouses.', 'kontor-shop'),
                             __('Packing: a packing view for the phone, straight from the order email, with partial shipments. Orders → Pack.', 'kontor-shop'),
                             __('Discounts and demand: discount codes and campaigns (Kontor Shop → Discounts) and emails when sold-out products are back (Kontor Shop → Requests).', 'kontor-shop'),
                             __('Automation: payment reminders and the cancellation of unpaid orders run by themselves. Settings → Payment & sales tax.', 'kontor-shop'),
@@ -134,7 +137,7 @@ final class ProArticles
                 'keywords' => __('warehouse warehouses warehouse manager location storage regional group split order bank account shipping order permission', 'kontor-shop'),
                 'what'     => __('With Pro you can create as many warehouses as you need, for example one per regional group. Each warehouse can have a warehouse manager who books its stock and ships its orders.', 'kontor-shop'),
                 'steps'    => [
-                    ['text' => __('Open Kontor Shop → Warehouse and click “Add new warehouse”.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-warehouses')],
+                    ['text' => __('Open Kontor Shop → Warehouses and click “Add new warehouse”.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-warehouses')],
                     __('Enter the name, the contact name and the sender address.', 'kontor-shop'),
                     __('Under “Warehouse manager”, choose the WordPress user who looks after this warehouse.', 'kontor-shop'),
                     __('If prepayments for this warehouse go to a different account, choose it under “Bank account (prepayment)”.', 'kontor-shop'),

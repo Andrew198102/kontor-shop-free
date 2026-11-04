@@ -416,7 +416,7 @@ final class ProductForm
 
         echo '<div class="ks-f"><label class="ks-check"><input type="checkbox" name="discontinued" value="1" data-ks-discontinued ' . checked($discontinued, true, false) . ' /> '
             . esc_html__('Discontinued product (won’t be reordered)', 'kontor-shop')
-            . Form::info(__('While stock lasts, the shop shows “While supplies last”. Once sold out, it shows “Sold out – will not be reordered” and customers can’t sign up for notifications.', 'kontor-shop')) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Form::info() liefert escaptes HTML
+            . Form::info(__('While stock lasts, the shop shows “While supplies last”. Once sold out, it shows “Sold out – won’t be reordered” and customers can’t sign up for notifications.', 'kontor-shop')) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Form::info() liefert escaptes HTML
             . '</label></div>';
 
         $this->card_close();

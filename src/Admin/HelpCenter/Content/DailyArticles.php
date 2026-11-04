@@ -135,7 +135,7 @@ final class DailyArticles
                     ],
                 ],
                 'faq'        => [
-                    ['q' => __('How does the customer know the goods are ready to collect?', 'kontor-shop'), 'a' => __('Once you have set the goods aside, open the order and click “Ready for pickup”. The customer gets an email with what is ready and the address of the warehouse. Enter the address (and opening hours if you like) under Kontor Shop → Warehouse.', 'kontor-shop')],
+                    ['q' => __('How does the customer know the goods are ready to collect?', 'kontor-shop'), 'a' => __('Once you have set the goods aside, open the order and click “Ready for pickup”. The customer gets an email with what is ready and the address of the warehouse. Enter the address (and opening hours if you like) under Kontor Shop → Warehouses.', 'kontor-shop')],
                     ['q' => __('The button “Record shipment …” is missing.', 'kontor-shop'), 'a' => __('With prepayment, the order has to be paid first; look under “Payment open”. Cashiers can’t record shipments; an administrator, shop manager or warehouse manager does that.', 'kontor-shop')],
                     ['q' => __('I entered a wrong tracking number.', 'kontor-shop'), 'a' => __('A recorded shipment can’t be changed. Add the correct number as an internal note in the quick view and send it to the customer yourself.', 'kontor-shop')],
                     ['q' => __('Can I mark several orders as shipped at once?', 'kontor-shop'), 'a' => __('Yes: tick them in the list and click “Mark as shipped/picked up”. All open products go out, without tracking numbers, and the customers are notified.', 'kontor-shop')],
@@ -212,7 +212,7 @@ final class DailyArticles
                 'help_pages' => ['products'],
                 'what'       => __('Everything you sell is a product: a jersey, a mug, a scarf. Here you enter what the shop needs to sell it.', 'kontor-shop'),
                 'steps'      => [
-                    ['text' => __('Open Kontor Shop → Product and click “Add new product”.', 'kontor-shop'), 'url' => ProductsPage::url(['do' => 'new']), 'link' => __('Add new product', 'kontor-shop')],
+                    ['text' => __('Open Kontor Shop → Products and click “Add new product”.', 'kontor-shop'), 'url' => ProductsPage::url(['do' => 'new']), 'link' => __('Add new product', 'kontor-shop')],
                     __('Under “Basics”, enter the name and a short description. The product number (SKU) is optional and only visible internally.', 'kontor-shop'),
                     __('Under “Images”, click the box “Drag image here” and choose a photo. On a phone you can take a picture or pick one from your photos. Further pictures go under “More images”.', 'kontor-shop'),
                     __('Under “Price & tax”, enter the gross price (what the customer pays, VAT included) and choose the VAT rate.', 'kontor-shop'),
@@ -240,7 +240,7 @@ final class DailyArticles
                     ['q' => __('Which VAT rate do I choose?', 'kontor-shop'), 'a' => __('The rate that applies to the product. Clubs that don’t charge VAT choose “no VAT (tax-exempt)”. You set the available rates under Settings → Payment & sales tax.', 'kontor-shop')],
                     ['q' => __('The photo upload doesn’t work on my phone.', 'kontor-shop'), 'a' => __('The image box shows the largest allowed file size. Check that the photo is smaller and that your connection is stable. Otherwise upload the photo on a computer.', 'kontor-shop')],
                     ['q' => __('Do I have to enter the stock right away?', 'kontor-shop'), 'a' => __('No. Leave it empty and book the goods later in Kontor Shop → Stock with “+ Record delivery”. Until then, customers see the product as sold out.', 'kontor-shop')],
-                    ['q' => __('Why does the shop ask for a warehouse?', 'kontor-shop'), 'a' => __('Every product ships from a warehouse. If none exists yet, create one first under Kontor Shop → Warehouse.', 'kontor-shop')],
+                    ['q' => __('Why does the shop ask for a warehouse?', 'kontor-shop'), 'a' => __('Every product ships from a warehouse. If none exists yet, create one first under Kontor Shop → Warehouses.', 'kontor-shop')],
                 ],
                 'related'    => ['products-variants', 'products-visibility', 'stock-delivery', 'setup-categories', 'setup-payment', 'setup-warehouses'],
             ],
@@ -253,7 +253,7 @@ final class DailyArticles
                 'keywords'   => __('variant variants size sizes color colour s m l xl attribute combination stock per size price per variant image', 'kontor-shop'),
                 'what'       => __('When a product comes in several versions, e.g. a T-shirt in S to XXL. Each version (variant) has its own stock and can have its own price and image.', 'kontor-shop'),
                 'steps'      => [
-                    ['text' => __('Open the product in Kontor Shop → Product, or add a new one.', 'kontor-shop'), 'url' => ProductsPage::url()],
+                    ['text' => __('Open the product in Kontor Shop → Products, or add a new one.', 'kontor-shop'), 'url' => ProductsPage::url()],
                     __('Switch on “Variants”.', 'kontor-shop'),
                     __('Enter the attribute, e.g. “Size”, and its values separated by commas, e.g. S, M, L, XL. The template “Sizes” fills this in for you. You can combine up to three attributes, e.g. size and color.', 'kontor-shop'),
                     __('Click “Update variant table”. The table shows every combination.', 'kontor-shop'),
@@ -283,7 +283,7 @@ final class DailyArticles
                 'keywords'   => __('hide hidden visible archive restore duplicate copy quick edit delete remove product bulk action discontinued', 'kontor-shop'),
                 'what'       => __('To take a product out of the shop for a while, retire it for good, or create a similar product quickly.', 'kontor-shop'),
                 'steps'      => [
-                    ['text' => __('Open Kontor Shop → Product.', 'kontor-shop'), 'url' => ProductsPage::url()],
+                    ['text' => __('Open Kontor Shop → Products.', 'kontor-shop'), 'url' => ProductsPage::url()],
                     __('To hide a product right away, click its switch in the column “Visible in shop”. The product stays saved, and you can switch it on again at any time.', 'kontor-shop'),
                     __('To change name, product number, price, category or minimum stock quickly, click “Quick edit” below the product name.', 'kontor-shop'),
                     __('“Duplicate” creates a copy, e.g. for the same shirt in another design. The copy is hidden and has stock 0 until you check and save it.', 'kontor-shop'),

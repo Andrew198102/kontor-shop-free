@@ -116,7 +116,7 @@ final class SystemSection extends Section
         echo '<p>' . esc_html($recipients !== []
             ? sprintf(
                 /* translators: %s: recipient email address */
-                __('Sends a test email via wp_mail() to %s.', 'kontor-shop'),
+                __('Sends a test email to %s – the same way the shop sends its order emails.', 'kontor-shop'),
                 $recipients[0]
             )
             : __('Please enter a valid recipient address first (“Email sending” section).', 'kontor-shop')) . '</p>';

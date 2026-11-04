@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.1.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,13 @@ Kontor Shop does not contact any other external service. Shop data, orders and c
 6. Settings: payment, shipping and e-mail.
 
 == Changelog ==
+
+= 2.1.2 =
+* Fixed: checkbox texts at checkout, the order button and the VAT exemption note were German on every site – they now follow the site language (your own texts stay as saved).
+* Fixed: returns, warranty and delivery time on the product page (Pro) are shown in the site language.
+* Fixed: products can only be deleted permanently from the archive, also via single links; bulk delete reports skipped products.
+* Changed: error numbers start with ERR- so they can’t be mixed up with payment references (KS-…); older numbers stay searchable in the log.
+* Improved: clearer labels – menu “Products” and “Warehouses”, “Cancel selected products”, “Back to stock overview”, account holder on the confirmation page, note what happens to products when a category is switched off, warranty note without the claim about search data.
 
 = 2.1.1 =
 * New: cash on pickup as a payment method (Settings → Payment, only shown with self pickup). The goods are set aside right away; recording the pickup books the cash payment too. No deadline, reminders or automatic cancellation.

@@ -784,7 +784,7 @@ final class StockPage
             __('Stock: %s', 'kontor-shop'),
             $product->name
         )) . '</h1> ';
-        echo '<a href="' . esc_url(self::url()) . '" class="page-title-action">' . esc_html__('Back to dashboard', 'kontor-shop') . '</a><hr class="wp-header-end" />';
+        echo '<a href="' . esc_url(self::url()) . '" class="page-title-action">' . esc_html__('Back to stock overview', 'kontor-shop') . '</a><hr class="wp-header-end" />';
 
         $min_note = '';
 

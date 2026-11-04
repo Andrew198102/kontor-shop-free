@@ -6,6 +6,7 @@ namespace Kontor\Shop\Admin;
 
 use Kontor\Shop\Admin\Ui\PageHeader;
 use Kontor\Shop\Domain\Support\IssueLink;
+use Kontor\Shop\Infrastructure\Logging\Logger;
 use Kontor\Shop\Infrastructure\Support\ProblemReport;
 use Kontor\Shop\Settings\Repository;
 
@@ -48,7 +49,7 @@ final class ReportPage
         }
 
         $reference = isset($_GET['ref']) ? strtoupper(sanitize_text_field(wp_unslash((string) $_GET['ref']))) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nur Anzeige-Parameter
-        $reference = preg_match('/^KS-[A-Z0-9]{4,16}$/', $reference) === 1 ? $reference : '';
+        $reference = Logger::is_reference($reference) ? $reference : '';
         $report    = (new ProblemReport($this->settings))->markdown($reference);
 
         $repository = (string) apply_filters('kontor_shop/support/repository', IssueLink::REPOSITORY);
@@ -74,7 +75,7 @@ final class ReportPage
         echo '<form method="get" action="' . esc_url(admin_url('admin.php')) . '" class="ks-report-ref">';
         echo '<input type="hidden" name="page" value="' . esc_attr(self::SLUG) . '" />';
         echo '<label for="ks-report-ref">' . esc_html__('Reference number (optional)', 'kontor-shop') . '</label> ';
-        echo '<input type="text" id="ks-report-ref" name="ref" class="regular-text code" placeholder="KS-…" value="' . esc_attr($reference) . '" /> ';
+        echo '<input type="text" id="ks-report-ref" name="ref" class="regular-text code" placeholder="ERR-…" value="' . esc_attr($reference) . '" /> ';
         echo '<button type="submit" class="button">' . esc_html__('Add to report', 'kontor-shop') . '</button>';
         echo '<p class="description">' . esc_html__('Customers see a reference number (KS-…) when an error occurs. With it, the matching log entry appears first and in full.', 'kontor-shop') . '</p>';
         echo '</form>';

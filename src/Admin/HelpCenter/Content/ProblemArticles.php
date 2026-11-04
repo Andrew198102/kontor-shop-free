@@ -89,7 +89,7 @@ final class ProblemArticles
                     ['text' => __('Open Kontor Shop → Orders, choose the tab “All” and search for the customer’s name or email address. “All” also includes cancelled orders.', 'kontor-shop'), 'url' => OrdersPage::url(['view' => 'all'])],
                     __('If the order is there but the customer got no email, resend the confirmation (⋯ → “Resend confirmation”) and read “Emails don’t arrive”.', 'kontor-shop'),
                     __('Ask the customer whether they saw the page “Thank you – we’ve received your order!” with an order number (B-…). Without that page, the order was not placed.', 'kontor-shop'),
-                    ['text' => __('If the customer saw an error message with a reference number (KS- and six characters), search for it in Kontor Shop → Logs.', 'kontor-shop'), 'url' => $log_url],
+                    ['text' => __('If the customer saw an error message with an error number (ERR- and six characters), search for it in Kontor Shop → Logs.', 'kontor-shop'), 'url' => $log_url],
                     __('Ask the customer to order again. If the checkout showed a message, their entries are usually still filled in.', 'kontor-shop'),
                 ],
                 'sections'   => [
@@ -121,9 +121,9 @@ final class ProblemArticles
                 'what'       => __('When something in the shop doesn’t work and you need help. The log shows what went wrong in the background; the report collects everything support needs into one message.', 'kontor-shop'),
                 'steps'      => [
                     ['text' => __('Open Kontor Shop → Logs. You see errors and warnings there, e.g. an email that could not be sent.', 'kontor-shop'), 'url' => $log_url],
-                    __('If a customer gave you a reference number (KS-…), enter it in the search field and click “Filter”.', 'kontor-shop'),
+                    __('If a customer gave you an error number (ERR-…), enter it in the search field and click “Filter”.', 'kontor-shop'),
                     ['text' => __('Click “Report a problem” at the top of the page.', 'kontor-shop'), 'url' => ReportPage::url()],
-                    __('If you have a reference number, enter it and click “Add to report”. The matching entry is then included in full.', 'kontor-shop'),
+                    __('If you have an error number (ERR-…), enter it and click “Add to report”. The matching entry is then included in full.', 'kontor-shop'),
                     __('Read the report. Then click “Report on GitHub” and describe what happened, or click “Copy report” and send it by email with a short description.', 'kontor-shop'),
                 ],
                 'effect'     => [

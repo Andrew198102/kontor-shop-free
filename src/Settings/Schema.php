@@ -81,7 +81,8 @@ final class Schema
                 'rates'        => [],
                 // Vorauswahl beim Anlegen neuer Artikel ('' = keine USt).
                 'default_rate' => '',
-                'exempt_note'  => 'Umsatzsteuerfrei - es wird keine Umsatzsteuer ausgewiesen.',
+                // Leer = uebersetzter Standardtext (Settings\TextDefaults).
+                'exempt_note'  => '',
                 // Umsatzsteuer auf Versandkosten: proportional | fixed | none (siehe Domain\Tax\TaxCalculator).
                 'shipping_mode' => 'proportional',
                 'shipping_rate' => '',
@@ -128,10 +129,11 @@ final class Schema
                 'imprint_page_id'    => 0,
                 'require_terms'      => true,
                 'require_privacy'    => true,
-                'terms_label'        => 'Ich habe die {agb} und die {widerruf} gelesen und akzeptiere sie.',
-                'privacy_label'      => 'Ich habe die {datenschutz} gelesen und stimme der Verarbeitung meiner Daten zur Abwicklung der Bestellung zu.',
+                // Leer = uebersetzter Standardtext (Settings\TextDefaults); {agb}/{widerruf}/{datenschutz} werden Links.
+                'terms_label'        => '',
+                'privacy_label'      => '',
                 'price_note'         => '', // optionaler Zusatztext; die USt-Zeile entsteht automatisch aus den Steuer-Einstellungen
-                'order_button_label' => 'Zahlungspflichtig bestellen',
+                'order_button_label' => '',
             ],
 
             'design' => [

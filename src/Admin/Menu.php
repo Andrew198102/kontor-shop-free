@@ -376,7 +376,7 @@ final class Menu implements Registerable
         $this->submenu(DashboardPage::SLUG, __('Dashboard', 'kontor-shop'), Capabilities::ACCESS, [$this->dashboard_page, 'render'], 'dashboard');
         $this->orders_page_hook = $this->submenu(OrdersPage::SLUG, __('Orders', 'kontor-shop'), Capabilities::ACCESS, [$this->orders_page, 'render'], 'orders', [$this->orders_page, 'handle_request']);
 
-        $products_hook            = $this->submenu(ProductsPage::SLUG, __('Product', 'kontor-shop'), self::CAPABILITY, [$this->products_page, 'render'], 'products', [$this->products_page, 'handle_request']);
+        $products_hook            = $this->submenu(ProductsPage::SLUG, __('Products', 'kontor-shop'), self::CAPABILITY, [$this->products_page, 'render'], 'products', [$this->products_page, 'handle_request']);
         $this->products_page_hook = $products_hook;
 
         // Bestand nur fuer Shop-Manager und Lagerverwalter - ein reiner Kassier saehe sonst einen Menuepunkt, der "Keine Berechtigung" meldet.
@@ -388,7 +388,7 @@ final class Menu implements Registerable
 
         // Stammdaten
         $this->submenu(CategoriesPage::SLUG, __('Categories', 'kontor-shop'), self::CAPABILITY, [$this->categories_page, 'render'], 'categories', [$this->categories_page, 'handle_request']);
-        $this->submenu(WarehousesPage::SLUG, __('Warehouse', 'kontor-shop'), self::CAPABILITY, [$this->warehouses_page, 'render'], 'warehouses', [$this->warehouses_page, 'handle_request']);
+        $this->submenu(WarehousesPage::SLUG, __('Warehouses', 'kontor-shop'), self::CAPABILITY, [$this->warehouses_page, 'render'], 'warehouses', [$this->warehouses_page, 'handle_request']);
         do_action('kontor_shop/admin/menu', $this, self::GROUP_MASTER);
 
         // Einrichtung

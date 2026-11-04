@@ -107,7 +107,7 @@ final class ProductsList
 
         $ctx = self::context();
 
-        echo '<h1 class="wp-heading-inline">' . esc_html__('Product', 'kontor-shop') . '</h1> ';
+        echo '<h1 class="wp-heading-inline">' . esc_html__('Products', 'kontor-shop') . '</h1> ';
         echo '<a href="' . esc_url(ProductsPage::url(['do' => 'new'])) . '" class="page-title-action">' . esc_html__('Add new product', 'kontor-shop') . '</a>';
         echo '<hr class="wp-header-end" />';
 

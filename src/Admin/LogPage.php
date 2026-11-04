@@ -83,7 +83,7 @@ final class LogPage
         }
 
         echo '<p class="ks-page-head__desc">' . esc_html__(
-            'Unexpected errors and warnings end up here. For a technical error, customers see a reference number (KS-…) that you can enter in the search here. Personal data is not logged.',
+            'Unexpected errors and warnings end up here. For a technical error, customers see an error number (ERR-…) that you can enter in the search here. Personal data is not logged.',
             'kontor-shop'
         ) . '</p>';
 

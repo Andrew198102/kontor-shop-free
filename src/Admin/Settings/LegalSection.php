@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kontor\Shop\Admin\Settings;
 
 use Kontor\Shop\Infrastructure\Checkout\SpamGuard;
+use Kontor\Shop\Settings\TextDefaults;
 
 /**
  * Rechtstexte, Pflicht-Checkboxen, Texte am Bestell-Button und Aufbewahrung
@@ -111,12 +112,12 @@ final class LegalSection extends Section
         echo '<p class="description">' . esc_html__('When checked, a customer can only order if they tick the box in the checkout. The time of consent is saved with the order.', 'kontor-shop') . '</p></td></tr>';
 
         echo '<tr><th><label for="ks-terms-label">' . esc_html__('Text: terms and conditions checkbox', 'kontor-shop') . '</label></th><td>';
-        echo '<input type="text" id="ks-terms-label" name="terms_label" class="large-text" value="' . esc_attr($text('terms_label')) . '" />';
+        echo '<input type="text" id="ks-terms-label" name="terms_label" class="large-text" value="' . esc_attr($text('terms_label')) . '" placeholder="' . esc_attr(TextDefaults::terms_label()) . '" />';
         echo '<p class="description">' . esc_html__('Placeholders become links to the pages above: {agb} {widerruf} {datenschutz} {impressum}.', 'kontor-shop') . '</p>';
         echo '<div class="ks-example">' . esc_html__('Example: I accept the {agb} and have read the {widerruf}.', 'kontor-shop') . '</div></td></tr>';
 
         echo '<tr><th><label for="ks-privacy-label">' . esc_html__('Text: privacy policy checkbox', 'kontor-shop') . '</label></th><td>';
-        echo '<input type="text" id="ks-privacy-label" name="privacy_label" class="large-text" value="' . esc_attr($text('privacy_label')) . '" />';
+        echo '<input type="text" id="ks-privacy-label" name="privacy_label" class="large-text" value="' . esc_attr($text('privacy_label')) . '" placeholder="' . esc_attr(TextDefaults::privacy_label()) . '" />';
         echo '<p class="description">' . esc_html__('Same placeholders as above.', 'kontor-shop') . '</p></td></tr>';
 
         echo '</tbody></table>';
@@ -129,7 +130,7 @@ final class LegalSection extends Section
         echo '<p class="description">' . esc_html__('Optional extra text above the order button. The VAT line (“incl. VAT” or the note for tax exemption) is generated automatically from the “Payment & VAT” section.', 'kontor-shop') . '</p></td></tr>';
 
         echo '<tr><th><label for="ks-button-label">' . esc_html__('Order button text', 'kontor-shop') . '</label></th><td>';
-        echo '<input type="text" id="ks-button-label" name="order_button_label" class="regular-text" value="' . esc_attr($text('order_button_label')) . '" />';
+        echo '<input type="text" id="ks-button-label" name="order_button_label" class="regular-text" value="' . esc_attr($text('order_button_label')) . '" placeholder="' . esc_attr(TextDefaults::order_button_label()) . '" />';
         echo '<p class="description">' . esc_html__('Label of the last button in the checkout (in Austria, it must be clearly recognizable that the order requires payment, e.g. “Order with obligation to pay”).', 'kontor-shop') . '</p></td></tr>';
 
         echo '</tbody></table>';

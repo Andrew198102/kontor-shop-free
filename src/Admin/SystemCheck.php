@@ -218,7 +218,7 @@ final class SystemCheck
 
         $legal_missing = [];
 
-        foreach (['terms_page_id' => 'AGB', 'withdrawal_page_id' => __('Right of withdrawal', 'kontor-shop'), 'privacy_page_id' => __('Privacy policy', 'kontor-shop'), 'imprint_page_id' => __('Legal notice', 'kontor-shop')] as $key => $label) {
+        foreach (['terms_page_id' => __('Terms and conditions', 'kontor-shop'), 'withdrawal_page_id' => __('Right of withdrawal', 'kontor-shop'), 'privacy_page_id' => __('Privacy policy', 'kontor-shop'), 'imprint_page_id' => __('Legal notice', 'kontor-shop')] as $key => $label) {
             if (absint($this->settings->get('legal.' . $key, 0)) === 0) {
                 $legal_missing[] = $label;
             }

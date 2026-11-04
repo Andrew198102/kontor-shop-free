@@ -396,7 +396,7 @@ final class OrderDetailView
 
         echo '<footer class="ks-dialog__foot"><button type="button" class="button" data-ks-dialog-close>' . esc_html__('Cancel', 'kontor-shop') . '</button> '
             . '<button type="submit" class="button button-primary" data-ks-confirm-click="' . esc_attr__('Really cancel the selected products?', 'kontor-shop') . '">'
-            . esc_html__('Cancel order', 'kontor-shop') . '</button></footer>';
+            . esc_html__('Cancel selected products', 'kontor-shop') . '</button></footer>';
         echo '</form></dialog>';
     }
 

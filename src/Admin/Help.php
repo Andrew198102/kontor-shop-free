@@ -91,9 +91,9 @@ final class Help
             ],
             'settings' => [
                 ['id' => 'ks-settings', 'title' => __('Settings', 'kontor-shop'), 'content' => $p(
-                    __('On the left, the sections are in four groups: Sales, Communication, Shop appearance and Technical. “open” marks sections where something is still missing for setup. On your phone, choose the section from the list at the top.', 'kontor-shop'),
+                    __('On the left, the sections are in four groups: Sell, Communication, Shop appearance and Technical. “open” marks sections where something is still missing for setup. On your phone, choose the section from the list at the top.', 'kontor-shop'),
                     __('Each form has its own save bar at the bottom; it shows when there are unsaved changes. Changes take effect in the shop right away.', 'kontor-shop'),
-                    __('Recommended setup order: Payment & VAT → Shipping & returns → Legal → Email sending → Design.', 'kontor-shop')
+                    __('Recommended setup order: Payment & sales tax → Shipping → Legal → Email sending → Design.', 'kontor-shop')
                 )],
             ],
             'logs' => [
