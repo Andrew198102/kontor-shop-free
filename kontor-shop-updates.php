@@ -5,10 +5,11 @@ declare(strict_types=1);
 /**
  * Automatische Updates der Free-Version aus github.com/Andrew198102/kontor-shop-free.
  *
- * Liegt NUR in der Free-Version, die der Release-Workflow in dieses oeffentliche
- * Repository schreibt (als kontor-shop-updates.php im Plugin-Ordner). Die Kopie fuer
- * wordpress.org bekommt die Datei nicht - dort kommen die Updates von wordpress.org
- * (Regel 8), Pro bekommt sie von Freemius.
+ * Steckt in jedem Paket. Aktiv ist sie nur in der Free-Version im Ordner kontor-shop:
+ * Pro (Ordner kontor-shop-premium) bekommt Updates von Freemius, ein Test-Build
+ * (kontor-shop-test-build.php) und die Entwicklungs-Kopie (mit tests/) werden nie
+ * ueberschrieben. Die Kopie fuer wordpress.org bekommt die Datei beim Hochladen
+ * nicht (Release-Workflow) - dort kommen die Updates von wordpress.org (Regel 8).
  *
  * WordPress fragt etwa alle 12 Stunden nach Updates; dann steht hier die Version aus
  * kontor-shop.php im Repository (6 Stunden gemerkt, "Erneut pruefen" unter
@@ -18,7 +19,11 @@ declare(strict_types=1);
  * und wird beim Entpacken in kontor-shop umbenannt.
  */
 
-if (!defined('ABSPATH') || !defined('KONTOR_SHOP_BASENAME')) {
+if (!defined('ABSPATH') || !defined('KONTOR_SHOP_BASENAME')
+    || dirname(KONTOR_SHOP_BASENAME) !== 'kontor-shop'
+    || is_readable(KONTOR_SHOP_PATH . 'kontor-shop-test-build.php')
+    || is_dir(KONTOR_SHOP_PATH . 'tests')
+    || (function_exists('kontor_shop_fs') && kontor_shop_fs()->is_premium())) {
     return;
 }
 
