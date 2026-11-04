@@ -49,6 +49,7 @@ final class Plugin
             new I18n(),
             new \Kontor\Shop\Admin\UninstallChoice(),
             new \Kontor\Shop\Admin\Upgrade\PricingPage(),
+            new \Kontor\Shop\Admin\Upgrade\ProStatus(),
         ];
 
         foreach (Modules::active($settings) as $module) {

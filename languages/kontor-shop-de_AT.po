@@ -15,7 +15,7 @@ msgid "Kontor Shop is installed twice. Version %1$s from the folder “%2$s” i
 msgstr "Kontor Shop ist doppelt installiert. Es läuft Version %1$s aus dem Ordner „%2$s“; Version %3$s aus dem Ordner „%4$s“ bleibt ausgeschaltet. Bitte unter Plugins die Kopie deaktivieren und löschen, die du nicht mehr brauchst."
 
 #. translators: %s: required PHP version
-#: kontor-shop.php:80
+#: kontor-shop.php:86
 msgid "Kontor Shop requires at least PHP %s."
 msgstr "Kontor Shop benoetigt mindestens PHP %s."
 
@@ -1777,7 +1777,7 @@ msgstr "Fortschritt"
 
 #: src/Admin/OrdersList.php:267
 #: src/Admin/Settings/PaymentSection.php:60
-#: src/Admin/Upgrade/PricingPage.php:257
+#: src/Admin/Upgrade/PricingPage.php:274
 msgid "Payment"
 msgstr "Zahlung"
 
@@ -5732,460 +5732,633 @@ msgstr "Deaktivieren"
 msgid "The selection could not be saved. Please set it under Kontor Shop → Settings → System."
 msgstr "Die Auswahl konnte nicht gespeichert werden. Bitte unter Kontor Shop → Einstellungen → System festlegen."
 
-#: src/Admin/Upgrade/PricingPage.php:80
+#: src/Admin/Upgrade/PricingPage.php:95
 msgid "Plans & pricing"
 msgstr "Pläne & Preise"
 
-#: src/Admin/Upgrade/PricingPage.php:101
+#: src/Admin/Upgrade/PricingPage.php:118
 msgid "Welcome to Kontor Shop – your shop is ready."
 msgstr "Willkommen bei Kontor Shop – dein Shop ist bereit."
 
-#: src/Admin/Upgrade/PricingPage.php:102
+#: src/Admin/Upgrade/PricingPage.php:119
 msgid "The Shop, Cart and Checkout pages are created. Two steps and you can sell:"
 msgstr "Die Seiten Shop, Warenkorb und Kasse sind angelegt. Noch zwei Schritte, dann kannst du verkaufen:"
 
-#: src/Admin/Upgrade/PricingPage.php:104
+#: src/Admin/Upgrade/PricingPage.php:121
 msgid "1. Enter bank details"
 msgstr "1. Bankdaten eintragen"
 
-#: src/Admin/Upgrade/PricingPage.php:105
+#: src/Admin/Upgrade/PricingPage.php:122
 msgid "2. Add first product"
 msgstr "2. Ersten Artikel anlegen"
 
-#: src/Admin/Upgrade/PricingPage.php:113
+#: src/Admin/Upgrade/PricingPage.php:130
 #: src/Modules/Agents/OfferPage.php:85
 msgid "Kontor Shop Pro"
 msgstr "Kontor Shop Pro"
 
-#: src/Admin/Upgrade/PricingPage.php:114
+#: src/Admin/Upgrade/PricingPage.php:131
 msgid "Get the most out of your club shop."
 msgstr "Hol alles aus deinem Vereinsshop heraus."
 
-#: src/Admin/Upgrade/PricingPage.php:115
+#: src/Admin/Upgrade/PricingPage.php:132
 msgid "Pro takes the routine off your hands – reminders, packing, stock – and brings more sales with member prices, discount campaigns and back-in-stock notifications. And you can run the whole shop by chat with ChatGPT, Claude or Gemini."
 msgstr "Pro nimmt dir die Routine ab – Erinnerungen, Packen, Lager – und bringt mehr Umsatz mit Mitgliederpreisen, Rabattaktionen und Wieder-da-Hinweisen. Und den ganzen Shop führst du per Chat mit ChatGPT, Claude oder Gemini."
 
-#: src/Admin/Upgrade/PricingPage.php:116
+#: src/Admin/Upgrade/PricingPage.php:133
 msgid "See plans"
 msgstr "Pläne ansehen"
 
-#: src/Admin/Upgrade/PricingPage.php:117
-#: src/Admin/Upgrade/PricingPage.php:177
+#: src/Admin/Upgrade/PricingPage.php:134
+#: src/Admin/Upgrade/PricingPage.php:194
 msgid "Why Pro?"
 msgstr "Warum Pro?"
 
 #. translators: %s: price, e.g. "129 €"
-#: src/Admin/Upgrade/PricingPage.php:123
+#: src/Admin/Upgrade/PricingPage.php:140
 msgid "from %s a year plus VAT"
 msgstr "ab %s im Jahr zzgl. MwSt."
 
 #. translators: %d: number of days
-#: src/Admin/Upgrade/PricingPage.php:128
-#: src/Admin/Upgrade/PricingPage.php:307
+#: src/Admin/Upgrade/PricingPage.php:145
+#: src/Admin/Upgrade/PricingPage.php:324
 msgid "%d-day money-back guarantee"
 msgid_plural "%d-day money-back guarantee"
 msgstr[0] "%d Tag Geld-zurück-Garantie"
 msgstr[1] "%d Tage Geld-zurück-Garantie"
 
-#: src/Admin/Upgrade/PricingPage.php:131
+#: src/Admin/Upgrade/PricingPage.php:148
 msgid "your data stays"
 msgstr "deine Daten bleiben"
 
-#: src/Admin/Upgrade/PricingPage.php:135
+#: src/Admin/Upgrade/PricingPage.php:152
 msgid "Product “Club scarf” created by chat"
 msgstr "Artikel „Vereinsschal“ per Chat angelegt"
 
-#: src/Admin/Upgrade/PricingPage.php:135
+#: src/Admin/Upgrade/PricingPage.php:152
 msgid "via ChatGPT · just now"
 msgstr "über ChatGPT · gerade eben"
 
-#: src/Admin/Upgrade/PricingPage.php:136
+#: src/Admin/Upgrade/PricingPage.php:153
 msgid "Member price applied: −10 %"
 msgstr "Mitgliederpreis abgezogen: −10 %"
 
-#: src/Admin/Upgrade/PricingPage.php:136
+#: src/Admin/Upgrade/PricingPage.php:153
 msgid "Order 1042"
 msgstr "Bestellung 1042"
 
-#: src/Admin/Upgrade/PricingPage.php:137
+#: src/Admin/Upgrade/PricingPage.php:154
 msgid "Back in stock – 3 customers notified"
 msgstr "Wieder da – 3 Kunden benachrichtigt"
 
-#: src/Admin/Upgrade/PricingPage.php:137
+#: src/Admin/Upgrade/PricingPage.php:154
 msgid "Hoodie navy, size L"
 msgstr "Hoodie navy, Größe L"
 
-#: src/Admin/Upgrade/PricingPage.php:138
+#: src/Admin/Upgrade/PricingPage.php:155
 msgid "Payment reminder sent automatically"
 msgstr "Zahlungserinnerung automatisch verschickt"
 
-#: src/Admin/Upgrade/PricingPage.php:138
+#: src/Admin/Upgrade/PricingPage.php:155
 msgid "Order 1038"
 msgstr "Bestellung 1038"
 
-#: src/Admin/Upgrade/PricingPage.php:155
+#: src/Admin/Upgrade/PricingPage.php:172
 msgid "Saves time"
 msgstr "Spart Zeit"
 
-#: src/Admin/Upgrade/PricingPage.php:155
+#: src/Admin/Upgrade/PricingPage.php:172
 msgid "Less routine, more club."
 msgstr "Weniger Routine, mehr Verein."
 
-#: src/Admin/Upgrade/PricingPage.php:156
+#: src/Admin/Upgrade/PricingPage.php:173
 msgid "Run the shop by chat – ChatGPT, Claude, Gemini"
 msgstr "Shop per Chat führen – ChatGPT, Claude, Gemini"
 
-#: src/Admin/Upgrade/PricingPage.php:157
+#: src/Admin/Upgrade/PricingPage.php:174
 msgid "Pack on the phone, straight from the order mail"
 msgstr "Packen am Handy, direkt aus der Bestell-Mail"
 
-#: src/Admin/Upgrade/PricingPage.php:158
+#: src/Admin/Upgrade/PricingPage.php:175
 msgid "Payment reminders and cancelling unpaid orders – automatic"
 msgstr "Zahlungserinnerungen und Storno unbezahlter Bestellungen – automatisch"
 
-#: src/Admin/Upgrade/PricingPage.php:160
+#: src/Admin/Upgrade/PricingPage.php:177
 msgid "More sales"
 msgstr "Mehr Umsatz"
 
-#: src/Admin/Upgrade/PricingPage.php:160
+#: src/Admin/Upgrade/PricingPage.php:177
 msgid "Happier members, fuller cart."
 msgstr "Zufriedene Mitglieder, vollere Warenkörbe."
 
-#: src/Admin/Upgrade/PricingPage.php:161
+#: src/Admin/Upgrade/PricingPage.php:178
 msgid "Member prices – members pay less automatically"
 msgstr "Mitgliederpreise – Mitglieder zahlen automatisch weniger"
 
-#: src/Admin/Upgrade/PricingPage.php:162
-#: src/Admin/Upgrade/PricingPage.php:204
+#: src/Admin/Upgrade/PricingPage.php:179
+#: src/Admin/Upgrade/PricingPage.php:221
 msgid "Discount codes and campaigns"
 msgstr "Rabattcodes und Aktionen"
 
-#: src/Admin/Upgrade/PricingPage.php:163
+#: src/Admin/Upgrade/PricingPage.php:180
 msgid "Back-in-stock notifications bring customers back"
 msgstr "Wieder-da-Hinweise holen Kunden zurück"
 
-#: src/Admin/Upgrade/PricingPage.php:165
+#: src/Admin/Upgrade/PricingPage.php:182
 msgid "Grows with you"
 msgstr "Wächst mit"
 
-#: src/Admin/Upgrade/PricingPage.php:165
+#: src/Admin/Upgrade/PricingPage.php:182
 msgid "Ready for the whole association."
 msgstr "Bereit für den ganzen Verband."
 
-#: src/Admin/Upgrade/PricingPage.php:166
+#: src/Admin/Upgrade/PricingPage.php:183
 msgid "Several warehouses with their own managers"
 msgstr "Mehrere Lager mit eigenen Verwaltern"
 
-#: src/Admin/Upgrade/PricingPage.php:167
+#: src/Admin/Upgrade/PricingPage.php:184
 msgid "Cashier interface for club events"
 msgstr "Kassen-Schnittstelle für Vereinsfeste"
 
-#: src/Admin/Upgrade/PricingPage.php:168
+#: src/Admin/Upgrade/PricingPage.php:185
 msgid "Key figures, alarm mail and CSV export"
 msgstr "Kennzahlen, Alarm-Mail und CSV-Export"
 
-#: src/Admin/Upgrade/PricingPage.php:170
+#: src/Admin/Upgrade/PricingPage.php:187
 msgid "Professional"
 msgstr "Professionell"
 
-#: src/Admin/Upgrade/PricingPage.php:170
+#: src/Admin/Upgrade/PricingPage.php:187
 msgid "Safe – and entirely in your name."
 msgstr "Sicher – und ganz in deinem Namen."
 
-#: src/Admin/Upgrade/PricingPage.php:171
-#: src/Admin/Upgrade/PricingPage.php:209
+#: src/Admin/Upgrade/PricingPage.php:188
+#: src/Admin/Upgrade/PricingPage.php:226
 msgid "Tamper-proof change log"
 msgstr "Manipulationssicheres Änderungsprotokoll"
 
-#: src/Admin/Upgrade/PricingPage.php:172
+#: src/Admin/Upgrade/PricingPage.php:189
 msgid "Product data for Google, category pages"
 msgstr "Produktdaten für Google, Kategorieseiten"
 
-#: src/Admin/Upgrade/PricingPage.php:173
+#: src/Admin/Upgrade/PricingPage.php:190
 msgid "No “powered by” – plus updates and e-mail support"
 msgstr "Kein „powered by“ – dazu Updates und E-Mail-Support"
 
-#: src/Admin/Upgrade/PricingPage.php:178
+#: src/Admin/Upgrade/PricingPage.php:195
 msgid "Four reasons clubs switch – and never go back."
 msgstr "Vier Gründe, warum Vereine wechseln – und bleiben."
 
-#: src/Admin/Upgrade/PricingPage.php:197
+#: src/Admin/Upgrade/PricingPage.php:214
 msgid "Club shop with variants, stock, bank transfer and pickup"
 msgstr "Vereinsshop mit Varianten, Lager, Vorkasse und Abholung"
 
-#: src/Admin/Upgrade/PricingPage.php:198
+#: src/Admin/Upgrade/PricingPage.php:215
 #: src/Modules/Agents/OfferPage.php:165
 msgid "Customers’ AI assistants find your products"
 msgstr "KI-Assistenten der Kunden finden deine Artikel"
 
-#: src/Admin/Upgrade/PricingPage.php:201
+#: src/Admin/Upgrade/PricingPage.php:218
 #: src/Modules/Agents/OfferPage.php:182
 msgid "Run the shop by chat"
 msgstr "Shop per Chat führen"
 
-#: src/Admin/Upgrade/PricingPage.php:202
+#: src/Admin/Upgrade/PricingPage.php:219
 msgid "Member prices"
 msgstr "Mitgliederpreise"
 
-#: src/Admin/Upgrade/PricingPage.php:203
+#: src/Admin/Upgrade/PricingPage.php:220
 msgid "Several warehouses with warehouse managers"
 msgstr "Mehrere Lager mit Lagerverwaltern"
 
-#: src/Admin/Upgrade/PricingPage.php:205
+#: src/Admin/Upgrade/PricingPage.php:222
 msgid "Packing on the phone, partial shipments"
 msgstr "Packen am Handy, Teillieferungen"
 
-#: src/Admin/Upgrade/PricingPage.php:206
+#: src/Admin/Upgrade/PricingPage.php:223
 msgid "Back-in-stock notifications"
 msgstr "Wieder-da-Hinweise"
 
-#: src/Admin/Upgrade/PricingPage.php:207
+#: src/Admin/Upgrade/PricingPage.php:224
 msgid "Automatic payment reminders"
 msgstr "Automatische Zahlungserinnerungen"
 
-#: src/Admin/Upgrade/PricingPage.php:208
+#: src/Admin/Upgrade/PricingPage.php:225
 msgid "Key figures, alarm mail, CSV export"
 msgstr "Kennzahlen, Alarm-Mail, CSV-Export"
 
-#: src/Admin/Upgrade/PricingPage.php:210
+#: src/Admin/Upgrade/PricingPage.php:227
 msgid "Cashier interface"
 msgstr "Kassen-Schnittstelle"
 
-#: src/Admin/Upgrade/PricingPage.php:211
+#: src/Admin/Upgrade/PricingPage.php:228
 msgid "Search-engine extras"
 msgstr "Suchmaschinen-Extras"
 
-#: src/Admin/Upgrade/PricingPage.php:212
+#: src/Admin/Upgrade/PricingPage.php:229
 msgid "Without “powered by”"
 msgstr "Ohne „powered by“"
 
-#: src/Admin/Upgrade/PricingPage.php:213
+#: src/Admin/Upgrade/PricingPage.php:230
 msgid "E-mail support"
 msgstr "E-Mail-Support"
 
-#: src/Admin/Upgrade/PricingPage.php:217
+#: src/Admin/Upgrade/PricingPage.php:234
 #: src/Modules/Agents/OfferPage.php:160
 msgid "Free and Pro compared"
 msgstr "Free und Pro im Vergleich"
 
-#: src/Admin/Upgrade/PricingPage.php:219
+#: src/Admin/Upgrade/PricingPage.php:236
 #: src/Modules/Agents/OfferPage.php:162
 msgid "Free"
 msgstr "Free"
 
-#: src/Admin/Upgrade/PricingPage.php:220
+#: src/Admin/Upgrade/PricingPage.php:237
 msgid "Everything to get started"
 msgstr "Alles für den Start"
 
-#: src/Admin/Upgrade/PricingPage.php:226
+#: src/Admin/Upgrade/PricingPage.php:243
 #: src/Modules/Agents/OfferPage.php:169
 msgid "Pro"
 msgstr "Pro"
 
-#: src/Admin/Upgrade/PricingPage.php:227
+#: src/Admin/Upgrade/PricingPage.php:244
 msgid "Everything in Free – plus:"
 msgstr "Alles aus Free – dazu:"
 
-#: src/Admin/Upgrade/PricingPage.php:241
+#: src/Admin/Upgrade/PricingPage.php:258
 msgid "Choose your plan"
 msgstr "Wähle deinen Plan"
 
-#: src/Admin/Upgrade/PricingPage.php:242
+#: src/Admin/Upgrade/PricingPage.php:259
 msgid "Everything in Pro is included in every plan – you only choose how many websites."
 msgstr "In jedem Plan steckt alles von Pro – du wählst nur, für wie viele Websites."
 
-#: src/Admin/Upgrade/PricingPage.php:245
+#: src/Admin/Upgrade/PricingPage.php:262
 msgid "The current plans and prices are on our website."
 msgstr "Die aktuellen Pläne und Preise stehen auf unserer Website."
 
-#: src/Admin/Upgrade/PricingPage.php:246
+#: src/Admin/Upgrade/PricingPage.php:263
 #: src/Modules/Agents/OfferPage.php:188
 msgid "See plans & prices"
 msgstr "Pläne & Preise ansehen"
 
-#: src/Admin/Upgrade/PricingPage.php:258
+#: src/Admin/Upgrade/PricingPage.php:275
 msgid "Yearly"
 msgstr "Jährlich"
 
-#: src/Admin/Upgrade/PricingPage.php:259
+#: src/Admin/Upgrade/PricingPage.php:276
 msgctxt "payment"
 msgid "Once"
 msgstr "Einmalig"
 
 #. translators: %d: number of years
-#: src/Admin/Upgrade/PricingPage.php:262
+#: src/Admin/Upgrade/PricingPage.php:279
 msgid "price of %d year, for life"
 msgid_plural "price of %d years, for life"
 msgstr[0] "Preis von %d Jahr, für immer"
 msgstr[1] "Preis von %d Jahren, für immer"
 
-#: src/Admin/Upgrade/PricingPage.php:276
+#: src/Admin/Upgrade/PricingPage.php:293
 #: src/Modules/Agents/OfferPage.php:169
 msgid "Recommended"
 msgstr "Empfohlen"
 
 #. translators: %d: percent
-#: src/Admin/Upgrade/PricingPage.php:279
+#: src/Admin/Upgrade/PricingPage.php:296
 msgid "Save %d %% per website"
 msgstr "%d %% günstiger je Website"
 
 #. translators: %d: number of websites
-#: src/Admin/Upgrade/PricingPage.php:283
+#: src/Admin/Upgrade/PricingPage.php:300
+#: src/Admin/Upgrade/ProStatus.php:243
 msgid "%d website"
 msgid_plural "%d websites"
 msgstr[0] "%d Website"
 msgstr[1] "%d Websites"
 
-#: src/Admin/Upgrade/PricingPage.php:284
+#: src/Admin/Upgrade/PricingPage.php:301
 msgid "For one club."
 msgstr "Für einen Verein."
 
-#: src/Admin/Upgrade/PricingPage.php:284
+#: src/Admin/Upgrade/PricingPage.php:301
 msgid "For associations with regional groups or several clubs."
 msgstr "Für Verbände mit Landesgruppen oder mehrere Vereine."
 
 #. translators: %s: price, e.g. "129 €"
-#: src/Admin/Upgrade/PricingPage.php:286
+#: src/Admin/Upgrade/PricingPage.php:303
 #: src/Modules/Agents/OfferPage.php:173
 msgid "/ year"
 msgstr "/ Jahr"
 
 #. translators: %s: monthly amount
-#: src/Admin/Upgrade/PricingPage.php:288
+#: src/Admin/Upgrade/PricingPage.php:305
 msgid "plus VAT · that’s %s a month · cancel any time"
 msgstr "zzgl. MwSt. · entspricht %s im Monat · jederzeit kündbar"
 
-#: src/Admin/Upgrade/PricingPage.php:291
+#: src/Admin/Upgrade/PricingPage.php:308
 msgid "once"
 msgstr "einmalig"
 
-#: src/Admin/Upgrade/PricingPage.php:292
+#: src/Admin/Upgrade/PricingPage.php:309
 msgid "plus VAT · pay once – updates and support for life"
 msgstr "zzgl. MwSt. · einmal zahlen – Updates und Support für immer"
 
-#: src/Admin/Upgrade/PricingPage.php:296
+#: src/Admin/Upgrade/PricingPage.php:313
 msgid "Get Pro now"
 msgstr "Jetzt Pro holen"
 
-#: src/Admin/Upgrade/PricingPage.php:297
+#: src/Admin/Upgrade/PricingPage.php:314
 msgid "All Pro features included"
 msgstr "Alle Pro-Funktionen inklusive"
 
-#: src/Admin/Upgrade/PricingPage.php:301
+#: src/Admin/Upgrade/PricingPage.php:318
 msgid "Secure payment via Freemius"
 msgstr "Sicher bezahlen über Freemius"
 
-#: src/Admin/Upgrade/PricingPage.php:302
+#: src/Admin/Upgrade/PricingPage.php:319
 msgid "Credit card and PayPal"
 msgstr "Kreditkarte und PayPal"
 
-#: src/Admin/Upgrade/PricingPage.php:303
+#: src/Admin/Upgrade/PricingPage.php:320
 msgid "Invoice with VAT for your club"
 msgstr "Rechnung mit MwSt. für den Verein"
 
-#: src/Admin/Upgrade/PricingPage.php:316
+#: src/Admin/Upgrade/PricingPage.php:333
 msgid "Choose a plan"
 msgstr "Plan wählen"
 
-#: src/Admin/Upgrade/PricingPage.php:316
+#: src/Admin/Upgrade/PricingPage.php:333
 msgid "One or more websites, yearly or once."
 msgstr "Eine oder mehrere Websites, jährlich oder einmalig."
 
-#: src/Admin/Upgrade/PricingPage.php:317
+#: src/Admin/Upgrade/PricingPage.php:334
 msgid "Pay securely"
 msgstr "Sicher bezahlen"
 
-#: src/Admin/Upgrade/PricingPage.php:317
+#: src/Admin/Upgrade/PricingPage.php:334
 msgid "Checkout by Freemius, right here in your dashboard – by credit card or PayPal."
 msgstr "Bezahlung über Freemius direkt hier im Dashboard – per Kreditkarte oder PayPal."
 
-#: src/Admin/Upgrade/PricingPage.php:318
+#: src/Admin/Upgrade/PricingPage.php:335
 msgid "Pro installs itself"
 msgstr "Pro installiert sich selbst"
 
-#: src/Admin/Upgrade/PricingPage.php:318
+#: src/Admin/Upgrade/PricingPage.php:335
 msgid "Licence activated, Pro installed – products, orders and settings stay as they are."
 msgstr "Lizenz aktiviert, Pro installiert – Artikel, Bestellungen und Einstellungen bleiben, wie sie sind."
 
-#: src/Admin/Upgrade/PricingPage.php:321
+#: src/Admin/Upgrade/PricingPage.php:338
 msgid "How it works"
 msgstr "So geht’s"
 
-#: src/Admin/Upgrade/PricingPage.php:337
+#: src/Admin/Upgrade/PricingPage.php:362
 msgid "Already bought Pro?"
 msgstr "Pro schon gekauft?"
 
-#: src/Admin/Upgrade/PricingPage.php:338
+#: src/Admin/Upgrade/PricingPage.php:365
 msgid "Download Pro in your Freemius account, upload it under Plugins → Add New and enter your licence key. Your data stays."
 msgstr "Lade Pro in deinem Freemius-Konto herunter, lade es unter Plugins → Installieren hoch und gib deinen Lizenzschlüssel ein. Deine Daten bleiben."
 
-#: src/Admin/Upgrade/PricingPage.php:339
+#: src/Admin/Upgrade/PricingPage.php:366
 msgid "Open my account"
 msgstr "Mein Konto öffnen"
 
-#: src/Admin/Upgrade/PricingPage.php:345
+#: src/Admin/Upgrade/PricingPage.php:371
+msgid "Enter your licence key – Pro installs itself, your data stays."
+msgstr "Gib deinen Lizenzschlüssel ein – Pro installiert sich selbst, deine Daten bleiben."
+
+#. translators: %s: error message from the licence server
+#: src/Admin/Upgrade/PricingPage.php:378
+msgid "The licence could not be activated: %s"
+msgstr "Die Lizenz konnte nicht aktiviert werden: %s"
+
+#. translators: %s: error message from the licence server
+#: src/Admin/Upgrade/PricingPage.php:380
+msgid "Please enter your licence key."
+msgstr "Bitte gib deinen Lizenzschlüssel ein."
+
+#: src/Admin/Upgrade/PricingPage.php:386
+msgid "Licence key"
+msgstr "Lizenzschlüssel"
+
+#: src/Admin/Upgrade/PricingPage.php:388
+msgid "Activate licence"
+msgstr "Lizenz aktivieren"
+
+#: src/Admin/Upgrade/PricingPage.php:391
+msgid "Key not at hand? It is in your Freemius account and in the purchase e-mail."
+msgstr "Schlüssel nicht zur Hand? Er steht in deinem Freemius-Konto und in der Kauf-E-Mail."
+
+#: src/Admin/Upgrade/PricingPage.php:415
 msgid "The licence renews automatically; you can cancel any time in your Freemius account."
 msgstr "Die Lizenz verlängert sich automatisch; kündigen kannst du jederzeit in deinem Freemius-Konto."
 
-#: src/Admin/Upgrade/PricingPage.php:348
+#: src/Admin/Upgrade/PricingPage.php:418
 msgid "If it ends, the Pro features switch off – your shop keeps running as Free and all data stays."
 msgstr "Endet sie, schalten sich die Pro-Funktionen ab – dein Shop läuft als Free weiter, alle Daten bleiben."
 
-#: src/Admin/Upgrade/PricingPage.php:350
+#: src/Admin/Upgrade/PricingPage.php:420
 msgid "If it ends, Pro keeps working – only updates and support stop."
 msgstr "Endet sie, läuft Pro weiter – nur Updates und Support enden."
 
-#: src/Admin/Upgrade/PricingPage.php:354
+#: src/Admin/Upgrade/PricingPage.php:424
 msgid "Will my data stay when I switch to Pro?"
 msgstr "Bleiben meine Daten, wenn ich auf Pro wechsle?"
 
-#: src/Admin/Upgrade/PricingPage.php:354
+#: src/Admin/Upgrade/PricingPage.php:424
 msgid "Yes. Free and Pro use the same database – products, orders, customers and settings stay as they are. Going back to Free loses nothing either."
 msgstr "Ja. Free und Pro nutzen dieselbe Datenbank – Artikel, Bestellungen, Kunden und Einstellungen bleiben, wie sie sind. Auch zurück zu Free geht nichts verloren."
 
-#: src/Admin/Upgrade/PricingPage.php:355
+#: src/Admin/Upgrade/PricingPage.php:425
 msgid "What happens after a year?"
 msgstr "Was passiert nach einem Jahr?"
 
-#: src/Admin/Upgrade/PricingPage.php:361
+#: src/Admin/Upgrade/PricingPage.php:431
 msgid "Yearly or once – what is the difference?"
 msgstr "Jährlich oder einmalig – was ist der Unterschied?"
 
 #. translators: 1: yearly price, 2: one-time price
-#: src/Admin/Upgrade/PricingPage.php:364
+#: src/Admin/Upgrade/PricingPage.php:434
 msgid "Yearly: %1$s a year including updates and support. Once: %2$s – pay once, updates and support for life. Prices plus VAT; the checkout shows the amount for your country."
 msgstr "Jährlich: %1$s im Jahr inklusive Updates und Support. Einmalig: %2$s – einmal zahlen, Updates und Support für immer. Preise zzgl. MwSt.; die Kasse zeigt den Betrag für dein Land."
 
-#: src/Admin/Upgrade/PricingPage.php:371
+#: src/Admin/Upgrade/PricingPage.php:441
 msgid "Do I get an invoice for the club?"
 msgstr "Bekomme ich eine Rechnung für den Verein?"
 
-#: src/Admin/Upgrade/PricingPage.php:371
+#: src/Admin/Upgrade/PricingPage.php:441
 msgid "Yes, with VAT shown. Freemius is the seller and issues the invoice – you enter the club name and VAT number at checkout."
 msgstr "Ja, mit ausgewiesener MwSt. Freemius ist der Verkäufer und stellt die Rechnung aus – Vereinsname und UID trägst du beim Bezahlen ein."
 
-#: src/Admin/Upgrade/PricingPage.php:372
+#: src/Admin/Upgrade/PricingPage.php:442
 msgid "Can I add more websites later?"
 msgstr "Kann ich später weitere Websites dazunehmen?"
 
-#: src/Admin/Upgrade/PricingPage.php:372
+#: src/Admin/Upgrade/PricingPage.php:442
 msgid "Yes, any time from your Freemius account."
 msgstr "Ja, jederzeit über dein Freemius-Konto."
 
-#: src/Admin/Upgrade/PricingPage.php:376
+#: src/Admin/Upgrade/PricingPage.php:446
 msgid "Can I get my money back?"
 msgstr "Bekomme ich mein Geld zurück?"
 
 #. translators: %d: number of days
-#: src/Admin/Upgrade/PricingPage.php:378
+#: src/Admin/Upgrade/PricingPage.php:448
 msgid "Yes – within %d day, no questions asked."
 msgid_plural "Yes – within %d days, no questions asked."
 msgstr[0] "Ja – innerhalb von %d Tag, ohne Angabe von Gründen."
 msgstr[1] "Ja – innerhalb von %d Tagen, ohne Angabe von Gründen."
 
-#: src/Admin/Upgrade/PricingPage.php:382
+#: src/Admin/Upgrade/PricingPage.php:452
 msgid "Questions"
 msgstr "Fragen"
+
+#: src/Admin/Upgrade/ProStatus.php:121
+msgid "The installation did not work"
+msgstr "Die Installation hat nicht geklappt"
+
+#: src/Admin/Upgrade/ProStatus.php:122
+#: src/freemius.php:243
+msgid "Unknown error."
+msgstr "Unbekannter Fehler."
+
+#: src/Admin/Upgrade/ProStatus.php:123
+msgid "Pro is already being installed in another tab – one moment …"
+msgstr "Pro wird gerade in einem anderen Tab installiert – einen Moment …"
+
+#: src/Admin/Upgrade/ProStatus.php:150
+msgid "Licence active"
+msgstr "Lizenz aktiv"
+
+#: src/Admin/Upgrade/ProStatus.php:151
+msgid "Pro is being installed …"
+msgstr "Pro wird installiert …"
+
+#: src/Admin/Upgrade/ProStatus.php:152
+msgid "Pro replaces the free version in the background – products, orders and settings stay as they are. This takes a few seconds."
+msgstr "Pro ersetzt die Free-Version im Hintergrund – Artikel, Bestellungen und Einstellungen bleiben, wie sie sind. Das dauert ein paar Sekunden."
+
+#: src/Admin/Upgrade/ProStatus.php:153
+msgid "Downloading and installing Pro …"
+msgstr "Pro wird heruntergeladen und installiert …"
+
+#: src/Admin/Upgrade/ProStatus.php:154
+msgid "Try again"
+msgstr "Nochmal versuchen"
+
+#: src/Admin/Upgrade/ProStatus.php:155
+msgid "Install via Freemius instead"
+msgstr "Stattdessen über Freemius installieren"
+
+#. translators: %s: e-mail address
+#: src/Admin/Upgrade/ProStatus.php:166
+msgid "Open your mailbox %s."
+msgstr "Öffne dein Postfach %s."
+
+#. translators: %s: e-mail address
+#: src/Admin/Upgrade/ProStatus.php:167
+msgid "Open the e-mail from Freemius about “Kontor Shop” – if it is not there, look in the spam folder."
+msgstr "Öffne die E-Mail von Freemius zu „Kontor Shop“ – ist sie nicht da, schau im Spam-Ordner nach."
+
+#. translators: %s: e-mail address
+#: src/Admin/Upgrade/ProStatus.php:168
+msgid "Click the confirmation button in it. Pro is then installed here – this page updates itself."
+msgstr "Klick darin auf den Bestätigungsknopf. Danach wird hier Pro installiert – diese Seite aktualisiert sich von selbst."
+
+#: src/Admin/Upgrade/ProStatus.php:172
+msgid "Purchase complete"
+msgstr "Kauf abgeschlossen"
+
+#: src/Admin/Upgrade/ProStatus.php:173
+msgid "One more step: confirm your e-mail"
+msgstr "Noch ein Schritt: Bestätige deine E-Mail"
+
+#. translators: %s: webmail name, e.g. Gmail
+#: src/Admin/Upgrade/ProStatus.php:184
+msgid "Open %s"
+msgstr "%s öffnen"
+
+#: src/Admin/Upgrade/ProStatus.php:187
+msgid "Waiting for your confirmation …"
+msgstr "Wir warten auf deine Bestätigung …"
+
+#: src/Admin/Upgrade/ProStatus.php:188
+msgid "No e-mail? Enter your licence key instead"
+msgstr "Keine E-Mail? Stattdessen den Lizenzschlüssel eingeben"
+
+#: src/Admin/Upgrade/ProStatus.php:201
+msgid "Connect the AI assistant"
+msgstr "KI-Assistent verbinden"
+
+#: src/Admin/Upgrade/ProStatus.php:201
+msgid "Run the shop by chat – with ChatGPT, Claude or Gemini."
+msgstr "Den Shop per Chat führen – mit ChatGPT, Claude oder Gemini."
+
+#: src/Admin/Upgrade/ProStatus.php:202
+msgid "Set up member prices"
+msgstr "Mitgliederpreise einrichten"
+
+#: src/Admin/Upgrade/ProStatus.php:202
+msgid "Members pay less automatically."
+msgstr "Mitglieder zahlen automatisch weniger."
+
+#: src/Admin/Upgrade/ProStatus.php:203
+msgid "Create a discount code"
+msgstr "Rabattcode anlegen"
+
+#: src/Admin/Upgrade/ProStatus.php:203
+msgid "For the next campaign or the club party."
+msgstr "Für die nächste Aktion oder das Vereinsfest."
+
+#: src/Admin/Upgrade/ProStatus.php:204
+msgid "More warehouses and managers"
+msgstr "Weitere Lager und Verwalter"
+
+#: src/Admin/Upgrade/ProStatus.php:204
+msgid "For example one per regional group."
+msgstr "Zum Beispiel eines je Landesgruppe."
+
+#: src/Admin/Upgrade/ProStatus.php:223
+msgid "Kontor Shop Pro is active"
+msgstr "Kontor Shop Pro ist aktiv"
+
+#: src/Admin/Upgrade/ProStatus.php:224
+msgid "Welcome to Pro – great choice!"
+msgstr "Willkommen bei Pro – gute Wahl!"
+
+#: src/Admin/Upgrade/ProStatus.php:225
+msgid "From now on your shop works for you: less routine, more sales, everything in your club’s name. These first steps pay off right away:"
+msgstr "Ab jetzt arbeitet dein Shop für dich: weniger Routine, mehr Umsatz, alles im Namen deines Vereins. Diese ersten Schritte lohnen sich sofort:"
+
+#. translators: %s: plan name, e.g. Pro
+#: src/Admin/Upgrade/ProStatus.php:237
+msgid "Your licence: %s"
+msgstr "Deine Lizenz: %s"
+
+#. translators: %s: date
+#: src/Admin/Upgrade/ProStatus.php:248
+#: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:340
+msgid "valid until %s"
+msgstr "gültig bis %s"
+
+#. translators: %s: date
+#: src/Admin/Upgrade/ProStatus.php:248
+msgctxt "licence expiry date"
+msgid "F j, Y"
+msgstr "j. F Y"
+
+#: src/Admin/Upgrade/ProStatus.php:249
+msgid "lifetime licence"
+msgstr "Lizenz auf Lebenszeit"
+
+#: src/Admin/Upgrade/ProStatus.php:254
+msgid "Licence & invoices"
+msgstr "Lizenz & Rechnungen"
+
+#: src/Admin/Upgrade/ProStatus.php:258
+msgid "Got it, let’s go"
+msgstr "Alles klar, los geht’s"
 
 #: src/Admin/WarehousesPage.php:135
 #: src/Admin/WarehousesPage.php:201
@@ -10246,11 +10419,6 @@ msgstr "✓ Rabattcode eingelöst"
 msgid "no end date"
 msgstr "ohne Enddatum"
 
-#. translators: %s: date
-#: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:340
-msgid "valid until %s"
-msgstr "gültig bis %s"
-
 #. translators: %s: amount
 #: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:343
 msgid "once per customer"
@@ -12359,7 +12527,7 @@ msgstr "Sobald eine Vorkasse-Bestellung bezahlt ist: je Lager eine Mail mit dess
 msgid "Every warehouse can have a warehouse manager: they book that warehouse’s stock, ship its orders and get its “Shipping order to warehouse” emails. The permission is granted and revoked automatically."
 msgstr "Jedes Lager kann einen Lagerverwalter haben: Er bucht den Bestand des Lagers, versendet dessen Bestellungen und bekommt dessen Mails „Versandauftrag ans Lager“. Die Berechtigung wird automatisch vergeben und wieder entzogen."
 
-#: src/freemius.php:158
+#: src/freemius.php:305
 msgid "Kontor Shop test build: Pro runs without a licence. Only for your own test sites – never install this ZIP on a customer site."
 msgstr "Kontor Shop Test-Build: Pro läuft ohne Lizenz. Nur für eigene Testseiten – dieses ZIP nie auf einer Kundenseite installieren."
 

@@ -23,7 +23,7 @@ final class ProOffer
     private const SYMBOLS = ['eur' => '€', 'usd' => '$', 'gbp' => '£', 'chf' => 'CHF'];
 
     /**
-     * @return array{url: string, annual: string, lifetime: string, packages: array<int, array<string, mixed>>, refund_days: int, blocks_after_expiry: ?bool, account_url: string}
+     * @return array{url: string, annual: string, lifetime: string, packages: array<int, array<string, mixed>>, refund_days: int, blocks_after_expiry: ?bool, account_url: string, pending_email: string, install_url: string}
      */
     public static function get(): array
     {
@@ -37,6 +37,31 @@ final class ProOffer
             'refund_days'         => (int) $offer['refund_days'],
             'blocks_after_expiry' => $offer['blocks_after_expiry'] === null ? null : (bool) $offer['blocks_after_expiry'],
             'account_url'         => (string) $offer['account_url'],
+            'pending_email'       => self::status()['pending_email'],
+            'install_url'         => self::status()['install_url'],
+        ];
+    }
+
+    /**
+     * Stand von Kauf/Lizenz (src/freemius.php, kontor_shop/pro_status) - ohne Preisabfrage,
+     * fuer den Hinweis auf allen Kontor-Seiten.
+     *
+     * install_ajax: Felder fuer admin-ajax, mit denen Freemius Pro herunterlaedt,
+     * installiert und aktiviert (leer = nichts zu installieren).
+     *
+     * licence: Plan, Websites, Ablauf, Konto-Link (nur mit aktiver Pro-Version).
+     *
+     * @return array{pending_email: string, install_url: string, install_ajax: array<string, string>, licence: array<string, string>}
+     */
+    public static function status(): array
+    {
+        $status = (array) apply_filters('kontor_shop/pro_status', ['pending_email' => '', 'install_url' => '', 'install_ajax' => [], 'licence' => []]);
+
+        return [
+            'pending_email' => (string) ($status['pending_email'] ?? ''),
+            'install_url'   => (string) ($status['install_url'] ?? ''),
+            'install_ajax'  => array_map('strval', (array) ($status['install_ajax'] ?? [])),
+            'licence'       => array_map('strval', (array) ($status['licence'] ?? [])),
         ];
     }
 

@@ -33,6 +33,14 @@ final class PricingPage implements Registerable
 
     private const WELCOME = 'kontor_shop_welcome';
 
+    private const WELCOME_SHOWN = 'kontor_shop_welcome_shown';
+
+    /** admin-post-Aktion "Lizenz aktivieren" (Handler in src/freemius.php). */
+    public const ACTIVATE = 'kontor_shop_activate_license';
+
+    /** Ruecksprung mit Fehler; der Text liegt fuer 5 Minuten im Transient LICENCE_RESULT_<Benutzer>. */
+    public const LICENCE_RESULT = 'kontor_shop_licence_error';
+
     public function register(): void
     {
         if (!is_admin()) {
@@ -55,6 +63,13 @@ final class PricingPage implements Registerable
             return;
         }
 
+        // Nur einmal: Freemius fuehrt auch nach Kauf und Lizenz-Aktivierung auf first-path -
+        // dann soll die Uebersicht (mit Freemius' Hinweisen) kommen, nicht wieder die Kaufseite.
+        if (get_option(self::WELCOME_SHOWN)) {
+            return;
+        }
+
+        update_option(self::WELCOME_SHOWN, 1, false);
         wp_safe_redirect(self::url([self::WELCOME => 1]));
         exit;
     }
@@ -70,7 +85,7 @@ final class PricingPage implements Registerable
         wp_enqueue_script('kontor-shop-pricing', KONTOR_SHOP_URL . 'assets/admin/pricing.js', [], KONTOR_SHOP_VERSION, true);
     }
 
-    /** @param array{url: string, annual: string, lifetime: string, packages: array<int, array<string, mixed>>, refund_days: int, blocks_after_expiry: ?bool, account_url: string} $offer */
+    /** @param array{url: string, annual: string, lifetime: string, packages: array<int, array<string, mixed>>, refund_days: int, blocks_after_expiry: ?bool, account_url: string, pending_email: string, install_url: string} $offer */
     public static function html(array $offer): string
     {
         ob_start();
@@ -78,6 +93,8 @@ final class PricingPage implements Registerable
         $welcome = isset($_GET[self::WELCOME]) && !Edition::is_pro();
 
         echo '<div class="wrap ks-pp" data-cycle="annual"><h1 class="screen-reader-text">' . esc_html__('Plans & pricing', 'kontor-shop') . '</h1><hr class="wp-header-end" />';
+
+        echo ProStatus::html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- in ProStatus::html() escaped
 
         if ($welcome) {
             self::welcome();
@@ -327,16 +344,69 @@ final class PricingPage implements Registerable
         echo '</ol></section>';
     }
 
-    /** @param array<string, mixed> $offer */
+    /**
+     * Pro schon gekauft: Lizenzschluessel hier eingeben - src/freemius.php
+     * aktiviert ihn (admin-post ACTIVATE) und laesst Freemius Pro installieren.
+     * Ohne diesen Handler bleibt es beim Weg ueber das Freemius-Konto.
+     *
+     * @param array<string, mixed> $offer
+     */
     private static function bought(array $offer): void
     {
-        if ($offer['account_url'] === '') {
+        $can_activate = has_action('admin_post_' . self::ACTIVATE) && current_user_can('install_plugins');
+
+        if ($offer['account_url'] === '' && !$can_activate) {
             return;
         }
 
-        echo '<section class="ks-pp-bought ks-pp-reveal"><div><strong>' . esc_html__('Already bought Pro?', 'kontor-shop') . '</strong>'
-            . '<p>' . esc_html__('Download Pro in your Freemius account, upload it under Plugins → Add New and enter your licence key. Your data stays.', 'kontor-shop') . '</p></div>'
-            . '<a class="ks-pp-btn ks-pp-btn--line" href="' . esc_url($offer['account_url']) . '" target="_blank" rel="noopener">' . esc_html__('Open my account', 'kontor-shop') . '</a></section>';
+        echo '<section class="ks-pp-bought ks-pp-reveal" id="ks-pp-bought"><div class="ks-pp-bought__text"><strong>' . esc_html__('Already bought Pro?', 'kontor-shop') . '</strong>';
+
+        if (!$can_activate) {
+            echo '<p>' . esc_html__('Download Pro in your Freemius account, upload it under Plugins → Add New and enter your licence key. Your data stays.', 'kontor-shop') . '</p></div>'
+                . '<a class="ks-pp-btn ks-pp-btn--line" href="' . esc_url($offer['account_url']) . '" target="_blank" rel="noopener">' . esc_html__('Open my account', 'kontor-shop') . '</a></section>';
+
+            return;
+        }
+
+        echo '<p>' . esc_html__('Enter your licence key – Pro installs itself, your data stays.', 'kontor-shop') . '</p>';
+
+        $error = self::take_license_error();
+
+        if ($error !== null) {
+            echo '<p class="ks-pp-bought__error" role="alert">' . esc_html($error !== '' ? sprintf(
+                /* translators: %s: error message from the licence server */
+                __('The licence could not be activated: %s', 'kontor-shop'),
+                $error
+            ) : __('Please enter your licence key.', 'kontor-shop')) . '</p>';
+        }
+
+        echo '</div><form class="ks-pp-licence" method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+        wp_nonce_field(self::ACTIVATE);
+        echo '<input type="hidden" name="action" value="' . esc_attr(self::ACTIVATE) . '" />'
+            . '<label class="screen-reader-text" for="ks-pp-licence-key">' . esc_html__('Licence key', 'kontor-shop') . '</label>'
+            . '<input type="text" id="ks-pp-licence-key" name="license_key" required autocomplete="off" spellcheck="false" placeholder="sk_…" />'
+            . '<button type="submit" class="ks-pp-btn ks-pp-btn--navy">' . esc_html__('Activate licence', 'kontor-shop') . '</button></form>';
+
+        if ($offer['account_url'] !== '') {
+            echo '<p class="ks-pp-bought__help"><a href="' . esc_url($offer['account_url']) . '" target="_blank" rel="noopener">' . esc_html__('Key not at hand? It is in your Freemius account and in the purchase e-mail.', 'kontor-shop') . '</a></p>';
+        }
+
+        echo '</section>';
+    }
+
+    /** Fehler der letzten Aktivierung (null = keiner, '' = leeres Feld). */
+    private static function take_license_error(): ?string
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nur Anzeige
+        if (!isset($_GET[self::LICENCE_RESULT])) {
+            return null;
+        }
+
+        $key   = self::LICENCE_RESULT . '_' . get_current_user_id();
+        $error = get_transient($key);
+        delete_transient($key);
+
+        return is_string($error) ? wp_strip_all_tags($error) : '';
     }
 
     /** @param array<string, mixed> $offer */
