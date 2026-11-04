@@ -33,6 +33,9 @@ use Kontor\Shop\Support\Color;
  */
 final class CatalogModule implements Registerable
 {
+    /** Design-Variablen, die ein Katalog-Ausschnitt (kontor_shop/catalog/scope, Schluessel "vars") setzen darf. */
+    private const SCOPE_VARS = ['radius', 'card-radius', 'shadow', 'shadow-hover', 'columns', 'card-min', 'image-ratio'];
+
     private Repository $settings;
     private ProductRepository $products;
     private CategoryRepository $categories;
@@ -133,8 +136,18 @@ final class CatalogModule implements Registerable
         $style = '';
 
         if ($scope['accent'] !== null) {
-            $style = ' style="--kontor-shop-primary:' . esc_attr(Color::sanitize_hex($scope['accent'])) . ';"';
+            $accent = Color::sanitize_hex($scope['accent']);
+            $style  = $accent !== '' ? '--kontor-shop-primary:' . $accent . ';--kontor-shop-on-primary:' . Color::on_color($accent) . ';' : '';
         }
+
+        // Eigenes Layout des Ausschnitts (z. B. Pro: Design je Shoptyp) - nur bekannte Design-Variablen.
+        foreach ((array) ($scope['vars'] ?? []) as $name => $value) {
+            if (is_string($name) && in_array($name, self::SCOPE_VARS, true) && is_scalar($value) && preg_match('/^[a-z0-9 .,()\/%#-]+$/i', (string) $value)) {
+                $style .= '--kontor-shop-' . $name . ':' . $value . ';';
+            }
+        }
+
+        $style = $style !== '' ? ' style="' . esc_attr($style) . '"' : '';
 
         $show_search = (bool) $this->settings->get('catalog.search_enabled', true);
 
@@ -297,7 +310,7 @@ final class CatalogModule implements Registerable
          */
         $card_attrs = (array) apply_filters('kontor_shop/catalog/card_attributes', [
             'data-category' => $category?->slug,
-            'style'         => $category?->accent_color !== null ? '--ks-card-accent: ' . $category->accent_color . ';' : null,
+            'style'         => $category?->accent_color !== null ? Color::accent_style($category->accent_color) : null,
         ], $product, $category);
         $style         = isset($card_attrs['style']) ? self::attributes(['style' => $card_attrs['style']]) : '';
         $data_category = self::attributes(array_diff_key($card_attrs, ['style' => true, 'id' => true, 'class' => true, 'data-product-id' => true, 'data-search' => true]));

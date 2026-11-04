@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Admin;
 
+use Kontor\Shop\Admin\HelpCenter\HelpCenter;
 use Kontor\Shop\Domain\Order\PaidWith;
 use Kontor\Shop\Core\Capabilities;
 use Kontor\Shop\Core\Registerable;
@@ -51,6 +52,7 @@ final class Menu implements Registerable
 
     private ReportPage $report_page;
     private OrdersPage $orders_page;
+    private HelpCenter $help_center;
     private Ajax $ajax;
 
     private string $settings_page_hook = '';
@@ -70,6 +72,8 @@ final class Menu implements Registerable
         $this->log_page        = new LogPage($settings);
         $this->report_page     = new ReportPage($settings);
         $this->orders_page     = new OrdersPage($settings);
+        $this->help_center     = new HelpCenter($settings);
+        Help::use_center($this->help_center);
 
         $products   = new ProductRepository();
         $this->ajax = new Ajax(new ProductsList($products, $settings), $products);
@@ -386,12 +390,19 @@ final class Menu implements Registerable
 
         // Einrichtung
         $this->settings_page_hook = $this->submenu(SettingsPage::SLUG, __('Settings', 'kontor-shop'), self::SETTINGS_CAPABILITY, [$this->settings_page, 'render'], 'settings', [$this->settings_page, 'handle_request']);
-        $this->submenu(LogPage::SLUG, __('Logs', 'kontor-shop'), self::SETTINGS_CAPABILITY, [$this->log_page, 'render'], null, [$this->log_page, 'handle_request']);
+        $this->submenu(LogPage::SLUG, __('Logs', 'kontor-shop'), self::SETTINGS_CAPABILITY, [$this->log_page, 'render'], 'logs', [$this->log_page, 'handle_request']);
 
         // Versteckte Unterseiten (siehe hidden_pages()): Seite registrieren, Menuepunkt per CSS ausblenden
         // (remove_submenu_page() wuerde WordPress den Zugriff auf die Seite verweigern lassen).
         $this->submenu(ReportPage::SLUG, __('Report a problem', 'kontor-shop'), self::SETTINGS_CAPABILITY, [$this->report_page, 'render']);
         do_action('kontor_shop/admin/menu', $this, self::GROUP_SETUP);
+
+        // Hilfe ganz unten, fuer alle Shop-Rollen (auch Kassier und Lagerverwaltung).
+        $help_hook = $this->submenu(HelpCenter::SLUG, __('Help', 'kontor-shop'), Capabilities::ACCESS, [$this->help_center, 'render']);
+
+        if ($help_hook !== '') {
+            add_action('load-' . $help_hook, [$this->help_center, 'enqueue']);
+        }
 
         if (is_string($dashboard_hook)) {
             Help::register($dashboard_hook, 'dashboard');

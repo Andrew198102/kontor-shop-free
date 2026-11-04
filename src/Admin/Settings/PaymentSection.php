@@ -59,7 +59,7 @@ final class PaymentSection extends Section
     {
         $this->group_title(__('Payment', 'kontor-shop'));
         $this->render_payment_tab();
-        $this->group_title(__('VAT', 'kontor-shop'));
+        $this->group_title(__('VAT', 'kontor-shop'), 'setup-payment');
         $this->render_tax_tab();
     }
 

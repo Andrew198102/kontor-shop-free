@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.0.12
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,7 +26,8 @@ Members and guests order online, pay by bank transfer or in cash on pickup, and 
 * **Orders:** clear status workflow (open, paid, shipped, picked up, cancelled) and a cashier role that can mark payments.
 * **E-mails:** editable templates for every step. Mails go through WordPress, so any SMTP plugin (WP Mail SMTP, FluentSMTP, Post SMTP …) works automatically. Undelivered mails wait in an outbox and are retried automatically.
 * **Legal and privacy:** legal notice block in checkout, spam protection without captcha, personal data export and erasure through the WordPress privacy tools.
-* **Design:** picks up your theme colours, one main colour setting, shop pages are created on activation. Works with classic and block themes.
+* **Design:** picks up your theme colours, fonts and dark backgrounds; adjust style, colours, corners, columns and image format with a live preview – no code needed. Shop pages are created on activation. Works with classic and block themes.
+* **Help built in:** a help centre with step-by-step guides for volunteers who rarely use WordPress.
 
 = Kontor Shop Pro =
 
@@ -98,6 +99,15 @@ Kontor Shop does not contact any other external service. Shop data, orders and c
 
 == Changelog ==
 
+= 2.1.0 =
+* New: Help centre (Kontor Shop → Help) with step-by-step guides for every task – what a setting is for and what happens when you use it. Search, a “First steps” list that stays after setup, Pro features explained and marked. The help tab on each page links to the matching guide.
+* New: Design settings with live preview of your real shop page (computer and phone): basic style, colour scheme light/dark, corners, products per row, image format (landscape, square, portrait), font of product names, custom CSS and a ready-made CSS block for web developers.
+* New: the shop takes colours, heading font and corners from block themes (theme.json) and recognises dark themes.
+* New: text on buttons automatically turns white or dark so it stays readable on light club colours, also for category colours.
+* New (Pro): shop types can have their own layout (basic style, products per row, image format).
+* Fixed: saving the Design tab no longer stores a fixed main colour that overrides your theme. If an earlier version saved one, the Design tab shows a note with “Use theme color”.
+* Improved: all status colours (done, note, error) can be changed with CSS variables.
+
 = 2.0.12 =
 * New: Kontor Shop Pro shows a small PRO badge in the admin menu (crossed out when the licence has expired).
 
@@ -146,6 +156,9 @@ Kontor Shop does not contact any other external service. Shop data, orders and c
 * Changed: member prices, several warehouses, discount codes, back-in-stock requests, automatic reminders, CSV export, key figures, change log, cashier API and search-engine extras are now part of Kontor Shop Pro. Your data stays when you switch between Free and Pro.
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+New help centre and design settings with live preview. If your shop ignores your theme colour, open Settings → Design and click “Use theme color”.
 
 = 2.0.3 =
 New plans & pricing page; fixes an empty upgrade page.

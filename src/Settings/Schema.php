@@ -144,6 +144,20 @@ final class Schema
                 // Hover-Effekt der Artikelkarten: spotlight (Rand-Licht in der
                 // Akzentfarbe) | lift (nur Anheben) | none (ruhig).
                 'card_effect'               => 'spotlight',
+                // Grundstil (Ecken, Schatten): theme | clear | soft | square.
+                'style'                     => 'theme',
+                // Ecken in px; leer = wie Grundstil bzw. Theme.
+                'radius'                    => '',
+                // Farbschema: theme (dunkel nur bei dunklem Theme) | light | dark.
+                'scheme'                    => 'theme',
+                // Hoechstens so viele Karten pro Zeile: auto | 2 | 3 | 4.
+                'columns'                   => 'auto',
+                // Seitenverhaeltnis der Artikelbilder: 4/3 | 1/1 | 3/4.
+                'image_ratio'               => '4/3',
+                // Schrift der Artikelnamen: theme (Ueberschrift des Themes, falls erkennbar) | body.
+                'heading_font'              => 'theme',
+                // Eigenes CSS (nur mit Recht edit_css), wird nach shop.css geladen.
+                'custom_css'                => '',
             ],
 
             // KI-Assistenten ueber MCP (Modules\Agents). Beide Zugaenge sind aus, bis sie jemand einschaltet.

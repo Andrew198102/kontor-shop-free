@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Admin\Settings;
 
+use Kontor\Shop\Admin\HelpCenter\HelpCenter;
 use Kontor\Shop\Settings\Repository;
 
 /**
@@ -134,15 +135,15 @@ abstract class Section
             . '<button type="submit" class="button button-primary button-large">' . esc_html($label !== '' ? $label : __('Save', 'kontor-shop')) . '</button></div>';
     }
 
-    /** Kurzer Erklaertext am Anfang eines Formulars. */
-    protected function intro(string $text): void
+    /** Kurzer Erklaertext am Anfang eines Formulars; $article = passender Artikel im Hilfe-Center ("?"). */
+    protected function intro(string $text, string $article = ''): void
     {
-        echo '<div class="ks-help-box"><p>' . esc_html($text) . '</p></div>';
+        echo '<div class="ks-help-box"><p>' . esc_html($text) . ($article !== '' ? HelpCenter::link($article) : '') . '</p></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HelpCenter::link escaped
     }
 
-    /** Ueberschrift eines eigenstaendigen Themenblocks innerhalb des Bereichs. */
-    protected function group_title(string $title): void
+    /** Ueberschrift eines eigenstaendigen Themenblocks innerhalb des Bereichs; $article wie bei intro(). */
+    protected function group_title(string $title, string $article = ''): void
     {
-        echo '<h2 class="ks-group-title">' . esc_html($title) . '</h2>';
+        echo '<h2 class="ks-group-title">' . esc_html($title) . ($article !== '' ? HelpCenter::link($article) : '') . '</h2>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- HelpCenter::link escaped
     }
 }

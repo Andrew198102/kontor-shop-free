@@ -38,6 +38,8 @@ final class CatalogScope
          *  - accent:        Hauptfarbe des Katalogs (#rrggbb) oder null,
          *  - key:           Kennung fuer Element-IDs (Standard 'all'),
          *  - html:          statt des Katalogs ausgeben (z. B. Hinweis "Shoptyp nicht gefunden"),
+         *  - vars:          Design-Variablen ohne Praefix --kontor-shop- (radius, columns,
+         *                   image-ratio …) am Katalog-Container, z. B. Pro: Design je Shoptyp,
          *  - weitere Schluessel reicht der Kern an kontor_shop/catalog/toolbar weiter.
          *
          * @param array<string, mixed>|null $scope

@@ -70,7 +70,7 @@ final class RolesSection extends Section
         $this->intro(__(
             'Cashiers can set the payment status (paid, cancel) on all orders, but can’t manage stock. Administrators automatically have all permissions.',
             'kontor-shop'
-        ));
+        ), 'setup-roles');
 
         foreach ($columns as $column) {
             if (($column['hint'] ?? '') !== '') {

@@ -16,9 +16,17 @@
  *   --kontor-shop-shadow / --kontor-shop-shadow-hover   Kartenschatten
  *   --kontor-shop-heading-font Schrift der Artikelnamen (sonst geerbt)
  *   --kontor-shop-card-min     Mindestbreite einer Karte im Raster
+ *   --kontor-shop-columns      hoechstens so viele Karten pro Zeile (Standard: so viele wie passen)
+ *   --kontor-shop-image-ratio  Seitenverhaeltnis der Artikelbilder (Standard 4 / 3)
+ *   --kontor-shop-on-primary   Schrift auf Hauptfarbe (Buttons, aktive Filter)
+ *   --kontor-shop-success / -warning / -danger / -danger-soft / -danger-text
+ *                              Statusfarben (erledigt, Hinweis, Fehler)
+ *   --kontor-shop-toast-bg / --kontor-shop-toast-text   kurze Meldungen unten
  *
- * Je Kategorie/Shoptyp kann eine Akzentfarbe (--ks-card-accent) die
- * Hauptfarbe pro Artikel ueberschreiben; sie faerbt auch den Karten-Effekt.
+ * Je Kategorie/Shoptyp kann eine Akzentfarbe (--ks-card-accent, Schrift
+ * darauf --ks-card-on-accent) die Hauptfarbe pro Artikel ueberschreiben; sie
+ * faerbt auch den Karten-Effekt. Einstellungen -> Design schreibt nur diese
+ * Variablen (Modules\Storefront\DesignCss), nie eigene Selektoren.
  * Touch-Ziele sind mindestens 44px hoch (WCAG 2.5.5).
  */
 
@@ -43,7 +51,16 @@
     --ks-shadow-hover: var(--kontor-shop-shadow-hover, 0 14px 32px rgba(0, 0, 0, .1));
     --ks-heading-font: var(--kontor-shop-heading-font, inherit);
     --ks-card-min: var(--kontor-shop-card-min, 260px);
-    --ks-danger: #b32d2e;
+    --ks-columns: var(--kontor-shop-columns, 12);
+    --ks-image-ratio: var(--kontor-shop-image-ratio, 4 / 3);
+    --ks-on-primary: var(--kontor-shop-on-primary, #fff);
+    --ks-success: var(--kontor-shop-success, #1a7f37);
+    --ks-warning: var(--kontor-shop-warning, #b45309);
+    --ks-danger: var(--kontor-shop-danger, #b32d2e);
+    --ks-danger-soft: var(--kontor-shop-danger-soft, #fcf0f1);
+    --ks-danger-text: var(--kontor-shop-danger-text, #8a1f20);
+    --ks-toast-bg: var(--kontor-shop-toast-bg, #1d2327);
+    --ks-toast-text: var(--kontor-shop-toast-text, #fff);
     --ks-tap: 44px;
     box-sizing: border-box;
     color: var(--ks-text);
@@ -165,14 +182,14 @@
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    background: rgba(255, 255, 255, .85);
+    background: color-mix(in srgb, var(--ks-surface) 85%, transparent);
     backdrop-filter: blur(2px);
 }
 
 .kontor-shop-overlay__box {
     max-width: 22rem;
     text-align: center;
-    color: #1d2327;
+    color: var(--ks-text);
     font-weight: 600;
 }
 
@@ -188,7 +205,7 @@
 .kontor-shop-product__media,
 .kontor-shop-cart__thumb,
 .kontor-shop-checkout__thumb {
-    background: linear-gradient(100deg, var(--ks-soft, #f6f7f7) 30%, #ececee 50%, var(--ks-soft, #f6f7f7) 70%);
+    background: linear-gradient(100deg, var(--ks-soft, #f6f7f7) 30%, var(--ks-border, #ececee) 50%, var(--ks-soft, #f6f7f7) 70%);
     background-size: 200% 100%;
     animation: ks-shimmer 1.4s linear infinite;
 }
@@ -202,8 +219,8 @@
     max-width: min(90vw, 26rem);
     padding: .7rem 1.1rem;
     border-radius: 999px;
-    background: #1d2327;
-    color: #fff;
+    background: var(--ks-toast-bg);
+    color: var(--ks-toast-text);
     font-size: .95rem;
     box-shadow: 0 6px 20px rgba(0, 0, 0, .3);
     opacity: 0;
@@ -218,7 +235,7 @@
 }
 
 .kontor-shop-toast.is-error {
-    background: #b32d2e;
+    background: var(--ks-danger);
 }
 
 /* ==================== Buttons ==================== */
@@ -228,7 +245,7 @@
 .kontor-shop-checkout__submit {
     appearance: none;
     background: var(--ks-card-accent, var(--ks-primary));
-    color: #fff;
+    color: var(--ks-card-on-accent, var(--ks-on-primary));
     border: 0;
     border-radius: var(--ks-radius);
     min-height: var(--ks-tap);
@@ -247,7 +264,7 @@
 .kontor-shop-add-to-cart button:hover,
 .kontor-shop-btn:hover {
     filter: brightness(1.08);
-    color: #fff;
+    color: var(--ks-card-on-accent, var(--ks-on-primary));
 }
 
 .kontor-shop-add-to-cart button:active,
@@ -261,7 +278,7 @@
 }
 
 .kontor-shop-add-to-cart button.is-done {
-    background: #1a7f37;
+    background: var(--ks-success);
 }
 
 .kontor-shop-add-to-cart button.is-error {
@@ -314,7 +331,7 @@
 .kontor-shop-catalog__filter.is-active {
     background: var(--ks-primary);
     border-color: var(--ks-primary);
-    color: #fff;
+    color: var(--ks-on-primary);
 }
 
 .kontor-shop-catalog__filter[hidden] {
@@ -323,8 +340,10 @@
 
 .kontor-shop-catalog__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--ks-card-min)), 1fr));
-    gap: 1rem;
+    /* So viele Karten wie passen (Mindestbreite --ks-card-min), hoechstens --ks-columns pro Zeile. */
+    --ks-grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, max(var(--ks-card-min), (100% - (var(--ks-columns) - 1) * var(--ks-grid-gap)) / var(--ks-columns))), 1fr));
+    gap: var(--ks-grid-gap);
 }
 
 .kontor-shop-catalog__empty,
@@ -366,7 +385,7 @@
 }
 
 .kontor-shop-product__media {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: var(--ks-image-ratio);
     background: var(--ks-soft);
     color: var(--ks-muted);
     border-top: 4px solid var(--ks-card-accent, var(--ks-primary));
@@ -398,7 +417,7 @@
     font-size: .72rem;
     text-transform: uppercase;
     letter-spacing: .05em;
-    color: #fff;
+    color: var(--ks-card-on-accent, var(--ks-on-primary));
     background: var(--ks-card-accent, var(--ks-primary));
     border-radius: 999px;
     padding: .2em .75em;
@@ -776,7 +795,7 @@
     height: 56px;
     border-radius: 50%;
     background: var(--kontor-shop-cart-icon-color, var(--ks-primary));
-    color: #fff;
+    color: var(--kontor-shop-cart-icon-text, var(--ks-on-primary));
     box-shadow: 0 4px 14px rgba(0, 0, 0, .28);
     border: 0;
     cursor: pointer;
@@ -809,7 +828,7 @@
     position: absolute;
     top: -4px;
     right: -4px;
-    background: var(--ks-danger, #b32d2e);
+    background: var(--ks-danger);
     color: #fff;
     border-radius: 999px;
     min-width: 22px;
@@ -861,7 +880,7 @@
 }
 
 .kontor-shop-checkout__error {
-    background: #fcf0f1;
+    background: var(--ks-danger-soft);
     border: 1px solid var(--ks-danger);
     color: var(--ks-danger);
     border-radius: var(--ks-radius);
@@ -1131,7 +1150,7 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
-    background: #1a7f37;
+    background: var(--ks-success);
     color: #fff;
     font-size: 28px;
     line-height: 1;
@@ -1190,8 +1209,8 @@
 }
 
 .kontor-shop-copy.is-done {
-    border-color: #1a7f37;
-    color: #1a7f37;
+    border-color: var(--ks-success);
+    color: var(--ks-success);
 }
 
 .kontor-shop-order-confirmation__items li {
@@ -1322,7 +1341,7 @@
 
 .kontor-shop-status li.is-done + li.is-done::before,
 .kontor-shop-status li.is-done + li.is-partial::before {
-    background: #1a7f37;
+    background: var(--ks-success);
 }
 
 .kontor-shop-status__dot {
@@ -1346,13 +1365,13 @@
 }
 
 .kontor-shop-status li.is-done .kontor-shop-status__dot {
-    background: #1a7f37;
-    border-color: #1a7f37;
+    background: var(--ks-success);
+    border-color: var(--ks-success);
 }
 
 .kontor-shop-status li.is-partial .kontor-shop-status__dot {
-    border-color: #1a7f37;
-    background: linear-gradient(90deg, #1a7f37 50%, var(--ks-surface) 50%);
+    border-color: var(--ks-success);
+    background: linear-gradient(90deg, var(--ks-success) 50%, var(--ks-surface) 50%);
 }
 
 .kontor-shop-status__label {
@@ -1367,13 +1386,13 @@
     margin: 1rem 0;
     padding: .75rem 1rem;
     border-radius: 8px;
-    background: #fbeaea;
-    color: #8a1f20;
+    background: var(--ks-danger-soft);
+    color: var(--ks-danger-text);
     font-weight: 600;
 }
 
 .kontor-shop-order-confirmation__payment.is-refund {
-    border-left-color: #1a7f37;
+    border-left-color: var(--ks-success);
 }
 
 .kontor-shop-order-confirmation__shipments {
@@ -1585,7 +1604,7 @@
 .kontor-shop-pagination [aria-current="page"] {
     background: var(--ks-primary);
     border-color: var(--ks-primary);
-    color: #fff;
+    color: var(--ks-on-primary);
 }
 
 /* --- Reservierung an der Kasse --- */
@@ -1594,11 +1613,11 @@
     margin: 0 0 1rem;
     padding: .6rem .8rem;
     border-left: 4px solid var(--ks-primary);
-    background: rgba(0, 0, 0, .04);
+    background: var(--ks-soft);
 }
 
 .kontor-shop-checkout__notice {
-    border-left-color: #b45309;
+    border-left-color: var(--ks-warning);
 }
 
 /* ==================== Varianten, Grundpreis, Galerie ==================== */

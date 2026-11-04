@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Admin;
 
+use Kontor\Shop\Admin\HelpCenter\HelpCenter;
+
 /**
  * Kontexthilfe: der Reiter "Hilfe" oben rechts in jeder Kontor-Shop-Seite
  * erklaert in wenigen Saetzen, wofuer die Seite da ist und was Aktionen bewirken.
@@ -94,8 +96,54 @@ final class Help
                     __('Recommended setup order: Payment & VAT → Shipping & returns → Legal → Email sending → Design.', 'kontor-shop')
                 )],
             ],
+            'logs' => [
+                ['id' => 'ks-logs', 'title' => __('Logs', 'kontor-shop'), 'content' => $p(
+                    __('The error log lists what went wrong in the background, for example an email that could not be sent or a failed connection. Entries contain no customer data.', 'kontor-shop'),
+                    __('If you need support, use “Report a problem”: it collects the relevant entries and the system data into one message.', 'kontor-shop')
+                )],
+            ],
+            'agents' => [
+                ['id' => 'ks-agents', 'title' => __('AI assistant', 'kontor-shop'), 'content' => $p(
+                    __('AI assistants such as ChatGPT, Claude or Gemini can read your shop through a secure connection (MCP) – for example to answer customer questions about products. Nothing is switched on until you turn it on here.', 'kontor-shop'),
+                    __('Every access can be switched off again at any time; the assistant then immediately loses access.', 'kontor-shop')
+                )],
+            ],
+            'audit' => [
+                ['id' => 'ks-audit', 'title' => __('Changes', 'kontor-shop'), 'content' => $p(
+                    __('The change log shows who changed what and when: prices, stock bookings, settings, order status. Entries cannot be edited or deleted, so you can always trace a change.', 'kontor-shop')
+                )],
+            ],
             default => [],
         };
+    }
+
+    private static ?HelpCenter $center = null;
+
+    /** Hilfe-Center fuer die Links "Ausfuehrliche Anleitung" (setzt Admin\Menu). */
+    public static function use_center(HelpCenter $center): void
+    {
+        self::$center = $center;
+    }
+
+    /**
+     * Artikel im Hilfe-Center zur Seite; in den Einstellungen zuerst der
+     * Artikel zum geoeffneten Bereich (Hilfe-Schluessel "settings-<tab>").
+     */
+    private static function article_for(string $page): ?string
+    {
+        if (self::$center === null) {
+            return null;
+        }
+
+        if ($page === 'settings') {
+            $tab = isset($_GET['tab']) ? sanitize_key(wp_unslash((string) $_GET['tab'])) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nur Anzeige-Parameter
+
+            if ($tab !== '' && ($id = self::$center->article_for_page('settings-' . $tab)) !== null) {
+                return $id;
+            }
+        }
+
+        return self::$center->article_for_page($page);
     }
 
     public static function register(string $hook, string $page): void
@@ -110,6 +158,28 @@ final class Help
             foreach (self::tabs($page) as $tab) {
                 $screen->add_help_tab($tab);
             }
+
+            $article = self::article_for($page);
+
+            // Kurzfassung des passenden Artikels als eigener Reiter - so hat jeder Einstellungsbereich seinen Text.
+            if ($article !== null && self::$center !== null) {
+                $entry = self::$center->articles()[$article] ?? [];
+
+                if (!empty($entry['what'])) {
+                    $screen->add_help_tab([
+                        'id'      => 'ks-article',
+                        'title'   => (string) $entry['title'],
+                        'content' => self::paragraphs((string) $entry['what'])
+                            . '<p><a href="' . esc_url(HelpCenter::url($article)) . '">' . esc_html__('Detailed guide', 'kontor-shop') . ' →</a></p>',
+                    ]);
+                }
+            }
+
+            $screen->set_help_sidebar(
+                '<p><strong>' . esc_html__('More help', 'kontor-shop') . '</strong></p>'
+                . ($article !== null ? '<p><a href="' . esc_url(HelpCenter::url($article)) . '">' . esc_html__('Detailed guide', 'kontor-shop') . ' →</a></p>' : '')
+                . '<p><a href="' . esc_url(HelpCenter::url()) . '">' . esc_html__('All help topics', 'kontor-shop') . '</a></p>'
+            );
         });
     }
 }

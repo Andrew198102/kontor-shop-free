@@ -46,7 +46,7 @@ final class OfferPage
             return;
         }
 
-        $menu->add_page(self::SLUG, __('AI assistant', 'kontor-shop'), Menu::SETTINGS_CAPABILITY, [$this, 'render']);
+        $menu->add_page(self::SLUG, __('AI assistant', 'kontor-shop'), Menu::SETTINGS_CAPABILITY, [$this, 'render'], 'agents');
     }
 
     public function enqueue_assets(string $hook_suffix): void

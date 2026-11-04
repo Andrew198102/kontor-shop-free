@@ -68,9 +68,12 @@
         }
 
         var accent = button ? button.getAttribute('data-accent') : '';
+        var onAccent = button ? button.getAttribute('data-on-accent') : '';
         var base = wrapper.getAttribute('data-default-style');
 
-        wrapper.setAttribute('style', accent ? base + ';--kontor-shop-primary:' + accent + ';' : base);
+        wrapper.setAttribute('style', accent
+            ? base + ';--kontor-shop-primary:' + accent + ';' + (onAccent ? '--kontor-shop-on-primary:' + onAccent + ';' : '')
+            : base);
     }
 
     function rememberShop(slug) {
