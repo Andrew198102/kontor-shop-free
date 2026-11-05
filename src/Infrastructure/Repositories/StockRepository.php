@@ -58,6 +58,8 @@ final class StockRepository
             'order_id'       => $order_id,
             'note'           => $note,
             'user_id'        => $user_id,
+            // Ortszeit der Website (Lagerbuch, Statistik) statt Serverzeit der Datenbank.
+            'created_at'     => current_time('mysql'),
         ]) === false) {
             throw new \RuntimeException('Bestandsbewegung konnte nicht gespeichert werden: ' . $wpdb->last_error); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- wird nur geloggt (Logger::exception), nicht als HTML ausgegeben
         }
@@ -218,9 +220,9 @@ final class StockRepository
 
         $rows = $wpdb->get_results($wpdb->prepare(
             'SELECT product_id, variant_id, -SUM(quantity_delta) AS sold FROM %i'
-            . ' WHERE product_id IN (' . implode(',', array_fill(0, count($ids), '%d')) . ') AND type IN (%s, %s, %s) AND created_at >= DATE_SUB(NOW(), INTERVAL %d DAY)'
+            . ' WHERE product_id IN (' . implode(',', array_fill(0, count($ids), '%d')) . ') AND type IN (%s, %s, %s) AND created_at >= DATE_SUB(%s, INTERVAL %d DAY)'
             . ' GROUP BY product_id, variant_id',
-            array_merge([$this->table()], $ids, [MovementType::ONLINE_SALE, MovementType::OFFLINE_SALE, MovementType::CANCEL_RESTOCK, $days])
+            array_merge([$this->table()], $ids, [MovementType::ONLINE_SALE, MovementType::OFFLINE_SALE, MovementType::CANCEL_RESTOCK, current_time('mysql'), $days])
         ), ARRAY_A) ?: [];
 
         $map = [];
@@ -249,10 +251,11 @@ final class StockRepository
         }
 
         $rows = $wpdb->get_results($wpdb->prepare(
-            'SELECT product_id, FLOOR(DATEDIFF(NOW(), created_at) / 7) AS wk, -SUM(quantity_delta) AS sold FROM %i'
-            . ' WHERE product_id IN (' . implode(',', array_fill(0, count($ids), '%d')) . ') AND type IN (%s, %s, %s) AND created_at >= DATE_SUB(NOW(), INTERVAL %d DAY)'
+            'SELECT product_id, FLOOR(DATEDIFF(%s, created_at) / 7) AS wk, -SUM(quantity_delta) AS sold FROM %i'
+            . ' WHERE product_id IN (' . implode(',', array_fill(0, count($ids), '%d')) . ') AND type IN (%s, %s, %s) AND created_at >= DATE_SUB(%s, INTERVAL %d DAY)'
             . ' GROUP BY product_id, wk',
-            array_merge([$this->table()], $ids, [MovementType::ONLINE_SALE, MovementType::OFFLINE_SALE, MovementType::CANCEL_RESTOCK, $weeks * 7])
+            // Bezug ist die Ortszeit der Website (wie created_at), nicht NOW() der Datenbank.
+            array_merge([current_time('mysql'), $this->table()], $ids, [MovementType::ONLINE_SALE, MovementType::OFFLINE_SALE, MovementType::CANCEL_RESTOCK, current_time('mysql'), $weeks * 7])
         ), ARRAY_A) ?: [];
 
         $map = [];

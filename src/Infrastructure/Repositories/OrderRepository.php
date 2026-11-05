@@ -82,6 +82,8 @@ final class OrderRepository
         if ($wpdb->insert($this->orders_table(), array_merge($this->prepare_order_data($order), [
             'order_number'      => $placeholder,
             'payment_reference' => $placeholder,
+            // Ortszeit der Website wie ueberall im Plugin - der Datenbank-Standardwert waere die Serverzeit (oft UTC).
+            'created_at'        => current_time('mysql'),
         ])) === false) {
             throw new \RuntimeException('Bestellung konnte nicht gespeichert werden: ' . $wpdb->last_error); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Meldung wird nur protokolliert (Logger), nie ausgegeben
         }
@@ -111,6 +113,7 @@ final class OrderRepository
             'to_status'   => OrderStatus::OPEN,
             'user_id'     => null,
             'note'        => 'Bestellung angelegt',
+            'created_at'  => current_time('mysql'),
         ]) === false) {
             throw new \RuntimeException('Statusverlauf konnte nicht gespeichert werden: ' . $wpdb->last_error); // phpcs:ignore WordPress.Security.EscapeOutput.ExceptionNotEscaped -- Meldung wird nur protokolliert (Logger), nie ausgegeben
         }
@@ -261,6 +264,7 @@ final class OrderRepository
             'user_id'     => $user_id,
             'actor'       => $actor,
             'note'        => $note,
+            'created_at'  => current_time('mysql'),
         ]);
     }
 
@@ -650,6 +654,7 @@ final class OrderRepository
             'user_id'     => $user_id,
             'actor'       => $actor,
             'note'        => $note,
+            'created_at'  => current_time('mysql'),
         ]);
 
         $changes = ['status' => [$from?->status, $to_status]];

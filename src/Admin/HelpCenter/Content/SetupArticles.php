@@ -22,6 +22,7 @@ final class SetupArticles
     {
         return [
             self::payment(),
+            self::invoices(),
             self::shipping(),
             self::legal(),
             self::membership(),
@@ -33,6 +34,40 @@ final class SetupArticles
             self::categories(),
             self::warehouses(),
             self::settings(),
+        ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function invoices(): array
+    {
+        return [
+            'id'         => 'setup-invoices',
+            'group'      => 'setup',
+            'title'      => __('Invoices and credit notes', 'kontor-shop'),
+            'summary'    => __('PDF invoices with continuous numbers, sent automatically', 'kontor-shop'),
+            'keywords'   => __('invoice invoices bill receipt pdf credit note cancellation number numbering vat tax sender logo', 'kontor-shop'),
+            'help_pages' => ['settings-invoices'],
+            'what'       => __('Customers – and often the club’s treasurer – need a proper invoice. The shop creates it as a PDF, numbers it without gaps, sends it to the customer and keeps it with the order.', 'kontor-shop'),
+            'steps'      => [
+                ['text' => __('Open Settings → Invoices.', 'kontor-shop'), 'url' => Section::url('invoices')],
+                __('Enter the club name and address as sender. Add the VAT ID and further details (e.g. association register number) if the club has them.', 'kontor-shop'),
+                __('Choose when the invoice is created: when the payment is recorded, when the order is shipped, or only by hand.', 'kontor-shop'),
+                __('Click “View sample invoice” and check the result. Then tick “Create PDF invoices” and save.', 'kontor-shop'),
+            ],
+            'effect'     => [
+                __('From then on, every order gets an invoice at the chosen moment. The customer gets it by email as a PDF and finds it on their order page.', 'kontor-shop'),
+                __('In the order you see the invoice under “Invoices”; there you can also create it by hand.', 'kontor-shop'),
+                __('If an invoiced order is cancelled or goods come back, the shop creates a credit note with its own number. The invoice itself is never changed.', 'kontor-shop'),
+                __('Orders that were placed before you switched invoices on don’t get one automatically – use “Create invoice now” in the order.', 'kontor-shop'),
+            ],
+            'faq'        => [
+                ['q' => __('Can I change or delete an invoice?', 'kontor-shop'), 'a' => __('No. Invoices are accounting records and have to be kept unchanged (usually for 7 years). Mistakes are corrected with a credit note: cancel or return the products in the order.', 'kontor-shop')],
+                ['q' => __('How are the numbers built?', 'kontor-shop'), 'a' => __('Year and a running number, e.g. 2026-0001; every year starts at 1. With Kontor Shop Pro you choose a prefix, the number of digits and whether numbering continues across years, and you can add your logo and a footer.', 'kontor-shop')],
+                ['q' => __('The club is a small business and doesn’t charge VAT.', 'kontor-shop'), 'a' => __('Leave the VAT rates empty under Payment & sales tax. The invoice then shows the note for tax-free amounts – agree on its wording with your tax advisor.', 'kontor-shop')],
+            ],
+            'related'    => ['setup-payment', 'orders-paid', 'orders-cancel'],
         ];
     }
 

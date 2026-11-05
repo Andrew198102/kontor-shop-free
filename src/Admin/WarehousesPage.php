@@ -302,9 +302,10 @@ final class WarehousesPage
 
             echo '<td>' . esc_html($accounts[(string) $warehouse->bank_account_id] ?? __('Default account', 'kontor-shop')) . '</td>';
             echo '<td class="ks-col-num">' . ($count > 0 ? '<a href="' . esc_url(ProductsPage::url(['warehouse_id' => $id])) . '">' . (int) $count . '</a>' : '0') . '</td>';
-            echo '<td class="ks-col-toggle">' . ($editable
+            $toggle = $editable
                 ? ProductsList::toggle('warehouse', $id, $warehouse->active, __('Warehouse active', 'kontor-shop'))
-                : esc_html($warehouse->active ? __('yes', 'kontor-shop') : __('no', 'kontor-shop'))) . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- ProductsList::toggle() liefert escaptes HTML
+                : esc_html($warehouse->active ? __('yes', 'kontor-shop') : __('no', 'kontor-shop'));
+            echo '<td class="ks-col-toggle">' . $toggle . '</td>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- ProductsList::toggle() liefert escaptes HTML
             echo '</tr>';
         }
 

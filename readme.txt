@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.4.0
+Stable tag: 2.8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,7 @@ Members and guests order online, pay by bank transfer or in cash on pickup, and 
 * **Payment without a provider:** bank transfer (prepayment), on invoice and cash on pickup – each can be switched on separately. Your bank details appear in the confirmation and the e-mail, with a QR code for banking apps.
 * **Shipping:** flat rate, free shipping above an amount, self pickup.
 * **Stock:** one warehouse with a full stock ledger, so every change can be traced.
+* **Invoices:** PDF invoices and credit notes with continuous numbers, sent to the customer automatically.
 * **Orders:** clear status workflow (open, paid, shipped, picked up, cancelled) and a cashier role that can mark payments.
 * **E-mails:** editable templates for every step. Mails go through WordPress, so any SMTP plugin (WP Mail SMTP, FluentSMTP, Post SMTP …) works automatically. Undelivered mails wait in an outbox and are retried automatically.
 * **Legal and privacy:** legal notice block in checkout, spam protection without captcha, personal data export and erasure through the WordPress privacy tools.
@@ -32,7 +33,7 @@ Members and guests order online, pay by bank transfer or in cash on pickup, and 
 
 = Kontor Shop Pro =
 
-Pro adds what growing clubs need: member prices, several warehouses with their own warehouse managers, packing view on the phone straight from the order mail with partial shipments, discount codes and campaigns, back-in-stock notifications, automatic payment reminders and cancellation of unpaid orders, CSV export, reorder hints, a dashboard with key figures and alarm mail, a tamper-proof change log, a cashier API, search-engine extras (structured product data, category pages) – and AI assistants for the whole team: create products with images, book stock and process orders by chat, each person with their own permissions. Pro shows no “powered by” line.
+Pro adds what growing clubs need: member prices, several warehouses with their own warehouse managers, packing view on the phone straight from the order mail with partial shipments, discount codes and campaigns, back-in-stock notifications, automatic payment reminders and cancellation of unpaid orders, CSV export, reorder hints, a dashboard with key figures and alarm mail, a tamper-proof change log, bank statement matching (camt.053), group orders with a size list for the supplier, a cashier API, search-engine extras (structured product data, category pages) – and AI assistants for the whole team: create products with images, book stock and process orders by chat, each person with their own permissions. Pro shows no “powered by” line.
 
 More at [veyra-assistant.com/kontor-shop](https://veyra-assistant.com/kontor-shop/).
 
@@ -89,16 +90,31 @@ This plugin uses the Freemius SDK for licensing, updates of the Pro version and,
 
 Kontor Shop does not contact any other external service. Shop data, orders and customer data stay in your WordPress database. The optional AI assistant access (MCP) works the other way round: AI apps chosen by you or your customers call your shop; the plugin itself sends nothing to them.
 
+== Third-party libraries ==
+
+PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (LGPL-2.1) and its dependencies php-font-lib and php-svg-lib (LGPL), html5-php and php-css-parser (MIT), bundled in vendor/dompdf-bundle. Only the built-in PDF fonts are included.
+
 == Screenshots ==
 
-1. Shop on a phone: products with sizes and colours.
-2. Checkout with bank transfer and pickup.
-3. Orders in the back office with status and payment.
-4. Stock ledger with every movement.
-5. E-mail templates with placeholders.
-6. Settings: payment, shipping and e-mail.
+1. Shop on a phone: products with pictures, sizes and category filter – here in the Twenty Twenty-Five theme.
+2. Checkout with self pickup and prepayment by bank transfer.
+3. Order confirmation with bank details and a QR code for banking apps.
+4. Orders in the back office: what is open, overdue or ready to ship – and the next step for each order.
+5. Stock ledger: every movement of a product with date, reason and person.
+6. E-mail templates with placeholders for every step.
+7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.8.0 =
+* New: PDF invoices (Settings → Invoices) with continuous numbers per year, created when the payment is recorded, when the order is shipped or by hand. Customers get them by email as an attachment and on their order page; open invoices carry the bank details and the transfer QR code.
+* New: cancellations and returns of invoiced goods create a credit note automatically; invoices are never changed.
+* New (Pro): own number format (prefix, digits, yearly or continuous), club logo and footer on invoices.
+* New (Pro): match the bank statement – upload the camt.053/052 file from online banking, the shop suggests the order for each incoming payment (payment reference, order number, amount, payer name), the cashier confirms, and the orders are booked as paid with the bank’s booking date. The file itself is not stored.
+* New (Pro): group orders – a product such as club clothing can be ordered until a deadline, even without stock. The shop shows the deadline on the product; afterwards the back office lists per size how many pieces to order from the supplier (also as CSV).
+* New for developers: filter kontor_shop/stock/free to adjust the quantity that can be ordered per product or variant.
+* Fixed: order times, status history and stock ledger used the clock of the database server, which is often UTC – “Ordered on” could be one or two hours off. New entries now use the time zone of the website.
+* Fixed: in themes with a narrow content column (e.g. Twenty Twenty-Five) the checkout squeezed the order summary next to the form; it now switches to two columns only when there is enough room.
 
 = 2.4.0 =
 * New: QR code for the bank transfer (“GiroCode”, EPC standard) on the order page – customers scan it with their banking app, and recipient, IBAN, amount and payment reference are filled in. The order email points to it. Can be switched off under Settings → Payment.
@@ -184,6 +200,9 @@ Kontor Shop does not contact any other external service. Shop data, orders and c
 * Changed: member prices, several warehouses, discount codes, back-in-stock requests, automatic reminders, CSV export, key figures, change log, cashier API and search-engine extras are now part of Kontor Shop Pro. Your data stays when you switch between Free and Pro.
 
 == Upgrade Notice ==
+
+= 2.8.0 =
+New: PDF invoices (switch on under Settings → Invoices). Pro: bank statement matching and group orders. Fixes order times on servers whose database runs in UTC.
 
 = 2.1.1 =
 Pro: automatic payment reminders and auto-cancellation are now off until you switch them on (Settings → Payment). New: cash on pickup and “Ready for pickup” email.

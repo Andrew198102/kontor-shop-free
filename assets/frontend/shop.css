@@ -1481,7 +1481,15 @@
     }
 }
 
-@media (min-width: 900px) {
+/* Zwei Spalten nur, wenn der Shop selbst breit genug ist - nicht nach Fensterbreite:
+   viele Themes (z. B. Twenty Twenty-Five) geben dem Inhalt nur ~650 px, dann bliebe
+   fuer die Bestelluebersicht zu wenig Platz. */
+.kontor-shop-checkout {
+    container-type: inline-size;
+    width: 100%;
+}
+
+@container (min-width: 760px) {
     .kontor-shop-checkout__layout {
         flex-direction: row;
         align-items: flex-start;
@@ -1815,4 +1823,27 @@
         width: 3.5cm;
         height: 3.5cm;
     }
+}
+
+/* Rechnung/Gutschrift als PDF auf der Bestellseite */
+.kontor-shop-order-confirmation__docs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin: .75rem 0 1rem;
+}
+
+/* Sammelbestellung (Pro): Hinweis auf Karte und Artikelseite */
+.kontor-shop-preorder {
+    margin: .4rem 0;
+    padding: .45rem .6rem;
+    border-left: 3px solid var(--ks-card-accent, var(--ks-primary));
+    background: var(--ks-soft);
+    font-size: .85rem;
+    color: var(--ks-text);
+}
+
+.kontor-shop-preorder.is-closed {
+    border-left-color: var(--ks-muted);
+    color: var(--ks-muted);
 }

@@ -14,6 +14,9 @@ use Kontor\Shop\Settings\Repository;
 use Kontor\Shop\Support\Countries;
 use Kontor\Shop\Support\Translation;
 
+// Fehlertexte gehen als JSON an KI-Assistenten (MCP), nie als HTML in eine Seite.
+// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
+
 /**
  * Lesende Werkzeuge fuer die KI-Assistenten von Kunden (Free): Shop-Infos,
  * Kategorien, Suche, Artikel, Verfuegbarkeit. Alles hier ist auch ohne

@@ -6,6 +6,7 @@ namespace Kontor\Shop\Admin;
 
 use Kontor\Shop\Admin\Settings\AgentsSection;
 use Kontor\Shop\Admin\Settings\DesignSection;
+use Kontor\Shop\Admin\Settings\InvoicesSection;
 use Kontor\Shop\Admin\Settings\LegalSection;
 use Kontor\Shop\Admin\Settings\MailSection;
 use Kontor\Shop\Admin\Settings\PaymentSection;
@@ -40,6 +41,7 @@ final class SettingsPage
     {
         foreach ([
             new PaymentSection($settings),
+            new InvoicesSection($settings),
             new ShippingSection($settings),
             new LegalSection($settings),
             new MailSection($settings),

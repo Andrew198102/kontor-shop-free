@@ -18,6 +18,7 @@ use Kontor\Shop\Modules\Notifications\PoweredBy;
 use Kontor\Shop\Modules\Privacy\PrivacyModule;
 use Kontor\Shop\Modules\Seo\SeoModule;
 use Kontor\Shop\Modules\Blocks\BlocksModule;
+use Kontor\Shop\Modules\Invoices\InvoicesModule;
 use Kontor\Shop\Modules\Storefront\DesignModule;
 use Kontor\Shop\Settings\Repository;
 
@@ -59,6 +60,8 @@ final class Modules
         AgentsModule::class,
         // Bloecke fuer den Block-Editor (Huelle um die Shortcodes).
         BlocksModule::class,
+        // PDF-Rechnungen und Gutschriften (Einstellungen -> Rechnungen).
+        InvoicesModule::class,
     ];
 
     /**

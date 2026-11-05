@@ -108,6 +108,16 @@ final class Help
                     __('Every access can be switched off again at any time; the assistant then immediately loses access.', 'kontor-shop')
                 )],
             ],
+            'statement' => [
+                ['id' => 'ks-statement', 'title' => __('Bank statement', 'kontor-shop'), 'content' => $p(
+                    __('Upload the bank statement (camt.053) from online banking. The shop suggests the matching order for each incoming payment; nothing is booked until you click “Book selected payments”.', 'kontor-shop')
+                )],
+            ],
+            'preorders' => [
+                ['id' => 'ks-preorders', 'title' => __('Group orders', 'kontor-shop'), 'content' => $p(
+                    __('Until the order deadline, customers can order the product even if nothing is in stock. Afterwards the list shows per size how many pieces to order from the supplier. When the goods arrive, book them as a delivery and ship the orders as usual.', 'kontor-shop')
+                )],
+            ],
             'audit' => [
                 ['id' => 'ks-audit', 'title' => __('Changes', 'kontor-shop'), 'content' => $p(
                     __('The change log shows who changed what and when: prices, stock bookings, settings, order status. Entries cannot be edited or deleted, so you can always trace a change.', 'kontor-shop')

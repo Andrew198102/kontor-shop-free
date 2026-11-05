@@ -1298,6 +1298,16 @@ final class CheckoutModule implements Registerable
 
         foreach ($orders as $order) {
             $html .= $this->render_order_block($order, $multiple, $days);
+
+            /**
+             * Filter kontor_shop/checkout/order_documents: fertiges HTML
+             * (escapen!) unter einer Bestellung auf der Bestellseite, z. B.
+             * Download-Links zu Rechnung und Gutschrift (Modules\Invoices).
+             *
+             * @param string $html
+             * @param Order  $order
+             */
+            $html .= (string) apply_filters('kontor_shop/checkout/order_documents', '', $order);
         }
 
         $html .= $this->render_confirmation_details($first);

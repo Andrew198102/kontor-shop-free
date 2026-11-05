@@ -91,6 +91,6 @@ final class StockSnapshot
 
     private function free_of(int $product_id, int $variant_id): int
     {
-        return Availability::free($this->balances[$product_id][$variant_id] ?? 0, $this->reserved[$product_id][$variant_id] ?? 0);
+        return Availability::filtered(Availability::free($this->balances[$product_id][$variant_id] ?? 0, $this->reserved[$product_id][$variant_id] ?? 0), $product_id, $variant_id);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kontor\Shop\Modules\Agents\Mcp;
 
 use Kontor\Shop\Infrastructure\Logging\Logger;
+use Kontor\Shop\Support\Arr;
 
 /**
  * Model Context Protocol (JSON-RPC 2.0) fuer einen Satz Werkzeuge: initialize,
@@ -54,7 +55,7 @@ final class McpServer
      */
     public function handle(mixed $message): ?array
     {
-        if (is_array($message) && $message !== [] && array_is_list($message)) {
+        if (is_array($message) && $message !== [] && Arr::is_list($message)) {
             $responses = array_values(array_filter(array_map(fn ($single): ?array => $this->handle_one($single), $message)));
 
             return $responses !== [] ? $responses : null;
@@ -164,7 +165,7 @@ final class McpServer
      */
     private static function content(array $data, bool $is_error): array
     {
-        $structured = $data !== [] && array_is_list($data) ? ['items' => $data] : $data;
+        $structured = $data !== [] && Arr::is_list($data) ? ['items' => $data] : $data;
 
         return [
             'content'           => [['type' => 'text', 'text' => (string) wp_json_encode($structured, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)]],

@@ -45,10 +45,11 @@ use function Kontor\Shop\Database\prepare_seo_slugs;
  * (Tabellen coupons/coupon_uses, discount_code/discount_total an
  * Bestellungen, discount an Positionen). Seit Schema 22: Tabelle mail_outbox
  * (Postausgang fuer nicht zugestellte Mails, Infrastructure\Notifications\MailOutbox).
+ * Seit Schema 23: Tabelle invoices (Rechnungen und Gutschriften, Modules\Invoices).
  */
 final class Lifecycle
 {
-    private const SCHEMA_VERSION        = 22;
+    private const SCHEMA_VERSION        = 23;
     private const SETTINGS_CAP_MIGRATED = 'kontor_shop_settings_cap_migrated';
     private const SCHEMA_VERSION_OPTION = 'kontor_shop_schema_version';
     /** Ausgabe (free/pro) beim letzten Boot - ein Wechsel leert einmal die Rewrite-Regeln. */

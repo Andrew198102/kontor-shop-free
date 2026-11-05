@@ -188,18 +188,10 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
         $wp_filesystem->delete( WP_PLUGIN_DIR . '/kontor-shop', true );
         wp_clean_plugins_cache( false );
     } );
-    // Automatische Updates fuer Pro von Anfang an an (einmal - schaltet man sie spaeter aus, bleibt das so).
-    add_action( 'admin_init', static function () : void {
-        if ( !kontor_shop_fs()->is_premium() || get_option( 'kontor_shop_auto_update_set' ) === KONTOR_SHOP_BASENAME ) {
-            return;
-        }
-        $auto = (array) get_site_option( 'auto_update_plugins', [] );
-        if ( !in_array( KONTOR_SHOP_BASENAME, $auto, true ) ) {
-            $auto[] = KONTOR_SHOP_BASENAME;
-            update_site_option( 'auto_update_plugins', array_values( array_unique( $auto ) ) );
-        }
-        update_option( 'kontor_shop_auto_update_set', KONTOR_SHOP_BASENAME, false );
-    } );
+    // Automatische Updates fuer Pro (nur im Pro-Paket, siehe kontor_shop_pro_auto_update__premium_only).
+    if ( function_exists( 'kontor_shop_pro_auto_update__premium_only' ) ) {
+        add_action( 'admin_init', 'kontor_shop_pro_auto_update__premium_only' );
+    }
     // PRO-Abzeichen im Admin-Menue (Admin\Menu): gold mit Lizenz, durchgestrichen ohne; Free ohne Abzeichen.
     add_filter( 'kontor_shop/admin/pro_badge', static function () : string {
         $fs = kontor_shop_fs();
@@ -280,7 +272,7 @@ if ( !function_exists( 'kontor_shop_fs' ) ) {
     add_action( 'admin_init', static function () : void {
         $fs = kontor_shop_fs();
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nur Lesen: Freemius-Aktion laeuft gerade
-        if ( wp_doing_ajax() || wp_doing_cron() || ($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET' || isset( $_GET['fs_action'] ) || !current_user_can( 'install_plugins' ) || !current_user_can( 'activate_plugins' ) || $fs->is_premium() || !$fs->is_registered() || !$fs->can_use_premium_code() || get_transient( 'kontor_shop_pro_install_failed' ) ) {
+        if ( wp_doing_ajax() || wp_doing_cron() || sanitize_text_field( wp_unslash( (string) ($_SERVER['REQUEST_METHOD'] ?? 'GET') ) ) !== 'GET' || isset( $_GET['fs_action'] ) || !current_user_can( 'install_plugins' ) || !current_user_can( 'activate_plugins' ) || $fs->is_premium() || !$fs->is_registered() || !$fs->can_use_premium_code() || get_transient( 'kontor_shop_pro_install_failed' ) ) {
             return;
         }
         if ( kontor_shop_install_pro() === null ) {

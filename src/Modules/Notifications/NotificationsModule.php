@@ -82,6 +82,7 @@ final class NotificationsModule implements Registerable
         add_action(self::HOOK_ORDER_CANCELLED, [$this, 'send_order_cancelled']);
         add_action(self::HOOK_ORDER_CANCELLATION, [$this, 'on_cancellation'], 10, 6);
         add_action(self::HOOK_ORDER_RETURN, [$this, 'on_return'], 10, 5);
+        add_action('kontor_shop/invoice/send', [$this, 'send_invoice'], 10, 4);
     }
 
     /**
@@ -925,6 +926,32 @@ final class NotificationsModule implements Registerable
     }
 
     /**
+     * Rechnung/Gutschrift an den Kunden: PDF als Anhang, dazu der Download-Link
+     * (falls ein Versandweg keine Anhaenge kann).
+     *
+     * @param array{id: int, number: string, data: array<string, mixed>} $document
+     */
+    public function send_invoice(Order $order, array $document, string $path, string $url): void
+    {
+        if (!$this->is_enabled(DefaultTemplates::INVOICE)) {
+            return;
+        }
+
+        $credit = ($document['data']['type'] ?? '') === 'credit_note';
+
+        $this->send_templated(DefaultTemplates::INVOICE, $order->customer_email, $order->customer_name, [
+            'shop_name'        => $this->shop_name(),
+            'customer_name'    => $order->customer_name,
+            'order_number'     => $order->order_number,
+            'document_title'   => $credit ? __('Credit note', 'kontor-shop') : __('Invoice', 'kontor-shop'),
+            'invoice_number'   => $document['number'],
+            'total'            => number_format((float) ($document['data']['totals']['gross'] ?? 0), 2, ',', '.'),
+            'invoice_url'      => $url,
+            'order_status_url' => OrderStatusLink::url($order, $this->settings),
+        ], $path !== '' ? [$path] : []);
+    }
+
+    /**
      * "Abholbereit": Kunde einer Abhol-Bestellung erfaehrt, was bereitliegt
      * und wo (Name und Adresse der Lager mit offenen Artikeln). Bisher kam bei
      * Abholung erst nach der Uebergabe eine Mail. Verlaufseintrag als Nachweis.
@@ -1011,11 +1038,14 @@ final class NotificationsModule implements Registerable
     /**
      * @param array<string, string> $values
      */
-    private function send_templated(string $event, string $to, string $to_name, array $values): void
+    /**
+     * @param array<int, string> $attachments absolute Dateipfade
+     */
+    private function send_templated(string $event, string $to, string $to_name, array $values, array $attachments = []): void
     {
         $template = $this->template($event);
 
-        $this->send_rendered($event, $to, $to_name, $template['subject'], $template['body'], $values);
+        $this->send_rendered($event, $to, $to_name, $template['subject'], $template['body'], $values, $attachments);
     }
 
     /**
@@ -1038,7 +1068,10 @@ final class NotificationsModule implements Registerable
     /**
      * @param array<string, string> $values
      */
-    private function send_rendered(string $event, string $to, string $to_name, string $subject_template, string $body_template, array $values): void
+    /**
+     * @param array<int, string> $attachments absolute Dateipfade
+     */
+    private function send_rendered(string $event, string $to, string $to_name, string $subject_template, string $body_template, array $values, array $attachments = []): void
     {
         $subject = Template::render($subject_template, $values);
         $content = Template::render_html($body_template, $values);
@@ -1082,7 +1115,8 @@ final class NotificationsModule implements Registerable
             $event,
             DefaultTemplates::labels()[$event] ?? '',
             DefaultTemplates::is_customer_mail($event) ? 'customer' : 'internal',
-            (string) ($values['order_number'] ?? '')
+            (string) ($values['order_number'] ?? ''),
+            $attachments
         ));
     }
 

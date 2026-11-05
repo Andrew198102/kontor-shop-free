@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Modules\Agents\Mcp;
 
+use Kontor\Shop\Support\Arr;
+
+// Fehlertexte gehen als JSON an KI-Assistenten (MCP), nie als HTML in eine Seite.
+// phpcs:disable WordPress.Security.EscapeOutput.ExceptionNotEscaped
+
 /**
  * Argumente eines Werkzeug-Aufrufs, gegen das Eingabeschema des Werkzeugs
  * geprueft (Pflichtfelder, Typen, enum, minimum/maximum, maxLength,
@@ -31,7 +36,7 @@ final class Args
             $input = [];
         }
 
-        if (!is_array($input) || ($input !== [] && array_is_list($input))) {
+        if (!is_array($input) || ($input !== [] && Arr::is_list($input))) {
             throw new ToolError(__('The arguments must be an object.', 'kontor-shop'));
         }
 
@@ -152,7 +157,7 @@ final class Args
             throw new ToolError(sprintf(__('Argument %1$s is too long (at most %2$d characters).', 'kontor-shop'), $path, (int) $schema['maxLength']));
         }
 
-        if (is_array($value) && array_is_list($value) && in_array('array', $types, true)) {
+        if (is_array($value) && Arr::is_list($value) && in_array('array', $types, true)) {
             if (isset($schema['maxItems']) && count($value) > (int) $schema['maxItems']) {
                 /* translators: 1: argument name, 2: maximum number of entries */
                 throw new ToolError(sprintf(__('Argument %1$s has too many entries (at most %2$d).', 'kontor-shop'), $path, (int) $schema['maxItems']));
@@ -216,8 +221,8 @@ final class Args
                 'integer' => is_int($value),
                 'number'  => is_int($value) || is_float($value),
                 'boolean' => is_bool($value),
-                'array'   => is_array($value) && array_is_list($value),
-                'object'  => is_array($value) && ($value === [] || !array_is_list($value)),
+                'array'   => is_array($value) && Arr::is_list($value),
+                'object'  => is_array($value) && ($value === [] || !Arr::is_list($value)),
                 'null'    => $value === null,
                 default   => false,
             };

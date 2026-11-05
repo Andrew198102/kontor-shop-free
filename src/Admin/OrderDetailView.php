@@ -150,7 +150,7 @@ final class OrderDetailView
                         : Badge::html(sprintf(__('%s € done', 'kontor-shop'), number_format_i18n($order->refund_total, 2)), Badge::OK)
                 );
             }
-            $this->row(__('Ordered on', 'kontor-shop'), esc_html((string) $order->created_at));
+            $this->row(__('Ordered on', 'kontor-shop'), esc_html(mysql2date('d.m.Y, H:i', (string) $order->created_at)));
 
             $due = $order->awaits_payment() ? $this->terms->due_date($order) : null;
 
@@ -274,6 +274,16 @@ final class OrderDetailView
         echo '</table>';
 
         $this->render_shipments($shipments, $wh_names);
+
+        /**
+         * Aktion kontor_shop/admin/order_detail/documents: Belege zur
+         * Bestellung ausgeben (z. B. Rechnungen und Gutschriften,
+         * Modules\Invoices). $full = Benutzer darf Zahlungen buchen.
+         *
+         * @param Order $order
+         * @param bool  $full
+         */
+        do_action('kontor_shop/admin/order_detail/documents', $order, $full);
 
         // ---- Aktionen
         $allowed  = $can_manage ? null : $my_warehouse_ids;

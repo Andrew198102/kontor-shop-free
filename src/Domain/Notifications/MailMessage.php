@@ -33,13 +33,22 @@ final class MailMessage
         public readonly string $headline = '',
         public readonly string $audience = '',
         public readonly string $reference = '',
+        /**
+         * Anhaenge als absolute Dateipfade (z. B. PDF-Rechnung). Pfade statt
+         * Inhalt, damit der Postausgang sie bei einer Wiederholung noch findet.
+         * Versandwege ohne Anhang-Unterstuetzung lassen sie weg - die Mails
+         * nennen deshalb immer zusaetzlich einen Download-Link.
+         *
+         * @var array<int, string>
+         */
+        public readonly array $attachments = [],
     ) {
     }
 
     /**
      * Fuer den Postausgang (Infrastructure\Notifications\MailOutbox) speicherbar.
      *
-     * @return array<string, string|null>
+     * @return array<string, mixed>
      */
     public function to_array(): array
     {
@@ -68,6 +77,7 @@ final class MailMessage
             $text('headline'),
             $text('audience'),
             $text('reference'),
+            array_values(array_filter(array_map('strval', isset($data['attachments']) && is_array($data['attachments']) ? $data['attachments'] : []), static fn (string $path): bool => $path !== '')),
         );
     }
 }

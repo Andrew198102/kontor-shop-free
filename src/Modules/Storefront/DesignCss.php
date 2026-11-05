@@ -212,7 +212,7 @@ final class DesignCss
      */
     public static function sanitize_custom_css(string $css): string
     {
-        $css = function_exists('wp_strip_all_tags') ? wp_strip_all_tags($css) : strip_tags($css);
+        $css = wp_strip_all_tags($css);
         $css = str_replace(['</', '<!--', '-->'], '', $css);
 
         return trim(substr($css, 0, 20000));

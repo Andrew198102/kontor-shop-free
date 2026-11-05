@@ -138,6 +138,22 @@ final class Schema
                 'order_button_label' => '',
             ],
 
+            // PDF-Rechnungen (Modules\Invoices). Aus, bis der Verein Absenderdaten eintraegt und einschaltet.
+            'invoices' => [
+                'enabled'        => false,
+                // paid = beim Zahlungseingang | shipped = beim Versand/bei der Abholung | manual = nur per Knopf
+                // (auf Rechnung und bar bei Abholung immer erst mit dem Versand bzw. der Abholung).
+                'trigger'        => 'paid',
+                'send_email'     => true,
+                'seller_name'    => '',
+                'seller_address' => '',
+                'seller_vat_id'  => '',
+                // Weitere Pflichtangaben, z. B. ZVR-Zahl, Firmenbuch, Steuernummer.
+                'seller_extra'   => '',
+                // Hinweis bei steuerfreien Positionen (leer = Hinweis aus Zahlung & Umsatzsteuer).
+                'exempt_note'    => '',
+            ],
+
             'design' => [
                 // Leer = Frontend-CSS nutzt seinen eingebauten, neutralen
                 // Default (kein Projektbezug im Code, siehe Abschnitt 5.1).

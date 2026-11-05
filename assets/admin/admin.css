@@ -889,3 +889,8 @@ svg.ks-dot circle { stroke: #c3c4c7; stroke-width: 1; }
 /* "?" neben schwierigen Feldern -> passender Artikel im Hilfe-Center */
 .ks-help-q { display: inline-grid; place-items: center; width: 20px; height: 20px; margin-left: 6px; border-radius: 50%; border: 1px solid #2271b1; color: #2271b1; font-size: 12px; font-weight: 700; line-height: 1; text-decoration: none; vertical-align: 1px; }
 .ks-help-q:hover, .ks-help-q:focus-visible { background: #2271b1; color: #fff; }
+
+/* Sammelbestellungen (Pro) */
+.ks-preorder-sizes { max-width: 480px; margin: 8px 0 12px; }
+.ks-preorder-sizes .num { text-align: right; width: 90px; }
+.ks-preorder .ks-preorder-form { border-top: 1px solid #dcdcde; margin-top: 12px; padding-top: 4px; }

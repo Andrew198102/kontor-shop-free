@@ -402,6 +402,24 @@ CREATE TABLE {$p}coupon_uses (
   KEY email_idx (customer_email)
 ) {$charset_collate};
 
+CREATE TABLE {$p}invoices (
+  id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  order_id BIGINT UNSIGNED NOT NULL,
+  type VARCHAR(20) NOT NULL DEFAULT 'invoice',
+  series VARCHAR(20) NOT NULL,
+  seq INT UNSIGNED NOT NULL,
+  number VARCHAR(40) NOT NULL,
+  issued_at DATETIME NOT NULL,
+  total DECIMAL(12,2) NOT NULL,
+  refers_to BIGINT UNSIGNED NULL,
+  data LONGTEXT NOT NULL,
+  file VARCHAR(255) NOT NULL DEFAULT '',
+  created_by BIGINT UNSIGNED NULL,
+  PRIMARY KEY  (id),
+  UNIQUE KEY series_seq_idx (series,seq),
+  UNIQUE KEY number_idx (number),
+  KEY order_idx (order_id)
+) {$charset_collate};
 CREATE TABLE {$p}api_requests (
   id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
   client_id VARCHAR(32) NOT NULL,

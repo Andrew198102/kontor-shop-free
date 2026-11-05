@@ -59,7 +59,7 @@ final class PricingPage implements Registerable
     public function welcome_redirect(): void
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- nur Weiterleitung, keine Aenderung
-        if (($_GET['page'] ?? '') !== 'kontor-shop' || !isset($_GET[self::WELCOME]) || Edition::is_pro() || wp_doing_ajax()) {
+        if (sanitize_key(wp_unslash((string) ($_GET['page'] ?? ''))) !== 'kontor-shop' || !isset($_GET[self::WELCOME]) || Edition::is_pro() || wp_doing_ajax()) {
             return;
         }
 

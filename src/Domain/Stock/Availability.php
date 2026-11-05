@@ -41,4 +41,28 @@ final class Availability
 
         return ($m >= self::MIN_MINUTES && $m <= self::MAX_MINUTES ? $m : self::DEFAULT_MINUTES) * 60;
     }
+
+    /**
+     * Frei verfuegbare Menge nach Erweiterungen, z. B. Pro-Sammelbestellung:
+     * bis zum Bestellschluss bestellbar, auch ohne Bestand.
+     *
+     * @param int|null $variant_id null = alle Varianten zusammen, 0 = ohne Varianten
+     */
+    public static function filtered(int $free, int $product_id, ?int $variant_id): int
+    {
+        if (!function_exists('apply_filters')) {
+            return $free;
+        }
+
+        /**
+         * Filter kontor_shop/stock/free: frei verfuegbare Menge eines Artikels
+         * bzw. einer Variante (Katalog, Warenkorb, Kasse, KI-Shopzugang).
+         * Standard: Bestand minus Reservierungen anderer.
+         *
+         * @param int      $free
+         * @param int      $product_id
+         * @param int|null $variant_id
+         */
+        return max(0, (int) apply_filters('kontor_shop/stock/free', $free, $product_id, $variant_id));
+    }
 }

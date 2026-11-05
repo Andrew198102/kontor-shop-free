@@ -41,7 +41,10 @@ final class WpMailer implements Mailer
             add_action('phpmailer_init', $alt_body);
         }
 
-        $sent = wp_mail($to, $message->subject, $message->html ?? $message->body, $headers);
+        // Nur vorhandene Dateien anhaengen (eine geloeschte Datei soll die Mail nicht verhindern).
+        $attachments = array_values(array_filter($message->attachments, 'is_readable'));
+
+        $sent = wp_mail($to, $message->subject, $message->html ?? $message->body, $headers, $attachments);
 
         if ($message->html !== null) {
             remove_action('phpmailer_init', $alt_body);

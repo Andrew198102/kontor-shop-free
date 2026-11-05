@@ -75,7 +75,8 @@ final class ReservationStore
             $session_key
         ));
 
-        $available = $sold - $reserved_by_others;
+        // Gleicher Filter wie free_for() (z. B. Sammelbestellung: bestellbar ohne Bestand).
+        $available = Availability::filtered($sold - $reserved_by_others, $product_id, $variant_id > 0 ? $variant_id : null);
 
         if ($quantity > $available) {
             $wpdb->query('ROLLBACK');
@@ -216,7 +217,7 @@ final class ReservationStore
                 $product_id
             ));
 
-            return Availability::free($balance, $this->reserved_for([$product_id], $session_key)[$product_id] ?? 0);
+            return Availability::filtered(Availability::free($balance, $this->reserved_for([$product_id], $session_key)[$product_id] ?? 0), $product_id, null);
         }
 
         $balance = (int) $wpdb->get_var($wpdb->prepare(
@@ -226,7 +227,7 @@ final class ReservationStore
             $variant_id
         ));
 
-        return Availability::free($balance, $this->reserved_by_variant([$product_id], $session_key)[$product_id][$variant_id] ?? 0);
+        return Availability::filtered(Availability::free($balance, $this->reserved_by_variant([$product_id], $session_key)[$product_id][$variant_id] ?? 0), $product_id, $variant_id);
     }
 
     /** Wann laeuft die frueheste aktive Reservierung dieser Sitzung ab (UTC-Zeitstempel)? */

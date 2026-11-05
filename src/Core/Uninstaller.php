@@ -34,7 +34,7 @@ final class Uninstaller
 
     /** Tabellen (ohne Praefix), Kind- vor Elterntabellen. */
     public const TABLES = [
-        'mail_outbox', 'api_requests', 'coupon_uses', 'coupons', 'stock_requests', 'audit', 'shipments', 'order_status_log', 'order_items', 'orders',
+        'mail_outbox', 'api_requests', 'invoices', 'coupon_uses', 'coupons', 'stock_requests', 'audit', 'shipments', 'order_status_log', 'order_items', 'orders',
         'stock_reservations', 'stock_movements', 'product_categories', 'product_variants', 'product_images',
         'product_tombstones', 'products', 'categories', 'shop_types', 'log', 'warehouses',
     ];
@@ -102,6 +102,7 @@ final class Uninstaller
         self::delete_managed_images($pages);
         self::delete_pages($pages);
         self::drop_tables();
+        \Kontor\Shop\Infrastructure\Invoices\InvoiceStorage::purge();
         self::delete_options();
         self::delete_meta();
         self::remove_capabilities();
