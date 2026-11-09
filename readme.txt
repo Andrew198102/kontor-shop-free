@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.8.0
+Stable tag: 2.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.0 =
+* New (Pro): the AI assistant takes a whole product list, for example an inventory list – it checks every row first (new product, already in the shop, or what is missing such as price, stock or category), shows the plan as a table, asks for the gaps, and only after your OK creates the categories and products (hidden) and counts the stock of existing products.
+* New (Pro): the AI assistant can set product photos directly – photos you upload in the chat or edit there (for example with ChatGPT) are taken over, very large images are scaled to web size, named after the product and linked as main or gallery image. The assistant gets the shop’s photo standard (size, format, background) for editing.
 
 = 2.8.0 =
 * New: PDF invoices (Settings → Invoices) with continuous numbers per year, created when the payment is recorded, when the order is shipped or by hand. Customers get them by email as an attachment and on their order page; open invoices carry the bank details and the transfer QR code.

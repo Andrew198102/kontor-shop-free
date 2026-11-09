@@ -78,7 +78,7 @@ msgstr ""
 #: src/Admin/ProductsPage.php:116
 #: src/Admin/ProductsPage.php:476
 #: src/Pro__premium_only/Agents/ProductWriter.php:120
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:272
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:292
 msgid "Product not found."
 msgstr ""
 
@@ -94,18 +94,18 @@ msgstr ""
 #: src/Admin/ProductsPage.php:231
 #: src/Admin/WarehousesPage.php:155
 #: src/Pro__premium_only/Agents/ProductWriter.php:243
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:633
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:791
 msgid "Please enter a name."
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:157
 #: src/Admin/CategoriesPage.php:229
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:624
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:782
 msgid "Category not found."
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:161
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:648
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:806
 msgid "A category can't be placed under itself or one of its subcategories."
 msgstr ""
 
@@ -489,7 +489,7 @@ msgstr ""
 #: src/Admin/Help.php:58
 #: src/Admin/Menu.php:377
 #: src/Admin/OrdersList.php:183
-#: src/Pro__premium_only/Agents/AgentsPage.php:458
+#: src/Pro__premium_only/Agents/AgentsPage.php:459
 #: src/Pro__premium_only/Dashboard/TrendCard.php:39
 msgid "Orders"
 msgstr ""
@@ -2900,7 +2900,7 @@ msgid "Before deleting a product or cancelling an order, the assistant has to sh
 msgstr ""
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:630
-#: src/Pro__premium_only/Agents/AgentsPage.php:480
+#: src/Pro__premium_only/Agents/AgentsPage.php:481
 msgid "Every change is logged with your name and “AI assistant” (Logs → Changes)."
 msgstr ""
 
@@ -7264,7 +7264,7 @@ msgstr ""
 #: src/Admin/OrdersList.php:817
 #: src/Admin/Settings/AgentsSection.php:71
 #: src/Modules/Checkout/CheckoutModule.php:1625
-#: src/Pro__premium_only/Agents/AgentsPage.php:469
+#: src/Pro__premium_only/Agents/AgentsPage.php:470
 #: src/Pro__premium_only/Api/ApiSection.php:85
 msgid "Copy"
 msgstr ""
@@ -7648,7 +7648,6 @@ msgid "Shown with the product in the shop (plain text, no formatting)."
 msgstr ""
 
 #: src/Admin/ProductForm.php:204
-#: src/Pro__premium_only/Agents/AgentsPage.php:456
 msgid "Images"
 msgstr ""
 
@@ -8239,7 +8238,7 @@ msgid "“%s” restored."
 msgstr ""
 
 #: src/Admin/ProductsPage.php:504
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:528
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:548
 msgid "Duplicating failed."
 msgstr ""
 
@@ -10596,6 +10595,7 @@ msgstr[1] ""
 
 #. translators: %s: date
 #: src/Admin/StockPage.php:555
+#: src/Pro__premium_only/Agents/Tools/ImportTools.php:247
 #: src/Pro__premium_only/Agents/Tools/StockTools.php:278
 msgid "Stock count %s"
 msgstr ""
@@ -10609,13 +10609,13 @@ msgid "Nothing has been counted yet."
 msgstr ""
 
 #: src/Admin/StockPage.php:589
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:297
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:309
 msgid "A counted product was not found or does not belong to your warehouse."
 msgstr ""
 
 #. translators: %s: error reference number
 #: src/Admin/StockPage.php:610
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:321
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:333
 msgid "The stock count could not be booked completely (error code %s). Corrections already booked are in the history."
 msgstr ""
 
@@ -12686,7 +12686,7 @@ msgid "The shop’s AI assistant access is switched off."
 msgstr ""
 
 #: src/Modules/Agents/AgentsModule.php:82
-#: src/Pro__premium_only/Agents/AgentsProModule.php:119
+#: src/Pro__premium_only/Agents/AgentsProModule.php:121
 #: src/Pro__premium_only/Agents/ShopOrderTools.php:231
 msgid "Too many requests – please try again in a few minutes."
 msgstr ""
@@ -12902,7 +12902,7 @@ msgid "Shop information"
 msgstr ""
 
 #: src/Modules/Agents/ShopTools.php:49
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:158
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:178
 msgid "List categories"
 msgstr ""
 
@@ -14325,26 +14325,38 @@ msgid "Suggest three names and a short text for a club scarf, price around 20 �
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:456
-msgid "Use this photo as the image: (public link). And give the scarf the sizes children and adults."
+msgid "Inventory list"
+msgstr ""
+
+#: src/Pro__premium_only/Agents/AgentsPage.php:456
+msgid "Here is my inventory list (pasted or as a photo). Prepare all products as a table with price, stock, sizes and category, ask me what is missing – and create everything after my OK."
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:457
-msgid "Daily business"
+msgid "Product photos"
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:457
-msgid "What’s to do in the shop today?"
+msgid "Edit this photo as a shop image (light background, product centred, shop format) and set it as the main image of the club scarf."
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:458
-msgid "Order B-000042 was paid today – please book it."
+msgid "Daily business"
+msgstr ""
+
+#: src/Pro__premium_only/Agents/AgentsPage.php:458
+msgid "What’s to do in the shop today?"
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:459
-msgid "What is sold out or running low? Book 20 caps as goods receipt."
+msgid "Order B-000042 was paid today – please book it."
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:460
+msgid "What is sold out or running low? Book 20 caps as goods receipt."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/AgentsPage.php:461
 #: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:248
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:151
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:262
@@ -14352,110 +14364,110 @@ msgstr ""
 msgid "Discounts"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:460
+#: src/Pro__premium_only/Agents/AgentsPage.php:461
 msgid "Create a discount code SUMMER26 with 10 % until the end of August."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:464
+#: src/Pro__premium_only/Agents/AgentsPage.php:465
 msgid "Ideas to try"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:465
+#: src/Pro__premium_only/Agents/AgentsPage.php:466
 msgid "Copy, paste into the chat, adjust."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:477
+#: src/Pro__premium_only/Agents/AgentsPage.php:478
 msgid "Security & data protection"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:478
+#: src/Pro__premium_only/Agents/AgentsPage.php:479
 msgid "The assistant works with your permissions: a cashier can book payments, a warehouse manager only their own warehouse."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:479
+#: src/Pro__premium_only/Agents/AgentsPage.php:480
 msgid "Before deleting or cancelling, the assistant must show a summary and ask you. Check what it plans to do before you agree."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:481
+#: src/Pro__premium_only/Agents/AgentsPage.php:482
 msgid "Lost your phone or no longer using an app? Revoke the access here – it stops working immediately."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:482
+#: src/Pro__premium_only/Agents/AgentsPage.php:483
 msgid "Data protection: when you ask about orders, customer data (names, addresses) goes to the AI provider. Only use providers your club has approved for this, and mention it in your privacy policy."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:483
+#: src/Pro__premium_only/Agents/AgentsPage.php:484
 msgid "Settings, users and payouts can’t be changed by the assistant – that stays in the admin."
 msgstr ""
 
 #. translators: %d: number of accesses
-#: src/Pro__premium_only/Agents/AgentsPage.php:502
+#: src/Pro__premium_only/Agents/AgentsPage.php:503
 msgid "Accesses of the team (%d)"
 msgstr ""
 
 #. translators: %d: number of accesses
-#: src/Pro__premium_only/Agents/AgentsPage.php:504
+#: src/Pro__premium_only/Agents/AgentsPage.php:505
 msgid "only for administrators"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:505
+#: src/Pro__premium_only/Agents/AgentsPage.php:506
 msgid "As an administrator you can revoke any access, e.g. when someone leaves the team."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:130
+#: src/Pro__premium_only/Agents/AgentsProModule.php:132
 msgid "back office"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:134
+#: src/Pro__premium_only/Agents/AgentsProModule.php:136
 msgid "Manage products, stock, orders and discount codes of this shop."
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:188
+#: src/Pro__premium_only/Agents/AgentsProModule.php:191
 msgid "Done – now paste it into %s"
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:190
+#: src/Pro__premium_only/Agents/AgentsProModule.php:193
 msgid "In %s:"
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:192
+#: src/Pro__premium_only/Agents/AgentsProModule.php:195
 msgid "Waiting for the first connection from %s … This turns green as soon as it works."
 msgstr ""
 
 #. translators: 1: app name, 2: time
-#: src/Pro__premium_only/Agents/AgentsProModule.php:194
+#: src/Pro__premium_only/Agents/AgentsProModule.php:197
 msgid "Connected with %1$s (first request %2$s) – you can start."
 msgstr ""
 
 #. translators: 1: app name, 2: time
-#: src/Pro__premium_only/Agents/AgentsProModule.php:195
+#: src/Pro__premium_only/Agents/AgentsProModule.php:198
 msgid "That didn’t work. Please try again."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:204
+#: src/Pro__premium_only/Agents/AgentsProModule.php:207
 msgid "Team access (shop management by AI assistant)"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:206
+#: src/Pro__premium_only/Agents/AgentsProModule.php:209
 msgid "Team access"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:208
+#: src/Pro__premium_only/Agents/AgentsProModule.php:211
 msgid "Shop team members may connect their AI assistant (products, images, stock, orders, discount codes)"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:209
+#: src/Pro__premium_only/Agents/AgentsProModule.php:212
 msgid "Each person creates their own access under Kontor Shop → AI assistant. The assistant works with that person’s permissions; every change is logged. Settings and users stay off-limits."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:210
+#: src/Pro__premium_only/Agents/AgentsProModule.php:213
 msgid "Go to accesses and instructions"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Confirmation.php:72
+#: src/Pro__premium_only/Agents/Confirmation.php:73
 msgid "Confirmation needed – nothing has been changed yet."
 msgstr ""
 
@@ -14468,24 +14480,24 @@ msgstr ""
 msgid "The image could not be downloaded: %s"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:66
+#: src/Pro__premium_only/Agents/ImageImporter.php:67
 msgid "The image data is not valid Base64."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:70
+#: src/Pro__premium_only/Agents/ImageImporter.php:71
 msgid "The image is larger than 15 MB."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:78
+#: src/Pro__premium_only/Agents/ImageImporter.php:79
 msgid "The image could not be saved temporarily."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:95
+#: src/Pro__premium_only/Agents/ImageImporter.php:96
 msgid "This is not a supported image (JPEG, PNG, GIF, WebP or AVIF up to 15 MB)."
 msgstr ""
 
 #. translators: %s: error message
-#: src/Pro__premium_only/Agents/ImageImporter.php:108
+#: src/Pro__premium_only/Agents/ImageImporter.php:109
 msgid "The image could not be added to the media library: %s"
 msgstr ""
 
@@ -14572,42 +14584,54 @@ msgstr ""
 msgid "Upload image"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:168
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:159
+msgid "Set product image"
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:188
 msgid "Create or change category"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:184
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:204
 msgid "List warehouses"
 msgstr ""
 
 #. translators: %d: attachment ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:487
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:507
 msgid "Image %d does not exist in the media library."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:510
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:530
 msgid "The product is archived – restore it first."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:546
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:566
 msgid "Only archived products can be deleted permanently – archive it first (admin_product_action)."
 msgstr ""
 
 #. translators: 1: product name, 2: product ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:551
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:571
 msgid "Delete “%1$s” (#%2$d) permanently, including its variants and stock history. Orders keep their copy of the product data. This cannot be undone."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:581
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:605
 msgid "Please pass url or data_base64."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:637
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:650
+msgid "Please pass the image file (image) or a link (image_url)."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:710
+msgid "The image file arrived without a download address. Please try again, or upload the photo in the browser."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:795
 #: src/Pro__premium_only/ShopTypes/ShopTypesModule.php:185
 msgid "Please choose a shop type (Settings → Shop types)."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:644
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:802
 #: src/Pro__premium_only/ShopTypes/ShopTypesModule.php:189
 msgid "The parent category must be in the same shop type."
 msgstr ""
@@ -14662,6 +14686,14 @@ msgstr ""
 #: src/Pro__premium_only/Coupons/CouponsPage.php:213
 #: src/Pro__premium_only/Coupons/CouponsPage.php:321
 msgid "Discount code not found."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/ImportTools.php:91
+msgid "Check and import a product list"
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/ImportTools.php:238
+msgid "Could not be saved."
 msgstr ""
 
 #: src/Pro__premium_only/Agents/Tools/OrderTools.php:65
@@ -14739,7 +14771,7 @@ msgid "For a correction, say whether stock goes up or down (direction increase/d
 msgstr ""
 
 #. translators: %s: product name
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:302
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:314
 msgid "“%s” is counted per variant – please give variant_id."
 msgstr ""
 

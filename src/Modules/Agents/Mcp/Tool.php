@@ -43,6 +43,23 @@ final class Tool
         $this->permission = $permission !== null ? \Closure::fromCallable($permission) : null;
     }
 
+    /** Zusatzangaben fuer bestimmte Assistenten (MCP _meta), z. B. openai/fileParams. */
+    private array $meta = [];
+
+    /**
+     * Kopie mit _meta - z. B. ['openai/fileParams' => ['image']]: ChatGPT uebergibt dann ein Bild
+     * aus dem Gespraech (hochgeladen oder dort bearbeitet) als {download_url, file_id, ...}.
+     *
+     * @param array<string, mixed> $meta
+     */
+    public function with_meta(array $meta): self
+    {
+        $copy       = clone $this;
+        $copy->meta = $meta;
+
+        return $copy;
+    }
+
     public function allowed(): bool
     {
         return $this->permission === null || ($this->permission)();
@@ -85,7 +102,7 @@ final class Tool
                 'idempotentHint'  => $this->read_only,
                 'openWorldHint'   => false,
             ],
-        ];
+        ] + ($this->meta !== [] ? ['_meta' => $this->meta] : []);
     }
 
     /**
