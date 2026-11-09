@@ -39,7 +39,7 @@ final class ShopTools
             new Tool(
                 'shop_info',
                 __('Shop information', 'kontor-shop'),
-                'Basic facts about this shop: name, website, currency, payment methods, shipping costs and countries, self pickup, legal pages, and how ordering works. Call this first.',
+                'Basic facts about this shop: name, website, currency, payment methods, shipping costs and countries, self pickup, legal pages, and how ordering works. Call this for questions about paying, shipping, pickup, terms or how to order – not needed for finding products.',
                 [],
                 [],
                 fn (): array => $this->info()
@@ -55,7 +55,7 @@ final class ShopTools
             new Tool(
                 'shop_search_products',
                 __('Search products', 'kontor-shop'),
-                'Search the catalog. Matches words in name, brand, category, variants (e.g. size, colour), product number and description; umlauts and case do not matter. Without a query it lists products alphabetically. Prices are regular prices in EUR incl. VAT.',
+                'Search the catalog. Matches words in name, brand, category, variants (e.g. size, colour), product number and description; umlauts and case do not matter. Without a query it lists products alphabetically. Prices are regular prices in EUR incl. VAT. If exactly one product matches, "product" holds its full details (as shop_get_product) – no need to call shop_get_product then.',
                 [
                     'query'          => ['type' => 'string', 'maxLength' => 200, 'description' => 'Search words, e.g. "hoodie navy L".'],
                     'category'       => ['type' => 'string', 'maxLength' => 190, 'description' => 'Category slug or id (from shop_list_categories); includes subcategories.'],
@@ -236,14 +236,28 @@ final class ShopTools
         $limit  = $args->int('limit', 10);
         $offset = $args->int('offset', 0);
         $page   = array_slice($found['items'], $offset, $limit);
-
-        return [
+        $out    = [
             'total'    => count($found['items']),
             'offset'   => $offset,
             'match'    => $found['match'],
             'products' => array_map(fn (PublicProduct $p): array => $this->catalog()->summary($p), $page),
-            'hint'     => $found['match'] === 'any' ? 'No product matched all words; these match some of them.' : null,
         ];
+
+        if ($found['match'] === 'any') {
+            $out['hint'] = 'No product matched all words; these match some of them.';
+        }
+
+        // Genau ein Treffer: gleich die Details mitgeben - spart dem Assistenten den Aufruf von shop_get_product.
+        if (count($found['items']) === 1) {
+            $single = $this->catalog()->find($found['items'][0]->id);
+
+            if ($single !== null) {
+                $out['product']  = $this->catalog()->details($single);
+                $out['ordering'] = self::ordering($this->settings);
+            }
+        }
+
+        return $out;
     }
 
     /**

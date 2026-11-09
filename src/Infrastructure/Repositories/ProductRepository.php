@@ -261,6 +261,44 @@ final class ProductRepository
     }
 
     /**
+     * Galerien mehrerer Artikel in einer Abfrage (statt gallery_ids() je
+     * Artikel), Reihenfolge wie gallery_ids().
+     *
+     * @param array<int, int> $product_ids
+     * @return array<int, array<int, int>> product_id => Attachment-IDs
+     */
+    public function gallery_map(array $product_ids): array
+    {
+        global $wpdb;
+
+        $ids = array_values(array_unique(array_filter(array_map('intval', $product_ids))));
+        $map = array_fill_keys($ids, []);
+
+        if ($ids === []) {
+            return $map;
+        }
+
+        $placeholders = implode(',', array_fill(0, count($ids), '%d'));
+
+        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber -- $placeholders enthaelt nur %d-Platzhalter, je ID einer
+        $rows = $wpdb->get_results(
+            $wpdb->prepare(
+                'SELECT product_id, attachment_id FROM %i WHERE product_id IN (' . $placeholders . ') ORDER BY product_id ASC, sort_order ASC, attachment_id ASC',
+                $this->images_table(),
+                ...$ids
+            ),
+            ARRAY_A
+        ) ?: [];
+        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber
+
+        foreach ($rows as $row) {
+            $map[(int) $row['product_id']][] = (int) $row['attachment_id'];
+        }
+
+        return $map;
+    }
+
+    /**
      * Galerie ersetzen (Reihenfolge = Reihenfolge der IDs). Das Hauptbild
      * steht nie zusaetzlich in der Galerie.
      *

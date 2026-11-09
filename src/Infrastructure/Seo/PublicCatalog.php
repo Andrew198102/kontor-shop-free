@@ -39,6 +39,12 @@ final class PublicCatalog implements CatalogSource
     /** @var array<int, int|null>|null */
     private ?array $parents = null;
 
+    /** @var array<int, Product>|null alle oeffentlichen Artikel (id => Artikel), einmal je Anfrage geladen */
+    private ?array $public = null;
+
+    /** @var array<int, Product> einzeln geladene Artikel (find_public) */
+    private array $loaded = [];
+
     private ProductRepository $products;
     private CategoryRepository $categories;
     private StockRepository $stock;
@@ -55,11 +61,13 @@ final class PublicCatalog implements CatalogSource
     public function find_public(int $id): ?PublicProduct
     {
         return $this->guard(function () use ($id): ?PublicProduct {
-            $product = $this->products->find($id);
+            $product = $this->public !== null ? ($this->public[$id] ?? null) : $this->products->find($id);
 
             if ($product === null || !$this->is_public($product)) {
                 return null;
             }
+
+            $this->loaded[$id] = $product;
 
             return $this->build([$product])[0] ?? null;
         });
@@ -71,16 +79,41 @@ final class PublicCatalog implements CatalogSource
     }
 
     /**
-     * Alle oeffentlichen Artikel.
+     * Alle oeffentlichen Artikel. $gallery = false: nur das Hauptbild (fuer
+     * Trefferlisten), spart Galerie-Abfragen und Bild-URLs, die keiner zeigt.
      *
      * @return array<int, PublicProduct>
      */
-    public function all(): array
+    public function all(bool $gallery = true): array
     {
-        return $this->guard(function (): array {
-            $products = array_values(array_filter($this->products->all(), fn (Product $p): bool => $this->is_public($p)));
+        return $this->guard(fn (): array => $this->build(array_values($this->public_products()), $gallery));
+    }
 
-            return $this->build($products);
+    /**
+     * Der Artikel hinter einem oeffentlichen Artikel (z. B. fuer seine
+     * Adresse) - aus dem, was schon geladen ist, sonst eine Abfrage.
+     */
+    public function source(int $id): ?Product
+    {
+        return $this->public[$id] ?? $this->loaded[$id] ?? $this->guard(fn (): ?Product => $this->products->find($id));
+    }
+
+    /**
+     * IDs der oeffentlichen Artikel einer Kategorie samt Unterkategorien,
+     * ohne die Artikel aufzubauen.
+     *
+     * @return array<int, true>
+     */
+    public function ids_in_category(Category $category): array
+    {
+        return $this->guard(function () use ($category): array {
+            $ids = [];
+
+            foreach ($this->matching($category) as $product) {
+                $ids[(int) $product->id] = true;
+            }
+
+            return $ids;
         });
     }
 
@@ -117,20 +150,47 @@ final class PublicCatalog implements CatalogSource
     public function in_category(Category $category, int $page, int $per_page): array
     {
         return $this->guard(function () use ($category, $page, $per_page): array {
-            $wanted = array_merge([(int) $category->id], CategoryTree::descendants((int) $category->id, $this->parent_map()));
-            $public = array_values(array_filter($this->products->all(), fn (Product $p): bool => $this->is_public($p)));
-            $map    = $this->products->category_map(array_map(static fn (Product $p): int => (int) $p->id, $public));
-
-            $matching = array_values(array_filter(
-                $public,
-                static fn (Product $p): bool => array_intersect($map[(int) $p->id] ?? [], $wanted) !== []
-            ));
-
-            $total = count($matching);
-            $slice = array_slice($matching, max(0, ($page - 1) * $per_page), $per_page);
+            $matching = $this->matching($category);
+            $total    = count($matching);
+            $slice    = array_slice($matching, max(0, ($page - 1) * $per_page), $per_page);
 
             return ['items' => $this->build($slice), 'total' => $total];
         });
+    }
+
+    /**
+     * Oeffentliche Artikel einer Kategorie samt Unterkategorien, alphabetisch.
+     *
+     * @return array<int, Product>
+     */
+    private function matching(Category $category): array
+    {
+        $wanted = array_merge([(int) $category->id], CategoryTree::descendants((int) $category->id, $this->parent_map()));
+        $public = array_values($this->public_products());
+        $map    = $this->products->category_map(array_map(static fn (Product $p): int => (int) $p->id, $public));
+
+        return array_values(array_filter(
+            $public,
+            static fn (Product $p): bool => array_intersect($map[(int) $p->id] ?? [], $wanted) !== []
+        ));
+    }
+
+    /**
+     * @return array<int, Product> id => Artikel, alphabetisch
+     */
+    private function public_products(): array
+    {
+        if ($this->public === null) {
+            $this->public = [];
+
+            foreach ($this->products->all() as $product) {
+                if ($this->is_public($product)) {
+                    $this->public[(int) $product->id] = $product;
+                }
+            }
+        }
+
+        return $this->public;
     }
 
     /**
@@ -248,16 +308,36 @@ final class PublicCatalog implements CatalogSource
     }
 
     /**
+     * Alles fuer viele Artikel gesammelt laden (Bestand, Kategorien,
+     * Galerien, Bild-Anhaenge), damit die Schleife keine Abfragen mehr macht.
+     *
      * @param array<int, Product> $products
      * @return array<int, PublicProduct>
      */
-    private function build(array $products): array
+    private function build(array $products, bool $with_gallery = true): array
     {
-        $ids      = array_map(static fn (Product $p): int => (int) $p->id, $products);
-        $snapshot = StockSnapshot::load($products);
-        $cat_map  = $this->products->category_map($ids);
-        $visible  = $this->visible();
-        $result   = [];
+        if ($products === []) {
+            return [];
+        }
+
+        $ids         = array_map(static fn (Product $p): int => (int) $p->id, $products);
+        $snapshot    = StockSnapshot::load($products);
+        $cat_map     = $this->products->category_map($ids);
+        $galleries   = $with_gallery ? $this->products->gallery_map($ids) : [];
+        $visible     = $this->visible();
+        $result      = [];
+        $attachments = [];
+
+        foreach ($products as $product) {
+            $attachments[] = $product->image_id;
+            array_push($attachments, ...($galleries[(int) $product->id] ?? []));
+
+            foreach ($snapshot->variants($product) as $variant) {
+                $attachments[] = $variant->image_id;
+            }
+        }
+
+        ImageData::prime($attachments);
 
         foreach ($products as $product) {
             $id = (int) $product->id;
@@ -289,7 +369,7 @@ final class PublicCatalog implements CatalogSource
             $alt       = $main['alt'] ?? $product->image_alt;
             $images    = $main !== null ? [$main] : [];
 
-            foreach ($this->products->gallery_ids($id) as $gallery_id) {
+            foreach ($galleries[$id] ?? [] as $gallery_id) {
                 $image = ImageData::of($gallery_id, $product->name);
 
                 if ($image !== null) {

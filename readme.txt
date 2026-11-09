@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.0
+Stable tag: 2.9.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,12 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.1 =
+* Faster AI assistant access: product search, category lists and product pages load images and galleries for all products at once – the number of database queries no longer grows with the size of the catalog (a search now needs about 10 queries instead of one or more per product and image). The public category pages (Pro) benefit as well.
+* Fewer steps for the AI assistant: a search with exactly one match (shop products, and in Pro back-office products and orders) returns the full details right away, so the assistant needs no second call. In Pro the assistant knows the user's roles from the start and no longer has to ask first.
+* Smaller answers to the AI assistant (compact JSON, about 40 % shorter), which saves time and tokens on every call.
+* The request limit of the AI access uses the object cache (Redis/Memcached) when available and otherwise writes to the database only once per request.
 
 = 2.9.0 =
 * New (Pro): the AI assistant takes a whole product list, for example an inventory list – it checks every row first (new product, already in the shop, or what is missing such as price, stock or category), shows the plan as a table, asks for the gaps, and only after your OK creates the categories and products (hidden) and counts the stock of existing products.

@@ -158,7 +158,9 @@ final class McpServer
     }
 
     /**
-     * Ergebnis als Text (fuer jeden Client lesbar) und strukturiert.
+     * Ergebnis als Text (fuer jeden Client lesbar) und strukturiert. Der Text
+     * ist kompaktes JSON: Das Modell liest jedes Zeichen als Token,
+     * Einrueckungen machen die Antwort rund 40 % groesser, ohne etwas zu sagen.
      *
      * @param array<int|string, mixed> $data
      * @return array<string, mixed>
@@ -168,7 +170,7 @@ final class McpServer
         $structured = $data !== [] && Arr::is_list($data) ? ['items' => $data] : $data;
 
         return [
-            'content'           => [['type' => 'text', 'text' => (string) wp_json_encode($structured, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)]],
+            'content'           => [['type' => 'text', 'text' => (string) wp_json_encode($structured, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES)]],
             'structuredContent' => $structured === [] ? new \stdClass() : $structured,
             'isError'           => $is_error,
         ];

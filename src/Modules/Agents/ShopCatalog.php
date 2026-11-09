@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Kontor\Shop\Modules\Agents;
 
 use Kontor\Shop\Domain\Catalog\Category;
-use Kontor\Shop\Domain\Catalog\Product;
 use Kontor\Shop\Domain\Seo\PublicProduct;
 use Kontor\Shop\Domain\Seo\UrlScheme;
 use Kontor\Shop\Infrastructure\Seo\PublicCatalog;
-use Kontor\Shop\Infrastructure\Repositories\ProductRepository;
 use Kontor\Shop\Modules\Seo\ProductUrl;
 use Kontor\Shop\Settings\Repository;
 
@@ -27,20 +25,20 @@ final class ShopCatalog
     /** @var array<int, PublicProduct>|null */
     private ?array $all = null;
 
-    /** @var array<int, Product>|null Artikel je ID, fuer die Adressen der Artikelseiten */
-    private ?array $products = null;
-
     public function __construct(private readonly Repository $settings)
     {
         $this->catalog = new PublicCatalog(new UrlScheme());
     }
 
     /**
+     * Alle Artikel fuer Suche und Trefferlisten - nur mit Hauptbild; die
+     * Galerie liefern find()/find_by_slug().
+     *
      * @return array<int, PublicProduct>
      */
     public function all(): array
     {
-        return $this->all ??= $this->catalog->all();
+        return $this->all ??= $this->catalog->all(false);
     }
 
     public function find(int $id): ?PublicProduct
@@ -52,7 +50,7 @@ final class ShopCatalog
     {
         foreach ($this->all() as $product) {
             if ($product->slug === $slug) {
-                return $product;
+                return $this->find($product->id);
             }
         }
 
@@ -85,13 +83,7 @@ final class ShopCatalog
      */
     public function ids_in(Category $category): array
     {
-        $ids = [];
-
-        foreach ($this->catalog->in_category($category, 1, 100000)['items'] as $product) {
-            $ids[$product->id] = true;
-        }
-
-        return $ids;
+        return $this->catalog->ids_in_category($category);
     }
 
     /**
@@ -190,15 +182,8 @@ final class ShopCatalog
      */
     public function product_url(PublicProduct $product): string
     {
-        if ($this->products === null) {
-            $this->products = [];
-
-            foreach ((new ProductRepository())->all() as $row) {
-                $this->products[(int) $row->id] = $row;
-            }
-        }
-
-        $url = isset($this->products[$product->id]) ? ProductUrl::of($this->products[$product->id]) : '';
+        $source = $this->catalog->source($product->id);
+        $url    = $source !== null ? ProductUrl::of($source) : '';
 
         return $url !== '' ? $url : $this->shop_url();
     }
