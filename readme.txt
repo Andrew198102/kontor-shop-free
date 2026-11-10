@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,12 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.2 =
+* New (Pro): the AI assistant checks every product photo against the shop photo standard. What only concerns background, framing or the file is fixed right away – a transparent background becomes white, photos on a plain light background are framed to the shop's image format with the product centred, very large images are scaled down and PNGs are saved as JPEG. If a photo needs real editing (busy or dark background, product cut off at the edge, too small), it is not set yet: the assistant explains what is wrong and offers to rework it, asks for a better photo, or keeps it if you want.
+* New (Pro): the AI assistant page shows which WordPress user each access belongs to; in the team list for administrators with user name and role.
+* Better AI search: if a product search finds nothing, the shop suggests up to five products with similar names (for example "Schneidbrett" finds "Schneidebrett aus Holz", typos included), and the assistant asks which one is meant instead of guessing.
+* The ChatGPT setup guide follows ChatGPT's new menu: custom MCP servers are now added under "Plugins" in the sidebar.
 
 = 2.9.1 =
 * Faster AI assistant access: product search, category lists and product pages load images and galleries for all products at once – the number of database queries no longer grows with the size of the catalog (a search now needs about 10 queries instead of one or more per product and image). The public category pages (Pro) benefit as well.

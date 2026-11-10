@@ -471,10 +471,83 @@ final class ProductRepository
      * Bestand kommt per Gruppen-Subselect in derselben Abfrage mit (statt einer
      * Abfrage je Zeile).
      *
-     * @param array{view?: string, q?: string, warehouse_id?: int, warehouse_ids?: array<int, int>|null, category_id?: int, visibility?: string, stock?: string, orderby?: string, order?: string, page?: int, per_page?: int} $args
+     * @param array{view?: string, q?: string, ids?: array<int, int>, warehouse_id?: int, warehouse_ids?: array<int, int>|null, category_id?: int, visibility?: string, stock?: string, orderby?: string, order?: string, page?: int, per_page?: int} $args
      * @return array{items: array<int, Product>, balances: array<int, int>, total: int}
      */
     public function query(array $args): array
+    {
+        global $wpdb;
+
+        [$from, $params] = $this->filtered_from($args);
+
+        $orderby = match ((string) ($args['orderby'] ?? 'name')) {
+            'price' => 'p.price',
+            'sku'   => 'p.sku',
+            'stock' => 'COALESCE(s.bal, 0)',
+            'date'  => 'p.created_at',
+            default => 'p.name',
+        };
+        $order = strtoupper((string) ($args['order'] ?? 'asc')) === 'DESC' ? 'DESC' : 'ASC';
+
+        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- WHERE aus festen Fragmenten mit Platzhaltern, ORDER BY aus Whitelist
+        $count_sql = 'SELECT COUNT(*)' . $from;
+        $total     = (int) $wpdb->get_var($wpdb->prepare($count_sql, ...$params));
+
+        $per_page = max(1, min(500, (int) ($args['per_page'] ?? 25)));
+        $page     = max(1, (int) ($args['page'] ?? 1));
+
+        $sql = 'SELECT p.*, COALESCE(s.bal, 0) AS stock_balance' . $from
+            . ' ORDER BY ' . $orderby . ' ' . $order . ', p.id ASC LIMIT %d OFFSET %d';
+
+        $rows = $wpdb->get_results($wpdb->prepare($sql, ...array_merge($params, [$per_page, ($page - 1) * $per_page])), ARRAY_A) ?: [];
+        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        $items    = [];
+        $balances = [];
+
+        foreach ($rows as $row) {
+            $product                    = Product::from_row($row);
+            $items[]                    = $product;
+            $balances[(int) $product->id] = (int) $row['stock_balance'];
+        }
+
+        return ['items' => $items, 'balances' => $balances, 'total' => $total];
+    }
+
+    /**
+     * Name je Artikel fuer dieselben Filter wie query() (ohne Seiten) -
+     * Grundlage fuer aehnliche Namen, wenn die Suche nichts findet.
+     *
+     * @param array{view?: string, q?: string, warehouse_id?: int, warehouse_ids?: array<int, int>|null, category_id?: int, visibility?: string, stock?: string} $args
+     * @return array<int, string> Artikel-ID => Name
+     */
+    public function names(array $args, int $max = 5000): array
+    {
+        global $wpdb;
+
+        [$from, $params] = $this->filtered_from($args);
+
+        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- WHERE aus festen Fragmenten mit Platzhaltern
+        $rows = $wpdb->get_results($wpdb->prepare('SELECT p.id, p.name' . $from . ' ORDER BY p.id ASC LIMIT %d', ...array_merge($params, [max(1, $max)])), ARRAY_A) ?: [];
+        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
+
+        $out = [];
+
+        foreach ($rows as $row) {
+            $out[(int) $row['id']] = (string) $row['name'];
+        }
+
+        return $out;
+    }
+
+    /**
+     * FROM/WHERE samt Platzhalterwerten fuer query() und names(); der Bestand
+     * kommt als Gruppen-Subselect s.bal mit (fuer den Bestandsfilter).
+     *
+     * @param array<string, mixed> $args
+     * @return array{0: string, 1: array<int, mixed>}
+     */
+    private function filtered_from(array $args): array
     {
         global $wpdb;
 
@@ -489,6 +562,13 @@ final class ProductRepository
             $like     = '%' . $wpdb->esc_like($q) . '%';
             $where[]  = '(p.name LIKE %s OR p.sku LIKE %s OR p.gtin LIKE %s OR p.description LIKE %s OR p.id IN (SELECT v.product_id FROM %i v WHERE v.sku LIKE %s OR v.gtin LIKE %s))';
             array_push($params, $like, $like, $like, $like, $this->variants_table(), $like, $like);
+        }
+
+        if (isset($args['ids'])) {
+            $ids = array_values(array_filter(array_map('intval', (array) $args['ids'])));
+
+            $where[] = $ids === [] ? '1 = 0' : 'p.id IN (' . implode(',', array_fill(0, count($ids), '%d')) . ')';
+            array_push($params, ...$ids);
         }
 
         if (!empty($args['warehouse_id'])) {
@@ -530,42 +610,11 @@ final class ProductRepository
             $where[] = '(COALESCE(s.bal, 0) <= 0 OR (p.min_stock IS NOT NULL AND p.min_stock > 0 AND COALESCE(s.bal, 0) <= p.min_stock))';
         }
 
-        $orderby = match ((string) ($args['orderby'] ?? 'name')) {
-            'price' => 'p.price',
-            'sku'   => 'p.sku',
-            'stock' => 'COALESCE(s.bal, 0)',
-            'date'  => 'p.created_at',
-            default => 'p.name',
-        };
-        $order = strtoupper((string) ($args['order'] ?? 'asc')) === 'DESC' ? 'DESC' : 'ASC';
-
         // Tabellen stehen vor dem WHERE, ihre Platzhalter also vor den Filterwerten.
         $from   = ' FROM %i p LEFT JOIN (SELECT product_id, SUM(quantity_delta) AS bal FROM %i GROUP BY product_id) s ON s.product_id = p.id WHERE ' . implode(' AND ', $where);
         $params = array_merge([$this->table(), $this->movements_table()], $params);
 
-        // phpcs:disable WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- WHERE aus festen Fragmenten mit Platzhaltern, ORDER BY aus Whitelist
-        $count_sql = 'SELECT COUNT(*)' . $from;
-        $total     = (int) $wpdb->get_var($wpdb->prepare($count_sql, ...$params));
-
-        $per_page = max(1, min(500, (int) ($args['per_page'] ?? 25)));
-        $page     = max(1, (int) ($args['page'] ?? 1));
-
-        $sql = 'SELECT p.*, COALESCE(s.bal, 0) AS stock_balance' . $from
-            . ' ORDER BY ' . $orderby . ' ' . $order . ', p.id ASC LIMIT %d OFFSET %d';
-
-        $rows = $wpdb->get_results($wpdb->prepare($sql, ...array_merge($params, [$per_page, ($page - 1) * $per_page])), ARRAY_A) ?: [];
-        // phpcs:enable WordPress.DB.PreparedSQL.NotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
-
-        $items    = [];
-        $balances = [];
-
-        foreach ($rows as $row) {
-            $product                    = Product::from_row($row);
-            $items[]                    = $product;
-            $balances[(int) $product->id] = (int) $row['stock_balance'];
-        }
-
-        return ['items' => $items, 'balances' => $balances, 'total' => $total];
+        return [$from, $params];
     }
 
     /**

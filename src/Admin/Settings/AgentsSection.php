@@ -77,7 +77,7 @@ final class AgentsSection extends Section
 
         echo '<tr><th scope="row">' . esc_html__('How customers connect', 'kontor-shop') . '</th><td><ol class="ks-agents-steps">'
             . '<li>' . esc_html__('Claude (claude.ai or app): Settings → Connectors → “Add custom connector”, paste the address, no further fields.', 'kontor-shop') . '</li>'
-            . '<li>' . esc_html__('ChatGPT: Settings → Apps & Connectors → Advanced → turn on developer mode, then “Create”, paste the address, authentication “No authentication”.', 'kontor-shop') . '</li>'
+            . '<li>' . esc_html__('ChatGPT (on the computer): “Plugins” in the left sidebar → “Add” → “Add custom MCP server”, paste the address under “Server URL”, authentication “No authentication”, then type @ in a chat and choose the shop.', 'kontor-shop') . '</li>'
             . '<li>' . esc_html__('Gemini: where your plan offers it, under connected apps → add a custom app with the address.', 'kontor-shop') . '</li>'
             . '</ol><p class="description">' . esc_html__('Menu names change from time to time; the providers’ help pages under “custom connector” or “MCP” have the current steps.', 'kontor-shop') . '</p></td></tr>';
 

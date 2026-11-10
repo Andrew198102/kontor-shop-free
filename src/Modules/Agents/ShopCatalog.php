@@ -88,7 +88,8 @@ final class ShopCatalog
 
     /**
      * Treffer nach Relevanz. Erst muessen alle Suchwoerter vorkommen; findet
-     * das nichts, reicht eines (der Assistent sieht das an "match").
+     * das nichts, reicht eines; sonst kommen aehnliche Namen ("similar",
+     * Modules\Agents\SimilarNames) - der Assistent sieht das an "match".
      *
      * @param array<int, PublicProduct> $products
      * @return array{items: array<int, PublicProduct>, match: string}
@@ -119,6 +120,21 @@ final class ShopCatalog
 
                 return ['items' => array_column($scored, 1), 'match' => $mode];
             }
+        }
+
+        // Nichts gefunden: aehnliche Namen (Tippfehler, andere Wortform) - "match" sagt dem Assistenten, dass es nur Vorschlaege sind.
+        $names = [];
+
+        foreach ($products as $product) {
+            $names[$product->id] = $product->name;
+        }
+
+        $ids = SimilarNames::rank($query, $names);
+
+        if ($ids !== []) {
+            $by_id = array_column(array_map(static fn (PublicProduct $p): array => [$p->id, $p], $products), 1, 0);
+
+            return ['items' => array_map(static fn (int $id): PublicProduct => $by_id[$id], $ids), 'match' => 'similar'];
         }
 
         return ['items' => [], 'match' => 'none'];

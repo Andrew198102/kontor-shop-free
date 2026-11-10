@@ -651,7 +651,7 @@ final class ProArticles
                 'faq'      => [
                     [
                         'q' => __('Which apps work?', 'kontor-shop'),
-                        'a' => __('Claude, also on the free plan. ChatGPT with developer mode, depending on your plan. Gemini where custom apps are available. And other apps that support MCP over HTTP.', 'kontor-shop'),
+                        'a' => __('Claude, also on the free plan. ChatGPT via “Plugins” → “Add custom MCP server”, depending on your plan. Gemini where custom apps are available. And other apps that support MCP over HTTP.', 'kontor-shop'),
                     ],
                     [
                         'q' => __('I lost my phone.', 'kontor-shop'),

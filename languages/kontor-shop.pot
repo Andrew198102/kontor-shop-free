@@ -78,7 +78,7 @@ msgstr ""
 #: src/Admin/ProductsPage.php:116
 #: src/Admin/ProductsPage.php:476
 #: src/Pro__premium_only/Agents/ProductWriter.php:120
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:292
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:297
 msgid "Product not found."
 msgstr ""
 
@@ -94,18 +94,18 @@ msgstr ""
 #: src/Admin/ProductsPage.php:231
 #: src/Admin/WarehousesPage.php:155
 #: src/Pro__premium_only/Agents/ProductWriter.php:243
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:791
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:952
 msgid "Please enter a name."
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:157
 #: src/Admin/CategoriesPage.php:229
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:782
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:943
 msgid "Category not found."
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:161
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:806
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:967
 msgid "A category can't be placed under itself or one of its subcategories."
 msgstr ""
 
@@ -489,7 +489,7 @@ msgstr ""
 #: src/Admin/Help.php:58
 #: src/Admin/Menu.php:377
 #: src/Admin/OrdersList.php:183
-#: src/Pro__premium_only/Agents/AgentsPage.php:459
+#: src/Pro__premium_only/Agents/AgentsPage.php:497
 #: src/Pro__premium_only/Dashboard/TrendCard.php:39
 msgid "Orders"
 msgstr ""
@@ -2900,7 +2900,7 @@ msgid "Before deleting a product or cancelling an order, the assistant has to sh
 msgstr ""
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:630
-#: src/Pro__premium_only/Agents/AgentsPage.php:481
+#: src/Pro__premium_only/Agents/AgentsPage.php:519
 msgid "Every change is logged with your name and “AI assistant” (Logs → Changes)."
 msgstr ""
 
@@ -2945,7 +2945,7 @@ msgid "Which apps work?"
 msgstr ""
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:654
-msgid "Claude, also on the free plan. ChatGPT with developer mode, depending on your plan. Gemini where custom apps are available. And other apps that support MCP over HTTP."
+msgid "Claude, also on the free plan. ChatGPT via “Plugins” → “Add custom MCP server”, depending on your plan. Gemini where custom apps are available. And other apps that support MCP over HTTP."
 msgstr ""
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:657
@@ -6295,7 +6295,7 @@ msgstr ""
 #: src/Admin/OrderDetailView.php:106
 #: src/Admin/ShipmentDialog.php:267
 #: src/Admin/WarehousesPage.php:307
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:438
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:443
 #: src/Pro__premium_only/Export/OrdersExport.php:136
 msgid "yes"
 msgstr ""
@@ -6303,7 +6303,7 @@ msgstr ""
 #: src/Admin/OrderDetailView.php:106
 #: src/Admin/ShipmentDialog.php:268
 #: src/Admin/WarehousesPage.php:307
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:438
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:443
 #: src/Pro__premium_only/Export/OrdersExport.php:136
 msgid "no"
 msgstr ""
@@ -6958,7 +6958,7 @@ msgid "Partially out"
 msgstr ""
 
 #: src/Admin/OrdersList.php:377
-#: src/Pro__premium_only/Agents/AgentsPage.php:399
+#: src/Pro__premium_only/Agents/AgentsPage.php:437
 msgid "Done"
 msgstr ""
 
@@ -7264,7 +7264,7 @@ msgstr ""
 #: src/Admin/OrdersList.php:817
 #: src/Admin/Settings/AgentsSection.php:71
 #: src/Modules/Checkout/CheckoutModule.php:1625
-#: src/Pro__premium_only/Agents/AgentsPage.php:470
+#: src/Pro__premium_only/Agents/AgentsPage.php:508
 #: src/Pro__premium_only/Api/ApiSection.php:85
 msgid "Copy"
 msgstr ""
@@ -7306,13 +7306,13 @@ msgid "Booked in the shop (emergency exit; payments otherwise go through %s)."
 msgstr ""
 
 #: src/Admin/OrdersPage.php:369
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:342
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:347
 msgid "The payment date must be between the order date and today."
 msgstr ""
 
 #. translators: %s: date
 #: src/Admin/OrdersPage.php:381
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:350
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:355
 #: src/Pro__premium_only/Api/CashierApiModule.php:345
 msgid "Payment received on %s."
 msgstr ""
@@ -7328,13 +7328,13 @@ msgid "%s marked as paid – the customer gets the payment confirmation, and the
 msgstr ""
 
 #: src/Admin/OrdersPage.php:411
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:509
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:514
 msgid "A payment reminder is only available for open prepayment orders and shipped invoices that haven’t been paid yet."
 msgstr ""
 
 #. translators: 1: order number, 2: email
 #: src/Admin/OrdersPage.php:416
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:515
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:520
 msgid "%1$s: Payment reminder sent to %2$s."
 msgstr ""
 
@@ -7352,12 +7352,12 @@ msgid "%1$s: “Ready for pickup” sent to %2$s."
 msgstr ""
 
 #: src/Admin/OrdersPage.php:460
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:493
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:498
 msgid "The note is empty."
 msgstr ""
 
 #: src/Admin/OrdersPage.php:463
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:496
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:501
 msgid "Note:"
 msgstr ""
 
@@ -7451,22 +7451,22 @@ msgid "already shipped"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:763
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:433
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:438
 msgid "Back to the warehouse (goods are fine)"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:764
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:434
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:439
 msgid "Not returned: defective / damaged"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:765
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:435
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:440
 msgid "Not returned: lost / stolen"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:766
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:436
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:441
 msgid "Don’t book back (no stock booking)"
 msgstr ""
 
@@ -8238,7 +8238,7 @@ msgid "“%s” restored."
 msgstr ""
 
 #: src/Admin/ProductsPage.php:504
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:548
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:611
 msgid "Duplicating failed."
 msgstr ""
 
@@ -8468,7 +8468,7 @@ msgid "Claude (claude.ai or app): Settings → Connectors → “Add custom conn
 msgstr ""
 
 #: src/Admin/Settings/AgentsSection.php:80
-msgid "ChatGPT: Settings → Apps & Connectors → Advanced → turn on developer mode, then “Create”, paste the address, authentication “No authentication”."
+msgid "ChatGPT (on the computer): “Plugins” in the left sidebar → “Add” → “Add custom MCP server”, paste the address under “Server URL”, authentication “No authentication”, then type @ in a chat and choose the shop."
 msgstr ""
 
 #: src/Admin/Settings/AgentsSection.php:81
@@ -9872,7 +9872,7 @@ msgid "Everything correct? Then save. Otherwise, go “Back” to correct it."
 msgstr ""
 
 #: src/Admin/ShipmentDialog.php:251
-#: src/Pro__premium_only/Agents/AgentsPage.php:387
+#: src/Pro__premium_only/Agents/AgentsPage.php:425
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:217
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:799
 msgid "Back"
@@ -12902,7 +12902,7 @@ msgid "Shop information"
 msgstr ""
 
 #: src/Modules/Agents/ShopTools.php:49
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:178
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:183
 msgid "List categories"
 msgstr ""
 
@@ -12918,15 +12918,15 @@ msgstr ""
 msgid "Unknown category – see shop_list_categories."
 msgstr ""
 
-#: src/Modules/Agents/ShopTools.php:269
+#: src/Modules/Agents/ShopTools.php:285
 msgid "This product has variants – please pass a variant_id (see shop_get_product)."
 msgstr ""
 
-#: src/Modules/Agents/ShopTools.php:275
+#: src/Modules/Agents/ShopTools.php:291
 msgid "This variant does not belong to the product or is not available."
 msgstr ""
 
-#: src/Modules/Agents/ShopTools.php:302
+#: src/Modules/Agents/ShopTools.php:318
 msgid "Product not found (or not visible in the shop)."
 msgstr ""
 
@@ -14036,215 +14036,230 @@ msgid "AI assistant (%s)"
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:66
-msgid "Developer mode needed"
+msgid "Set up on the computer"
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:68
-msgid "Open chatgpt.com → Settings → Apps & Connectors."
+msgid "On the computer, open chatgpt.com → “Plugins” in the left sidebar (not in the settings)."
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:69
-msgid "Advanced settings → switch on developer mode."
+msgid "Top right “Add” → “Add custom MCP server”."
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:70
-msgid "“Create” → paste the address → authentication: none."
+msgid "Enter a name, paste the address under “Server URL”, authentication: “No authentication” (not OAuth)."
 msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:71
-msgid "In a chat, choose the shop via “+”."
+msgid "Tick “I understand …” and click “Create”."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:73
-msgid "Depending on your ChatGPT plan, developer mode may be missing. The same address works with Claude – there even on the free plan."
+#: src/Pro__premium_only/Agents/AgentsPage.php:72
+msgid "If ChatGPT asks, install the plugin. Then type @ in a new chat and choose the shop."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:77
+#: src/Pro__premium_only/Agents/AgentsPage.php:74
+msgid "Not every ChatGPT plan can add its own MCP servers. If “Add custom MCP server” is missing, use Claude – there even on the free plan."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/AgentsPage.php:78
 msgid "Also on the free plan"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:79
+#: src/Pro__premium_only/Agents/AgentsPage.php:80
 msgid "Open claude.ai → Settings → Connectors."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:80
+#: src/Pro__premium_only/Agents/AgentsPage.php:81
 msgid "“Add custom connector”."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:81
+#: src/Pro__premium_only/Agents/AgentsPage.php:82
 msgid "Enter a name, paste the address → Add."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:82
+#: src/Pro__premium_only/Agents/AgentsPage.php:83
 msgid "In a chat, switch on the shop via “+” → Connectors."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:84
+#: src/Pro__premium_only/Agents/AgentsPage.php:85
 msgid "Set it up once on the computer – afterwards it also works in the Claude app on your phone."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:88
+#: src/Pro__premium_only/Agents/AgentsPage.php:89
 msgid "Not yet available for every account"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:90
+#: src/Pro__premium_only/Agents/AgentsPage.php:91
 msgid "Open gemini.google.com → Settings → Connected apps."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:91
+#: src/Pro__premium_only/Agents/AgentsPage.php:92
 msgid "Add a custom app / MCP server."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:92
+#: src/Pro__premium_only/Agents/AgentsPage.php:93
 msgid "Paste the address and save."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:94
+#: src/Pro__premium_only/Agents/AgentsPage.php:95
 msgid "Custom apps are not available for every Gemini account yet. If the option is missing, use Claude or ChatGPT."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:97
+#: src/Pro__premium_only/Agents/AgentsPage.php:98
 msgid "Other app"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:98
+#: src/Pro__premium_only/Agents/AgentsPage.php:99
 msgid "Claude Code, Gemini CLI …"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:100
+#: src/Pro__premium_only/Agents/AgentsPage.php:101
 msgid "MCP over HTTP (“Streamable HTTP”), POST only."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:101
+#: src/Pro__premium_only/Agents/AgentsPage.php:102
 msgid "Address without key plus the header “Authorization: Bearer ksa_…”."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:102
+#: src/Pro__premium_only/Agents/AgentsPage.php:103
 msgid "Or a WordPress application password via Basic authentication."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:104
+#: src/Pro__premium_only/Agents/AgentsPage.php:105
 msgid "Sending the key as a header keeps it out of server logs."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:136
+#: src/Pro__premium_only/Agents/AgentsPage.php:137
 msgid "Access created. Copy the address now – it is shown only this once."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:143
+#: src/Pro__premium_only/Agents/AgentsPage.php:144
 msgid "Access revoked – the assistant can no longer use it."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:143
-#: src/Pro__premium_only/Agents/AgentsPage.php:204
+#: src/Pro__premium_only/Agents/AgentsPage.php:144
+#: src/Pro__premium_only/Agents/AgentsPage.php:205
 msgid "Access not found."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:154
+#: src/Pro__premium_only/Agents/AgentsPage.php:155
 msgid "The team access is switched off."
 msgstr ""
 
 #. translators: %d: maximum number of access keys
-#: src/Pro__premium_only/Agents/AgentsPage.php:168
+#: src/Pro__premium_only/Agents/AgentsPage.php:169
 msgid "You already have %d access keys – please revoke one first."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:225
+#: src/Pro__premium_only/Agents/AgentsPage.php:226
 msgid "Let ChatGPT, Claude or Gemini look after your shop – with your permissions, nothing more."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:227
+#: src/Pro__premium_only/Agents/AgentsPage.php:228
 msgid "Team access is on"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:227
+#: src/Pro__premium_only/Agents/AgentsPage.php:228
 msgid "Team access is off"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:242
+#: src/Pro__premium_only/Agents/AgentsPage.php:243
 msgid "The team access for AI assistants is switched off."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:244
+#: src/Pro__premium_only/Agents/AgentsPage.php:245
 msgid "Switch it on under Settings → AI assistants."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:245
+#: src/Pro__premium_only/Agents/AgentsPage.php:246
 msgid "Please ask your shop administrator to switch it on."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:252
+#: src/Pro__premium_only/Agents/AgentsPage.php:253
 msgid "Create new access"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:276
+#: src/Pro__premium_only/Agents/AgentsPage.php:277
 msgid "Your new access – copy now"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:278
-#: src/Pro__premium_only/Agents/AgentsPage.php:395
+#: src/Pro__premium_only/Agents/AgentsPage.php:279
+#: src/Pro__premium_only/Agents/AgentsPage.php:433
 #: src/Pro__premium_only/Packing/OrderPackView.php:155
 msgid "Copy address"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:279
-#: src/Pro__premium_only/Agents/AgentsPage.php:396
+#: src/Pro__premium_only/Agents/AgentsPage.php:280
+#: src/Pro__premium_only/Agents/AgentsPage.php:434
 msgid "Only visible now. Treat it like a password – if you lose it, simply create a new access."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:288
+#: src/Pro__premium_only/Agents/AgentsPage.php:289
 msgid "My accesses"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:289
-msgid "One access per app. You can revoke each one at any time."
+#. translators: %s: name of the logged-in WordPress user
+#: src/Pro__premium_only/Agents/AgentsPage.php:292
+msgid "One access per app, each linked to your user %s and working with its permissions. You can revoke each one at any time."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:294
-#: src/Pro__premium_only/Agents/AgentsPage.php:388
+#: src/Pro__premium_only/Agents/AgentsPage.php:299
+#: src/Pro__premium_only/Agents/AgentsPage.php:426
 msgid "Create access"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:300
+#: src/Pro__premium_only/Agents/AgentsPage.php:305
 msgid "You have no access yet. Create one – it takes a minute."
 msgstr ""
 
-#. translators: %s: date
+#. translators: %s: WordPress user the access belongs to
 #: src/Pro__premium_only/Agents/AgentsPage.php:330
+msgid "User: %s"
+msgstr ""
+
+#. translators: %s: date
+#: src/Pro__premium_only/Agents/AgentsPage.php:339
 msgid "created %s"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:333
+#: src/Pro__premium_only/Agents/AgentsPage.php:342
 msgid "look and change"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:333
+#: src/Pro__premium_only/Agents/AgentsPage.php:342
 msgid "look only"
 msgstr ""
 
 #. translators: %s: date and time
-#: src/Pro__premium_only/Agents/AgentsPage.php:337
+#: src/Pro__premium_only/Agents/AgentsPage.php:346
 msgid "last used %s"
 msgstr ""
 
 #. translators: %s: date and time
-#: src/Pro__premium_only/Agents/AgentsPage.php:338
+#: src/Pro__premium_only/Agents/AgentsPage.php:347
 msgid "not connected yet"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:339
+#: src/Pro__premium_only/Agents/AgentsPage.php:348
 msgid "Revoke this access? The assistant can no longer use it."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:342
+#: src/Pro__premium_only/Agents/AgentsPage.php:351
 msgid "Revoke"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:360
+#. translators: %d: WordPress user ID
+#: src/Pro__premium_only/Agents/AgentsPage.php:365
+msgid "deleted user #%d"
+msgstr ""
+
+#: src/Pro__premium_only/Agents/AgentsPage.php:398
 msgid "App"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:360
+#: src/Pro__premium_only/Agents/AgentsPage.php:398
 #: src/Pro__premium_only/Api/ApiSection.php:113
 #: src/Pro__premium_only/Api/ApiSection.php:124
 #: src/Pro__premium_only/Api/ApiSection.php:170
@@ -14252,111 +14267,111 @@ msgstr ""
 msgid "Permissions"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:360
+#: src/Pro__premium_only/Agents/AgentsPage.php:398
 msgid "Connect"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:369
+#: src/Pro__premium_only/Agents/AgentsPage.php:407
 msgid "Which app do you want to work with?"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:380
+#: src/Pro__premium_only/Agents/AgentsPage.php:418
 msgid "What may the assistant do?"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:381
+#: src/Pro__premium_only/Agents/AgentsPage.php:419
 msgid "Look only"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:381
+#: src/Pro__premium_only/Agents/AgentsPage.php:419
 msgid "Search and answer – changes nothing in the shop."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:382
+#: src/Pro__premium_only/Agents/AgentsPage.php:420
 msgid "Look and change"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:382
+#: src/Pro__premium_only/Agents/AgentsPage.php:420
 msgid "Create products, book stock, process orders – within your permissions."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:383
+#: src/Pro__premium_only/Agents/AgentsPage.php:421
 msgid "Name of the access"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:384
+#: src/Pro__premium_only/Agents/AgentsPage.php:422
 msgid "e.g. ChatGPT on my phone"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:394
+#: src/Pro__premium_only/Agents/AgentsPage.php:432
 msgid "Your address"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:412
+#: src/Pro__premium_only/Agents/AgentsPage.php:450
 msgid "Connect your app"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:413
+#: src/Pro__premium_only/Agents/AgentsPage.php:451
 msgid "You get the address when you create an access. Menu names change now and then – then look for “Connectors” or “MCP”."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:414
+#: src/Pro__premium_only/Agents/AgentsPage.php:452
 msgid "Apps"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:421
+#: src/Pro__premium_only/Agents/AgentsPage.php:459
 msgid "Other apps"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:437
+#: src/Pro__premium_only/Agents/AgentsPage.php:475
 msgid "Good to know"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:440
+#: src/Pro__premium_only/Agents/AgentsPage.php:478
 msgid "Address without key"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:455
+#: src/Pro__premium_only/Agents/AgentsPage.php:493
 msgid "Create products"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:455
+#: src/Pro__premium_only/Agents/AgentsPage.php:493
 msgid "Suggest three names and a short text for a club scarf, price around 20 €. Create my favourite – hidden for now."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:456
+#: src/Pro__premium_only/Agents/AgentsPage.php:494
 msgid "Inventory list"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:456
+#: src/Pro__premium_only/Agents/AgentsPage.php:494
 msgid "Here is my inventory list (pasted or as a photo). Prepare all products as a table with price, stock, sizes and category, ask me what is missing – and create everything after my OK."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:457
+#: src/Pro__premium_only/Agents/AgentsPage.php:495
 msgid "Product photos"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:457
+#: src/Pro__premium_only/Agents/AgentsPage.php:495
 msgid "Edit this photo as a shop image (light background, product centred, shop format) and set it as the main image of the club scarf."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:458
+#: src/Pro__premium_only/Agents/AgentsPage.php:496
 msgid "Daily business"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:458
+#: src/Pro__premium_only/Agents/AgentsPage.php:496
 msgid "What’s to do in the shop today?"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:459
+#: src/Pro__premium_only/Agents/AgentsPage.php:497
 msgid "Order B-000042 was paid today – please book it."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:460
+#: src/Pro__premium_only/Agents/AgentsPage.php:498
 msgid "What is sold out or running low? Book 20 caps as goods receipt."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:461
+#: src/Pro__premium_only/Agents/AgentsPage.php:499
 #: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:248
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:151
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:262
@@ -14364,53 +14379,53 @@ msgstr ""
 msgid "Discounts"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:461
+#: src/Pro__premium_only/Agents/AgentsPage.php:499
 msgid "Create a discount code SUMMER26 with 10 % until the end of August."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:465
+#: src/Pro__premium_only/Agents/AgentsPage.php:503
 msgid "Ideas to try"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:466
+#: src/Pro__premium_only/Agents/AgentsPage.php:504
 msgid "Copy, paste into the chat, adjust."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:478
+#: src/Pro__premium_only/Agents/AgentsPage.php:516
 msgid "Security & data protection"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:479
+#: src/Pro__premium_only/Agents/AgentsPage.php:517
 msgid "The assistant works with your permissions: a cashier can book payments, a warehouse manager only their own warehouse."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:480
+#: src/Pro__premium_only/Agents/AgentsPage.php:518
 msgid "Before deleting or cancelling, the assistant must show a summary and ask you. Check what it plans to do before you agree."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:482
+#: src/Pro__premium_only/Agents/AgentsPage.php:520
 msgid "Lost your phone or no longer using an app? Revoke the access here – it stops working immediately."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:483
+#: src/Pro__premium_only/Agents/AgentsPage.php:521
 msgid "Data protection: when you ask about orders, customer data (names, addresses) goes to the AI provider. Only use providers your club has approved for this, and mention it in your privacy policy."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:484
+#: src/Pro__premium_only/Agents/AgentsPage.php:522
 msgid "Settings, users and payouts can’t be changed by the assistant – that stays in the admin."
 msgstr ""
 
 #. translators: %d: number of accesses
-#: src/Pro__premium_only/Agents/AgentsPage.php:503
+#: src/Pro__premium_only/Agents/AgentsPage.php:541
 msgid "Accesses of the team (%d)"
 msgstr ""
 
 #. translators: %d: number of accesses
-#: src/Pro__premium_only/Agents/AgentsPage.php:505
+#: src/Pro__premium_only/Agents/AgentsPage.php:543
 msgid "only for administrators"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsPage.php:506
+#: src/Pro__premium_only/Agents/AgentsPage.php:544
 msgid "As an administrator you can revoke any access, e.g. when someone leaves the team."
 msgstr ""
 
@@ -14423,47 +14438,47 @@ msgid "Manage products, stock, orders and discount codes of this shop."
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:191
+#: src/Pro__premium_only/Agents/AgentsProModule.php:198
 msgid "Done – now paste it into %s"
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:193
+#: src/Pro__premium_only/Agents/AgentsProModule.php:200
 msgid "In %s:"
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:195
+#: src/Pro__premium_only/Agents/AgentsProModule.php:202
 msgid "Waiting for the first connection from %s … This turns green as soon as it works."
 msgstr ""
 
 #. translators: 1: app name, 2: time
-#: src/Pro__premium_only/Agents/AgentsProModule.php:197
+#: src/Pro__premium_only/Agents/AgentsProModule.php:204
 msgid "Connected with %1$s (first request %2$s) – you can start."
 msgstr ""
 
 #. translators: 1: app name, 2: time
-#: src/Pro__premium_only/Agents/AgentsProModule.php:198
+#: src/Pro__premium_only/Agents/AgentsProModule.php:205
 msgid "That didn’t work. Please try again."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:207
+#: src/Pro__premium_only/Agents/AgentsProModule.php:214
 msgid "Team access (shop management by AI assistant)"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:209
+#: src/Pro__premium_only/Agents/AgentsProModule.php:216
 msgid "Team access"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:211
+#: src/Pro__premium_only/Agents/AgentsProModule.php:218
 msgid "Shop team members may connect their AI assistant (products, images, stock, orders, discount codes)"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:212
+#: src/Pro__premium_only/Agents/AgentsProModule.php:219
 msgid "Each person creates their own access under Kontor Shop → AI assistant. The assistant works with that person’s permissions; every change is logged. Settings and users stay off-limits."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:213
+#: src/Pro__premium_only/Agents/AgentsProModule.php:220
 msgid "Go to accesses and instructions"
 msgstr ""
 
@@ -14471,33 +14486,33 @@ msgstr ""
 msgid "Confirmation needed – nothing has been changed yet."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:39
+#: src/Pro__premium_only/Agents/ImageImporter.php:60
 msgid "Please give a public http(s) address of the image."
 msgstr ""
 
 #. translators: %s: error message
-#: src/Pro__premium_only/Agents/ImageImporter.php:48
+#: src/Pro__premium_only/Agents/ImageImporter.php:69
 msgid "The image could not be downloaded: %s"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:67
+#: src/Pro__premium_only/Agents/ImageImporter.php:88
 msgid "The image data is not valid Base64."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:71
+#: src/Pro__premium_only/Agents/ImageImporter.php:92
 msgid "The image is larger than 15 MB."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:79
+#: src/Pro__premium_only/Agents/ImageImporter.php:100
 msgid "The image could not be saved temporarily."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:96
+#: src/Pro__premium_only/Agents/ImageImporter.php:117
 msgid "This is not a supported image (JPEG, PNG, GIF, WebP or AVIF up to 15 MB)."
 msgstr ""
 
 #. translators: %s: error message
-#: src/Pro__premium_only/Agents/ImageImporter.php:109
+#: src/Pro__premium_only/Agents/ImageImporter.php:134
 msgid "The image could not be added to the media library: %s"
 msgstr ""
 
@@ -14556,82 +14571,83 @@ msgstr ""
 msgid "No order with this number and email address was found."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:64
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:66
 msgid "List products"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:85
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:87
 msgid "Get product"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:95
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:97
 msgid "Create product"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:105
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:107
 msgid "Update product"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:115
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:117
 msgid "Show, hide, archive or copy product"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:128
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:130
 msgid "Delete product permanently"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:142
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:144
 msgid "Upload image"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:159
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:161
 msgid "Set product image"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:188
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:193
 msgid "Create or change category"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:204
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:209
 msgid "List warehouses"
 msgstr ""
 
 #. translators: %d: attachment ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:507
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:564
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:728
 msgid "Image %d does not exist in the media library."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:530
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:593
 msgid "The product is archived – restore it first."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:566
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:629
 msgid "Only archived products can be deleted permanently – archive it first (admin_product_action)."
 msgstr ""
 
 #. translators: 1: product name, 2: product ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:571
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:634
 msgid "Delete “%1$s” (#%2$d) permanently, including its variants and stock history. Orders keep their copy of the product data. This cannot be undone."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:605
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:668
 msgid "Please pass url or data_base64."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:650
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:735
 msgid "Please pass the image file (image) or a link (image_url)."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:710
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:810
 msgid "The image file arrived without a download address. Please try again, or upload the photo in the browser."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:795
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:956
 #: src/Pro__premium_only/ShopTypes/ShopTypesModule.php:185
 msgid "Please choose a shop type (Settings → Shop types)."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:802
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:963
 #: src/Pro__premium_only/ShopTypes/ShopTypesModule.php:189
 msgid "The parent category must be in the same shop type."
 msgstr ""
@@ -14720,21 +14736,21 @@ msgstr ""
 msgid "Add order note"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:379
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:417
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:384
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:422
 msgid "This order is already cancelled."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:380
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:385
 msgid "This order has already gone out completely."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:421
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:426
 msgid "This order can no longer be cancelled completely – items have already gone out (use a return in the shop admin instead)."
 msgstr ""
 
 #. translators: 1: order number, 2: customer name, 3: total, 4: what happens with the stock, 5: yes/no
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:428
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:433
 msgid "Cancel order %1$s from %2$s (%3$s €) completely. Stock: %4$s. Email to the customer: %5$s."
 msgstr ""
 

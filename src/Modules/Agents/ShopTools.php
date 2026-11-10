@@ -55,7 +55,7 @@ final class ShopTools
             new Tool(
                 'shop_search_products',
                 __('Search products', 'kontor-shop'),
-                'Search the catalog. Matches words in name, brand, category, variants (e.g. size, colour), product number and description; umlauts and case do not matter. Without a query it lists products alphabetically. Prices are regular prices in EUR incl. VAT. If exactly one product matches, "product" holds its full details (as shop_get_product) – no need to call shop_get_product then.',
+                'Search the catalog. Matches words in name, brand, category, variants (e.g. size, colour), product number and description; umlauts and case do not matter. Without a query it lists products alphabetically. Prices are regular prices in EUR incl. VAT. If exactly one product matches, "product" holds its full details (as shop_get_product) – no need to call shop_get_product then. match "similar": nothing matched, these have similar names – ask the customer whether one of them is meant.',
                 [
                     'query'          => ['type' => 'string', 'maxLength' => 200, 'description' => 'Search words, e.g. "hoodie navy L".'],
                     'category'       => ['type' => 'string', 'maxLength' => 190, 'description' => 'Category slug or id (from shop_list_categories); includes subcategories.'],
@@ -245,10 +245,12 @@ final class ShopTools
 
         if ($found['match'] === 'any') {
             $out['hint'] = 'No product matched all words; these match some of them.';
+        } elseif ($found['match'] === 'similar') {
+            $out['hint'] = 'No product matched; these have similar names. Ask the customer whether one of them is meant.';
         }
 
         // Genau ein Treffer: gleich die Details mitgeben - spart dem Assistenten den Aufruf von shop_get_product.
-        if (count($found['items']) === 1) {
+        if (count($found['items']) === 1 && $found['match'] !== 'similar') {
             $single = $this->catalog()->find($found['items'][0]->id);
 
             if ($single !== null) {
