@@ -6,6 +6,7 @@ namespace Kontor\Shop\Core;
 
 use Kontor\Shop\Infrastructure\Checkout\ReservationCleanup;
 use Kontor\Shop\Infrastructure\Media\ManagedImages;
+use Kontor\Shop\Infrastructure\Media\ProductImageNames;
 use Kontor\Shop\Settings\Repository;
 
 /**
@@ -289,7 +290,7 @@ final class Uninstaller
             delete_metadata('user', 0, (string) $key, '', true);
         }
 
-        foreach ([ManagedImages::META_ORIGIN, ManagedImages::META_PENDING] as $key) {
+        foreach ([ManagedImages::META_ORIGIN, ManagedImages::META_PENDING, ProductImageNames::META_RENAME, ProductImageNames::META_NAMED] as $key) {
             delete_metadata('post', 0, $key, '', true);
         }
     }

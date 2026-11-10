@@ -13,6 +13,7 @@ use Kontor\Shop\Infrastructure\Repositories\VariantRepository;
 use Kontor\Shop\Domain\Seo\Gtin;
 use Kontor\Shop\Domain\Stock\MovementType;
 use Kontor\Shop\Infrastructure\Media\ManagedImages;
+use Kontor\Shop\Infrastructure\Media\ProductImageNames;
 use Kontor\Shop\Infrastructure\Repositories\ProductRepository;
 use Kontor\Shop\Infrastructure\Repositories\StockRepository;
 use Kontor\Shop\Infrastructure\Repositories\WarehouseRepository;
@@ -398,6 +399,8 @@ final class ProductsPage
         foreach ($after as $attachment_id) {
             ManagedImages::claim($attachment_id);
         }
+
+        ProductImageNames::apply($product_id);
 
         foreach (array_diff($before, $after) as $attachment_id) {
             $this->offer_image_decision((int) $attachment_id, $product_id);

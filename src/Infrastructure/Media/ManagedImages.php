@@ -31,6 +31,8 @@ final class ManagedImages
     {
         update_post_meta($attachment_id, self::META_ORIGIN, time());
         update_post_meta($attachment_id, self::META_PENDING, time());
+        // Noch nirgends im Shop: der Dateiname darf beim ersten Zuordnen sauber werden (ProductImageNames).
+        update_post_meta($attachment_id, ProductImageNames::META_RENAME, 1);
     }
 
     public static function is_managed(int $attachment_id): bool

@@ -75,9 +75,9 @@ msgid "Sorting isn't possible."
 msgstr ""
 
 #: src/Admin/Ajax.php:143
-#: src/Admin/ProductsPage.php:116
-#: src/Admin/ProductsPage.php:476
-#: src/Pro__premium_only/Agents/ProductWriter.php:120
+#: src/Admin/ProductsPage.php:117
+#: src/Admin/ProductsPage.php:479
+#: src/Pro__premium_only/Agents/ProductWriter.php:121
 #: src/Pro__premium_only/Agents/Tools/CatalogTools.php:297
 msgid "Product not found."
 msgstr ""
@@ -91,9 +91,9 @@ msgid "Please enter a valid price."
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:152
-#: src/Admin/ProductsPage.php:231
+#: src/Admin/ProductsPage.php:232
 #: src/Admin/WarehousesPage.php:155
-#: src/Pro__premium_only/Agents/ProductWriter.php:243
+#: src/Pro__premium_only/Agents/ProductWriter.php:244
 #: src/Pro__premium_only/Agents/Tools/CatalogTools.php:952
 msgid "Please enter a name."
 msgstr ""
@@ -213,7 +213,7 @@ msgid "Really delete this category?"
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:305
-#: src/Admin/ProductsPage.php:792
+#: src/Admin/ProductsPage.php:795
 #: src/Admin/WarehousesPage.php:291
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:269
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:562
@@ -5770,13 +5770,13 @@ msgid "or click to choose"
 msgstr ""
 
 #: src/Admin/MediaPicker.php:50
-#: src/Admin/ProductsPage.php:752
+#: src/Admin/ProductsPage.php:755
 msgid "Delete from media library"
 msgstr ""
 
 #: src/Admin/MediaPicker.php:51
-#: src/Admin/ProductsPage.php:753
-#: src/Admin/ProductsPage.php:793
+#: src/Admin/ProductsPage.php:756
+#: src/Admin/ProductsPage.php:796
 msgid "Keep"
 msgstr ""
 
@@ -5870,7 +5870,7 @@ msgstr ""
 
 #. translators: %s: file name
 #: src/Admin/MediaPicker.php:104
-#: src/Admin/ProductsPage.php:720
+#: src/Admin/ProductsPage.php:723
 msgid "The image was deleted from the media library."
 msgstr ""
 
@@ -7491,7 +7491,7 @@ msgid "Cancel now"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:854
-#: src/Admin/ProductsPage.php:553
+#: src/Admin/ProductsPage.php:556
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:155
 msgid "Please select a bulk action."
 msgstr ""
@@ -7501,7 +7501,7 @@ msgid "Please check some orders in the list first."
 msgstr ""
 
 #: src/Admin/OrdersPage.php:891
-#: src/Admin/ProductsPage.php:656
+#: src/Admin/ProductsPage.php:659
 msgid "Unknown bulk action."
 msgstr ""
 
@@ -7773,9 +7773,9 @@ msgstr ""
 
 #: src/Admin/ProductForm.php:400
 #: src/Admin/ProductVariantsCard.php:237
-#: src/Admin/ProductsPage.php:299
-#: src/Admin/ProductsPage.php:357
-#: src/Pro__premium_only/Agents/ProductWriter.php:98
+#: src/Admin/ProductsPage.php:300
+#: src/Admin/ProductsPage.php:358
+#: src/Pro__premium_only/Agents/ProductWriter.php:99
 msgid "Initial stock"
 msgstr ""
 
@@ -8082,8 +8082,8 @@ msgstr ""
 
 #. translators: %s: link to the cleanup list
 #: src/Admin/ProductsList.php:166
-#: src/Admin/ProductsPage.php:760
-#: src/Admin/ProductsPage.php:772
+#: src/Admin/ProductsPage.php:763
+#: src/Admin/ProductsPage.php:775
 msgid "Unused images"
 msgstr ""
 
@@ -8181,204 +8181,204 @@ msgstr ""
 msgid "hidden"
 msgstr ""
 
-#: src/Admin/ProductsPage.php:233
-#: src/Pro__premium_only/Agents/ProductWriter.php:245
+#: src/Admin/ProductsPage.php:234
+#: src/Pro__premium_only/Agents/ProductWriter.php:246
 msgid "Please select a warehouse."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:235
-#: src/Pro__premium_only/Agents/ProductWriter.php:249
+#: src/Admin/ProductsPage.php:236
+#: src/Pro__premium_only/Agents/ProductWriter.php:250
 msgid "The price can’t be negative."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:237
-#: src/Pro__premium_only/Agents/ProductWriter.php:251
+#: src/Admin/ProductsPage.php:238
+#: src/Pro__premium_only/Agents/ProductWriter.php:252
 msgid "The GTIN/EAN is invalid (8, 12, 13, or 14 digits with a correct check digit) – please check it or leave it empty."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:239
+#: src/Admin/ProductsPage.php:240
 msgid "For variants, please enter at least one attribute with values (e.g. Size: S, M, L) – or uncheck “This product has variants”."
 msgstr ""
 
 #. translators: 1: number of combinations, 2: maximum
-#: src/Admin/ProductsPage.php:243
-#: src/Pro__premium_only/Agents/ProductWriter.php:257
+#: src/Admin/ProductsPage.php:244
+#: src/Pro__premium_only/Agents/ProductWriter.php:258
 msgid "The attributes result in %1$d combinations – the maximum is %2$d. Please reduce the values."
 msgstr ""
 
 #. translators: %s: variant
-#: src/Admin/ProductsPage.php:250
-#: src/Pro__premium_only/Agents/ProductWriter.php:276
+#: src/Admin/ProductsPage.php:251
+#: src/Pro__premium_only/Agents/ProductWriter.php:277
 msgid "The EAN of the variant “%s” is invalid – please check it or leave it empty."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:295
-#: src/Pro__premium_only/Agents/ProductWriter.php:92
+#: src/Admin/ProductsPage.php:296
+#: src/Pro__premium_only/Agents/ProductWriter.php:93
 msgid "The product couldn’t be saved. Please try again."
 msgstr ""
 
 #. translators: %s: product name
-#: src/Admin/ProductsPage.php:319
+#: src/Admin/ProductsPage.php:320
 msgid "Product “%s” saved."
 msgstr ""
 
 #. translators: %s: product name
-#: src/Admin/ProductsPage.php:323
+#: src/Admin/ProductsPage.php:324
 msgid "Product “%s” created."
 msgstr ""
 
 #. translators: %s: product name
-#: src/Admin/ProductsPage.php:489
+#: src/Admin/ProductsPage.php:492
 msgid "“%s” archived – no longer visible in the shop but still saved (view “Archived”)."
 msgstr ""
 
 #. translators: %s: product name
-#: src/Admin/ProductsPage.php:497
+#: src/Admin/ProductsPage.php:500
 msgid "“%s” restored."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:504
+#: src/Admin/ProductsPage.php:507
 #: src/Pro__premium_only/Agents/Tools/CatalogTools.php:611
 msgid "Duplicating failed."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:509
+#: src/Admin/ProductsPage.php:512
 msgid "Copy created – it’s still hidden and has stock 0. Please review and save."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:516
+#: src/Admin/ProductsPage.php:519
 msgid "Only archived products can be deleted permanently. Archive the product first."
 msgstr ""
 
 #. translators: %s: product name
-#: src/Admin/ProductsPage.php:528
+#: src/Admin/ProductsPage.php:531
 msgid "“%s” permanently deleted."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:557
+#: src/Admin/ProductsPage.php:560
 msgid "Please check some products in the list first."
 msgstr ""
 
 #. translators: %d: number of products
-#: src/Admin/ProductsPage.php:567
+#: src/Admin/ProductsPage.php:570
 msgid "%d product changed."
 msgid_plural "%d products changed."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/ProductsPage.php:568
+#: src/Admin/ProductsPage.php:571
 msgid "Visible in shop."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:568
+#: src/Admin/ProductsPage.php:571
 msgid "Hidden in shop."
 msgstr ""
 
 #. translators: %d: number of products
-#: src/Admin/ProductsPage.php:575
+#: src/Admin/ProductsPage.php:578
 msgid "%d product archived."
 msgid_plural "%d products archived."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of products
-#: src/Admin/ProductsPage.php:582
+#: src/Admin/ProductsPage.php:585
 msgid "%d product restored."
 msgid_plural "%d products restored."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of products
-#: src/Admin/ProductsPage.php:592
+#: src/Admin/ProductsPage.php:595
 msgid "%d product duplicated (copies are hidden, stock 0)."
 msgid_plural "%d products duplicated (copies are hidden, stock 0)."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of products
-#: src/Admin/ProductsPage.php:600
+#: src/Admin/ProductsPage.php:603
 msgid "Category set for %d product."
 msgid_plural "Category set for %d products."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/ProductsPage.php:608
+#: src/Admin/ProductsPage.php:611
 msgid "Please enter a percentage other than 0 (e.g. 10 or -5)."
 msgstr ""
 
 #. translators: 1: number, 2: percent
-#: src/Admin/ProductsPage.php:614
+#: src/Admin/ProductsPage.php:617
 msgid "Price of %1$d products changed by %2$s %%."
 msgstr ""
 
 #. translators: %d: number of products
-#: src/Admin/ProductsPage.php:643
+#: src/Admin/ProductsPage.php:646
 msgid "%d product permanently deleted."
 msgid_plural "%d products permanently deleted."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of skipped products
-#: src/Admin/ProductsPage.php:648
+#: src/Admin/ProductsPage.php:651
 msgid "%d skipped – only archived products can be deleted."
 msgid_plural "%d skipped – only archived products can be deleted."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %d: number of images
-#: src/Admin/ProductsPage.php:706
+#: src/Admin/ProductsPage.php:709
 msgid "%d unused image was deleted from the media library."
 msgid_plural "%d unused images were deleted from the media library."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/ProductsPage.php:710
+#: src/Admin/ProductsPage.php:713
 msgid "Image not found."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:716
+#: src/Admin/ProductsPage.php:719
 msgid "The image stays in the media library."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:721
+#: src/Admin/ProductsPage.php:724
 msgid "The image is still in use and was therefore not deleted."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:745
+#: src/Admin/ProductsPage.php:748
 msgid "Current image"
 msgstr ""
 
 #. translators: %s: image name
-#: src/Admin/ProductsPage.php:748
+#: src/Admin/ProductsPage.php:751
 msgid "“%s” is no longer assigned to any product and isn’t used anywhere else. Delete from the media library?"
 msgstr ""
 
 #. translators: %s: link to the cleanup list
-#: src/Admin/ProductsPage.php:759
+#: src/Admin/ProductsPage.php:762
 msgid "You can find more images that are no longer in use under %s."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:773
+#: src/Admin/ProductsPage.php:776
 msgid "Back to products"
 msgstr ""
 
-#: src/Admin/ProductsPage.php:774
+#: src/Admin/ProductsPage.php:777
 msgid "These images were uploaded through the shop but no longer belong to any product and aren’t used anywhere. You decide whether they’re deleted from the media library. Images you picked from the media library never appear here."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:780
+#: src/Admin/ProductsPage.php:783
 msgid "All tidy – no unused images."
 msgstr ""
 
-#: src/Admin/ProductsPage.php:792
+#: src/Admin/ProductsPage.php:795
 msgid "Permanently delete image from the media library?"
 msgstr ""
 
-#: src/Admin/ProductsPage.php:799
+#: src/Admin/ProductsPage.php:802
 msgid "Permanently delete all unused images from the media library?"
 msgstr ""
 
-#: src/Admin/ProductsPage.php:800
+#: src/Admin/ProductsPage.php:803
 msgid "Delete all unused images"
 msgstr ""
 
@@ -12430,6 +12430,11 @@ msgstr[1] ""
 msgid "View log"
 msgstr ""
 
+#. translators: 1: product name (and product number), 2: number of the image
+#: src/Infrastructure/Media/ProductImageNames.php:84
+msgid "%1$s – image %2$d"
+msgstr ""
+
 #: src/Infrastructure/Notifications/MailHealth.php:84
 msgid "Plugin with its own wp_mail() function"
 msgstr ""
@@ -14517,21 +14522,21 @@ msgid "The image could not be added to the media library: %s"
 msgstr ""
 
 #. translators: %s: list of tax rates
-#: src/Pro__premium_only/Agents/ProductWriter.php:228
+#: src/Pro__premium_only/Agents/ProductWriter.php:229
 msgid "This VAT rate is not set up in the shop. Allowed: %s"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ProductWriter.php:247
+#: src/Pro__premium_only/Agents/ProductWriter.php:248
 msgid "Please enter a price."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ProductWriter.php:253
+#: src/Pro__premium_only/Agents/ProductWriter.php:254
 #: src/Pro__premium_only/Membership/MembershipAdmin.php:133
 msgid "A percentage discount must be between 0 and 100."
 msgstr ""
 
 #. translators: %d: category ID
-#: src/Pro__premium_only/Agents/ProductWriter.php:268
+#: src/Pro__premium_only/Agents/ProductWriter.php:269
 msgid "Category %d does not exist (see admin_list_categories)."
 msgstr ""
 

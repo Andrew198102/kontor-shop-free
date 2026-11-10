@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.2
+Stable tag: 2.9.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.3 =
+* Product images get clean names: when you save a product, images uploaded through the shop (product page or AI assistant) are titled after the product and its product number, for example "Club scarf (SCH-1)", gallery images "– image 2", variant images with the variant ("Hoodie M / Red (HD-1-M)"). The alternative text follows the product too. So you find every image in the media library by product name or product number. Titles you changed yourself in the media library stay as they are.
+* New uploads also get a clean file name ("club-scarf-sch-1.jpg" instead of "IMG_4711.jpg"), including all image sizes. Images that are already online keep their address, so caches and search engines never point to missing images. Images chosen from the media library (logo, blog images) are never renamed.
 
 = 2.9.2 =
 * New (Pro): the AI assistant checks every product photo against the shop photo standard. What only concerns background, framing or the file is fixed right away – a transparent background becomes white, photos on a plain light background are framed to the shop's image format with the product centred, very large images are scaled down and PNGs are saved as JPEG. If a photo needs real editing (busy or dark background, product cut off at the edge, too small), it is not set yet: the assistant explains what is wrong and offers to rework it, asks for a better photo, or keeps it if you want.
