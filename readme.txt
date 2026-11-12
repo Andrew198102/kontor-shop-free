@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.4
+Stable tag: 2.9.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.5 =
+* New: "Ready to go online". A hidden product counts as ready when it has a price, stock (with variants: an active variant in stock), a photo, a description and a category. Ready products are easy to forget – now the shop overview shows a "Ready to go online" tile (also in the WordPress dashboard widget) as soon as there are any, and the product list has a matching view with a short hint; switch them on one by one or with the bulk action "Make visible". Nothing goes online automatically.
+* AI assistant (Pro): when a hidden product becomes complete through the last action (creating it, changing it, setting the photo, booking stock), the assistant asks once whether it may go online, and switches it visible only after a yes. "What is there to do?" lists ready products and those missing exactly one thing (for example only the photo). Only shop managers are asked, because only they may publish products.
 
 = 2.9.4 =
 * AI assistant (Pro), product photos: one clear rule set for ChatGPT and other assistants. "Upload this photo" passes the original; "prepare the photo for the shop" runs a fixed workflow – cut the real product out (never redraw it), pure white background, soft contact shadow only where it fits, keep shape, colour, logo, lettering and engravings unchanged, compare with the original before uploading, and ask for a new photo if that is not possible. Real edited image files are allowed; invented image data or file links are not. The browser upload is only the fallback.

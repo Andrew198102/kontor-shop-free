@@ -9,6 +9,7 @@ use Kontor\Shop\Admin\Ui\ListParams;
 use Kontor\Shop\Admin\Ui\Options;
 use Kontor\Shop\Admin\Ui\Pagination;
 use Kontor\Shop\Domain\Catalog\Product;
+use Kontor\Shop\Infrastructure\Catalog\PublishCandidates;
 use Kontor\Shop\Infrastructure\Media\ManagedImages;
 use Kontor\Shop\Infrastructure\Repositories\CategoryRepository;
 use Kontor\Shop\Infrastructure\Repositories\ProductRepository;
@@ -41,7 +42,7 @@ final class ProductsList
         $view = ListParams::key('view');
 
         return [
-            'view'         => in_array($view, ['visible', 'hidden', 'warn', 'archive', 'images'], true) ? $view : 'all',
+            'view'         => in_array($view, ['visible', 'hidden', 'ready', 'warn', 'archive', 'images'], true) ? $view : 'all',
             'q'            => ListParams::text('q'),
             'warehouse_id' => max(0, ListParams::int('warehouse_id')),
             'category_id'  => ListParams::int('category_id'),
@@ -88,14 +89,17 @@ final class ProductsList
         $base       = ['page' => ProductsPage::SLUG];
         $counts     = $this->products->counts();
 
-        $result = $this->products->query([
+        $ready  = PublishCandidates::scan()['ready'];
+        $filter = $state['view'] === 'ready' ? ['ids' => array_map(static fn ($product): int => (int) $product->id, $ready)] : [];
+
+        $result = $this->products->query($filter + [
             'view'         => $archive ? 'archive' : 'active',
             'q'            => $state['q'],
             'warehouse_id' => $state['warehouse_id'],
             'category_id'  => $state['category_id'],
             'visibility'   => match ($state['view']) {
                 'visible' => 'visible',
-                'hidden'  => 'hidden',
+                'hidden', 'ready' => 'hidden',
                 default   => '',
             },
             'stock'        => $state['view'] === 'warn' ? 'warn' : '',
@@ -161,10 +165,16 @@ final class ProductsList
             'all'     => [__('All', 'kontor-shop'), $counts['active']],
             'visible' => [__('Visible', 'kontor-shop'), $counts['visible']],
             'hidden'  => [__('Hidden', 'kontor-shop'), $counts['hidden']],
+            'ready'   => [__('Ready to go online', 'kontor-shop'), count(PublishCandidates::scan()['ready'])],
             'warn'    => [__('Low/out of stock', 'kontor-shop'), $counts['warn']],
             'archive' => [__('Archived', 'kontor-shop'), $counts['archived']],
             'images'  => [__('Unused images', 'kontor-shop'), count(ManagedImages::pending_unused($this->settings))],
         ];
+
+        // "Bereit" nur, wenn es etwas freizuschalten gibt (oder man gerade dort ist).
+        if ($views['ready'][1] === 0 && $state['view'] !== 'ready') {
+            unset($views['ready']);
+        }
 
         $links = [];
 
@@ -175,6 +185,10 @@ final class ProductsList
         }
 
         echo '<ul class="subsubsub">' . implode(' | </li>', $links) . '</li></ul><br class="clear" />'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $links oben mit esc_url/esc_html gebaut
+
+        if ($state['view'] === 'ready') {
+            echo '<div class="notice notice-info inline"><p>' . esc_html__('These products have a price, stock, a photo, a description and a category, but are still hidden. Check them and switch them on one by one, or select them and choose "Make visible".', 'kontor-shop') . '</p></div>';
+        }
     }
 
     /**

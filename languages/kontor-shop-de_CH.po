@@ -35,7 +35,7 @@ msgstr "GitHub nicht erreichbar: %s"
 
 #. translators: 1: time, 2: error
 #: kontor-shop-updates.php:211
-#: src/Admin/ShopSnapshot.php:206
+#: src/Admin/ShopSnapshot.php:207
 #: src/Pro__premium_only/Health/HealthAlarm.php:177
 msgid "Check now"
 msgstr "Jetzt prüfen"
@@ -78,7 +78,7 @@ msgstr "Sortierung nicht möglich."
 #: src/Admin/ProductsPage.php:117
 #: src/Admin/ProductsPage.php:479
 #: src/Pro__premium_only/Agents/ProductWriter.php:121
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:324
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:325
 msgid "Product not found."
 msgstr "Artikel nicht gefunden."
 
@@ -94,18 +94,18 @@ msgstr "Bitte einen gültigen Preis angeben."
 #: src/Admin/ProductsPage.php:232
 #: src/Admin/WarehousesPage.php:155
 #: src/Pro__premium_only/Agents/ProductWriter.php:244
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1034
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1035
 msgid "Please enter a name."
 msgstr "Bitte einen Namen angeben."
 
 #: src/Admin/CategoriesPage.php:157
 #: src/Admin/CategoriesPage.php:229
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1025
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1026
 msgid "Category not found."
 msgstr "Kategorie nicht gefunden."
 
 #: src/Admin/CategoriesPage.php:161
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1049
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1050
 msgid "A category can't be placed under itself or one of its subcategories."
 msgstr "Eine Kategorie kann nicht unter sich selbst oder einer ihrer Unterkategorien liegen."
 
@@ -165,7 +165,7 @@ msgstr "Reihenfolge"
 #: src/Admin/CategoriesPage.php:367
 #: src/Admin/OrderDetailView.php:100
 #: src/Admin/ProductForm.php:162
-#: src/Admin/ProductsList.php:131
+#: src/Admin/ProductsList.php:135
 msgid "Name"
 msgstr "Name"
 
@@ -201,7 +201,7 @@ msgid "Move down"
 msgstr "Nach unten"
 
 #: src/Admin/CategoriesPage.php:304
-#: src/Admin/ProductsList.php:374
+#: src/Admin/ProductsList.php:388
 #: src/Admin/WarehousesPage.php:290
 #: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:75
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:268
@@ -255,10 +255,10 @@ msgid "inactive"
 msgstr "inaktiv"
 
 #: src/Admin/CategoriesPage.php:341
-#: src/Admin/ProductsList.php:134
-#: src/Admin/ProductsList.php:198
-#: src/Admin/ProductsList.php:276
-#: src/Admin/ProductsList.php:435
+#: src/Admin/ProductsList.php:138
+#: src/Admin/ProductsList.php:212
+#: src/Admin/ProductsList.php:290
+#: src/Admin/ProductsList.php:449
 msgid "Category"
 msgstr "Kategorie"
 
@@ -403,17 +403,17 @@ msgstr "Zahlung offen"
 
 #. translators: %d: pieces
 #: src/Admin/DashboardWidget.php:100
-#: src/Admin/DashboardWidget.php:148
+#: src/Admin/DashboardWidget.php:153
 #: src/Admin/OrdersList.php:357
 #: src/Admin/OrdersList.php:373
-#: src/Admin/ShopSnapshot.php:287
+#: src/Admin/ShopSnapshot.php:288
 msgid "To ship"
 msgstr "Zu versenden"
 
 #: src/Admin/DashboardWidget.php:104
 #: src/Admin/OrderDetailView.php:144
 #: src/Admin/OrdersList.php:376
-#: src/Admin/ShopSnapshot.php:292
+#: src/Admin/ShopSnapshot.php:293
 #: src/Modules/Checkout/CheckoutModule.php:1469
 msgid "Refund"
 msgstr "Rückzahlung"
@@ -424,16 +424,16 @@ msgid "Customers waiting"
 msgstr "Kunden warten"
 
 #: src/Admin/DashboardWidget.php:112
-#: src/Admin/ShopSnapshot.php:297
+#: src/Admin/ShopSnapshot.php:298
 #: src/Pro__premium_only/Warehouses/WarehouseCard.php:68
 msgid "low/empty"
 msgstr "knapp/leer"
 
-#: src/Admin/DashboardWidget.php:145
+#: src/Admin/DashboardWidget.php:150
 msgid "Shop dashboard"
 msgstr "Shop-Übersicht"
 
-#: src/Admin/DashboardWidget.php:150
+#: src/Admin/DashboardWidget.php:155
 msgid "Payments"
 msgstr "Zahlungen"
 
@@ -1093,7 +1093,7 @@ msgstr "Öffne Kontor Shop → Artikel und klick auf „Neuen Artikel anlegen“
 
 #: src/Admin/HelpCenter/Content/DailyArticles.php:215
 #: src/Admin/HelpCenter/Content/StartArticles.php:42
-#: src/Admin/ProductsList.php:111
+#: src/Admin/ProductsList.php:115
 #: src/Pro__premium_only/Preorders/PreordersModule.php:331
 msgid "Add new product"
 msgstr "Neuen Artikel anlegen"
@@ -4006,7 +4006,7 @@ msgstr "Nein. Mitglieder melden sich dort an, wo dein Verein sie schon verwaltet
 #. translators: %s: settings section
 #: src/Admin/HelpCenter/Content/SetupArticles.php:357
 #: src/Admin/Settings/MailSection.php:26
-#: src/Admin/ShopSnapshot.php:210
+#: src/Admin/ShopSnapshot.php:211
 #: src/Modules/Notifications/PoweredBy.php:155
 msgid "Email sending"
 msgstr "E-Mail-Versand"
@@ -5688,7 +5688,7 @@ msgstr "Referenz (KS-…), Meldung oder Bereich"
 
 #: src/Admin/LogPage.php:152
 #: src/Admin/OrdersList.php:449
-#: src/Admin/ProductsList.php:205
+#: src/Admin/ProductsList.php:219
 #: src/Admin/StockOverview.php:559
 #: src/Pro__premium_only/Audit/AuditPage.php:183
 msgid "Filter"
@@ -6050,7 +6050,7 @@ msgstr "Grund der Korrektur (Pflicht)"
 #: src/Admin/Menu.php:224
 #: src/Admin/StockPage.php:264
 #: src/Admin/StockPage.php:327
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:236
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:237
 msgid "A note is required for a correction."
 msgstr "Für eine Korrektur ist eine Notiz Pflicht."
 
@@ -6240,7 +6240,7 @@ msgid "Please wait until all images have been uploaded."
 msgstr "Bitte warten, bis alle Bilder hochgeladen sind."
 
 #: src/Admin/Menu.php:384
-#: src/Admin/ProductsList.php:110
+#: src/Admin/ProductsList.php:114
 msgid "Products"
 msgstr "Artikel"
 
@@ -6825,7 +6825,7 @@ msgstr "über %s"
 #. translators: %s: order number
 #: src/Admin/OrdersList.php:186
 #: src/Admin/OrdersList.php:231
-#: src/Admin/ShopSnapshot.php:287
+#: src/Admin/ShopSnapshot.php:288
 #: src/Pro__premium_only/Dashboard/Stalls.php:172
 #: src/Pro__premium_only/Packing/OrderPackView.php:59
 msgid "Pack"
@@ -6948,7 +6948,7 @@ msgstr "Zu erledigen"
 
 #: src/Admin/OrdersList.php:374
 #: src/Admin/OrdersList.php:485
-#: src/Admin/ShopSnapshot.php:288
+#: src/Admin/ShopSnapshot.php:289
 #: src/Pro__premium_only/Packing/OrderPackView.php:149
 msgid "Pickup"
 msgstr "Abholung"
@@ -6968,7 +6968,7 @@ msgid "Cancelled"
 msgstr "Storniert"
 
 #: src/Admin/OrdersList.php:379
-#: src/Admin/ProductsList.php:161
+#: src/Admin/ProductsList.php:165
 #: src/Admin/StockOverview.php:513
 #: src/Modules/Catalog/CatalogModule.php:225
 #: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:165
@@ -7030,7 +7030,7 @@ msgid "pickup only"
 msgstr "nur Abholung"
 
 #: src/Admin/OrdersList.php:438
-#: src/Admin/ProductsList.php:196
+#: src/Admin/ProductsList.php:210
 #: src/Admin/StockOverview.php:555
 #: src/Admin/StockOverview.php:959
 #: src/Admin/StockOverview.php:1072
@@ -7054,7 +7054,7 @@ msgid "non-members only"
 msgstr "nur Nicht-Mitglieder"
 
 #: src/Admin/OrdersList.php:452
-#: src/Admin/ProductsList.php:209
+#: src/Admin/ProductsList.php:223
 #: src/Admin/StockOverview.php:562
 #: src/Pro__premium_only/Audit/AuditPage.php:186
 #: src/Pro__premium_only/Coupons/Admin/CouponsList.php:155
@@ -7542,7 +7542,7 @@ msgid "New product"
 msgstr "Neuer Artikel"
 
 #: src/Admin/ProductForm.php:118
-#: src/Admin/ProductsList.php:165
+#: src/Admin/ProductsList.php:170
 #: src/Pro__premium_only/Audit/AuditPage.php:496
 msgid "Archived"
 msgstr "Archiviert"
@@ -7550,14 +7550,14 @@ msgstr "Archiviert"
 #: src/Admin/ProductForm.php:121
 #: src/Admin/ProductForm.php:122
 #: src/Admin/ProductForm.php:344
-#: src/Admin/ProductsList.php:137
-#: src/Admin/ProductsList.php:407
+#: src/Admin/ProductsList.php:141
+#: src/Admin/ProductsList.php:421
 msgid "Visible in shop"
 msgstr "Im Shop sichtbar"
 
 #: src/Admin/ProductForm.php:121
 #: src/Admin/ProductForm.php:122
-#: src/Admin/ProductsList.php:163
+#: src/Admin/ProductsList.php:167
 msgid "Hidden"
 msgstr "Ausgeblendet"
 
@@ -7575,7 +7575,7 @@ msgid "Low stock"
 msgstr "Bestand knapp"
 
 #: src/Admin/ProductForm.php:139
-#: src/Admin/ProductsList.php:399
+#: src/Admin/ProductsList.php:413
 #: src/Admin/StockOverview.php:597
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:668
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:762
@@ -7750,20 +7750,20 @@ msgid "Create & add another"
 msgstr "Anlegen & weiteren erfassen"
 
 #: src/Admin/ProductForm.php:358
-#: src/Admin/ProductsList.php:263
-#: src/Admin/ProductsList.php:376
+#: src/Admin/ProductsList.php:277
+#: src/Admin/ProductsList.php:390
 msgid "Duplicate"
 msgstr "Duplizieren"
 
 #: src/Admin/ProductForm.php:375
-#: src/Admin/ProductsList.php:258
-#: src/Admin/ProductsList.php:379
+#: src/Admin/ProductsList.php:272
+#: src/Admin/ProductsList.php:393
 msgid "Restore"
 msgstr "Wiederherstellen"
 
 #: src/Admin/ProductForm.php:376
-#: src/Admin/ProductsList.php:270
-#: src/Admin/ProductsList.php:377
+#: src/Admin/ProductsList.php:284
+#: src/Admin/ProductsList.php:391
 msgid "Archive"
 msgstr "Archivieren"
 
@@ -7788,7 +7788,7 @@ msgid "You enter the initial stock per variant in the variant table."
 msgstr "Den Anfangsbestand erfasst du je Variante in der Variantentabelle."
 
 #: src/Admin/ProductForm.php:409
-#: src/Admin/ProductsList.php:436
+#: src/Admin/ProductsList.php:450
 #: src/Admin/StockOverview.php:421
 #: src/Admin/StockOverview.php:933
 #: src/Pro__premium_only/Audit/AuditPage.php:504
@@ -7855,7 +7855,7 @@ msgid "Main category"
 msgstr "Hauptkategorie"
 
 #: src/Admin/ProductForm.php:509
-#: src/Admin/ProductsList.php:435
+#: src/Admin/ProductsList.php:449
 msgid "– none –"
 msgstr "– keine –"
 
@@ -7976,13 +7976,13 @@ msgid "e.g. 44.90"
 msgstr "z. B. 44,90"
 
 #: src/Admin/ProductVariantsCard.php:112
-#: src/Admin/ProductsList.php:135
+#: src/Admin/ProductsList.php:139
 #: src/Pro__premium_only/Audit/AuditPage.php:491
 msgid "Price"
 msgstr "Preis"
 
 #: src/Admin/ProductVariantsCard.php:113
-#: src/Admin/ProductsList.php:281
+#: src/Admin/ProductsList.php:295
 #: src/Admin/StockOverview.php:936
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:563
 msgid "Apply"
@@ -8016,12 +8016,12 @@ msgid "EAN"
 msgstr "EAN"
 
 #: src/Admin/ProductVariantsCard.php:125
-#: src/Admin/ProductsList.php:434
+#: src/Admin/ProductsList.php:448
 msgid "Price (€)"
 msgstr "Preis (€)"
 
 #: src/Admin/ProductVariantsCard.php:127
-#: src/Admin/ProductsList.php:130
+#: src/Admin/ProductsList.php:134
 msgid "Image"
 msgstr "Bild"
 
@@ -8067,117 +8067,126 @@ msgstr "noch %d Stück"
 msgid "There is still <strong>%1$d item of stock without a variant</strong> (from before variants existed). This stock isn’t offered in the shop – please book it out under %2$s and book it in for the matching variants."
 msgstr "Es gibt noch <strong>%1$d Stück Bestand ohne Variante</strong> (von vor den Varianten). Dieser Bestand wird im Shop nicht angeboten – bitte unter %2$s ausbuchen und bei den passenden Varianten einbuchen."
 
-#: src/Admin/ProductsList.php:132
-#: src/Admin/ProductsList.php:433
+#: src/Admin/ProductsList.php:136
+#: src/Admin/ProductsList.php:447
 msgid "SKU"
 msgstr "SKU"
 
-#: src/Admin/ProductsList.php:162
+#: src/Admin/ProductsList.php:166
 msgid "Visible"
 msgstr "Sichtbar"
 
-#: src/Admin/ProductsList.php:164
+#: src/Admin/ProductsList.php:168
+#: src/Admin/ShopSnapshot.php:306
+msgid "Ready to go online"
+msgstr "Bereit zum Freischalten"
+
+#: src/Admin/ProductsList.php:169
 msgid "Low/out of stock"
 msgstr "Bestand knapp/leer"
 
 #. translators: %s: link to the cleanup list
-#: src/Admin/ProductsList.php:166
+#: src/Admin/ProductsList.php:171
 #: src/Admin/ProductsPage.php:763
 #: src/Admin/ProductsPage.php:775
 msgid "Unused images"
 msgstr "Ungenutzte Bilder"
 
-#: src/Admin/ProductsList.php:193
+#: src/Admin/ProductsList.php:190
+msgid "These products have a price, stock, a photo, a description and a category, but are still hidden. Check them and switch them on one by one, or select them and choose \"Make visible\"."
+msgstr "Diese Artikel haben Preis, Bestand, Foto, Beschreibung und Kategorie, sind aber noch ausgeblendet. Prüfe sie und schalte sie einzeln frei – oder markiere sie und wähle „Sichtbar schalten“."
+
+#: src/Admin/ProductsList.php:207
 msgid "Search: name, SKU, description"
 msgstr "Suche: Name, SKU, Beschreibung"
 
-#: src/Admin/ProductsList.php:193
+#: src/Admin/ProductsList.php:207
 #: src/Admin/StockOverview.php:552
 #: src/Modules/Agents/ShopTools.php:57
 #: src/Modules/Catalog/CatalogModule.php:173
 msgid "Search products"
 msgstr "Artikel suchen"
 
-#: src/Admin/ProductsList.php:201
+#: src/Admin/ProductsList.php:215
 #: src/Admin/StockOverview.php:558
 #: src/Admin/StockOverview.php:1076
 #: src/Admin/StockPage.php:697
 msgid "All categories"
 msgstr "Alle Kategorien"
 
-#: src/Admin/ProductsList.php:202
-#: src/Admin/ProductsList.php:277
+#: src/Admin/ProductsList.php:216
+#: src/Admin/ProductsList.php:291
 msgid "– no category –"
 msgstr "– ohne Kategorie –"
 
-#: src/Admin/ProductsList.php:226
+#: src/Admin/ProductsList.php:240
 msgid "The archive is empty."
 msgstr "Das Archiv ist leer."
 
-#: src/Admin/ProductsList.php:228
+#: src/Admin/ProductsList.php:242
 msgid "No products found for this selection."
 msgstr "Keine Artikel für diese Auswahl gefunden."
 
-#: src/Admin/ProductsList.php:230
+#: src/Admin/ProductsList.php:244
 msgid "No products yet."
 msgstr "Noch keine Artikel angelegt."
 
-#: src/Admin/ProductsList.php:237
+#: src/Admin/ProductsList.php:251
 #: src/Admin/SetupChecklist.php:42
 msgid "Add your first product"
 msgstr "Ersten Artikel anlegen"
 
-#: src/Admin/ProductsList.php:254
+#: src/Admin/ProductsList.php:268
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:556
 msgid "Bulk action"
 msgstr "Sammelaktion"
 
-#: src/Admin/ProductsList.php:255
+#: src/Admin/ProductsList.php:269
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:557
 msgid "Bulk action …"
 msgstr "Sammelaktion …"
 
-#: src/Admin/ProductsList.php:259
-#: src/Admin/ProductsList.php:381
+#: src/Admin/ProductsList.php:273
+#: src/Admin/ProductsList.php:395
 msgid "Delete permanently"
 msgstr "Endgültig löschen"
 
-#: src/Admin/ProductsList.php:261
+#: src/Admin/ProductsList.php:275
 msgid "Make visible"
 msgstr "Sichtbar schalten"
 
-#: src/Admin/ProductsList.php:262
+#: src/Admin/ProductsList.php:276
 msgid "Make hidden"
 msgstr "Unsichtbar schalten"
 
-#: src/Admin/ProductsList.php:266
+#: src/Admin/ProductsList.php:280
 msgid "Assign category …"
 msgstr "Kategorie zuweisen …"
 
-#: src/Admin/ProductsList.php:267
+#: src/Admin/ProductsList.php:281
 msgid "Change price by % …"
 msgstr "Preis um % ändern …"
 
-#: src/Admin/ProductsList.php:278
+#: src/Admin/ProductsList.php:292
 msgid "Percent"
 msgstr "Prozent"
 
-#: src/Admin/ProductsList.php:375
-#: src/Admin/ProductsList.php:431
+#: src/Admin/ProductsList.php:389
+#: src/Admin/ProductsList.php:445
 msgid "Quick edit"
 msgstr "Schnellbearbeitung"
 
-#: src/Admin/ProductsList.php:381
+#: src/Admin/ProductsList.php:395
 msgid "Delete product permanently? This can’t be undone."
 msgstr "Artikel endgültig löschen? Das kann nicht rückgängig gemacht werden."
 
 #. translators: %s: product name
-#: src/Admin/ProductsList.php:393
+#: src/Admin/ProductsList.php:407
 #: src/Admin/StockOverview.php:624
 msgid "Select %s"
 msgstr "%s auswählen"
 
-#: src/Admin/ProductsList.php:398
+#: src/Admin/ProductsList.php:412
 msgid "hidden"
 msgstr "unsichtbar"
 
@@ -8238,7 +8247,7 @@ msgid "“%s” restored."
 msgstr "„%s“ wiederhergestellt."
 
 #: src/Admin/ProductsPage.php:507
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:638
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:639
 msgid "Duplicating failed."
 msgstr "Duplizieren fehlgeschlagen."
 
@@ -9609,8 +9618,8 @@ msgid "Test email failed: "
 msgstr "Testmail fehlgeschlagen: "
 
 #: src/Admin/Settings/SystemSection.php:97
-#: src/Admin/ShopSnapshot.php:217
-#: src/Admin/ShopSnapshot.php:223
+#: src/Admin/ShopSnapshot.php:218
+#: src/Admin/ShopSnapshot.php:224
 msgid "System check"
 msgstr "Systemprüfung"
 
@@ -9940,30 +9949,30 @@ msgstr "abgeholt am"
 msgid "shipped on"
 msgstr "versendet am"
 
-#: src/Admin/ShopSnapshot.php:156
+#: src/Admin/ShopSnapshot.php:157
 msgid "Orderable"
 msgstr "Bestellbar"
 
-#: src/Admin/ShopSnapshot.php:156
+#: src/Admin/ShopSnapshot.php:157
 msgid "Warehouse, products, bank account, and legal texts are set up."
 msgstr "Lager, Artikel, Bankkonto und Rechtstexte sind eingerichtet."
 
-#: src/Admin/ShopSnapshot.php:157
+#: src/Admin/ShopSnapshot.php:158
 msgid "Not orderable yet"
 msgstr "Noch nicht bestellbar"
 
 #. translators: %s: open steps
-#: src/Admin/ShopSnapshot.php:159
+#: src/Admin/ShopSnapshot.php:160
 msgid "Still missing: %s."
 msgstr "Es fehlt noch: %s."
 
 #. translators: %s: open steps
-#: src/Admin/ShopSnapshot.php:161
-#: src/Admin/ShopSnapshot.php:208
+#: src/Admin/ShopSnapshot.php:162
+#: src/Admin/ShopSnapshot.php:209
 msgid "Set up"
 msgstr "Einrichten"
 
-#: src/Admin/ShopSnapshot.php:165
+#: src/Admin/ShopSnapshot.php:166
 #: src/Infrastructure/Frontend/PageInstaller.php:30
 #: src/Modules/Blocks/BlocksModule.php:116
 #: src/Modules/Seo/Links.php:101
@@ -9971,147 +9980,147 @@ msgstr "Einrichten"
 msgid "Shop"
 msgstr "Shop"
 
-#: src/Admin/ShopSnapshot.php:165
+#: src/Admin/ShopSnapshot.php:166
 #: src/Infrastructure/Frontend/PageInstaller.php:34
 #: src/Modules/Blocks/BlocksModule.php:117
 #: src/Modules/Cart/CartModule.php:284
 msgid "Cart"
 msgstr "Warenkorb"
 
-#: src/Admin/ShopSnapshot.php:165
+#: src/Admin/ShopSnapshot.php:166
 #: src/Infrastructure/Frontend/PageInstaller.php:38
 #: src/Modules/Blocks/BlocksModule.php:118
 msgid "Checkout"
 msgstr "Kasse"
 
-#: src/Admin/ShopSnapshot.php:174
+#: src/Admin/ShopSnapshot.php:175
 msgid "Shop pages missing"
 msgstr "Shop-Seiten fehlen"
 
 #. translators: %s: pages
-#: src/Admin/ShopSnapshot.php:176
+#: src/Admin/ShopSnapshot.php:177
 msgid "Not published: %s – customers can’t order this way."
 msgstr "Nicht veröffentlicht: %s – Kunden können so nicht bestellen."
 
 #. translators: %s: pages
-#: src/Admin/ShopSnapshot.php:178
+#: src/Admin/ShopSnapshot.php:179
 msgid "Check pages"
 msgstr "Seiten prüfen"
 
-#: src/Admin/ShopSnapshot.php:184
+#: src/Admin/ShopSnapshot.php:185
 msgid "Emails not delivered"
 msgstr "Mails nicht zugestellt"
 
 #. translators: %d: number of emails
-#: src/Admin/ShopSnapshot.php:186
+#: src/Admin/ShopSnapshot.php:187
 msgid "%d email could not be sent even after several attempts."
 msgid_plural "%d emails could not be sent even after several attempts."
 msgstr[0] "%d Mail konnte auch nach mehreren Versuchen nicht verschickt werden."
 msgstr[1] "%d Mails konnten auch nach mehreren Versuchen nicht verschickt werden."
 
 #. translators: %d: number of emails
-#: src/Admin/ShopSnapshot.php:188
-#: src/Admin/ShopSnapshot.php:194
+#: src/Admin/ShopSnapshot.php:189
+#: src/Admin/ShopSnapshot.php:195
 msgid "Open outbox"
 msgstr "Postausgang öffnen"
 
-#: src/Admin/ShopSnapshot.php:190
+#: src/Admin/ShopSnapshot.php:191
 msgid "Emails in the outbox"
 msgstr "Mails im Postausgang"
 
 #. translators: %d: number of emails
-#: src/Admin/ShopSnapshot.php:192
+#: src/Admin/ShopSnapshot.php:193
 msgid "%d email is waiting for a new delivery attempt."
 msgid_plural "%d emails are waiting for a new delivery attempt."
 msgstr[0] "%d Mail wartet auf einen neuen Zustellversuch."
 msgstr[1] "%d Mails warten auf einen neuen Zustellversuch."
 
-#: src/Admin/ShopSnapshot.php:201
+#: src/Admin/ShopSnapshot.php:202
 msgid "Email sending disrupted"
 msgstr "Mailversand gestört"
 
 #. translators: 1: time, 2: error
-#: src/Admin/ShopSnapshot.php:203
+#: src/Admin/ShopSnapshot.php:204
 msgid "Last email failed on %1$s (“%2$s”). Customers may not be getting confirmations."
 msgstr "Letzte Mail fehlgeschlagen am %1$s („%2$s“). Kunden bekommen womöglich keine Bestätigungen."
 
-#: src/Admin/ShopSnapshot.php:208
+#: src/Admin/ShopSnapshot.php:209
 msgid "Email sending uncertain"
 msgstr "Mailversand unsicher"
 
-#: src/Admin/ShopSnapshot.php:210
+#: src/Admin/ShopSnapshot.php:211
 msgid "set up, no known errors"
 msgstr "eingerichtet, kein Fehler bekannt"
 
-#: src/Admin/ShopSnapshot.php:217
-#: src/Admin/ShopSnapshot.php:219
+#: src/Admin/ShopSnapshot.php:218
+#: src/Admin/ShopSnapshot.php:220
 msgid "Background tasks stalled"
 msgstr "Hintergrund-Aufgaben stehen"
 
-#: src/Admin/ShopSnapshot.php:217
+#: src/Admin/ShopSnapshot.php:218
 msgid "The hourly tasks (email retries, cleanup) are not scheduled. Deactivate and reactivate the plugin once."
 msgstr "Die stündlichen Aufgaben (erneute Mail-Zustellung, Aufräumen) sind nicht eingeplant. Plugin einmal deaktivieren und wieder aktivieren."
 
 #. translators: %s: time span
-#: src/Admin/ShopSnapshot.php:221
+#: src/Admin/ShopSnapshot.php:222
 msgid "Last ran %s ago. Scheduled tasks (email retries, cleanup) aren’t running."
 msgstr "Zuletzt gelaufen vor %s. Geplante Aufgaben (erneute Mail-Zustellung, Aufräumen) laufen so nicht."
 
 #. translators: %s: time span
-#: src/Admin/ShopSnapshot.php:223
+#: src/Admin/ShopSnapshot.php:224
 msgid "WP-Cron is disabled – the server cron must call wp-cron.php."
 msgstr "WP-Cron ist abgeschaltet – der Server-Cron muss wp-cron.php aufrufen."
 
-#: src/Admin/ShopSnapshot.php:225
+#: src/Admin/ShopSnapshot.php:226
 msgid "Background tasks"
 msgstr "Hintergrund-Aufgaben"
 
 #. translators: %s: time span
-#: src/Admin/ShopSnapshot.php:228
+#: src/Admin/ShopSnapshot.php:229
 msgid "Last ran %s ago."
 msgstr "Zuletzt gelaufen vor %s."
 
 #. translators: %s: time span
-#: src/Admin/ShopSnapshot.php:231
+#: src/Admin/ShopSnapshot.php:232
 msgid "Scheduled, first run still pending."
 msgstr "Eingeplant, erster Lauf steht noch aus."
 
-#: src/Admin/ShopSnapshot.php:239
+#: src/Admin/ShopSnapshot.php:240
 msgid "Critical errors"
 msgstr "Kritische Fehler"
 
 #. translators: 1: critical, 2: all errors
-#: src/Admin/ShopSnapshot.php:241
+#: src/Admin/ShopSnapshot.php:242
 msgid "%1$d critical of %2$d errors in the last 24 hours."
 msgstr "%1$d kritische von %2$d Fehlern in den letzten 24 Stunden."
 
 #. translators: 1: critical, 2: all errors
-#: src/Admin/ShopSnapshot.php:244
-#: src/Admin/ShopSnapshot.php:249
+#: src/Admin/ShopSnapshot.php:245
+#: src/Admin/ShopSnapshot.php:250
 msgid "Log"
 msgstr "Protokoll"
 
-#: src/Admin/ShopSnapshot.php:245
+#: src/Admin/ShopSnapshot.php:246
 msgid "Errors in the log"
 msgstr "Fehler im Protokoll"
 
 #. translators: 1: critical, 2: all errors
-#: src/Admin/ShopSnapshot.php:247
+#: src/Admin/ShopSnapshot.php:248
 msgid "%d error in the last 24 hours, none critical."
 msgid_plural "%d errors in the last 24 hours, none critical."
 msgstr[0] "%d Fehler in den letzten 24 Stunden, keiner kritisch."
 msgstr[1] "%d Fehler in den letzten 24 Stunden, keiner kritisch."
 
-#: src/Admin/ShopSnapshot.php:250
+#: src/Admin/ShopSnapshot.php:251
 #: src/Pro__premium_only/Audit/AuditPage.php:459
 msgid "Error log"
 msgstr "Fehlerprotokoll"
 
-#: src/Admin/ShopSnapshot.php:250
+#: src/Admin/ShopSnapshot.php:251
 msgid "No errors in the last 24 hours."
 msgstr "Keine Fehler in den letzten 24 Stunden."
 
-#: src/Admin/ShopSnapshot.php:282
+#: src/Admin/ShopSnapshot.php:283
 msgid "Check payment"
 msgstr "Zahlung prüfen"
 
@@ -10346,7 +10355,7 @@ msgid "No products yet – select above or scan."
 msgstr "Noch keine Artikel – oben auswählen oder scannen."
 
 #: src/Admin/StockOverview.php:930
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:122
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:123
 msgid "Set minimum stock"
 msgstr "Mindestbestand setzen"
 
@@ -10490,17 +10499,17 @@ msgstr "Buchungen speichern"
 
 #: src/Admin/StockPage.php:242
 #: src/Admin/StockPage.php:459
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:155
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:156
 msgid "Product not found or no permission."
 msgstr "Artikel nicht gefunden oder keine Berechtigung."
 
 #: src/Admin/StockPage.php:248
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:226
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:227
 msgid "This variant does not belong to the product."
 msgstr "Diese Variante gehört nicht zum Artikel."
 
 #: src/Admin/StockPage.php:255
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:230
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:231
 msgid "Please select a variant – this product is booked per variant (e.g. size)."
 msgstr "Bitte eine Variante auswählen – dieser Artikel wird je Variante (z. B. Grösse) gebucht."
 
@@ -10510,7 +10519,7 @@ msgstr "Bitte Bewegungsart und eine Menge grösser als 0 angeben."
 
 #. translators: %s: error reference number
 #: src/Admin/StockPage.php:278
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:251
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:252
 msgid "The stock movement could not be saved (error code %s). Please try again."
 msgstr "Die Bestandsbewegung konnte nicht gespeichert werden (Fehlercode %s). Bitte erneut versuchen."
 
@@ -10520,7 +10529,7 @@ msgid "%1$s: booked %2$s, new stock %3$d."
 msgstr "%1$s: %2$s gebucht, neuer Bestand %3$d."
 
 #: src/Admin/StockPage.php:293
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:262
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:263
 msgid "Warning: stock is now negative."
 msgstr "Achtung: Der Bestand ist jetzt negativ."
 
@@ -10596,7 +10605,7 @@ msgstr[1] "Lieferung gebucht: %1$d Positionen, %2$d Stück."
 #. translators: %s: date
 #: src/Admin/StockPage.php:555
 #: src/Pro__premium_only/Agents/Tools/ImportTools.php:247
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:278
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:279
 msgid "Stock count %s"
 msgstr "Inventur %s"
 
@@ -10609,13 +10618,13 @@ msgid "Nothing has been counted yet."
 msgstr "Es wurde noch nichts gezählt."
 
 #: src/Admin/StockPage.php:589
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:309
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:310
 msgid "A counted product was not found or does not belong to your warehouse."
 msgstr "Ein gezählter Artikel wurde nicht gefunden oder gehört nicht zu deinem Lager."
 
 #. translators: %s: error reference number
 #: src/Admin/StockPage.php:610
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:333
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:334
 msgid "The stock count could not be booked completely (error code %s). Corrections already booked are in the history."
 msgstr "Die Inventur konnte nicht vollständig gebucht werden (Fehlercode %s). Bereits gebuchte Korrekturen stehen im Verlauf."
 
@@ -12907,7 +12916,7 @@ msgid "Shop information"
 msgstr "Shop-Informationen"
 
 #: src/Modules/Agents/ShopTools.php:49
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:210
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:211
 msgid "List categories"
 msgstr "Kategorien auflisten"
 
@@ -14580,88 +14589,88 @@ msgstr "Der Shop hat noch keine Kassen-Seite eingerichtet."
 msgid "No order with this number and email address was found."
 msgstr "Keine Bestellung mit dieser Nummer und E-Mail-Adresse gefunden."
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:90
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:91
 msgid "List products"
 msgstr "Artikel auflisten"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:111
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:112
 msgid "Get product"
 msgstr "Artikel abrufen"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:121
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:122
 msgid "Create product"
 msgstr "Artikel anlegen"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:131
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:132
 msgid "Update product"
 msgstr "Artikel ändern"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:141
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:142
 msgid "Show, hide, archive or copy product"
 msgstr "Artikel anzeigen, ausblenden, archivieren oder kopieren"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:154
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:155
 msgid "Delete product permanently"
 msgstr "Artikel endgültig löschen"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:168
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:169
 msgid "Upload image"
 msgstr "Bild hochladen"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:186
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:187
 msgid "Set product image"
 msgstr "Artikelbild setzen"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:220
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:221
 msgid "Create or change category"
 msgstr "Kategorie anlegen oder ändern"
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:236
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:237
 msgid "List warehouses"
 msgstr "Lager auflisten"
 
 #. translators: %d: attachment ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:591
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:758
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:592
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:759
 msgid "Image %d does not exist in the media library."
 msgstr "Das Bild %d gibt es in der Mediathek nicht."
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:620
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:621
 msgid "The product is archived – restore it first."
 msgstr "Der Artikel ist archiviert – bitte zuerst wiederherstellen."
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:656
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:657
 msgid "Only archived products can be deleted permanently – archive it first (admin_product_action)."
 msgstr "Nur archivierte Artikel lassen sich endgültig löschen – bitte zuerst archivieren (admin_product_action)."
 
 #. translators: 1: product name, 2: product ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:661
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:662
 msgid "Delete “%1$s” (#%2$d) permanently, including its variants and stock history. Orders keep their copy of the product data. This cannot be undone."
 msgstr "„%1$s“ (#%2$d) endgültig löschen, samt Varianten und Bestandsverlauf. Bestellungen behalten ihre Kopie der Artikeldaten. Das lässt sich nicht rückgängig machen."
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:695
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:696
 msgid "Please pass the image file (image) or a link (url)."
 msgstr "Bitte die Bilddatei (image) oder einen Link (url) übergeben."
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:765
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:766
 msgid "Please pass the image file (image) or a link (image_url)."
 msgstr "Bitte die Bilddatei (image) oder einen Link (image_url) mitgeben."
 
 #. translators: %d: attachment ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:811
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:812
 msgid "Image %d is in the media library but could not be linked to the product. Please try again."
 msgstr "Bild %d liegt in der Mediathek, konnte aber nicht mit dem Artikel verknüpft werden. Bitte noch einmal versuchen."
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:892
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:893
 msgid "The image file arrived without a download address. Please try again, or upload the photo in the browser."
 msgstr "Die Bilddatei kam ohne Download-Adresse an. Bitte nochmal versuchen oder das Foto im Browser hochladen."
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1038
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1039
 #: src/Pro__premium_only/ShopTypes/ShopTypesModule.php:185
 msgid "Please choose a shop type (Settings → Shop types)."
 msgstr "Bitte einen Shoptyp wählen (Einstellungen → Shoptypen)."
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1045
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1046
 #: src/Pro__premium_only/ShopTypes/ShopTypesModule.php:189
 msgid "The parent category must be in the same shop type."
 msgstr "Die übergeordnete Kategorie muss im selben Shoptyp liegen."
@@ -14768,40 +14777,40 @@ msgstr "Diese Bestellung lässt sich nicht mehr komplett stornieren – es sind 
 msgid "Cancel order %1$s from %2$s (%3$s €) completely. Stock: %4$s. Email to the customer: %5$s."
 msgstr "Bestellung %1$s von %2$s (%3$s €) komplett stornieren. Lager: %4$s. Mail an den Kunden: %5$s."
 
-#: src/Pro__premium_only/Agents/Tools/OverviewTools.php:39
+#: src/Pro__premium_only/Agents/Tools/OverviewTools.php:40
 msgid "Who am I"
 msgstr "Wer bin ich"
 
-#: src/Pro__premium_only/Agents/Tools/OverviewTools.php:49
+#: src/Pro__premium_only/Agents/Tools/OverviewTools.php:50
 msgid "Today’s overview"
 msgstr "Übersicht für heute"
 
-#: src/Pro__premium_only/Agents/Tools/OverviewTools.php:70
+#: src/Pro__premium_only/Agents/Tools/OverviewTools.php:71
 msgid "WordPress login / application password"
 msgstr "WordPress-Anmeldung / Anwendungspasswort"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:55
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:56
 msgid "Stock overview"
 msgstr "Bestandsübersicht"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:71
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:72
 msgid "Book stock movement"
 msgstr "Lagerbewegung buchen"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:88
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:89
 msgid "Record stock count"
 msgstr "Inventur erfassen"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:109
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:110
 msgid "Stock history"
 msgstr "Bestandsverlauf"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:240
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:241
 msgid "For a correction, say whether stock goes up or down (direction increase/decrease)."
 msgstr "Bei einer Korrektur bitte angeben, ob der Bestand steigt oder sinkt (direction increase/decrease)."
 
 #. translators: %s: product name
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:314
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:315
 msgid "“%s” is counted per variant – please give variant_id."
 msgstr "„%s“ wird je Variante gezählt – bitte variant_id angeben."
 

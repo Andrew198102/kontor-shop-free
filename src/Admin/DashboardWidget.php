@@ -112,6 +112,11 @@ final class DashboardWidget implements Registerable
                 : $number('stock', $tiles['reorder']['count'] ?? 0, __('low/empty', 'kontor-shop'), $tiles['reorder']['url'] ?? StockPage::url());
         }
 
+        // Fertige, aber versteckte Artikel - nur wenn es welche gibt (die Kachel fehlt sonst).
+        if (isset($tiles['publish'])) {
+            $numbers[] = $number('publish', $tiles['publish']['count'], $tiles['publish']['label'], $tiles['publish']['url']);
+        }
+
         /**
          * Filter kontor_shop/dashboard/widget_numbers: die Zahlen im
          * WP-Dashboard-Widget (je Rolle), z. B. Pro: "haengt". Hoechstens

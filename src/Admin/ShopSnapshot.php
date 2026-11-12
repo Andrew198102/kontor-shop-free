@@ -11,6 +11,7 @@ use Kontor\Shop\Domain\Health\ShopHealth;
 use Kontor\Shop\Domain\Order\PaymentTerms;
 use Kontor\Shop\Domain\Order\WorkQueue;
 use Kontor\Shop\Domain\Stock\StockSignals;
+use Kontor\Shop\Infrastructure\Catalog\PublishCandidates;
 use Kontor\Shop\Infrastructure\Checkout\ReservationCleanup;
 use Kontor\Shop\Infrastructure\Logging\Logger;
 use Kontor\Shop\Infrastructure\Notifications\MailerFactory;
@@ -295,6 +296,15 @@ final class ShopSnapshot
         if ($this->can_stock) {
             $reorder = count(array_filter($this->stock_rows(), static fn (array $r): bool => $r['signals']->sellable && !$r['product']->discontinued && ($r['signals']->is_out() || $r['signals']->is_low())));
             $tiles[] = ['key' => 'reorder', 'count' => $reorder, 'label' => __('low/empty', 'kontor-shop'), 'url' => StockPage::url(['view' => StockSignals::VIEW_ATTENTION])];
+        }
+
+        // Fertig eingepflegt, aber noch versteckt - leicht zu vergessen; nur zeigen, wenn es welche gibt.
+        if ($this->can_manage) {
+            $ready = count(PublishCandidates::scan()['ready']);
+
+            if ($ready > 0) {
+                $tiles[] = ['key' => 'publish', 'count' => $ready, 'label' => __('Ready to go online', 'kontor-shop'), 'url' => ProductsPage::url(['view' => 'ready'])];
+            }
         }
 
         /**
