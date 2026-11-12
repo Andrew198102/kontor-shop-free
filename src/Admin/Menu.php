@@ -122,6 +122,11 @@ final class Menu implements Registerable
             . '#adminmenu .ks-pro-badge{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:999px;vertical-align:1px;'
             . 'background:linear-gradient(180deg,#ebc47a,#e0b25b);color:#241a06;font-size:9px;font-weight:800;line-height:15px;letter-spacing:.08em;}'
             . '#adminmenu .ks-pro-badge.is-off{background:transparent;color:inherit;opacity:.55;box-shadow:inset 0 0 0 1px currentColor;text-decoration:line-through;}';
+
+        // Funkel-Symbol hinter "KI-Assistent" (Free-Angebot und Pro-Seite haben dieselbe Adresse) - reines CSS, Menuetext und Screenreader bleiben unveraendert.
+        $sparkle = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9.5 3c.7 4.4 3.1 6.8 7.5 7.5-4.4.7-6.8 3.1-7.5 7.5-.7-4.4-3.1-6.8-7.5-7.5C6.4 9.8 8.8 7.4 9.5 3zM19 14.5c.3 2 1.5 3.2 3.5 3.5-2 .3-3.2 1.5-3.5 3.5-.3-2-1.5-3.2-3.5-3.5 2-.3 3.2-1.5 3.5-3.5zM19.5 2c.2 1.4 1.1 2.3 2.5 2.5-1.4.2-2.3 1.1-2.5 2.5-.2-1.4-1.1-2.3-2.5-2.5 1.4-.2 2.3-1.1 2.5-2.5z'/%3E%3C/svg%3E\")";
+        echo '#adminmenu .wp-submenu a[href$="page=kontor-shop-ai"]::after{content:"";display:inline-block;width:17px;height:17px;margin-left:5px;vertical-align:-4px;'
+            . 'background:linear-gradient(135deg,#c77dff,#7b8cff 55%,#38b6ff);-webkit-mask:' . $sparkle . ' center/contain no-repeat;mask:' . $sparkle . ' center/contain no-repeat;}';
         echo '</style>';
     }
 

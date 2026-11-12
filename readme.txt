@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.3
+Stable tag: 2.9.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,12 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.4 =
+* AI assistant (Pro), product photos: one clear rule set for ChatGPT and other assistants. "Upload this photo" passes the original; "prepare the photo for the shop" runs a fixed workflow – cut the real product out (never redraw it), pure white background, soft contact shadow only where it fits, keep shape, colour, logo, lettering and engravings unchanged, compare with the original before uploading, and ask for a new photo if that is not possible. Real edited image files are allowed; invented image data or file links are not. The browser upload is only the fallback.
+* Uniform product images (Pro): photos on a plain light background are brought to the shop standard automatically – exactly 1600×1200 px at 4:3 (1200×1600 at 3:4, 1600×1600 at 1:1), product centred at about 82 % with at least 8 % margin, never stretched. A greyish, yellowish or vignetted light background becomes pure white like a studio photo; soft shadows stay, the product itself is not changed. Phone photos on white paper in indoor light are now accepted instead of rejected.
+* Clearer results (Pro): setting a product image returns a preview link, the actual size, file type and file size, and reports "saved" only after checking that the image really is linked to the product (main image or gallery; the gallery is kept). Images from the shop's own media library are linked directly without downloading them again. An expired download link from the chat gets a clear message.
+* AI assistant log (Pro and Free): every rejected AI tool call is written to the shop log (Kontor Shop → Log, level "warning", channel "agents") with tool, access, message and in which form an image arrived – without texts or download links. So a failed upload can be traced.
 
 = 2.9.3 =
 * Product images get clean names: when you save a product, images uploaded through the shop (product page or AI assistant) are titled after the product and its product number, for example "Club scarf (SCH-1)", gallery images "– image 2", variant images with the variant ("Hoodie M / Red (HD-1-M)"). The alternative text follows the product too. So you find every image in the media library by product name or product number. Titles you changed yourself in the media library stay as they are.

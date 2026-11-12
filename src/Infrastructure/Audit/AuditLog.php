@@ -30,6 +30,12 @@ final class AuditLog
         self::$actor = $actor !== null && trim($actor) !== '' ? trim($actor) : null;
     }
 
+    /** Handelnde Stelle der laufenden Anfrage (z. B. "KI-Assistent (ChatGPT – Lena)"), sonst null. */
+    public static function actor(): ?string
+    {
+        return self::$actor;
+    }
+
     /** Schreibt ueberhaupt jemand mit? */
     public static function enabled(): bool
     {

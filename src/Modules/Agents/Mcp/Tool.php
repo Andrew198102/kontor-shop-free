@@ -111,8 +111,14 @@ final class Tool
      */
     public function call(mixed $arguments): array
     {
-        $args = Args::check(['properties' => $this->properties, 'required' => $this->required], $arguments);
+        try {
+            $args = Args::check(['properties' => $this->properties, 'required' => $this->required], $arguments);
 
-        return ($this->handler)($args);
+            return ($this->handler)($args);
+        } catch (ToolError $e) {
+            ToolErrorLog::record($this->name, $arguments, $e);
+
+            throw $e;
+        }
     }
 }
