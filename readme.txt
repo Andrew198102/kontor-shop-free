@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.5
+Stable tag: 2.9.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,18 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.7 =
+* AI assistant (Pro): merge products into variants. Single products that are only versions of one product (for example "Sticker – small", "– medium", "– large" or a scarf in three colours) can be combined into one product with variants in the chat. Each variant keeps its price, stock, product number, EAN, weight and photo; the old products are archived with their history, and open orders are completed as before. Nothing changes before the user confirms the plan.
+* AI assistant (Pro): when importing a product list, rows that look like versions of one product (same name, different size, colour or version) are suggested as one product with variants. The user decides per group; different motifs stay single products unless the user wants otherwise.
+* AI assistant (Pro): a photo can be set for a single variant ("this is the photo for the large one"). The shop shows it when the customer picks that variant.
+* AI assistant (Pro): on request the shop builds a product image from the real variant photos as a modern group shot – the products cut out, slightly overlapping, the middle one in front, with soft shadows, in the shop image format. Nothing is redrawn, so print and lettering stay exact. It is only set as main image after the user has seen the preview and agreed.
+* AI assistant (Pro): every product gets a product number. Products and variants the assistant creates (also from imported lists) get one automatically when none is given – category code plus running number, for example "AUF-001", variants with a suffix such as "AUF-001-GRO"; a shop that already uses plain numbers continues its own series. Existing products without a number can be numbered in one step after confirmation.
+* Variants: two attribute rows with the same name (for example "Content" twice) are now merged into one attribute instead of the second being dropped silently when saving – in the product form and through the assistant.
+* AI photos: when ChatGPT passes only a reference to an image from its image generator instead of the file, the shop now says clearly that this cannot work and offers the ways that do (attach the image again, upload link of the product) instead of asking to try again.
+
+= 2.9.6 =
+* Email templates: the sample values in the preview and in “Save & send test email to me” now read exactly like the real German emails – with umlauts (“Bitte überweise … bis spätestens …”), the reservation note after the payment deadline, and “Hinweis:” for return notes. Real emails were already correct; only the preview and test emails are affected.
 
 = 2.9.5 =
 * New: "Ready to go online". A hidden product counts as ready when it has a price, stock (with variants: an active variant in stock), a photo, a description and a category. Ready products are easy to forget – now the shop overview shows a "Ready to go online" tile (also in the WordPress dashboard widget) as soon as there are any, and the product list has a matching view with a short hint; switch them on one by one or with the bulk action "Make visible". Nothing goes online automatically.

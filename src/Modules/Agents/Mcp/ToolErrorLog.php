@@ -75,9 +75,13 @@ final class ToolErrorLog
                     return 'image_id ' . (int) $image['image_id'];
                 }
 
-                return is_array($image) && isset($image['url']) && is_string($image['url'])
-                    ? self::describe_link($image['url'])
-                    : 'unbrauchbar (' . gettype($image) . ')';
+                if (is_array($image) && isset($image['url']) && is_string($image['url'])) {
+                    $kind = ChatFile::unusable($image['url']);
+
+                    return $kind === null ? self::describe_link($image['url']) : ChatFile::describe($kind, strlen($image['url']));
+                }
+
+                return 'unbrauchbar (' . gettype($image) . ')';
             }, array_slice($args['images'], 0, 10)));
         }
 
@@ -106,7 +110,7 @@ final class ToolErrorLog
                 return 'Link ' . self::describe_link($file);
             }
 
-            return $file === '' ? 'leer' : 'Text mit ' . strlen($file) . ' Zeichen, kein Link (z. B. nur eine Datei-Kennung)';
+            return $file === '' ? 'leer' : ChatFile::describe((string) ChatFile::unusable($file), strlen($file));
         }
 
         return 'unbrauchbar (' . gettype($file) . ')';

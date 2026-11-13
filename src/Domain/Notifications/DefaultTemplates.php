@@ -423,7 +423,10 @@ final class DefaultTemplates
 
     /**
      * Beispielwerte fuer Testmails aus dem Editor (eingebaute Platzhalter
-     * plus die Beispielwerte der Erweiterungs-Ereignisse).
+     * plus die Beispielwerte der Erweiterungs-Ereignisse). Wortlaut wie die
+     * echte deutsche Mail (languages/kontor-shop-de_*.po, Zeilen aus
+     * NotificationsModule), mit Umlauten - die Vorschau soll aussehen wie
+     * das, was der Kunde bekommt.
      *
      * @return array<string, string>
      */
@@ -452,7 +455,7 @@ final class DefaultTemplates
             'shipping_cost'          => '5,90',
             'total'                  => '34,50',
             'payment_method_label'   => 'Vorkasse',
-            'payment_details'        => "Bitte ueberweise 34,50 Euro bis spaetestens 08.10.2026 an:\nMusterverein\nIBAN: AT00 0000 0000 0000 0000\nBIC: MUSTATWW\nZahlungsreferenz (bitte unbedingt angeben): KS-7F3K9Q",
+            'payment_details'        => "Bitte überweise 34,50 Euro bis spätestens 08.10.2026 (so lange ist die Ware für dich reserviert) an:\nMusterverein\nIBAN: AT00 0000 0000 0000 0000\nBIC: MUSTATWW\nZahlungsreferenz (bitte unbedingt angeben): KS-7F3K9Q",
             'confirmation_url'       => 'https://example.org/kasse/?kontor_order=beispiel',
             'order_status_url'       => 'https://example.org/kasse/?kontor_order=beispiel',
             'orders_url'             => 'https://example.org/wp-admin/admin.php?page=kontor-shop-orders',
@@ -462,12 +465,12 @@ final class DefaultTemplates
             'shipping_note'          => 'Ein Teil deiner Bestellung ist unterwegs zu dir.',
             'tracking_info'          => "Versand mit Österreichische Post\nSendungsnummer: 1234567890\nSendungsverfolgung: https://www.post.at/s/sendungsdetails?snr=1234567890",
             'remaining_note'         => 'Noch nicht dabei (kommt separat): 1x Beagle-Mütze',
-            'payment_note'           => "Zahlung (auf Rechnung):\nBitte ueberweise 34,50 Euro bis spaetestens 22.10.2026 an:\nMusterverein\nIBAN: AT00 0000 0000 0000 0000\nBIC: MUSTATWW\nZahlungsreferenz (bitte unbedingt angeben): KS-7F3K9Q",
+            'payment_note'           => "Zahlung (auf Rechnung):\nBitte überweise 34,50 Euro bis spätestens 22.10.2026 an:\nMusterverein\nIBAN: AT00 0000 0000 0000 0000\nBIC: MUSTATWW\nZahlungsreferenz (bitte unbedingt angeben): KS-7F3K9Q",
             'refund_note'            => 'Den Betrag von 34,50 Euro überweisen wir dir in den nächsten Tagen auf dein Konto zurück.',
             'cancelled_items'        => '- 1x Beagle-Mütze (12,00 Euro)',
             'cancel_reason'          => 'Grund: leider ausverkauft',
             'returned_items'         => '- 1x Beagle-Mütze (12,00 Euro)',
-            'return_reason'          => 'Anmerkung: passt leider nicht',
+            'return_reason'          => 'Hinweis: passt leider nicht',
             'cancel_scope'           => 'Einzelne Artikel wurden storniert, der Rest der Bestellung bleibt bestehen.',
             'amount_note'            => 'Den Betrag von 12,00 Euro überweisen wir dir in den nächsten Tagen auf dein Konto zurück.',
             'order_url'              => 'https://example.org/wp-admin/admin.php?page=kontor-shop-orders&order=123',

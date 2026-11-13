@@ -206,6 +206,22 @@ final class ProductRepository
         return $map;
     }
 
+    /**
+     * Alle vergebenen Artikelnummern (Artikel und Varianten, auch archivierte).
+     *
+     * @return array<int, string>
+     */
+    public function all_skus(): array
+    {
+        global $wpdb;
+
+        return array_map('strval', $wpdb->get_col($wpdb->prepare(
+            "SELECT sku FROM %i WHERE sku <> '' UNION SELECT sku FROM %i WHERE sku <> ''",
+            $this->table(),
+            $this->variants_table()
+        )) ?: []);
+    }
+
     public function slug_exists(string $slug, int $except_id = 0): bool
     {
         global $wpdb;

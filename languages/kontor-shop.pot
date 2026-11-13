@@ -77,8 +77,8 @@ msgstr ""
 #: src/Admin/Ajax.php:143
 #: src/Admin/ProductsPage.php:117
 #: src/Admin/ProductsPage.php:479
-#: src/Pro__premium_only/Agents/ProductWriter.php:121
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:325
+#: src/Pro__premium_only/Agents/ProductWriter.php:134
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:333
 msgid "Product not found."
 msgstr ""
 
@@ -93,19 +93,19 @@ msgstr ""
 #: src/Admin/CategoriesPage.php:152
 #: src/Admin/ProductsPage.php:232
 #: src/Admin/WarehousesPage.php:155
-#: src/Pro__premium_only/Agents/ProductWriter.php:244
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1035
+#: src/Pro__premium_only/Agents/ProductWriter.php:263
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1144
 msgid "Please enter a name."
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:157
 #: src/Admin/CategoriesPage.php:229
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1026
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1135
 msgid "Category not found."
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:161
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1050
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1159
 msgid "A category can't be placed under itself or one of its subcategories."
 msgstr ""
 
@@ -135,7 +135,7 @@ msgstr ""
 #: src/Admin/CategoriesPage.php:331
 #: src/Admin/Help.php:88
 #: src/Admin/HelpCenter/Content/SetupArticles.php:637
-#: src/Admin/Menu.php:395
+#: src/Admin/Menu.php:397
 msgid "Categories"
 msgstr ""
 
@@ -372,8 +372,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: src/Admin/DashboardWidget.php:44
-#: src/Admin/Menu.php:372
-#: src/Admin/Menu.php:373
+#: src/Admin/Menu.php:374
+#: src/Admin/Menu.php:375
 #: src/Modules/Agents/AbilitiesBridge.php:34
 #: src/Modules/Blocks/BlocksModule.php:47
 msgid "Kontor Shop"
@@ -470,7 +470,7 @@ msgid "Move back"
 msgstr ""
 
 #: src/Admin/Help.php:51
-#: src/Admin/Menu.php:381
+#: src/Admin/Menu.php:383
 msgid "Dashboard"
 msgstr ""
 
@@ -487,7 +487,7 @@ msgid "The “Set up your shop” checklist disappears as soon as everything req
 msgstr ""
 
 #: src/Admin/Help.php:58
-#: src/Admin/Menu.php:382
+#: src/Admin/Menu.php:384
 #: src/Admin/OrdersList.php:183
 #: src/Pro__premium_only/Agents/AgentsPage.php:497
 #: src/Pro__premium_only/Dashboard/TrendCard.php:39
@@ -528,7 +528,7 @@ msgstr ""
 
 #: src/Admin/Help.php:74
 #: src/Admin/Menu.php:221
-#: src/Admin/Menu.php:389
+#: src/Admin/Menu.php:391
 #: src/Admin/OrderDetailView.php:382
 #: src/Admin/OrderDetailView.php:464
 msgid "Stock"
@@ -573,7 +573,7 @@ msgstr ""
 #. translators: %s: settings section
 #: src/Admin/Help.php:93
 #: src/Admin/LogPage.php:196
-#: src/Admin/Menu.php:400
+#: src/Admin/Menu.php:402
 #: src/Admin/SettingsPage.php:138
 #: src/Modules/Agents/OfferPage.php:151
 msgid "Settings"
@@ -593,7 +593,7 @@ msgstr ""
 
 #: src/Admin/Help.php:100
 #: src/Admin/LogPage.php:76
-#: src/Admin/Menu.php:401
+#: src/Admin/Menu.php:403
 #: src/Pro__premium_only/Audit/AuditPage.php:111
 msgid "Logs"
 msgstr ""
@@ -3270,7 +3270,7 @@ msgstr ""
 
 #: src/Admin/HelpCenter/Content/ProblemArticles.php:116
 #: src/Admin/LogPage.php:77
-#: src/Admin/Menu.php:405
+#: src/Admin/Menu.php:407
 #: src/Admin/ReportPage.php:66
 msgid "Report a problem"
 msgstr ""
@@ -5577,7 +5577,7 @@ msgid "More"
 msgstr ""
 
 #: src/Admin/HelpCenter/HelpCenter.php:242
-#: src/Admin/Menu.php:409
+#: src/Admin/Menu.php:411
 msgid "Help"
 msgstr ""
 
@@ -6195,56 +6195,61 @@ msgstr ""
 msgid "renamed: %s – stock, price and image are kept"
 msgstr ""
 
-#. translators: %d: number of variants
+#. translators: %s: attribute name(s), e.g. "Contents"
 #: src/Admin/Menu.php:279
+msgid "“%s” appears more than once – the values are combined into one attribute"
+msgstr ""
+
+#. translators: %d: number of variants
+#: src/Admin/Menu.php:281
 msgid "Price entered for %d variants – apply with “Save”."
 msgstr ""
 
 #. translators: %d: number of SKUs
-#: src/Admin/Menu.php:281
+#: src/Admin/Menu.php:283
 msgid "%d SKUs generated (empty fields only)."
 msgstr ""
 
 #. translators: %d: number of SKUs
-#: src/Admin/Menu.php:282
+#: src/Admin/Menu.php:284
 msgid "Automatically from the variant name"
 msgstr ""
 
 #. translators: %d: number of SKUs
-#: src/Admin/Menu.php:283
+#: src/Admin/Menu.php:285
 msgid "Choose the product image:"
 msgstr ""
 
-#: src/Admin/Menu.php:284
+#: src/Admin/Menu.php:286
 msgid "Another image from the media library …"
 msgstr ""
 
-#: src/Admin/Menu.php:285
+#: src/Admin/Menu.php:287
 msgid "The file is too large."
 msgstr ""
 
-#: src/Admin/Menu.php:286
+#: src/Admin/Menu.php:288
 msgid "Uploading …"
 msgstr ""
 
-#: src/Admin/Menu.php:287
+#: src/Admin/Menu.php:289
 msgid "Uploaded. Apply with “Save”."
 msgstr ""
 
-#: src/Admin/Menu.php:288
+#: src/Admin/Menu.php:290
 msgid "Upload failed."
 msgstr ""
 
-#: src/Admin/Menu.php:289
+#: src/Admin/Menu.php:291
 msgid "Please wait until all images have been uploaded."
 msgstr ""
 
-#: src/Admin/Menu.php:384
+#: src/Admin/Menu.php:386
 #: src/Admin/ProductsList.php:114
 msgid "Products"
 msgstr ""
 
-#: src/Admin/Menu.php:396
+#: src/Admin/Menu.php:398
 #: src/Admin/WarehousesPage.php:250
 msgid "Warehouses"
 msgstr ""
@@ -7775,7 +7780,7 @@ msgstr ""
 #: src/Admin/ProductVariantsCard.php:237
 #: src/Admin/ProductsPage.php:300
 #: src/Admin/ProductsPage.php:358
-#: src/Pro__premium_only/Agents/ProductWriter.php:99
+#: src/Pro__premium_only/Agents/ProductWriter.php:112
 msgid "Initial stock"
 msgstr ""
 
@@ -7948,6 +7953,7 @@ msgid "Template:"
 msgstr ""
 
 #: src/Admin/ProductVariantsCard.php:88
+#: src/Pro__premium_only/Agents/VariantGrouping.php:147
 msgid "Size"
 msgstr ""
 
@@ -8191,17 +8197,17 @@ msgid "hidden"
 msgstr ""
 
 #: src/Admin/ProductsPage.php:234
-#: src/Pro__premium_only/Agents/ProductWriter.php:246
+#: src/Pro__premium_only/Agents/ProductWriter.php:265
 msgid "Please select a warehouse."
 msgstr ""
 
 #: src/Admin/ProductsPage.php:236
-#: src/Pro__premium_only/Agents/ProductWriter.php:250
+#: src/Pro__premium_only/Agents/ProductWriter.php:269
 msgid "The price can’t be negative."
 msgstr ""
 
 #: src/Admin/ProductsPage.php:238
-#: src/Pro__premium_only/Agents/ProductWriter.php:252
+#: src/Pro__premium_only/Agents/ProductWriter.php:271
 msgid "The GTIN/EAN is invalid (8, 12, 13, or 14 digits with a correct check digit) – please check it or leave it empty."
 msgstr ""
 
@@ -8211,18 +8217,18 @@ msgstr ""
 
 #. translators: 1: number of combinations, 2: maximum
 #: src/Admin/ProductsPage.php:244
-#: src/Pro__premium_only/Agents/ProductWriter.php:258
+#: src/Pro__premium_only/Agents/ProductWriter.php:277
 msgid "The attributes result in %1$d combinations – the maximum is %2$d. Please reduce the values."
 msgstr ""
 
 #. translators: %s: variant
 #: src/Admin/ProductsPage.php:251
-#: src/Pro__premium_only/Agents/ProductWriter.php:277
+#: src/Pro__premium_only/Agents/ProductWriter.php:296
 msgid "The EAN of the variant “%s” is invalid – please check it or leave it empty."
 msgstr ""
 
 #: src/Admin/ProductsPage.php:296
-#: src/Pro__premium_only/Agents/ProductWriter.php:93
+#: src/Pro__premium_only/Agents/ProductWriter.php:108
 msgid "The product couldn’t be saved. Please try again."
 msgstr ""
 
@@ -8247,7 +8253,7 @@ msgid "“%s” restored."
 msgstr ""
 
 #: src/Admin/ProductsPage.php:507
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:639
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:654
 msgid "Duplicating failed."
 msgstr ""
 
@@ -10504,7 +10510,9 @@ msgid "Product not found or no permission."
 msgstr ""
 
 #: src/Admin/StockPage.php:248
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:878
 #: src/Pro__premium_only/Agents/Tools/StockTools.php:227
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:469
 msgid "This variant does not belong to the product."
 msgstr ""
 
@@ -10604,7 +10612,7 @@ msgstr[1] ""
 
 #. translators: %s: date
 #: src/Admin/StockPage.php:555
-#: src/Pro__premium_only/Agents/Tools/ImportTools.php:247
+#: src/Pro__premium_only/Agents/Tools/ImportTools.php:283
 #: src/Pro__premium_only/Agents/Tools/StockTools.php:279
 msgid "Stock count %s"
 msgstr ""
@@ -11926,6 +11934,7 @@ msgid "Prepayment payments for products from this warehouse go to this account. 
 msgstr ""
 
 #: src/Admin/WarehousesPage.php:383
+#: src/Pro__premium_only/Agents/VariantGrouping.php:148
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:255
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:306
 msgid "Color"
@@ -12700,7 +12709,7 @@ msgid "The shop’s AI assistant access is switched off."
 msgstr ""
 
 #: src/Modules/Agents/AgentsModule.php:82
-#: src/Pro__premium_only/Agents/AgentsProModule.php:121
+#: src/Pro__premium_only/Agents/AgentsProModule.php:125
 #: src/Pro__premium_only/Agents/ShopOrderTools.php:231
 msgid "Too many requests – please try again in a few minutes."
 msgstr ""
@@ -12916,7 +12925,7 @@ msgid "Shop information"
 msgstr ""
 
 #: src/Modules/Agents/ShopTools.php:49
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:211
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:219
 msgid "List categories"
 msgstr ""
 
@@ -14443,56 +14452,56 @@ msgstr ""
 msgid "As an administrator you can revoke any access, e.g. when someone leaves the team."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:132
+#: src/Pro__premium_only/Agents/AgentsProModule.php:136
 msgid "back office"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:136
+#: src/Pro__premium_only/Agents/AgentsProModule.php:140
 msgid "Manage products, stock, orders and discount codes of this shop."
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:201
+#: src/Pro__premium_only/Agents/AgentsProModule.php:205
 msgid "Done – now paste it into %s"
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:203
+#: src/Pro__premium_only/Agents/AgentsProModule.php:207
 msgid "In %s:"
 msgstr ""
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:205
+#: src/Pro__premium_only/Agents/AgentsProModule.php:209
 msgid "Waiting for the first connection from %s … This turns green as soon as it works."
 msgstr ""
 
 #. translators: 1: app name, 2: time
-#: src/Pro__premium_only/Agents/AgentsProModule.php:207
+#: src/Pro__premium_only/Agents/AgentsProModule.php:211
 msgid "Connected with %1$s (first request %2$s) – you can start."
 msgstr ""
 
 #. translators: 1: app name, 2: time
-#: src/Pro__premium_only/Agents/AgentsProModule.php:208
+#: src/Pro__premium_only/Agents/AgentsProModule.php:212
 msgid "That didn’t work. Please try again."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:217
+#: src/Pro__premium_only/Agents/AgentsProModule.php:221
 msgid "Team access (shop management by AI assistant)"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:219
+#: src/Pro__premium_only/Agents/AgentsProModule.php:223
 msgid "Team access"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:221
+#: src/Pro__premium_only/Agents/AgentsProModule.php:225
 msgid "Shop team members may connect their AI assistant (products, images, stock, orders, discount codes)"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:222
+#: src/Pro__premium_only/Agents/AgentsProModule.php:226
 msgid "Each person creates their own access under Kontor Shop → AI assistant. The assistant works with that person’s permissions; every change is logged. Settings and users stay off-limits."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:223
+#: src/Pro__premium_only/Agents/AgentsProModule.php:227
 msgid "Go to accesses and instructions"
 msgstr ""
 
@@ -14500,56 +14509,60 @@ msgstr ""
 msgid "Confirmation needed – nothing has been changed yet."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:60
+#: src/Pro__premium_only/Agents/ImageImporter.php:67
+msgid "Only a file reference arrived instead of the image file. Images from the ChatGPT image generator cannot be handed over to the shop – please pass the original photo, attach the edited image to the chat again, or upload it in the browser."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/ImageImporter.php:91
 msgid "Please give a public http(s) address of the image."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:70
+#: src/Pro__premium_only/Agents/ImageImporter.php:101
 msgid "The download address of the image has expired or is no longer available. Please pass the file again."
 msgstr ""
 
 #. translators: %s: error message
-#: src/Pro__premium_only/Agents/ImageImporter.php:76
+#: src/Pro__premium_only/Agents/ImageImporter.php:107
 msgid "The image could not be downloaded: %s"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:95
+#: src/Pro__premium_only/Agents/ImageImporter.php:126
 msgid "The image data is not valid Base64."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:99
+#: src/Pro__premium_only/Agents/ImageImporter.php:130
 msgid "The image is larger than 15 MB."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:107
+#: src/Pro__premium_only/Agents/ImageImporter.php:138
 msgid "The image could not be saved temporarily."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ImageImporter.php:124
+#: src/Pro__premium_only/Agents/ImageImporter.php:168
 msgid "This is not a supported image (JPEG, PNG, GIF, WebP or AVIF up to 15 MB)."
 msgstr ""
 
 #. translators: %s: error message
-#: src/Pro__premium_only/Agents/ImageImporter.php:141
+#: src/Pro__premium_only/Agents/ImageImporter.php:185
 msgid "The image could not be added to the media library: %s"
 msgstr ""
 
 #. translators: %s: list of tax rates
-#: src/Pro__premium_only/Agents/ProductWriter.php:229
+#: src/Pro__premium_only/Agents/ProductWriter.php:248
 msgid "This VAT rate is not set up in the shop. Allowed: %s"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ProductWriter.php:248
+#: src/Pro__premium_only/Agents/ProductWriter.php:267
 msgid "Please enter a price."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/ProductWriter.php:254
+#: src/Pro__premium_only/Agents/ProductWriter.php:273
 #: src/Pro__premium_only/Membership/MembershipAdmin.php:133
 msgid "A percentage discount must be between 0 and 100."
 msgstr ""
 
 #. translators: %d: category ID
-#: src/Pro__premium_only/Agents/ProductWriter.php:269
+#: src/Pro__premium_only/Agents/ProductWriter.php:288
 msgid "Category %d does not exist (see admin_list_categories)."
 msgstr ""
 
@@ -14589,88 +14602,89 @@ msgstr ""
 msgid "No order with this number and email address was found."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:91
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:97
 msgid "List products"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:112
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:118
 msgid "Get product"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:122
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:128
 msgid "Create product"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:132
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:138
 msgid "Update product"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:142
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:148
 msgid "Show, hide, archive or copy product"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:155
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:161
 msgid "Delete product permanently"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:169
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:175
 msgid "Upload image"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:187
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:193
 msgid "Set product image"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:221
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:229
 msgid "Create or change category"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:237
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:245
 msgid "List warehouses"
 msgstr ""
 
 #. translators: %d: attachment ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:592
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:759
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:607
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:775
 msgid "Image %d does not exist in the media library."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:621
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:636
 msgid "The product is archived – restore it first."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:657
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:672
 msgid "Only archived products can be deleted permanently – archive it first (admin_product_action)."
 msgstr ""
 
 #. translators: 1: product name, 2: product ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:662
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:677
 msgid "Delete “%1$s” (#%2$d) permanently, including its variants and stock history. Orders keep their copy of the product data. This cannot be undone."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:696
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:711
 msgid "Please pass the image file (image) or a link (url)."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:766
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:782
 msgid "Please pass the image file (image) or a link (image_url)."
 msgstr ""
 
 #. translators: %d: attachment ID
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:812
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:832
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:901
 msgid "Image %d is in the media library but could not be linked to the product. Please try again."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:893
-msgid "The image file arrived without a download address. Please try again, or upload the photo in the browser."
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:877
+msgid "This product has no variants – set the photo as product image (role main or gallery)."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1039
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1148
 #: src/Pro__premium_only/ShopTypes/ShopTypesModule.php:185
 msgid "Please choose a shop type (Settings → Shop types)."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1046
+#: src/Pro__premium_only/Agents/Tools/CatalogTools.php:1155
 #: src/Pro__premium_only/ShopTypes/ShopTypesModule.php:189
 msgid "The parent category must be in the same shop type."
 msgstr ""
@@ -14731,7 +14745,7 @@ msgstr ""
 msgid "Check and import a product list"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/ImportTools.php:238
+#: src/Pro__premium_only/Agents/Tools/ImportTools.php:274
 msgid "Could not be saved."
 msgstr ""
 
@@ -14789,6 +14803,10 @@ msgstr ""
 msgid "WordPress login / application password"
 msgstr ""
 
+#: src/Pro__premium_only/Agents/Tools/ProductNumberTools.php:46
+msgid "Assign missing product numbers"
+msgstr ""
+
 #: src/Pro__premium_only/Agents/Tools/StockTools.php:56
 msgid "Stock overview"
 msgstr ""
@@ -14812,6 +14830,61 @@ msgstr ""
 #. translators: %s: product name
 #: src/Pro__premium_only/Agents/Tools/StockTools.php:315
 msgid "“%s” is counted per variant – please give variant_id."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:66
+msgid "Merge products into variants"
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:89
+msgid "Build a collage of the variant photos"
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:115
+msgid "Please name at least two different products."
+msgstr ""
+
+#. translators: %d: product ID
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:125
+msgid "Product %d not found."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:141
+msgid "These products cannot be merged."
+msgstr ""
+
+#. translators: 1: product name, 2: product ID
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:253
+msgid "Moved to “%1$s” (#%2$d) – merged into variants"
+msgstr ""
+
+#. translators: 1: product name, 2: product ID
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:255
+msgid "Taken over from “%1$s” (#%2$d)"
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:307
+msgid "Please give exactly one value per product (same order as product_ids)."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:313
+msgid "Every value must be filled in and different from the others."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:320
+msgid "The variant values cannot be derived from the names."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:489
+msgid "Fewer than two variants have different photos – a collage is not needed."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/Tools/VariantTools.php:507
+msgid "The collage could not be created from the variant photos."
+msgstr ""
+
+#: src/Pro__premium_only/Agents/VariantGrouping.php:149
+msgid "Version"
 msgstr ""
 
 #: src/Pro__premium_only/Api/ApiSection.php:28

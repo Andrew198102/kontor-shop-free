@@ -275,6 +275,8 @@ final class Menu implements Registerable
                     'scopeAll'          => __('all variants', 'kontor-shop'),
                     /* translators: %s: list of renamed items */
                     'renamed'           => __('renamed: %s – stock, price and image are kept', 'kontor-shop'),
+                    /* translators: %s: attribute name(s), e.g. "Contents" */
+                    'merged'            => __('“%s” appears more than once – the values are combined into one attribute', 'kontor-shop'),
                     /* translators: %d: number of variants */
                     'bulkDone'          => __('Price entered for %d variants – apply with “Save”.', 'kontor-shop'),
                     /* translators: %d: number of SKUs */

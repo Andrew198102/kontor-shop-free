@@ -153,15 +153,28 @@
 			return optionRow.querySelectorAll('input')[1];
 		}
 
+		/**
+		 * Merkmale mit Werten. Gleichnamige Merkmale (zweite Zeile "Inhalt" fuer
+		 * einen weiteren Wert) werden zusammengefuehrt - wie VariantMatrix::normalize().
+		 * options.merged: Namen, die mehrfach vorkommen.
+		 */
 		function readOptions() {
 			var options = [];
 			var names = {};
+			options.merged = [];
 			optionRows.forEach(function (row) {
 				var inputs = row.querySelectorAll('input');
 				var name = clean(inputs[0].value) || t('defaultName', 'Variant');
 				var values = parseValues(inputs[1].value);
-				if (!values.length || names[fold(name)]) { return; }
-				names[fold(name)] = true;
+				if (!values.length) { return; }
+				var key = fold(name);
+				if (names.hasOwnProperty(key)) {
+					var first = options[names[key]];
+					first.values = parseValues(first.values.concat(values).join('\n')).slice(0, 30);
+					if (options.merged.indexOf(first.name) < 0) { options.merged.push(first.name); }
+					return;
+				}
+				names[key] = options.length;
 				options.push({ name: name, values: values.slice(0, 30) });
 			});
 			return options;
@@ -282,6 +295,7 @@
 				? t('count', '%d variants').replace('%d', combos.length)
 					+ (dropped ? ' · ' + t('dropped', '%d will be removed when saving').replace('%d', dropped) : '')
 					+ (renamedNote ? ' · ' + renamedNote : '')
+					+ (options.merged.length ? ' · ' + t('merged', '“%s” appears more than once – the values are combined into one attribute').replace('%s', options.merged.join(', ')) : '')
 				: t('none', 'Please enter attributes with values.');
 			renamedNote = '';
 
@@ -320,11 +334,13 @@
 
 			if (!names.length) { return; }
 
-			// Position dieses Merkmals unter den Merkmalen mit Werten
+			// Position dieses Merkmals unter den Merkmalen mit Werten (gleichnamige zusammengefuehrt)
+			var ownName = fold(clean(optionRow.querySelectorAll('input')[0].value) || t('defaultName', 'Variant'));
 			var position = 0;
-			for (var i = 0; i < optionRows.length && optionRows[i] !== optionRow; i++) {
-				if ((valuesInput(optionRows[i]).ksBefore || []).length) { position++; }
-			}
+			readOptions().some(function (option, index) {
+				if (fold(option.name) === ownName) { position = index; return true; }
+				return false;
+			});
 
 			rows().forEach(function (row) {
 				var values = rowValues(row);

@@ -28,6 +28,7 @@ final class VariantMatrix
      * getrimmt, leere und doppelte Werte (Gross/Klein egal) entfernt,
      * hoechstens MAX_OPTIONS Merkmale mit je MAX_VALUES Werten. Merkmale
      * ohne Werte fallen weg; ein Merkmal ohne Namen heisst "Variante".
+     * Gleichnamige Merkmale werden zu einem zusammengefuehrt.
      *
      * @param mixed $raw Liste von ['name' => string, 'values' => string|array<int, string>]
      * @return array<int, array{name: string, values: array<int, string>}>
@@ -57,11 +58,15 @@ final class VariantMatrix
             $name = $name !== '' ? $name : 'Variante';
             $key  = self::fold($name);
 
+            // Dasselbe Merkmal zweimal (z. B. zweite Zeile "Inhalt" fuer einen
+            // weiteren Wert): Werte zum ersten zusammenfuehren statt verwerfen.
             if (isset($names[$key])) {
-                continue; // dasselbe Merkmal zweimal: nur das erste zaehlt
+                $first                      = $names[$key];
+                $options[$first]['values'] = array_slice(self::unique_values(array_merge($options[$first]['values'], $values)), 0, self::MAX_VALUES);
+                continue;
             }
 
-            $names[$key] = true;
+            $names[$key] = count($options);
             $options[]   = ['name' => $name, 'values' => array_slice($values, 0, self::MAX_VALUES)];
 
             if (count($options) >= self::MAX_OPTIONS) {
