@@ -60,7 +60,12 @@
 
 	// "Eintraege pro Seite" und Auswahllisten mit data-ks-autosubmit (z. B. Einstellungen am Handy) sofort anwenden
 	document.addEventListener('change', function (event) {
-		if (event.target.matches('.ks-per-page select, select[data-ks-autosubmit]')) { event.target.form.submit(); }
+		var perPage = event.target.getAttribute('data-ks-per-page');
+		if (perPage) {
+			window.location.href = perPage.replace(event.target.getAttribute('data-ks-per-page-placeholder'), encodeURIComponent(event.target.value));
+			return;
+		}
+		if (event.target.matches('select[data-ks-autosubmit]')) { event.target.form.submit(); }
 	});
 
 	// Kopieren-Knoepfe (data-ks-copy="Text"); ohne Zwischenablage-Recht wird der Text zum Kopieren markiert

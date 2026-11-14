@@ -112,7 +112,18 @@ final class Tool
     public function call(mixed $arguments): array
     {
         try {
-            $args = Args::check(['properties' => $this->properties, 'required' => $this->required], $arguments);
+            // Dateifelder (openai/fileParams) hier nicht nach Typ pruefen: kommt statt der Datei nur eine
+            // Kennung, soll der Handler das mit einer klaren Meldung beantworten (ChatFile) - nicht mit
+            // "Argument image must be of type object", worauf der Assistent nur rät.
+            $properties = $this->properties;
+
+            foreach ((array) ($this->meta['openai/fileParams'] ?? []) as $field) {
+                if (isset($properties[$field])) {
+                    $properties[$field] = [];
+                }
+            }
+
+            $args = Args::check(['properties' => $properties, 'required' => $this->required], $arguments);
 
             return ($this->handler)($args);
         } catch (ToolError $e) {

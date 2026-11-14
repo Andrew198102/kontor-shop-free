@@ -10,6 +10,9 @@ namespace Kontor\Shop\Admin\Ui;
  */
 final class Pagination
 {
+    /** Platzhalter fuer die Anzahl im Link (wird in admin.js ersetzt). */
+    private const PLACEHOLDER = 'KSPERPAGE';
+
     /**
      * @param array<string, mixed> $base
      * @param array<string, mixed> $keep
@@ -43,27 +46,28 @@ final class Pagination
     }
 
     /**
-     * Kleines "Eintraege pro Seite"-Formular (GET, behaelt alle Filter bei).
+     * Auswahl "Eintraege pro Seite": Beim Wechsel ruft admin.js den Link mit
+     * dem neuen Wert auf (Filter und Sortierung bleiben, es geht auf Seite 1).
+     *
+     * Bewusst kein eigenes Formular: In Artikeln und Anfragen steht die
+     * Auswahl innerhalb des Formulars fuer Sammelaktionen. Ein Formular darin
+     * verwirft der Browser, der Wechsel schickte dann das Sammelaktions-
+     * Formular ab und die Auswahl blieb wirkungslos.
      *
      * @param array<string, mixed> $base
      * @param array<string, mixed> $keep
      */
     public static function per_page_form(int $current, array $base, array $keep): void
     {
-        echo '<form method="get" class="ks-per-page">';
+        $url = ListParams::url($base, $keep, ['paged' => 0, 'per_page' => self::PLACEHOLDER]);
 
-        foreach (array_merge($base, $keep) as $name => $value) {
-            if ($value !== '' && $value !== null) {
-                echo '<input type="hidden" name="' . esc_attr((string) $name) . '" value="' . esc_attr((string) $value) . '" />';
-            }
-        }
-
-        echo '<label>' . esc_html__('per page', 'kontor-shop') . ' <select name="per_page">';
+        echo '<div class="ks-per-page"><label>' . esc_html__('per page', 'kontor-shop')
+            . ' <select data-ks-per-page="' . esc_url($url) . '" data-ks-per-page-placeholder="' . esc_attr(self::PLACEHOLDER) . '">';
 
         foreach (ListParams::PER_PAGE_OPTIONS as $option) {
             echo '<option value="' . esc_attr((string) $option) . '"' . selected($current, $option, false) . '>' . esc_html((string) $option) . '</option>';
         }
 
-        echo '</select></label></form>';
+        echo '</select></label></div>';
     }
 }

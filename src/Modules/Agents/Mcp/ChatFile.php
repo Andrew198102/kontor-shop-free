@@ -65,6 +65,30 @@ final class ChatFile
         return self::TEXT;
     }
 
+    /**
+     * Eingabeschema fuer ein Dateifeld (openai/fileParams) genau nach der
+     * OpenAI-Referenz: Objekt mit download_url und file_id als Pflicht,
+     * mime_type und file_name optional. Vorher war das Feld "object oder
+     * string" ohne Eigenschaften - ChatGPT durfte dann nur die Kennung als Text
+     * schicken (Test-Shop 14.11.2026: selbst ein angehaengtes Foto kam so an).
+     *
+     * @return array<string, mixed>
+     */
+    public static function schema(string $description): array
+    {
+        return [
+            'type'        => 'object',
+            'description' => $description,
+            'properties'  => [
+                'download_url' => ['type' => 'string'],
+                'file_id'      => ['type' => 'string'],
+                'mime_type'    => ['type' => 'string'],
+                'file_name'    => ['type' => 'string'],
+            ],
+            'required'    => ['download_url', 'file_id'],
+        ];
+    }
+
     /** Fuers Protokoll: Art des Verweises auf Deutsch, ohne Inhalt. */
     public static function describe(string $kind, int $length = 0): string
     {

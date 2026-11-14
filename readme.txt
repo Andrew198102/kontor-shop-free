@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.8
+Stable tag: 2.9.9
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.9 =
+* Fix (Pro, AI assistant): photos from the chat now reach the shop as files. ChatGPT sometimes sent only the internal number of an attached photo instead of the photo itself, so the upload failed with a general error. The image field now follows OpenAI's file format exactly. After the update, refresh the shop app in ChatGPT once (or start a new chat). If only a number still arrives – for example for an image ChatGPT generated itself – the assistant says so right away and offers the working ways: pass the original photo, attach the image to the chat again, or upload it in the browser. The shop log names what arrived instead of the file.
+* Fix: "per page" in the product list and in stock requests had no effect. The selection sat inside the form for bulk actions, so changing it sent that form instead of loading the list with the new number. It now loads the list directly (filters and sorting are kept, back to page 1, the choice is remembered). Orders and stock were not affected.
 
 = 2.9.8 =
 * AI assistant (Pro): stock lists as an Excel file. Ask for example "send me the count sheet for warehouse Regular" and the assistant answers with a download link – it opens in the browser, also on the phone, without logging in to the shop. Two lists: the count sheet for a stock count (expected quantity on the shelf, an empty "Counted" column, signature line, prints landscape on page width with the header on every page) and the stock list (stock, minimum stock, sales of the last 30 days, days left, status). Filter by warehouse and category.
