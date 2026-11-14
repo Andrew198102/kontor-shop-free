@@ -13,8 +13,9 @@ use Kontor\Shop\Support\Arr;
  * Sitzungs-ID, kein Server-Push) - jede POST-Anfrage steht fuer sich, das
  * passt zu WordPress und reicht fuer Werkzeuge.
  *
- * Ressourcen und Prompts gibt es nicht; die Listen kommen leer zurueck, damit
- * Clients, die danach fragen, nicht mit einem Fehler abbrechen.
+ * Ressourcen: nur Oberflaechen fuer Werkzeuge (MCP Apps, z. B. das
+ * Foto-Fenster in ChatGPT, ui://...). Prompts gibt es nicht; Listen kommen
+ * leer zurueck, damit Clients, die danach fragen, nicht abbrechen.
  */
 final class McpServer
 {
@@ -33,6 +34,7 @@ final class McpServer
     /**
      * @param array<int, Tool> $tools
      * @param array<string, mixed> $about weitere Angaben fuer serverInfo (description, icons, websiteUrl - MCP 2025-11-25)
+     * @param array<int, array{uri: string, name: string, title?: string, mimeType: string, text: string|\Closure(): string, _meta?: array<string, mixed>}> $resources
      */
     public function __construct(
         private readonly string $name,
@@ -41,6 +43,7 @@ final class McpServer
         private readonly string $instructions,
         array $tools,
         private readonly array $about = [],
+        private readonly array $resources = [],
     ) {
         foreach ($tools as $tool) {
             $this->tools[$tool->name] = $tool;
@@ -87,7 +90,8 @@ final class McpServer
             'ping'           => self::result($id, new \stdClass()),
             'tools/list'     => self::result($id, ['tools' => $this->list_tools()]),
             'tools/call'     => $this->call_tool($id, $params),
-            'resources/list' => self::result($id, ['resources' => []]),
+            'resources/list' => self::result($id, ['resources' => $this->list_resources()]),
+            'resources/read' => $this->read_resource($id, $params),
             'resources/templates/list' => self::result($id, ['resourceTemplates' => []]),
             'prompts/list'   => self::result($id, ['prompts' => []]),
             'logging/setLevel' => self::result($id, new \stdClass()),
@@ -105,7 +109,7 @@ final class McpServer
 
         return [
             'protocolVersion' => in_array($requested, self::PROTOCOL_VERSIONS, true) ? $requested : self::PROTOCOL_VERSIONS[0],
-            'capabilities'    => ['tools' => ['listChanged' => false]],
+            'capabilities'    => ['tools' => ['listChanged' => false]] + ($this->resources !== [] ? ['resources' => ['listChanged' => false]] : []),
             'serverInfo'      => ['name' => $this->name, 'title' => $this->title, 'version' => $this->version] + $this->about,
             'instructions'    => $this->instructions,
         ];
@@ -128,6 +132,44 @@ final class McpServer
         }
 
         return $out;
+    }
+
+    /**
+     * @return array<int, array<string, mixed>>
+     */
+    private function list_resources(): array
+    {
+        return array_map(static fn (array $resource): array => array_filter([
+            'uri'      => $resource['uri'],
+            'name'     => $resource['name'],
+            'title'    => $resource['title'] ?? null,
+            'mimeType' => $resource['mimeType'],
+            '_meta'    => $resource['_meta'] ?? null,
+        ], static fn ($value): bool => $value !== null), $this->resources);
+    }
+
+    /**
+     * @param array<string, mixed> $params
+     * @return array<string, mixed>
+     */
+    private function read_resource(mixed $id, array $params): array
+    {
+        $uri = (string) ($params['uri'] ?? '');
+
+        foreach ($this->resources as $resource) {
+            if ($resource['uri'] === $uri) {
+                $text = $resource['text'] instanceof \Closure ? ($resource['text'])() : $resource['text'];
+
+                return self::result($id, ['contents' => [array_filter([
+                    'uri'      => $uri,
+                    'mimeType' => $resource['mimeType'],
+                    'text'     => $text,
+                    '_meta'    => $resource['_meta'] ?? null,
+                ], static fn ($value): bool => $value !== null)]]);
+            }
+        }
+
+        return self::error($id, self::INVALID_PARAMS, 'Unknown resource: ' . $uri);
     }
 
     /**

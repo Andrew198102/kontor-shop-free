@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.9
+Stable tag: 2.9.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.10 =
+* AI assistant (Pro): photo window in ChatGPT. When ChatGPT hands over only the internal number of a photo instead of the photo itself (seen with attached photos, not only with generated images), the shop no longer stops with an error: a small window appears in the chat, fetches the photo through ChatGPT's official file function, saves it to the product and shows it with a preview. If that is not possible, the photo can be picked right in the window. Photos the shop needs to check first are shown with the reason, and the assistant asks how to continue. After the update, refresh the shop app in ChatGPT once (Settings → Apps).
+* AI assistant: the access list (Kontor Shop → AI assistant) now shows when the assistant last loaded the tool list and for which version – so you can see whether "refresh" in ChatGPT took effect.
 
 = 2.9.9 =
 * Fix (Pro, AI assistant): photos from the chat now reach the shop as files. ChatGPT sometimes sent only the internal number of an attached photo instead of the photo itself, so the upload failed with a general error. The image field now follows OpenAI's file format exactly. After the update, refresh the shop app in ChatGPT once (or start a new chat). If only a number still arrives – for example for an image ChatGPT generated itself – the assistant says so right away and offers the working ways: pass the original photo, attach the image to the chat again, or upload it in the browser. The shop log names what arrived instead of the file.
