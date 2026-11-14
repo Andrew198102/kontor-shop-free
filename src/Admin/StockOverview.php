@@ -1083,6 +1083,41 @@ final class StockOverview
     }
 
     /**
+     * Die ganze Inventurliste als Tabelle - Titel, Kopfangaben, Spalten,
+     * Zeilen und Unterschriftszeile. Daraus entstehen der CSV-Download
+     * (StockPage::export_inventory) und mit Pro die Excel-Datei fuer den
+     * KI-Assistenten, damit beide genau gleich aussehen.
+     *
+     * @param array<int, int>|null $scope
+     * @return array{title: string, meta: array<int, array{0: string, 1: string}>, header: array<int, string>, rows: array<int, array<int, string>>, footer: array<int, string>, warehouse: string}
+     */
+    public function inventory_sheet(?array $scope, int $warehouse_id, int $category_id, bool $skip_empty, string $created_by): array
+    {
+        $warehouse = $warehouse_id > 0 ? $this->warehouses->find($warehouse_id) : null;
+        $category  = $category_id > 0 ? (new CategoryRepository())->find($category_id) : null;
+        $rows      = $this->inventory_rows($scope, $warehouse_id, $category_id, $skip_empty);
+
+        return [
+            'title'     => __('Stock count list', 'kontor-shop'),
+            'meta'      => [
+                [__('Warehouse', 'kontor-shop'), $warehouse !== null ? $warehouse->name : __('All warehouses', 'kontor-shop')],
+                [__('Category', 'kontor-shop'), $category !== null ? $category->name : ($category_id === -1 ? __('no category', 'kontor-shop') : __('All categories', 'kontor-shop'))],
+                [__('Stock (expected)', 'kontor-shop'), wp_date('d.m.Y H:i')],
+                [__('Created by', 'kontor-shop'), $created_by],
+                [__('Items', 'kontor-shop'), (string) count($rows)],
+            ],
+            'header'    => [
+                __('Warehouse', 'kontor-shop'), __('Category', 'kontor-shop'), __('Product', 'kontor-shop'), __('Variant', 'kontor-shop'),
+                __('Product no.', 'kontor-shop'), __('EAN/GTIN', 'kontor-shop'), __('Expected on shelf', 'kontor-shop'),
+                __('of which sold, not shipped', 'kontor-shop'), __('Counted', 'kontor-shop'), __('Remarks', 'kontor-shop'),
+            ],
+            'rows'      => $rows,
+            'footer'    => [__('Counted by', 'kontor-shop'), '', __('Date', 'kontor-shop'), '', __('Signature', 'kontor-shop')],
+            'warehouse' => $warehouse !== null ? $warehouse->name : '',
+        ];
+    }
+
+    /**
      * Zeilen der Inventurliste (ohne Kopf).
      *
      * @param array<int, int>|null $scope

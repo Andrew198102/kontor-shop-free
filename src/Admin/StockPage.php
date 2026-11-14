@@ -15,7 +15,6 @@ use Kontor\Shop\Domain\Catalog\Variant;
 use Kontor\Shop\Domain\Stock\MovementType;
 use Kontor\Shop\Domain\Stock\StockLedger;
 use Kontor\Shop\Infrastructure\Logging\Logger;
-use Kontor\Shop\Infrastructure\Repositories\CategoryRepository;
 use Kontor\Shop\Infrastructure\Repositories\ProductRepository;
 use Kontor\Shop\Infrastructure\Repositories\StockRepository;
 use Kontor\Shop\Infrastructure\Repositories\VariantRepository;
@@ -681,37 +680,19 @@ final class StockPage
             wp_die(esc_html__('No permission for this warehouse.', 'kontor-shop'), '', ['response' => 403]);
         }
 
-        $warehouse = $warehouse_id > 0 ? $this->warehouses->find($warehouse_id) : null;
-        $category  = $category_id > 0 ? (new CategoryRepository())->find($category_id) : null;
-        $rows      = $this->overview->inventory_rows($scope, $warehouse_id, $category_id, ListParams::int('skip_empty') === 1);
-        $user      = wp_get_current_user();
-        $file      = 'kontor-shop-inventur' . ($warehouse !== null ? '_' . sanitize_title($warehouse->name) : '') . '_' . wp_date('Y-m-d_H-i') . '.csv';
+        $sheet = $this->overview->inventory_sheet($scope, $warehouse_id, $category_id, ListParams::int('skip_empty') === 1, wp_get_current_user()->display_name);
+        $file  = 'kontor-shop-inventur' . ($sheet['warehouse'] !== '' ? '_' . sanitize_title($sheet['warehouse']) : '') . '_' . wp_date('Y-m-d_H-i') . '.csv';
+        $lines = array_merge([[$sheet['title']]], $sheet['meta'], [[], $sheet['header']], $sheet['rows'], [[], $sheet['footer']]);
 
         nocache_headers();
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename="' . $file . '"');
 
         echo "\xEF\xBB\xBF"; // UTF-8-BOM, damit Excel Umlaute richtig liest.
-        echo Csv::row([__('Stock count list', 'kontor-shop')]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
-        echo Csv::row([__('Warehouse', 'kontor-shop'), $warehouse !== null ? $warehouse->name : __('All warehouses', 'kontor-shop')]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
-        echo Csv::row([__('Category', 'kontor-shop'), $category !== null ? $category->name : ($category_id === -1 ? __('no category', 'kontor-shop') : __('All categories', 'kontor-shop'))]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
-        echo Csv::row([__('Stock (expected)', 'kontor-shop'), wp_date('d.m.Y H:i')]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
-        echo Csv::row([__('Created by', 'kontor-shop'), $user->display_name]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
-        echo Csv::row([__('Items', 'kontor-shop'), (string) count($rows)]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
-        echo Csv::row([]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
-        $header = [
-            __('Warehouse', 'kontor-shop'), __('Category', 'kontor-shop'), __('Product', 'kontor-shop'), __('Variant', 'kontor-shop'),
-            __('Product no.', 'kontor-shop'), __('EAN/GTIN', 'kontor-shop'), __('Expected on shelf', 'kontor-shop'),
-            __('of which sold, not shipped', 'kontor-shop'), __('Counted', 'kontor-shop'), __('Remarks', 'kontor-shop'),
-        ];
-        echo Csv::row($header); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
 
-        foreach ($rows as $row) {
-            echo Csv::row($row); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
+        foreach ($lines as $line) {
+            echo Csv::row($line); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
         }
-
-        echo Csv::row([]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
-        echo Csv::row([__('Counted by', 'kontor-shop'), '', __('Date', 'kontor-shop'), '', __('Signature', 'kontor-shop')]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV-Download (text/csv), Csv::row quotiert die Zellen, HTML-Escaping wuerde die Daten verfaelschen
 
         exit;
     }

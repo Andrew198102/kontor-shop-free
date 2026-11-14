@@ -250,7 +250,7 @@ msgstr "Kategorie anlegen"
 #: src/Admin/ProductForm.php:494
 #: src/Admin/ProductForm.php:549
 #: src/Admin/StockOverview.php:684
-#: src/Admin/StockPage.php:185
+#: src/Admin/StockPage.php:184
 msgid "inactive"
 msgstr "inaktiv"
 
@@ -6006,16 +6006,16 @@ msgid "Book stock out"
 msgstr "Abgang buchen"
 
 #: src/Admin/Menu.php:215
-#: src/Admin/StockPage.php:175
-#: src/Admin/StockPage.php:809
+#: src/Admin/StockPage.php:174
+#: src/Admin/StockPage.php:790
 msgid "What happened?"
 msgstr "Was ist passiert?"
 
 #: src/Admin/Menu.php:216
 #: src/Admin/Menu.php:262
 #: src/Admin/ProductVariantsCard.php:122
-#: src/Admin/StockPage.php:179
-#: src/Admin/StockPage.php:703
+#: src/Admin/StockOverview.php:1110
+#: src/Admin/StockPage.php:178
 msgid "Variant"
 msgstr "Variante"
 
@@ -6027,7 +6027,7 @@ msgstr "Bitte eine Variante wählen."
 #: src/Admin/OrderDetailView.php:186
 #: src/Admin/OrdersPage.php:748
 #: src/Admin/StockOverview.php:911
-#: src/Admin/StockPage.php:180
+#: src/Admin/StockPage.php:179
 msgid "Quantity"
 msgstr "Menge"
 
@@ -6048,9 +6048,9 @@ msgid "Reason for the correction (required)"
 msgstr "Grund der Korrektur (Pflicht)"
 
 #: src/Admin/Menu.php:224
-#: src/Admin/StockPage.php:264
-#: src/Admin/StockPage.php:327
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:237
+#: src/Admin/StockPage.php:263
+#: src/Admin/StockPage.php:326
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:319
 msgid "A note is required for a correction."
 msgstr "Für eine Korrektur ist eine Notiz Pflicht."
 
@@ -6425,7 +6425,7 @@ msgstr "Zustimmung AGB/Datenschutz"
 
 #: src/Admin/OrderDetailView.php:184
 #: src/Admin/OrdersList.php:795
-#: src/Admin/StockPage.php:700
+#: src/Admin/StockOverview.php:1107
 #: src/Modules/Privacy/PrivacyModule.php:109
 #: src/Pro__premium_only/Export/OrdersExport.php:112
 msgid "Items"
@@ -6447,7 +6447,7 @@ msgstr "Einzelpreis"
 #: src/Admin/OrderDetailView.php:189
 #: src/Admin/OrderDetailView.php:261
 #: src/Admin/OrdersList.php:268
-#: src/Admin/StockPage.php:202
+#: src/Admin/StockPage.php:201
 #: src/Admin/TemplatesPage.php:354
 msgid "Total"
 msgstr "Summe"
@@ -6506,8 +6506,8 @@ msgid "Shipments"
 msgstr "Sendungen"
 
 #: src/Admin/OrderDetailView.php:329
-#: src/Admin/StockPage.php:714
-#: src/Admin/StockPage.php:823
+#: src/Admin/StockOverview.php:1115
+#: src/Admin/StockPage.php:804
 #: src/Infrastructure/Invoices/InvoicePdf.php:81
 msgid "Date"
 msgstr "Datum"
@@ -6519,8 +6519,8 @@ msgstr "Versanddienst / Tracking"
 #: src/Admin/OrderDetailView.php:330
 #: src/Admin/OrderDetailView.php:585
 #: src/Admin/StockOverview.php:974
-#: src/Admin/StockPage.php:204
-#: src/Admin/StockPage.php:813
+#: src/Admin/StockPage.php:203
+#: src/Admin/StockPage.php:794
 msgid "Note"
 msgstr "Notiz"
 
@@ -6976,7 +6976,7 @@ msgstr "Storniert"
 #: src/Admin/ProductsList.php:165
 #: src/Admin/StockOverview.php:513
 #: src/Modules/Catalog/CatalogModule.php:225
-#: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:165
+#: src/Pro__premium_only/Agents/StockFile.php:188
 msgid "All"
 msgstr "Alle"
 
@@ -7571,7 +7571,7 @@ msgstr "Ausgeblendet"
 #: src/Admin/ProductForm.php:436
 #: src/Admin/Ui/Badge.php:63
 #: src/Modules/Catalog/CatalogModule.php:79
-#: src/Pro__premium_only/Export/StockExport.php:118
+#: src/Pro__premium_only/Export/StockExport.php:120
 msgid "sold out"
 msgstr "ausverkauft"
 
@@ -7814,7 +7814,7 @@ msgstr "Solange Bestand da ist, steht im Shop „Nur solange der Vorrat reicht�
 
 #: src/Admin/ProductForm.php:437
 #: src/Admin/Ui/Badge.php:64
-#: src/Pro__premium_only/Export/StockExport.php:118
+#: src/Pro__premium_only/Export/StockExport.php:120
 msgid "low"
 msgstr "knapp"
 
@@ -8011,8 +8011,8 @@ msgid "EAN column"
 msgstr "EAN-Spalte"
 
 #: src/Admin/ProductVariantsCard.php:123
-#: src/Admin/StockPage.php:180
-#: src/Admin/StockPage.php:704
+#: src/Admin/StockOverview.php:1111
+#: src/Admin/StockPage.php:179
 #: src/Pro__premium_only/Export/StockExport.php:74
 msgid "Product no."
 msgstr "Artikelnr."
@@ -8116,7 +8116,8 @@ msgstr "Artikel suchen"
 #: src/Admin/ProductsList.php:215
 #: src/Admin/StockOverview.php:558
 #: src/Admin/StockOverview.php:1076
-#: src/Admin/StockPage.php:697
+#: src/Admin/StockOverview.php:1104
+#: src/Pro__premium_only/Agents/StockFile.php:198
 msgid "All categories"
 msgstr "Alle Kategorien"
 
@@ -10139,7 +10140,7 @@ msgid "Start stock count"
 msgstr "Inventur starten"
 
 #: src/Admin/StockOverview.php:368
-#: src/Admin/StockPage.php:695
+#: src/Admin/StockOverview.php:1101
 msgid "Stock count list"
 msgstr "Inventurliste"
 
@@ -10196,6 +10197,7 @@ msgstr "Buchungsfehler – bitte prüfen"
 
 #: src/Admin/StockOverview.php:481
 #: src/Admin/StockOverview.php:514
+#: src/Pro__premium_only/Agents/StockFile.php:190
 msgid "Sold out"
 msgstr "Ausverkauft"
 
@@ -10205,6 +10207,7 @@ msgstr "inkl. einzelner Grössen"
 
 #: src/Admin/StockOverview.php:484
 #: src/Admin/StockOverview.php:515
+#: src/Pro__premium_only/Agents/StockFile.php:191
 msgid "Low"
 msgstr "Knapp"
 
@@ -10231,6 +10234,7 @@ msgid "units to ship"
 msgstr "Stück zu versenden"
 
 #: src/Admin/StockOverview.php:512
+#: src/Pro__premium_only/Agents/StockFile.php:189
 msgid "Needs action"
 msgstr "Handlungsbedarf"
 
@@ -10252,7 +10256,7 @@ msgstr "Name, Artikelnr. oder EAN scannen …"
 
 #: src/Admin/StockOverview.php:596
 #: src/Admin/StockOverview.php:993
-#: src/Admin/StockOverview.php:1113
+#: src/Admin/StockOverview.php:1148
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:761
 msgid "not in shop"
 msgstr "nicht im Shop"
@@ -10279,8 +10283,8 @@ msgstr "+%d für Bestellungen"
 
 #: src/Admin/StockOverview.php:689
 #: src/Admin/StockOverview.php:1046
-#: src/Admin/StockPage.php:287
-#: src/Admin/StockPage.php:361
+#: src/Admin/StockPage.php:286
+#: src/Admin/StockPage.php:360
 msgid "no variant"
 msgstr "ohne Variante"
 
@@ -10324,7 +10328,7 @@ msgstr "Letzte Bewegungen"
 
 #. translators: %d: order ID
 #: src/Admin/StockOverview.php:855
-#: src/Admin/StockPage.php:834
+#: src/Admin/StockPage.php:815
 msgid "Order #%d"
 msgstr "Bestellung #%d"
 
@@ -10361,7 +10365,7 @@ msgid "No products yet – select above or scan."
 msgstr "Noch keine Artikel – oben auswählen oder scannen."
 
 #: src/Admin/StockOverview.php:930
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:123
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:147
 msgid "Set minimum stock"
 msgstr "Mindestbestand setzen"
 
@@ -10398,12 +10402,12 @@ msgid "Book differences"
 msgstr "Differenzen buchen"
 
 #: src/Admin/StockOverview.php:978
-#: src/Admin/StockPage.php:704
+#: src/Admin/StockOverview.php:1111
 msgid "Expected on shelf"
 msgstr "Soll im Regal"
 
 #: src/Admin/StockOverview.php:978
-#: src/Admin/StockPage.php:705
+#: src/Admin/StockOverview.php:1112
 msgid "Counted"
 msgstr "Gezählt"
 
@@ -10434,7 +10438,8 @@ msgid "Count list with the expected quantity on the shelf and empty “Counted�
 msgstr "Zählliste mit dem Soll im Regal und leeren Spalten „Gezählt“ und „Bemerkung“ – zum Ausdrucken oder Ausfüllen in Excel. Sortiert nach Lager, Kategorie und Artikel."
 
 #: src/Admin/StockOverview.php:1076
-#: src/Admin/StockPage.php:697
+#: src/Admin/StockOverview.php:1104
+#: src/Pro__premium_only/Agents/StockFile.php:198
 msgid "no category"
 msgstr "ohne Kategorie"
 
@@ -10450,302 +10455,304 @@ msgstr "Für eine vollständige Inventur besser drinlassen – so fällt auch Wa
 msgid "Download CSV"
 msgstr "CSV herunterladen"
 
-#: src/Admin/StockPage.php:137
+#: src/Admin/StockOverview.php:1105
+msgid "Stock (expected)"
+msgstr "Stand (Soll)"
+
+#: src/Admin/StockOverview.php:1106
+msgid "Created by"
+msgstr "Erstellt von"
+
+#: src/Admin/StockOverview.php:1111
+msgid "EAN/GTIN"
+msgstr "EAN/GTIN"
+
+#: src/Admin/StockOverview.php:1112
+msgid "of which sold, not shipped"
+msgstr "davon verkauft, nicht verschickt"
+
+#: src/Admin/StockOverview.php:1112
+msgid "Remarks"
+msgstr "Bemerkung"
+
+#: src/Admin/StockOverview.php:1115
+msgid "Counted by"
+msgstr "Gezählt von"
+
+#: src/Admin/StockOverview.php:1115
+msgid "Signature"
+msgstr "Unterschrift"
+
+#: src/Admin/StockPage.php:136
 msgid "Stock in (+)"
 msgstr "Zugang (+)"
 
-#: src/Admin/StockPage.php:138
+#: src/Admin/StockPage.php:137
 msgid "Stock out (−)"
 msgstr "Abgang (−)"
 
-#: src/Admin/StockPage.php:139
+#: src/Admin/StockPage.php:138
 msgid "Correction (note required)"
 msgstr "Korrektur (Notiz Pflicht)"
 
-#: src/Admin/StockPage.php:144
+#: src/Admin/StockPage.php:143
 msgid "Correction: increase stock (+)"
 msgstr "Korrektur: Bestand erhöhen (+)"
 
-#: src/Admin/StockPage.php:145
+#: src/Admin/StockPage.php:144
 msgid "Correction: decrease stock (−)"
 msgstr "Korrektur: Bestand verringern (−)"
 
-#: src/Admin/StockPage.php:170
+#: src/Admin/StockPage.php:169
 msgid "Book stock per variant"
 msgstr "Bestand je Variante buchen"
 
-#: src/Admin/StockPage.php:177
+#: src/Admin/StockPage.php:176
 msgid "Enter quantities only for the variants concerned – empty fields are skipped."
 msgstr "Mengen nur bei den Varianten eintragen, die betroffen sind – leere Felder werden übersprungen."
 
 #. translators: %s: variant
-#: src/Admin/StockPage.php:191
+#: src/Admin/StockPage.php:190
 msgid "Quantity for %s"
 msgstr "Menge für %s"
 
-#: src/Admin/StockPage.php:197
+#: src/Admin/StockPage.php:196
 msgid "without variant (from before variants – book out only)"
 msgstr "ohne Variante (von vor den Varianten – nur ausbuchen)"
 
-#: src/Admin/StockPage.php:199
+#: src/Admin/StockPage.php:198
 msgid "Quantity without variant"
 msgstr "Menge ohne Variante"
 
-#: src/Admin/StockPage.php:205
+#: src/Admin/StockPage.php:204
 msgid "e.g. delivery note 2026-117"
 msgstr "z. B. Lieferschein 2026-117"
 
-#: src/Admin/StockPage.php:206
+#: src/Admin/StockPage.php:205
 msgid "Applies to all rows. Optional – required only for “Correction”."
 msgstr "Gilt für alle Zeilen. Optional – nur bei „Korrektur“ Pflicht."
 
-#: src/Admin/StockPage.php:208
+#: src/Admin/StockPage.php:207
 msgid "Save bookings"
 msgstr "Buchungen speichern"
 
-#: src/Admin/StockPage.php:242
-#: src/Admin/StockPage.php:459
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:156
+#: src/Admin/StockPage.php:241
+#: src/Admin/StockPage.php:458
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:180
 msgid "Product not found or no permission."
 msgstr "Artikel nicht gefunden oder keine Berechtigung."
 
-#: src/Admin/StockPage.php:248
+#: src/Admin/StockPage.php:247
 #: src/Pro__premium_only/Agents/Tools/CatalogTools.php:878
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:227
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:309
 #: src/Pro__premium_only/Agents/Tools/VariantTools.php:469
 msgid "This variant does not belong to the product."
 msgstr "Diese Variante gehört nicht zum Artikel."
 
-#: src/Admin/StockPage.php:255
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:231
+#: src/Admin/StockPage.php:254
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:313
 msgid "Please select a variant – this product is booked per variant (e.g. size)."
 msgstr "Bitte eine Variante auswählen – dieser Artikel wird je Variante (z. B. Grösse) gebucht."
 
-#: src/Admin/StockPage.php:260
+#: src/Admin/StockPage.php:259
 msgid "Please enter a movement type and a quantity greater than 0."
 msgstr "Bitte Bewegungsart und eine Menge grösser als 0 angeben."
 
 #. translators: %s: error reference number
-#: src/Admin/StockPage.php:278
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:252
+#: src/Admin/StockPage.php:277
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:334
 msgid "The stock movement could not be saved (error code %s). Please try again."
 msgstr "Die Bestandsbewegung konnte nicht gespeichert werden (Fehlercode %s). Bitte erneut versuchen."
 
 #. translators: 1: product name, 2: change, 3: new stock
-#: src/Admin/StockPage.php:286
+#: src/Admin/StockPage.php:285
 msgid "%1$s: booked %2$s, new stock %3$d."
 msgstr "%1$s: %2$s gebucht, neuer Bestand %3$d."
 
-#: src/Admin/StockPage.php:293
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:263
+#: src/Admin/StockPage.php:292
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:345
 msgid "Warning: stock is now negative."
 msgstr "Achtung: Der Bestand ist jetzt negativ."
 
-#: src/Admin/StockPage.php:321
+#: src/Admin/StockPage.php:320
 msgid "Please enter a quantity for at least one variant."
 msgstr "Bitte bei mindestens einer Variante eine Menge eintragen."
 
-#: src/Admin/StockPage.php:333
+#: src/Admin/StockPage.php:332
 msgid "Stock without a variant can only be booked out – please book in under the variants."
 msgstr "Bestand ohne Variante kann nur noch ausgebucht werden – bitte bei den Varianten einbuchen."
 
-#: src/Admin/StockPage.php:340
+#: src/Admin/StockPage.php:339
 msgid "Product or variant not found."
 msgstr "Artikel oder Variante nicht gefunden."
 
 #. translators: %s: variants already booked
-#: src/Admin/StockPage.php:352
+#: src/Admin/StockPage.php:351
 msgid "Already booked: %s."
 msgstr "Bereits gebucht: %s."
 
 #. translators: 1: product name, 2: list of bookings, 3: new total stock
-#: src/Admin/StockPage.php:366
+#: src/Admin/StockPage.php:365
 msgid "%1$s: booked – %2$s. New total stock %3$d."
 msgstr "%1$s: gebucht – %2$s. Neuer Gesamtbestand %3$d."
 
-#: src/Admin/StockPage.php:397
+#: src/Admin/StockPage.php:396
 msgid "Correction +"
 msgstr "Korrektur +"
 
-#: src/Admin/StockPage.php:398
+#: src/Admin/StockPage.php:397
 msgid "Correction −"
 msgstr "Korrektur −"
 
-#: src/Admin/StockPage.php:465
-#: src/Admin/StockPage.php:642
+#: src/Admin/StockPage.php:464
+#: src/Admin/StockPage.php:641
 msgid "Please enter a whole number from 0 (empty = no minimum stock)."
 msgstr "Bitte eine ganze Zahl ab 0 eingeben (leer = kein Mindestbestand)."
 
 #. translators: 1: product, 2: minimum stock
-#: src/Admin/StockPage.php:474
+#: src/Admin/StockPage.php:473
 msgid "%1$s: minimum stock %2$d saved."
 msgstr "%1$s: Mindestbestand %2$d gespeichert."
 
 #. translators: %s: product
-#: src/Admin/StockPage.php:476
+#: src/Admin/StockPage.php:475
 msgid "%s: minimum stock removed."
 msgstr "%s: Mindestbestand entfernt."
 
-#: src/Admin/StockPage.php:505
+#: src/Admin/StockPage.php:504
 msgid "A product in the delivery was not found or does not belong to your warehouse."
 msgstr "Ein Artikel der Lieferung wurde nicht gefunden oder gehört nicht zu deinem Lager."
 
 #. translators: %s: product
-#: src/Admin/StockPage.php:510
+#: src/Admin/StockPage.php:509
 msgid "%s: Please specify the variant (e.g. size)."
 msgstr "%s: Bitte die Variante (z. B. Grösse) angeben."
 
-#: src/Admin/StockPage.php:514
+#: src/Admin/StockPage.php:513
 msgid "The quantity is too large."
 msgstr "Die Menge ist zu gross."
 
-#: src/Admin/StockPage.php:522
+#: src/Admin/StockPage.php:521
 msgid "Please enter a quantity in at least one row."
 msgstr "Bitte bei mindestens einer Zeile eine Menge eintragen."
 
 #. translators: 1: items, 2: units
-#: src/Admin/StockPage.php:539
+#: src/Admin/StockPage.php:538
 msgid "Delivery booked: %1$d item, %2$d units."
 msgid_plural "Delivery booked: %1$d items, %2$d units."
 msgstr[0] "Lieferung gebucht: %1$d Position, %2$d Stück."
 msgstr[1] "Lieferung gebucht: %1$d Positionen, %2$d Stück."
 
 #. translators: %s: date
-#: src/Admin/StockPage.php:555
+#: src/Admin/StockPage.php:554
 #: src/Pro__premium_only/Agents/Tools/ImportTools.php:283
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:279
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:361
 msgid "Stock count %s"
 msgstr "Inventur %s"
 
-#: src/Admin/StockPage.php:569
+#: src/Admin/StockPage.php:568
 msgid "Please enter whole numbers from 0 only."
 msgstr "Bitte nur ganze Zahlen ab 0 eintragen."
 
-#: src/Admin/StockPage.php:577
+#: src/Admin/StockPage.php:576
 msgid "Nothing has been counted yet."
 msgstr "Es wurde noch nichts gezählt."
 
-#: src/Admin/StockPage.php:589
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:310
+#: src/Admin/StockPage.php:588
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:392
 msgid "A counted product was not found or does not belong to your warehouse."
 msgstr "Ein gezählter Artikel wurde nicht gefunden oder gehört nicht zu deinem Lager."
 
 #. translators: %s: error reference number
-#: src/Admin/StockPage.php:610
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:334
+#: src/Admin/StockPage.php:609
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:416
 msgid "The stock count could not be booked completely (error code %s). Corrections already booked are in the history."
 msgstr "Die Inventur konnte nicht vollständig gebucht werden (Fehlercode %s). Bereits gebuchte Korrekturen stehen im Verlauf."
 
 #. translators: %d: rows counted
-#: src/Admin/StockPage.php:617
+#: src/Admin/StockPage.php:616
 msgid "Stock count: %d row counted, everything matches – nothing booked."
 msgid_plural "Stock count: %d rows counted, everything matches – nothing booked."
 msgstr[0] "Inventur: %d Zeile gezählt, alles stimmt – nichts gebucht."
 msgstr[1] "Inventur: %d Zeilen gezählt, alles stimmt – nichts gebucht."
 
 #. translators: 1: rows counted, 2: corrections, 3: note
-#: src/Admin/StockPage.php:622
+#: src/Admin/StockPage.php:621
 msgid "Stock count: %1$d row counted, %2$d difference(s) booked as a correction (“%3$s”)."
 msgid_plural "Stock count: %1$d rows counted, %2$d difference(s) booked as a correction (“%3$s”)."
 msgstr[0] "Inventur: %1$d Zeile gezählt, %2$d Differenz(en) als Korrektur gebucht („%3$s“)."
 msgstr[1] "Inventur: %1$d Zeilen gezählt, %2$d Differenz(en) als Korrektur gebucht („%3$s“)."
 
-#: src/Admin/StockPage.php:638
+#: src/Admin/StockPage.php:637
 msgid "Please select products first."
 msgstr "Bitte zuerst Artikel auswählen."
 
 #. translators: %d: number of products
-#: src/Admin/StockPage.php:658
+#: src/Admin/StockPage.php:657
 msgid "Minimum stock saved for %d product."
 msgid_plural "Minimum stock saved for %d products."
 msgstr[0] "Mindestbestand für %d Artikel gespeichert."
 msgstr[1] "Mindestbestand für %d Artikel gespeichert."
 
-#: src/Admin/StockPage.php:681
+#: src/Admin/StockPage.php:680
+#: src/Pro__premium_only/Agents/StockFile.php:104
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:221
 msgid "No permission for this warehouse."
 msgstr "Keine Berechtigung für dieses Lager."
 
-#: src/Admin/StockPage.php:698
-msgid "Stock (expected)"
-msgstr "Stand (Soll)"
-
-#: src/Admin/StockPage.php:699
-msgid "Created by"
-msgstr "Erstellt von"
-
-#: src/Admin/StockPage.php:704
-msgid "EAN/GTIN"
-msgstr "EAN/GTIN"
-
-#: src/Admin/StockPage.php:705
-msgid "of which sold, not shipped"
-msgstr "davon verkauft, nicht verschickt"
-
-#: src/Admin/StockPage.php:705
-msgid "Remarks"
-msgstr "Bemerkung"
-
-#: src/Admin/StockPage.php:714
-msgid "Counted by"
-msgstr "Gezählt von"
-
-#: src/Admin/StockPage.php:714
-msgid "Signature"
-msgstr "Unterschrift"
-
 #. translators: %s: product name
-#: src/Admin/StockPage.php:784
+#: src/Admin/StockPage.php:765
 msgid "Stock: %s"
 msgstr "Bestand: %s"
 
-#: src/Admin/StockPage.php:787
+#: src/Admin/StockPage.php:768
 msgid "Back to stock overview"
 msgstr "Zurück zur Bestandsübersicht"
 
 #. translators: %d: minimum stock
-#: src/Admin/StockPage.php:794
+#: src/Admin/StockPage.php:775
 msgid "(minimum stock %d)"
 msgstr "(Mindestbestand %d)"
 
-#: src/Admin/StockPage.php:799
+#: src/Admin/StockPage.php:780
 msgid "Total stock (all variants):"
 msgstr "Gesamtbestand (alle Varianten):"
 
-#: src/Admin/StockPage.php:799
+#: src/Admin/StockPage.php:780
 msgid "Current stock:"
 msgstr "Aktueller Bestand:"
 
-#: src/Admin/StockPage.php:804
+#: src/Admin/StockPage.php:785
 msgid "Record movement"
 msgstr "Bewegung erfassen"
 
-#: src/Admin/StockPage.php:815
+#: src/Admin/StockPage.php:796
 msgid "Optional – required only for “Correction” (so it stays traceable later why a correction was made)."
 msgstr "Optional – nur bei „Korrektur“ Pflicht (damit später nachvollziehbar bleibt, warum korrigiert wurde)."
 
-#: src/Admin/StockPage.php:817
+#: src/Admin/StockPage.php:798
 msgid "Save movement"
 msgstr "Bewegung speichern"
 
-#: src/Admin/StockPage.php:821
+#: src/Admin/StockPage.php:802
 msgid "History"
 msgstr "Verlauf"
 
-#: src/Admin/StockPage.php:823
+#: src/Admin/StockPage.php:804
 #: src/Pro__premium_only/Audit/AuditPage.php:529
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:357
 msgid "Type"
 msgstr "Art"
 
-#: src/Admin/StockPage.php:825
+#: src/Admin/StockPage.php:806
 msgid "Change"
 msgstr "Änderung"
 
-#: src/Admin/StockPage.php:826
+#: src/Admin/StockPage.php:807
 msgid "Recorded by"
 msgstr "Erfasst von"
 
-#: src/Admin/StockPage.php:855
+#: src/Admin/StockPage.php:836
 msgid "No movements recorded yet."
 msgstr "Noch keine Bewegungen erfasst."
 
@@ -12709,7 +12716,7 @@ msgid "The shop’s AI assistant access is switched off."
 msgstr "Der Zugang für KI-Assistenten ist in diesem Shop ausgeschaltet."
 
 #: src/Modules/Agents/AgentsModule.php:82
-#: src/Pro__premium_only/Agents/AgentsProModule.php:125
+#: src/Pro__premium_only/Agents/AgentsProModule.php:126
 #: src/Pro__premium_only/Agents/ShopOrderTools.php:231
 msgid "Too many requests – please try again in a few minutes."
 msgstr "Zu viele Anfragen – bitte in ein paar Minuten noch einmal versuchen."
@@ -14452,56 +14459,56 @@ msgstr "nur für Administratoren"
 msgid "As an administrator you can revoke any access, e.g. when someone leaves the team."
 msgstr "Als Administrator kannst du jeden Zugang widerrufen, z. B. wenn jemand das Team verlässt."
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:136
+#: src/Pro__premium_only/Agents/AgentsProModule.php:137
 msgid "back office"
 msgstr "Verwaltung"
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:140
+#: src/Pro__premium_only/Agents/AgentsProModule.php:141
 msgid "Manage products, stock, orders and discount codes of this shop."
 msgstr "Artikel, Lager, Bestellungen und Rabattcodes dieses Shops verwalten."
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:205
+#: src/Pro__premium_only/Agents/AgentsProModule.php:206
 msgid "Done – now paste it into %s"
 msgstr "Fertig – jetzt in %s einfügen"
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:207
+#: src/Pro__premium_only/Agents/AgentsProModule.php:208
 msgid "In %s:"
 msgstr "In %s:"
 
 #. translators: %s: app name
-#: src/Pro__premium_only/Agents/AgentsProModule.php:209
+#: src/Pro__premium_only/Agents/AgentsProModule.php:210
 msgid "Waiting for the first connection from %s … This turns green as soon as it works."
 msgstr "Warte auf die erste Verbindung von %s … Die Anzeige wird grün, sobald es klappt."
 
 #. translators: 1: app name, 2: time
-#: src/Pro__premium_only/Agents/AgentsProModule.php:211
+#: src/Pro__premium_only/Agents/AgentsProModule.php:212
 msgid "Connected with %1$s (first request %2$s) – you can start."
 msgstr "Verbunden mit %1$s (erste Anfrage %2$s) – du kannst loslegen."
 
 #. translators: 1: app name, 2: time
-#: src/Pro__premium_only/Agents/AgentsProModule.php:212
+#: src/Pro__premium_only/Agents/AgentsProModule.php:213
 msgid "That didn’t work. Please try again."
 msgstr "Das hat nicht geklappt. Bitte noch einmal versuchen."
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:221
+#: src/Pro__premium_only/Agents/AgentsProModule.php:222
 msgid "Team access (shop management by AI assistant)"
 msgstr "Team-Zugang (Shop-Verwaltung per KI-Assistent)"
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:223
+#: src/Pro__premium_only/Agents/AgentsProModule.php:224
 msgid "Team access"
 msgstr "Team-Zugang"
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:225
+#: src/Pro__premium_only/Agents/AgentsProModule.php:226
 msgid "Shop team members may connect their AI assistant (products, images, stock, orders, discount codes)"
 msgstr "Mitglieder des Shop-Teams dürfen ihren KI-Assistenten verbinden (Artikel, Bilder, Lager, Bestellungen, Rabattcodes)"
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:226
+#: src/Pro__premium_only/Agents/AgentsProModule.php:227
 msgid "Each person creates their own access under Kontor Shop → AI assistant. The assistant works with that person’s permissions; every change is logged. Settings and users stay off-limits."
 msgstr "Jede Person legt unter Kontor Shop → KI-Assistent ihren eigenen Zugang an. Der Assistent arbeitet mit den Rechten dieser Person; jede Änderung wird protokolliert. Einstellungen und Benutzer bleiben tabu."
 
-#: src/Pro__premium_only/Agents/AgentsProModule.php:227
+#: src/Pro__premium_only/Agents/AgentsProModule.php:228
 msgid "Go to accesses and instructions"
 msgstr "Zu Zugängen und Anleitung"
 
@@ -14601,6 +14608,31 @@ msgstr "Der Shop hat noch keine Kassen-Seite eingerichtet."
 #: src/Pro__premium_only/Agents/ShopOrderTools.php:246
 msgid "No order with this number and email address was found."
 msgstr "Keine Bestellung mit dieser Nummer und E-Mail-Adresse gefunden."
+
+#. translators: %d: minutes
+#: src/Pro__premium_only/Agents/StockFile.php:84
+msgid "This download link has expired or is invalid. Links to stock lists are valid for %d minutes – ask the assistant for a new one."
+msgstr "Dieser Download-Link ist abgelaufen oder ungültig. Links zu Bestandslisten gelten %d Minuten – einen neuen gibt es jederzeit beim Assistenten."
+
+#. translators: %d: minutes
+#: src/Pro__premium_only/Agents/StockFile.php:87
+msgid "Link expired"
+msgstr "Link abgelaufen"
+
+#: src/Pro__premium_only/Agents/StockFile.php:193
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:60
+msgid "Stock overview"
+msgstr "Bestandsübersicht"
+
+#: src/Pro__premium_only/Agents/StockFile.php:199
+msgid "Selection"
+msgstr "Auswahl"
+
+#: src/Pro__premium_only/Agents/StockFile.php:200
+#: src/Pro__premium_only/Export/OrdersExport.php:104
+#: src/Pro__premium_only/Export/StockExport.php:55
+msgid "Export created on"
+msgstr "Export erstellt am"
 
 #: src/Pro__premium_only/Agents/Tools/CatalogTools.php:97
 msgid "List products"
@@ -14807,28 +14839,28 @@ msgstr "WordPress-Anmeldung / Anwendungspasswort"
 msgid "Assign missing product numbers"
 msgstr "Fehlende Artikelnummern vergeben"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:56
-msgid "Stock overview"
-msgstr "Bestandsübersicht"
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:76
+msgid "Stock list as Excel file"
+msgstr "Bestandsliste als Excel-Datei"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:72
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:96
 msgid "Book stock movement"
 msgstr "Lagerbewegung buchen"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:89
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:113
 msgid "Record stock count"
 msgstr "Inventur erfassen"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:110
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:134
 msgid "Stock history"
 msgstr "Bestandsverlauf"
 
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:241
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:323
 msgid "For a correction, say whether stock goes up or down (direction increase/decrease)."
 msgstr "Bei einer Korrektur bitte angeben, ob der Bestand steigt oder sinkt (direction increase/decrease)."
 
 #. translators: %s: product name
-#: src/Pro__premium_only/Agents/Tools/StockTools.php:315
+#: src/Pro__premium_only/Agents/Tools/StockTools.php:397
 msgid "“%s” is counted per variant – please give variant_id."
 msgstr "„%s“ wird je Variante gezählt – bitte variant_id angeben."
 
@@ -16959,11 +16991,6 @@ msgstr "Verlauf der letzten 8 Wochen, Vergleich mit den 30 Tagen davor. Stornier
 msgid "CSV of selection"
 msgstr "CSV der Auswahl"
 
-#: src/Pro__premium_only/Export/OrdersExport.php:104
-#: src/Pro__premium_only/Export/StockExport.php:55
-msgid "Export created on"
-msgstr "Export erstellt am"
-
 #: src/Pro__premium_only/Export/OrdersExport.php:106
 msgid "Number of orders"
 msgstr "Anzahl Bestellungen"
@@ -16996,11 +17023,11 @@ msgstr "Reicht (Tage)"
 msgid "Waiting requests"
 msgstr "Wartende Anfragen"
 
-#: src/Pro__premium_only/Export/StockExport.php:118
+#: src/Pro__premium_only/Export/StockExport.php:120
 msgid "negative"
 msgstr "negativ"
 
-#: src/Pro__premium_only/Export/StockExport.php:118
+#: src/Pro__premium_only/Export/StockExport.php:120
 msgid "ok"
 msgstr "ok"
 

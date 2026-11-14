@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.7
+Stable tag: 2.9.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.8 =
+* AI assistant (Pro): stock lists as an Excel file. Ask for example "send me the count sheet for warehouse Regular" and the assistant answers with a download link – it opens in the browser, also on the phone, without logging in to the shop. Two lists: the count sheet for a stock count (expected quantity on the shelf, an empty "Counted" column, signature line, prints landscape on page width with the header on every page) and the stock list (stock, minimum stock, sales of the last 30 days, days left, status). Filter by warehouse and category.
+* The link is valid for 15 minutes and only works with the rights of the person who asked for it: warehouse managers get only their own warehouses, and someone who no longer has stock rights gets nothing. The file is made when the link is opened, with the stock of that moment. The CSV downloads in the stock pages stay as they are.
 
 = 2.9.7 =
 * AI assistant (Pro): merge products into variants. Single products that are only versions of one product (for example "Sticker – small", "– medium", "– large" or a scarf in three colours) can be combined into one product with variants in the chat. Each variant keeps its price, stock, product number, EAN, weight and photo; the old products are archived with their history, and open orders are completed as before. Nothing changes before the user confirms the plan.
