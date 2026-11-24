@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.10
+Stable tag: 2.9.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,15 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.11 =
+* New: product cards in the style "Label" (Settings → Design → Product cards, now the default). The price hangs as a tag on the photo, the category is a small line, the name has at most two lines. Sizes are buttons right on the card: one tap puts exactly that size in the cart, sold-out sizes are struck through, and what doesn't fit in the row opens with "+2" above the photo. The shop remembers the size a customer chose (in their browser, letter and number sizes separately) and highlights it on all cards. Products without variants get a round "+" button; products with several options (e.g. size and colour) open the usual selection above the photo. On phones, two cards sit side by side. "Classic" keeps the previous layout.
+* New: same height for all cards in a row. Every photo gets the same frame (portrait 4:5 for "Label" unless another image format is set). Photos on white are recognised automatically and shown whole on the sand-coloured stage; photos with a real background fill the frame.
+* Fix: portrait photos stretched the image frame of their card ("Classic" layout), so the whole row became taller and neighbouring cards showed large empty areas. The frame now keeps its format.
+* Fix: product pages and category pages (Pro) now use the colour of the shop type (or of the category, if it has its own) for buttons, "In stock" and links – like the catalog already did. Before, they fell back to the shop's primary colour.
+* Fix (Pro, product photos): white and light parts of a product – a white hanger, a light cap brim, a white collar – no longer disappear when the shop turns a light grey paper or wall background white. The shop now compares each part with the brightness of the background at the same spot and keeps everything that is brighter; the background around and between (for example inside a hanger) still becomes pure white.
+* Change (Pro, AI assistant): the assistant no longer cuts products out itself. When ChatGPT "prepared" photos with its code tool, it removed hands and backgrounds with a crude colour mask – edges came out frayed, caps looked bitten and hangers were gone. Now it may only straighten, crop and gently correct exposure; the shop makes a plain light background white itself. If the background is busy or a hand holds the product, the assistant asks for a new photo on white paper or a white wall, or keeps the original. Photos already damaged stay as they are – replace them with a new photo. After the update, refresh the shop app in ChatGPT once (Settings → Apps).
+* Fix: the "CSV download" button in the "Export inventory list" window failed every time with "Export failed". The script read the wrong address from the form; the "Export CSV" link next to it was not affected.
 
 = 2.9.10 =
 * AI assistant (Pro): photo window in ChatGPT. When ChatGPT hands over only the internal number of a photo instead of the photo itself (seen with attached photos, not only with generated images), the shop no longer stops with an error: a small window appears in the chat, fetches the photo through ChatGPT's official file function, saves it to the product and shows it with a preview. If that is not possible, the photo can be picked right in the window. Photos the shop needs to check first are shown with the reason, and the assistant asks how to continue. After the update, refresh the shop app in ChatGPT once (Settings → Apps).

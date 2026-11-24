@@ -58,6 +58,8 @@ final class DesignCss
         'danger-text'  => '#f4a9a9',
         'toast-bg'     => '#eceef1',
         'toast-text'   => '#1d2327',
+        // Freigestellte Fotos (Etikett-Karte) nicht mit dem dunklen Grund multiplizieren.
+        'cutout-blend' => 'normal',
     ];
 
     /** Mindestbreite einer Karte, wenn eine feste Spaltenzahl gewaehlt ist. */

@@ -169,6 +169,9 @@ final class Schema
                 // Hover-Effekt der Artikelkarten: spotlight (Rand-Licht in der
                 // Akzentfarbe) | lift (nur Anheben) | none (ruhig).
                 'card_effect'               => 'spotlight',
+                // Aufbau der Artikelkarten: label ("Etikett": Preis am Foto,
+                // Groessen als Knoepfe) | classic (Text, Auswahl, Menge, Knopf).
+                'card_layout'               => 'label',
                 // Grundstil (Ecken, Schatten): theme | clear | soft | square.
                 'style'                     => 'theme',
                 // Ecken in px; leer = wie Grundstil bzw. Theme.

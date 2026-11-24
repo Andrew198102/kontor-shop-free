@@ -9,6 +9,7 @@ use Kontor\Shop\Domain\Catalog\Category;
 use Kontor\Shop\Domain\Catalog\Product;
 use Kontor\Shop\Domain\Seo\Pagination;
 use Kontor\Shop\Modules\Seo\ProductUrl;
+use Kontor\Shop\Modules\Storefront\DesignModule;
 use Kontor\Shop\Infrastructure\Catalog\CatalogScope;
 use Kontor\Shop\Infrastructure\Catalog\StockSnapshot;
 use Kontor\Shop\Infrastructure\Catalog\VariantRows;
@@ -83,6 +84,12 @@ final class CatalogModule implements Registerable
             'prev'        => __('Previous image', 'kontor-shop'),
             'next'        => __('Next image', 'kontor-shop'),
             'zoom'        => __('Enlarge image', 'kontor-shop'),
+            /* translators: %s: chosen size or variant, e.g. "M" */
+            'addedSize'   => __('%s in cart', 'kontor-shop'),
+            'addedPlain'  => __('In cart', 'kontor-shop'),
+            'yourSize'    => __('your size', 'kontor-shop'),
+            /* translators: %d: number of sizes or other options */
+            'moreOptions' => __('Show all %d options', 'kontor-shop'),
         ]);
 
     }
@@ -318,6 +325,30 @@ final class CatalogModule implements Registerable
             ? mb_strtolower($product->name . ' ' . $product->sku . ' ' . $product->description . ' ' . ($category?->name ?? ''))
             : strtolower($product->name . ' ' . $product->sku . ' ' . $product->description . ' ' . ($category?->name ?? ''));
 
+        $detail_url = ProductUrl::of($product);
+
+        if (DesignModule::card_layout($this->settings) === 'label') {
+            return LabelCard::render([
+                'id'           => (int) $product->id,
+                'name'         => $product->name,
+                'url'          => $detail_url,
+                'attributes'   => $data_category . ' data-search="' . esc_attr($search_text) . '"' . $style,
+                'image_html'   => ProductImage::render($product->image_id, $product->name, 'medium_large', $placeholder, '', $product->image_alt),
+                'cutout'       => ProductImage::is_cutout($product->image_id),
+                'category'     => $category?->name ?? '',
+                'price_text'   => $rows !== [] ? LabelCard::price_text($rows, $product->price) : LabelCard::price_label($product->price),
+                'fine_html'    => $this->fine_print($product, $rows),
+                'options'      => $rows !== [] ? $product->variant_options : [],
+                'rows'         => $rows,
+                'available'    => $stock > 0,
+                'discontinued' => $product->discontinued,
+                'notes_html'   => $product->discontinued
+                    ? ProductNotes::discontinued(false)
+                    : ProductNotes::unavailable() . ProductNotes::unavailable_extra((int) $product->id, $product->name, $rows, true, 'card'),
+                'heading'      => 'h3',
+            ]);
+        }
+
         // Stabile Anker-ID (#artikel-{id}) - dieselbe wie auf den Kategorieseiten.
         $html = '<article class="kontor-shop-product" id="artikel-' . (int) $product->id . '" data-product-id="' . esc_attr((string) $product->id) . '"'
             . $data_category . ' data-search="' . esc_attr($search_text) . '"' . $style . '>';
@@ -332,7 +363,6 @@ final class CatalogModule implements Registerable
             $html .= '<span class="kontor-shop-product__category">' . esc_html($category->name) . '</span>';
         }
 
-        $detail_url = ProductUrl::of($product);
         $html .= '<h3 class="kontor-shop-product__name">'
             . ($detail_url !== '' ? '<a class="kontor-shop-product__link" href="' . esc_url($detail_url) . '">' . esc_html($product->name) . '</a>' : esc_html($product->name))
             . '</h3>';
@@ -379,6 +409,28 @@ final class CatalogModule implements Registerable
         }
 
         $html .= '</div></article>';
+
+        return $html;
+    }
+
+    /**
+     * Kleingedrucktes der Etikett-Karte unter dem Namen: Grundpreis (wechselt
+     * mit der Variante, product.js) und MwSt.-Hinweis - nur wenn vorhanden.
+     *
+     * @param array<int, array<string, mixed>> $rows
+     */
+    private function fine_print(Product $product, array $rows): string
+    {
+        $unit_text = $rows !== [] ? VariantPicker::common_unit_price($rows) : $product->unit_price_text($product->price);
+        $html      = '<p class="kontor-shop-unit-price" data-ks-unit-price' . ($unit_text === '' ? ' hidden' : '') . '>' . esc_html($unit_text) . '</p>';
+
+        if ($product->tax_rate !== null && $product->tax_rate > 0) {
+            $html .= '<p class="kontor-shop-product__tax">' . esc_html(sprintf(
+                /* translators: %s: tax rate in percent */
+                __('incl. %s %% VAT', 'kontor-shop'),
+                number_format_i18n($product->tax_rate, $product->tax_rate == floor($product->tax_rate) ? 0 : 1)
+            )) . '</p>';
+        }
 
         return $html;
     }

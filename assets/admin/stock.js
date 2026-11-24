@@ -487,7 +487,9 @@
 			if (error) { error.hidden = true; }
 			var query = new URLSearchParams(new FormData(form)).toString();
 			var showError = function (text) { if (error) { error.textContent = text; error.hidden = false; } else { notify(text, 'error'); } };
-			download(form.action + '?' + query, form.querySelector('[type="submit"]'), showError).then(function (ok) {
+			// getAttribute statt form.action: das versteckte Feld name="action"
+			// ueberdeckt form.action (liefert dann das Feld statt der URL).
+			download(form.getAttribute('action') + '?' + query, form.querySelector('[type="submit"]'), showError).then(function (ok) {
 				if (!ok) { return; }
 				var dialog = form.closest('dialog');
 				if (dialog && dialog.open) { dialog.close(); }

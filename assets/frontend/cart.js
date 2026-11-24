@@ -175,19 +175,26 @@
 
         event.preventDefault();
 
-        var button = form.querySelector('button[type="submit"]');
+        // Etikett-Karte (data-ks-quick): jeder Groessen-Knopf ist ein eigener
+        // Absende-Knopf mit seiner Variante (name="variant_id").
+        var quick = form.hasAttribute('data-ks-quick');
+        var submitter = event.submitter || form.ksSubmitter || null;
+        var button = submitter && submitter.tagName === 'BUTTON' ? submitter : form.querySelector('button[type="submit"]');
 
-        if (button.disabled) {
+        form.ksSubmitter = null;
+
+        if (!button || button.disabled) {
             return;
         }
 
         var productId = form.querySelector('[name="product_id"]').value;
         var quantity = form.querySelector('[name="quantity"]').value;
-        var variantField = form.querySelector('[name="variant_id"]');
-        var variantId = variantField ? variantField.value : '0';
+        var chosenBySubmitter = button.name === 'variant_id' && !!button.value;
+        var variantField = form.querySelector('input[name="variant_id"]');
+        var variantId = chosenBySubmitter ? button.value : (variantField ? variantField.value : '0');
 
         // Artikel mit Varianten: erst waehlen lassen (Hinweis + Fokus auf die erste offene Auswahl)
-        if (variantField && !variantId) {
+        if (!chosenBySubmitter && variantField && !variantId) {
             var open = form.querySelector('select[data-ks-option]:not([disabled])');
 
             Array.prototype.some.call(form.querySelectorAll('select[data-ks-option]'), function (select) {
@@ -206,17 +213,36 @@
 
         buttonLoading(button, true);
 
-        post('kontor_shop_cart_add', { product_id: productId, variant_id: variantId, quantity: quantity })
+        post('kontor_shop_cart_add', { product_id: productId, variant_id: variantId || '0', quantity: quantity })
             .then(function () {
                 buttonLoading(button, false);
-                flash(button, text('added', 'Added'), true);
+
+                if (quick) {
+                    // Rueckmeldung am Foto (product.js), Knopf bleibt wie er ist.
+                    form.dispatchEvent(new CustomEvent('kontorShopQuickAdded', { bubbles: true, detail: { form: form, button: button, variantId: variantId } }));
+                } else {
+                    flash(button, text('added', 'Added'), true);
+                }
             })
             .catch(function (error) {
                 buttonLoading(button, false);
-                flash(button, text('errorShort', 'Error'), false);
+
+                if (!quick) {
+                    flash(button, text('errorShort', 'Error'), false);
+                }
+
                 toast(failureMessage(error), true);
             });
     });
+
+    // Fallback fuer Browser ohne event.submitter: zuletzt gedrueckten Absende-Knopf merken.
+    document.addEventListener('click', function (event) {
+        var submit = event.target.closest && event.target.closest('.kontor-shop-quick button[type="submit"]');
+
+        if (submit && submit.form) {
+            submit.form.ksSubmitter = submit;
+        }
+    }, true);
 
     document.addEventListener('change', function (event) {
         var input = event.target;

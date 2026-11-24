@@ -43,6 +43,10 @@ final class PublicProduct
         public readonly string $unit_price = '',
         /** Auslaufartikel (wird nicht nachbestellt) */
         public readonly bool $discontinued = false,
+        /** Hauptkategorie (sichtbar) - fuer Akzentfarbe und Karten */
+        public readonly ?int $category_id = null,
+        /** Attachment-ID des Hauptbilds (0 = keins) - fuer die Bildbuehne der Karten */
+        public readonly int $image_id = 0,
     ) {
     }
 

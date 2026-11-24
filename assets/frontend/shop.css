@@ -17,7 +17,8 @@
  *   --kontor-shop-heading-font Schrift der Artikelnamen (sonst geerbt)
  *   --kontor-shop-card-min     Mindestbreite einer Karte im Raster
  *   --kontor-shop-columns      hoechstens so viele Karten pro Zeile (Standard: so viele wie passen)
- *   --kontor-shop-image-ratio  Seitenverhaeltnis der Artikelbilder (Standard 4 / 3)
+ *   --kontor-shop-image-ratio  Seitenverhaeltnis der Artikelbilder (Standard 4 / 3, Etikett-Karten 4 / 5)
+ *   --kontor-shop-cutout-blend Mischmodus freigestellter Fotos auf der Bildbuehne (multiply; normal bei dunklem Grund)
  *   --kontor-shop-on-primary   Schrift auf Hauptfarbe (Buttons, aktive Filter)
  *   --kontor-shop-success / -warning / -danger / -danger-soft / -danger-text
  *                              Statusfarben (erledigt, Hinweis, Fehler)
@@ -384,7 +385,13 @@
     line-height: inherit;
 }
 
+/* Fester Bildrahmen: overflow: hidden ist noetig, sonst laesst aspect-ratio
+   den Rahmen mit einem Hochformat-Foto mitwachsen (automatische
+   Mindesthoehe) - die ganze Reihe wird hoch und die Nachbarkarten bekommen
+   Leerflaechen. Das Bild liegt deshalb absolut im Rahmen. */
 .kontor-shop-product__media {
+    position: relative;
+    overflow: hidden;
     aspect-ratio: var(--ks-image-ratio);
     background: var(--ks-soft);
     color: var(--ks-muted);
@@ -392,6 +399,8 @@
 }
 
 .kontor-shop-product__media .kontor-shop-img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -613,6 +622,401 @@
 
 .kontor-shop-add-to-cart button {
     flex: 1;
+}
+
+/* ==================== Artikelkarten: "Etikett" ====================
+   Einstellungen -> Design -> Artikelkarten (Modules\Catalog\LabelCard).
+   Alle Karten einer Reihe sind gleich hoch: feste Bildbuehne, Name hoechstens
+   zwei Zeilen, Kaufzeile immer gleich hoch und unten. Am Handy zwei Spalten.
+   Freigestellte Fotos (.is-cutout, weisser Rand) werden ganz gezeigt und
+   verschmelzen per multiply mit dem Grund der Buehne; Fotos mit Hintergrund
+   fuellen sie. --kontor-shop-cutout-blend: normal schaltet das ab (dunkles
+   Farbschema setzt es selbst). */
+
+.kontor-shop-catalog__grid:has(> .kontor-shop-product--label) {
+    gap: 1.75rem 1.25rem;
+}
+
+@media (max-width: 599px) {
+    .kontor-shop-catalog__grid:has(> .kontor-shop-product--label) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem .625rem;
+    }
+}
+
+.kontor-shop-product--label .kontor-shop-product__media {
+    aspect-ratio: var(--kontor-shop-image-ratio, 4 / 5);
+    border-top: 0;
+}
+
+.kontor-shop-product--label .kontor-shop-product__media .kontor-shop-img {
+    transition: transform .6s ease;
+}
+
+.kontor-shop-product--label .kontor-shop-product__media.is-cutout .kontor-shop-img:not(.kontor-shop-img--placeholder) {
+    inset: 5%;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    mix-blend-mode: var(--kontor-shop-cutout-blend, multiply);
+}
+
+/* Preis als Anhaenger: Form und Farbe im ::before (clip-path wuerde den
+   Schatten mit abschneiden), Loch im ::after. */
+.kontor-shop-product .kontor-shop-product__tag {
+    position: absolute;
+    top: .9rem;
+    left: .7rem;
+    z-index: 2;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 .4em;
+    max-width: calc(100% - 1.4rem);
+    padding: .38em .85em .38em 1.5em;
+    color: var(--ks-card-on-accent, var(--ks-on-primary));
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .22));
+    transform: rotate(-4deg);
+    transform-origin: 0 50%;
+    transition: transform .5s cubic-bezier(.3, 1.6, .5, 1);
+}
+
+.kontor-shop-product__tag::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--ks-card-accent, var(--ks-primary));
+    clip-path: polygon(.8em 0, 100% 0, 100% 100%, .8em 100%, 0 50%);
+}
+
+.kontor-shop-product__tag::after {
+    content: "";
+    position: absolute;
+    left: .5em;
+    top: 50%;
+    width: .38em;
+    height: .38em;
+    margin-top: -.19em;
+    border-radius: 50%;
+    background: var(--ks-soft);
+}
+
+/* Mitgliedspreis (Pro) im Anhaenger: Normalpreis klein und durchgestrichen. */
+.kontor-shop-product__tag :is(del, s) {
+    font-size: .8em;
+    font-weight: 600;
+    opacity: .8;
+}
+
+.kontor-shop-product__badge {
+    position: absolute;
+    top: .9rem;
+    right: .7rem;
+    z-index: 2;
+    padding: .3em .7em;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ks-surface) 92%, transparent);
+    color: var(--ks-text);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.kontor-shop-product .kontor-shop-product__added {
+    position: absolute;
+    left: .7rem;
+    bottom: .7rem;
+    z-index: 2;
+    margin: 0;
+    max-width: calc(100% - 1.4rem);
+    padding: .45em .9em;
+    border-radius: 999px;
+    background: var(--ks-card-accent, var(--ks-primary));
+    color: var(--ks-card-on-accent, var(--ks-on-primary));
+    font-size: .88rem;
+    font-weight: 700;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, .2);
+}
+
+.kontor-shop-product__added::before {
+    content: "✓ ";
+}
+
+.kontor-shop-product__added[hidden] {
+    display: none;
+}
+
+.kontor-shop-product--label .kontor-shop-product__body {
+    padding: 1rem 1.1rem 0;
+    gap: .3rem;
+}
+
+.kontor-shop-product--label .kontor-shop-product__category {
+    align-self: stretch;
+    padding: 0;
+    border-radius: 0;
+    background: none;
+    color: var(--ks-card-accent, var(--ks-primary));
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kontor-shop-product.kontor-shop-product--label .kontor-shop-product__name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    min-height: 2.6em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.kontor-shop-product--label .kontor-shop-product__body :is(.kontor-shop-unit-price, .kontor-shop-product__tax) {
+    margin: 0;
+    color: var(--ks-muted);
+    font-size: .8rem;
+}
+
+/* Kaufzeile wie eine Naht abgesetzt; position: relative fuer die Auswahl am Foto. */
+.kontor-shop-product__buy {
+    position: relative;
+    margin: .9rem 1.1rem 0;
+    padding: .7rem 0 1rem;
+    border-top: 1.5px dashed color-mix(in srgb, var(--ks-card-accent, var(--ks-primary)) 28%, transparent);
+}
+
+.kontor-shop-product__buy :is(.kontor-shop-product__sold-out, .kontor-shop-product__last-units) {
+    margin: 0;
+    min-height: var(--ks-tap);
+    display: flex;
+    align-items: center;
+}
+
+.kontor-shop-product .kontor-shop-quick {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .4rem;
+    min-height: var(--ks-tap);
+}
+
+.kontor-shop-quick__hint {
+    min-width: 0;
+    color: var(--ks-muted);
+    font-size: .88rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kontor-shop-sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem;
+    min-width: 0;
+}
+
+/* catalog.js misst die Zeile und blendet aus, was nicht passt ("+N"). */
+.kontor-shop-sizes.is-measured {
+    flex-wrap: nowrap;
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-size {
+    flex: none;
+    min-width: var(--ks-tap);
+    height: var(--ks-tap);
+    min-height: 0;
+    padding: 0 .55em;
+    border: 1.5px solid color-mix(in srgb, var(--ks-text) 22%, transparent);
+    border-radius: min(var(--ks-radius), 10px);
+    background: var(--ks-surface);
+    color: var(--ks-text);
+    font-size: .95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    filter: none;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-size:hover {
+    border-color: var(--ks-text);
+    color: var(--ks-text);
+    filter: none;
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-size.is-mine {
+    border: 2px solid var(--ks-card-accent, var(--ks-primary));
+    background: color-mix(in srgb, var(--ks-card-accent, var(--ks-primary)) 12%, var(--ks-surface));
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-size.is-in-cart {
+    border-color: var(--ks-card-accent, var(--ks-primary));
+    background: var(--ks-card-accent, var(--ks-primary));
+    color: var(--ks-card-on-accent, var(--ks-on-primary));
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-size.is-out {
+    color: var(--ks-muted);
+    border-style: dashed;
+    cursor: not-allowed;
+    opacity: .7;
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-size--more {
+    border-style: dashed;
+    background: transparent;
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-size[hidden],
+.kontor-shop-product .kontor-shop-quick .kontor-shop-size.is-overflow {
+    display: none;
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-plus {
+    flex: none;
+    width: var(--ks-tap);
+    height: var(--ks-tap);
+    min-height: 0;
+    margin-left: auto;
+    padding: 0;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, .16);
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-plus.is-done {
+    background: var(--ks-card-accent, var(--ks-primary));
+}
+
+/* Auswahl am Foto: alle Groessen bzw. die Auswahlfelder bei mehreren Merkmalen. */
+.kontor-shop-product__sheet {
+    position: absolute;
+    left: -.4rem;
+    right: -.4rem;
+    bottom: calc(100% + .5rem);
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    padding: .8rem;
+    border-radius: min(var(--ks-radius), 12px);
+    background: var(--ks-surface);
+    color: var(--ks-text);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .22);
+}
+
+.kontor-shop-product__sheet[hidden] {
+    display: none;
+}
+
+.kontor-shop-product__sheet-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    font-weight: 700;
+    font-size: .95rem;
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-product__sheet-close {
+    flex: none;
+    width: var(--ks-tap);
+    height: var(--ks-tap);
+    min-height: 0;
+    margin: -.6rem -.6rem -.6rem 0;
+    padding: 0;
+    background: transparent;
+    color: var(--ks-muted);
+}
+
+.kontor-shop-product__sheet .kontor-shop-variants {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.kontor-shop-product .kontor-shop-quick .kontor-shop-sheet__submit {
+    width: 100%;
+}
+
+@media (hover: hover) {
+    .kontor-shop-product--label:hover .kontor-shop-product__tag {
+        transform: rotate(0deg);
+    }
+
+    .kontor-shop-product--label:hover .kontor-shop-product__media .kontor-shop-img {
+        transform: scale(1.04);
+    }
+
+    .kontor-shop-fx-none .kontor-shop-product--label:hover .kontor-shop-product__tag {
+        transform: rotate(-4deg);
+    }
+
+    .kontor-shop-fx-none .kontor-shop-product--label:hover .kontor-shop-product__media .kontor-shop-img {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kontor-shop-product .kontor-shop-product__tag,
+    .kontor-shop-product--label .kontor-shop-product__media .kontor-shop-img {
+        transition: none;
+    }
+}
+
+@media (max-width: 599px) {
+    .kontor-shop-product--label .kontor-shop-product__body {
+        padding: .7rem .65rem 0;
+    }
+
+    .kontor-shop-product.kontor-shop-product--label .kontor-shop-product__name {
+        font-size: 1rem;
+    }
+
+    .kontor-shop-product__buy {
+        margin: .5rem .65rem 0;
+        padding: .4rem 0 .6rem;
+    }
+
+    .kontor-shop-product .kontor-shop-product__tag {
+        top: .6rem;
+        left: .45rem;
+        font-size: .9rem;
+    }
+
+    .kontor-shop-product__badge {
+        top: .6rem;
+        right: .45rem;
+        font-size: .62rem;
+    }
+
+    .kontor-shop-product .kontor-shop-product__added {
+        font-size: .78rem;
+    }
+
+    .kontor-shop-product__sheet {
+        left: -.25rem;
+        right: -.25rem;
+    }
+}
+
+/* Artikel- und Kategorieseite in der Farbe des Shoptyps bzw. der Kategorie:
+   Brotkrumen und Kategorie-Links in der Akzentfarbe statt der Theme-Linkfarbe. */
+.kontor-shop-detail--accent :is(.kontor-shop-breadcrumbs, .kontor-shop-detail__categories) a {
+    color: var(--ks-primary);
+    text-decoration-color: color-mix(in srgb, var(--ks-primary) 45%, transparent);
 }
 
 /* ==================== Warenkorb (Seite + Drawer) ==================== */

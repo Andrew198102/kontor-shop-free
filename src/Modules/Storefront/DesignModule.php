@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kontor\Shop\Modules\Storefront;
 
 use Kontor\Shop\Core\Capabilities;
+use Kontor\Shop\Core\Plugin;
 use Kontor\Shop\Core\Registerable;
 use Kontor\Shop\Infrastructure\Frontend\ThemeStyles;
 use Kontor\Shop\Settings\Repository;
@@ -50,6 +51,21 @@ final class DesignModule implements Registerable
             add_filter('show_admin_bar', '__return_false');
             add_action('wp_footer', [$this, 'print_preview_script'], 99);
         }
+    }
+
+    /** Aufbau der Artikelkarten: label = "Etikett" (Standard), classic = Foto, Text, Auswahl und Knopf. */
+    public const CARD_LAYOUTS = ['label', 'classic'];
+
+    public static function sanitize_card_layout(string $value): string
+    {
+        return in_array($value, self::CARD_LAYOUTS, true) ? $value : 'label';
+    }
+
+    public static function card_layout(?Repository $settings = null): string
+    {
+        $settings ??= Plugin::instance()->settings() ?? new Repository();
+
+        return self::sanitize_card_layout((string) $settings->get('design.card_layout', 'label'));
     }
 
     public static function sanitize_card_effect(string $value): string

@@ -82,6 +82,7 @@ final class DesignSection extends Section
             'hide_cart_icon_when_empty' => !empty($_POST['hide_cart_icon_when_empty']), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
             'placeholder_image_id'      => $new_placeholder,
             'card_effect'               => DesignModule::sanitize_card_effect($this->post('card_effect')),
+            'card_layout'               => DesignModule::sanitize_card_layout($this->post('card_layout')),
         ];
 
         // Eigenes CSS nur mit dem WordPress-Recht dafuer (wie "Zusaetzliches CSS" im Customizer); sonst bleibt der gespeicherte Wert.
@@ -239,17 +240,17 @@ final class DesignSection extends Section
             '3'    => '3',
             '4'    => '4',
         ], $design['columns'], __('Products per row', 'kontor-shop'));
-        echo '<p class="description">' . esc_html__('Maximum on a wide screen. Narrower screens show fewer; phones always show one product per row.', 'kontor-shop') . '</p>';
+        echo '<p class="description">' . esc_html__('Maximum on a wide screen. Narrower screens show fewer; phones show two “Label” cards or one “Classic” card per row.', 'kontor-shop') . '</p>';
         echo '</td></tr>';
 
         // Bildformat
         $this->row_open(__('Image format', 'kontor-shop'));
         $this->segmented('image_ratio', [
-            '4/3' => __('Landscape 4:3', 'kontor-shop'),
+            '4/3' => __('Standard', 'kontor-shop'),
             '1/1' => __('Square', 'kontor-shop'),
             '3/4' => __('Portrait 3:4', 'kontor-shop'),
         ], $design['image_ratio'], __('Image format', 'kontor-shop'));
-        echo '<p class="description">' . esc_html__('Product photos are cropped to this format in the catalog. “Portrait” suits clothing, “Square” suits mixed photos. The product page always shows the whole image.', 'kontor-shop') . '</p>';
+        echo '<p class="description">' . esc_html__('Product photos are cropped to this format in the catalog. “Standard” is portrait 4:5 for “Label” cards and landscape 4:3 for “Classic” cards. “Portrait” suits clothing, “Square” suits mixed photos. The product page always shows the whole image.', 'kontor-shop') . '</p>';
         echo '</td></tr>';
 
         // Schrift
@@ -263,6 +264,22 @@ final class DesignSection extends Section
             echo '<p class="description">' . esc_html__('Your theme doesn’t reveal its heading font to WordPress, so product names use the body text font. A web developer can set it (help: Design → For web developers).', 'kontor-shop') . '</p>';
         }
         echo '</td></tr>';
+
+        // Aufbau der Artikelkarten
+        $card_layout = DesignModule::card_layout($this->settings);
+        $this->row_open(__('Product cards', 'kontor-shop'));
+        echo '<fieldset>';
+        foreach ([
+            'label'   => __('Label: price as a tag on the photo, sizes as buttons – one tap puts the size in the cart', 'kontor-shop'),
+            'classic' => __('Classic: photo, description, selection list, quantity and button', 'kontor-shop'),
+        ] as $value => $label) {
+            echo '<label class="ks-radio-line"><input type="radio" name="card_layout" value="' . esc_attr($value) . '" '
+                . checked($card_layout, $value, false) . ' /> ' . esc_html($label) . '</label>';
+        }
+        echo '<p class="description">' . esc_html__(
+            'With “Label”, every photo gets the same frame (portrait 4:5 unless you choose another image format). Photos on white are shown whole, photos with a real background fill the frame. The shop remembers the size a customer chose and highlights it on all cards.',
+            'kontor-shop'
+        ) . '</p></fieldset></td></tr>';
 
         // Karten-Effekt
         $card_effect = DesignModule::sanitize_card_effect((string) $this->settings->get('design.card_effect', 'spotlight'));

@@ -404,6 +404,8 @@ final class PublicCatalog implements CatalogSource
                 $variants,
                 $variants !== [] ? (count($units) === 1 ? $units[0] : '') : $product->unit_price_text($product->price),
                 $product->discontinued,
+                $assigned[0] ?? null,
+                (int) ($product->image_id ?? 0),
             );
         }
 

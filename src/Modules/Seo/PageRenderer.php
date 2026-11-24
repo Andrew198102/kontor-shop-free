@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kontor\Shop\Modules\Seo;
 
 use Kontor\Shop\Domain\Seo\PublicProduct;
+use Kontor\Shop\Modules\Catalog\ProductAccent;
 use Kontor\Shop\Modules\Catalog\ProductNotes;
 use Kontor\Shop\Modules\Catalog\VariantPicker;
 
@@ -32,7 +33,10 @@ final class PageRenderer
      */
     public function product(PublicProduct $product, array $breadcrumbs): string
     {
-        $html = '<div class="kontor-shop-detail" id="artikel-' . (int) $product->id . '" data-product-id="' . (int) $product->id . '">';
+        // Farbe wie auf der Katalogkarte: Kategorie, sonst (Pro) Shoptyp, sonst Hauptfarbe.
+        $accent = ProductAccent::of_category_id($product->category_id);
+        $html   = '<div class="kontor-shop-detail' . ($accent !== '' ? ' kontor-shop-detail--accent' : '') . '" id="artikel-' . (int) $product->id . '" data-product-id="' . (int) $product->id . '"'
+            . ($accent !== '' ? ' style="' . esc_attr(ProductAccent::style($accent)) . '"' : '') . '>';
         $html .= $this->breadcrumbs($breadcrumbs);
         $html .= $this->maybe_h1($product->name);
 
