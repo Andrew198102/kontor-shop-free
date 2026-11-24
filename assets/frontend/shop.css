@@ -2781,3 +2781,63 @@ html.kontor-shop-buybar-open .fab-dock {
     font-size: .8em;
     opacity: .8;
 }
+
+/* Ausverkaufte Etikett-Karte (LabelCard::sold_out): gleiche Kaufzeile wie alle,
+   damit die Reihe ruhig bleibt - links leise die Auswahl bzw. ein Hinweis,
+   rechts (Pro) "Benachrichtigen". Foto leicht entsaettigt, Etikett grau; die
+   Plakette "Ausverkauft" am Foto sagt den Rest. */
+.kontor-shop-product--label .kontor-shop-product__soldout {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    min-height: var(--ks-tap);
+}
+
+.kontor-shop-product--label .kontor-shop-product__soldout-hint {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--ks-muted);
+    font-size: .9rem;
+}
+
+.kontor-shop-product--label.is-sold-out .kontor-shop-product__media .kontor-shop-img:not(.kontor-shop-img--placeholder) {
+    filter: grayscale(.55) brightness(1.04);
+    opacity: .85;
+}
+
+.kontor-shop-product--label.is-sold-out .kontor-shop-product__media.is-cutout .kontor-shop-img:not(.kontor-shop-img--placeholder) {
+    filter: grayscale(.55) brightness(1.07);
+}
+
+.kontor-shop-product--label.is-sold-out .kontor-shop-product__tag {
+    color: #fff;
+}
+
+.kontor-shop-product--label.is-sold-out .kontor-shop-product__tag::before {
+    background: color-mix(in srgb, var(--ks-muted) 85%, var(--ks-surface));
+}
+
+/* Kurzbeschreibung auf der Etikett-Karte (Design -> Artikelkarten): immer zwei
+   Zeilen hoch - auch leer -, damit alle Karten einer Reihe gleich hoch bleiben.
+   Am Handy (zwei schmale Spalten) ausgeblendet. */
+.kontor-shop-product--label .kontor-shop-product__teaser {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    min-height: 2.8em;
+    margin: .3rem 0 0;
+    color: var(--ks-muted);
+    font-size: .92rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 599px) {
+    .kontor-shop-product--label .kontor-shop-product__teaser {
+        display: none;
+    }
+}

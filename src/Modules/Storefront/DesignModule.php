@@ -87,6 +87,14 @@ final class DesignModule implements Registerable
         return self::sanitize_detail_title((string) $settings->get('design.detail_title', 'shop'));
     }
 
+    /** Etikett-Karten mit zweizeiliger Kurzbeschreibung (Standard: ja). */
+    public static function card_teaser(?Repository $settings = null): bool
+    {
+        $settings ??= Plugin::instance()->settings() ?? new Repository();
+
+        return (bool) $settings->get('design.card_teaser', true);
+    }
+
     public static function sanitize_card_effect(string $value): string
     {
         return in_array($value, self::CARD_EFFECTS, true) ? $value : 'spotlight';

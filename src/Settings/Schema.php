@@ -174,6 +174,8 @@ final class Schema
                 'card_layout'               => 'label',
                 // Artikelname als Ueberschrift: shop (im Kaufbereich) | theme (Seitentitel des Themes).
                 'detail_title'              => 'shop',
+                // Etikett-Karten: Kurzbeschreibung (2 Zeilen) unter dem Namen.
+                'card_teaser'               => true,
                 // Grundstil (Ecken, Schatten): theme | clear | soft | square.
                 'style'                     => 'theme',
                 // Ecken in px; leer = wie Grundstil bzw. Theme.

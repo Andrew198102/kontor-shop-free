@@ -48,7 +48,7 @@ msgstr "Kontor Shop ist doppelt installiert. Es läuft Version %1$s aus dem Ordn
 #. translators: %s: required PHP version
 #: kontor-shop.php:86
 msgid "Kontor Shop requires at least PHP %s."
-msgstr "Kontor Shop benoetigt mindestens PHP %s."
+msgstr "Kontor Shop benötigt mindestens PHP %s."
 
 #: src/Admin/Ajax.php:86
 #: src/Admin/CategoriesPage.php:67
@@ -165,7 +165,7 @@ msgstr "Reihenfolge"
 #: src/Admin/CategoriesPage.php:367
 #: src/Admin/OrderDetailView.php:100
 #: src/Admin/ProductForm.php:162
-#: src/Admin/ProductsList.php:135
+#: src/Admin/ProductsList.php:136
 msgid "Name"
 msgstr "Name"
 
@@ -201,7 +201,7 @@ msgid "Move down"
 msgstr "Nach unten"
 
 #: src/Admin/CategoriesPage.php:304
-#: src/Admin/ProductsList.php:388
+#: src/Admin/ProductsList.php:407
 #: src/Admin/WarehousesPage.php:290
 #: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:75
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:268
@@ -255,10 +255,10 @@ msgid "inactive"
 msgstr "inaktiv"
 
 #: src/Admin/CategoriesPage.php:341
-#: src/Admin/ProductsList.php:138
-#: src/Admin/ProductsList.php:212
-#: src/Admin/ProductsList.php:290
-#: src/Admin/ProductsList.php:449
+#: src/Admin/ProductsList.php:139
+#: src/Admin/ProductsList.php:213
+#: src/Admin/ProductsList.php:291
+#: src/Admin/ProductsList.php:471
 msgid "Category"
 msgstr "Kategorie"
 
@@ -1093,7 +1093,7 @@ msgstr "Öffne Kontor Shop → Artikel und klick auf „Neuen Artikel anlegen“
 
 #: src/Admin/HelpCenter/Content/DailyArticles.php:215
 #: src/Admin/HelpCenter/Content/StartArticles.php:42
-#: src/Admin/ProductsList.php:115
+#: src/Admin/ProductsList.php:116
 #: src/Pro__premium_only/Preorders/PreordersModule.php:331
 msgid "Add new product"
 msgstr "Neuen Artikel anlegen"
@@ -2076,7 +2076,7 @@ msgstr "Ja. Klicke auf „Kompaktformular“, dann stehen alle Felder auf einer 
 #: src/Admin/HelpCenter/Content/ProArticles.php:251
 #: src/Modules/Privacy/StockRequestData.php:44
 #: src/Pro__premium_only/StockRequests/StockRequestSettings.php:36
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:272
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:277
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:369
 msgid "Back-in-stock requests"
 msgstr "Verfügbarkeitsanfragen"
@@ -5663,7 +5663,7 @@ msgstr "Protokoll geleert."
 
 #: src/Admin/LogPage.php:129
 #: src/Admin/Settings/AgentsSection.php:49
-#: src/Admin/Settings/DesignSection.php:119
+#: src/Admin/Settings/DesignSection.php:120
 #: src/Admin/Settings/InvoicesSection.php:78
 #: src/Admin/Settings/LegalSection.php:67
 msgid "Settings saved."
@@ -5688,7 +5688,7 @@ msgstr "Referenz (KS-…), Meldung oder Bereich"
 
 #: src/Admin/LogPage.php:152
 #: src/Admin/OrdersList.php:449
-#: src/Admin/ProductsList.php:219
+#: src/Admin/ProductsList.php:220
 #: src/Admin/StockOverview.php:559
 #: src/Pro__premium_only/Audit/AuditPage.php:183
 msgid "Filter"
@@ -5838,7 +5838,7 @@ msgstr "Dieses Dateiformat wird nicht unterstützt. Erlaubt: JPG, PNG, WebP, GIF
 #. translators: 1: file size, 2: maximum upload size
 #: src/Admin/MediaPicker.php:95
 msgid "The file is too large (%1$s). The maximum allowed is %2$s."
-msgstr "Die Datei ist zu gross (%1$s). Erlaubt sind maximal %2$s."
+msgstr "Die Datei ist zu groß (%1$s). Erlaubt sind maximal %2$s."
 
 #. translators: 1: file size, 2: maximum upload size
 #: src/Admin/MediaPicker.php:96
@@ -5885,7 +5885,7 @@ msgstr "Das Bild konnte nicht gelöscht werden."
 
 #: src/Admin/MediaPicker.php:107
 #: src/Admin/ProductForm.php:209
-#: src/Admin/Settings/DesignSection.php:359
+#: src/Admin/Settings/DesignSection.php:363
 msgid "Choose image"
 msgstr "Bild wählen"
 
@@ -5926,13 +5926,13 @@ msgid "Permanently delete the selected products? This can’t be undone."
 msgstr "Ausgewählte Artikel endgültig löschen? Das kann nicht rückgängig gemacht werden."
 
 #: src/Admin/Menu.php:179
-#: src/Admin/Settings/DesignSection.php:444
+#: src/Admin/Settings/DesignSection.php:448
 #: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:357
 msgid "Copied."
 msgstr "Kopiert."
 
 #: src/Admin/Menu.php:180
-#: src/Admin/Settings/DesignSection.php:445
+#: src/Admin/Settings/DesignSection.php:449
 #: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:358
 msgid "Text selected – now copy with Ctrl/⌘+C."
 msgstr "Text markiert – jetzt mit Strg/⌘+C kopieren."
@@ -6245,7 +6245,7 @@ msgid "Please wait until all images have been uploaded."
 msgstr "Bitte warten, bis alle Bilder hochgeladen sind."
 
 #: src/Admin/Menu.php:386
-#: src/Admin/ProductsList.php:114
+#: src/Admin/ProductsList.php:115
 msgid "Products"
 msgstr "Artikel"
 
@@ -6284,7 +6284,7 @@ msgid "Email"
 msgstr "E-Mail"
 
 #: src/Admin/OrderDetailView.php:103
-#: src/Admin/Settings/DesignSection.php:419
+#: src/Admin/Settings/DesignSection.php:423
 #: src/Admin/TemplatesPage.php:343
 #: src/Modules/Checkout/CheckoutModule.php:879
 #: src/Modules/Privacy/PrivacyModule.php:106
@@ -6973,7 +6973,7 @@ msgid "Cancelled"
 msgstr "Storniert"
 
 #: src/Admin/OrdersList.php:379
-#: src/Admin/ProductsList.php:165
+#: src/Admin/ProductsList.php:166
 #: src/Admin/StockOverview.php:513
 #: src/Modules/Catalog/CatalogModule.php:236
 #: src/Pro__premium_only/Agents/StockFile.php:188
@@ -7035,7 +7035,7 @@ msgid "pickup only"
 msgstr "nur Abholung"
 
 #: src/Admin/OrdersList.php:438
-#: src/Admin/ProductsList.php:210
+#: src/Admin/ProductsList.php:211
 #: src/Admin/StockOverview.php:555
 #: src/Admin/StockOverview.php:959
 #: src/Admin/StockOverview.php:1072
@@ -7059,7 +7059,7 @@ msgid "non-members only"
 msgstr "nur Nicht-Mitglieder"
 
 #: src/Admin/OrdersList.php:452
-#: src/Admin/ProductsList.php:223
+#: src/Admin/ProductsList.php:224
 #: src/Admin/StockOverview.php:562
 #: src/Pro__premium_only/Audit/AuditPage.php:186
 #: src/Pro__premium_only/Coupons/Admin/CouponsList.php:155
@@ -7547,7 +7547,7 @@ msgid "New product"
 msgstr "Neuer Artikel"
 
 #: src/Admin/ProductForm.php:118
-#: src/Admin/ProductsList.php:170
+#: src/Admin/ProductsList.php:171
 #: src/Pro__premium_only/Audit/AuditPage.php:496
 msgid "Archived"
 msgstr "Archiviert"
@@ -7555,14 +7555,14 @@ msgstr "Archiviert"
 #: src/Admin/ProductForm.php:121
 #: src/Admin/ProductForm.php:122
 #: src/Admin/ProductForm.php:344
-#: src/Admin/ProductsList.php:141
-#: src/Admin/ProductsList.php:421
+#: src/Admin/ProductsList.php:142
+#: src/Admin/ProductsList.php:443
 msgid "Visible in shop"
 msgstr "Im Shop sichtbar"
 
 #: src/Admin/ProductForm.php:121
 #: src/Admin/ProductForm.php:122
-#: src/Admin/ProductsList.php:167
+#: src/Admin/ProductsList.php:168
 msgid "Hidden"
 msgstr "Ausgeblendet"
 
@@ -7580,7 +7580,7 @@ msgid "Low stock"
 msgstr "Bestand knapp"
 
 #: src/Admin/ProductForm.php:139
-#: src/Admin/ProductsList.php:413
+#: src/Admin/ProductsList.php:435
 #: src/Admin/StockOverview.php:597
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:668
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:762
@@ -7755,20 +7755,20 @@ msgid "Create & add another"
 msgstr "Anlegen & weiteren erfassen"
 
 #: src/Admin/ProductForm.php:358
-#: src/Admin/ProductsList.php:277
-#: src/Admin/ProductsList.php:390
+#: src/Admin/ProductsList.php:278
+#: src/Admin/ProductsList.php:409
 msgid "Duplicate"
 msgstr "Duplizieren"
 
 #: src/Admin/ProductForm.php:375
-#: src/Admin/ProductsList.php:272
-#: src/Admin/ProductsList.php:393
+#: src/Admin/ProductsList.php:273
+#: src/Admin/ProductsList.php:412
 msgid "Restore"
 msgstr "Wiederherstellen"
 
 #: src/Admin/ProductForm.php:376
-#: src/Admin/ProductsList.php:284
-#: src/Admin/ProductsList.php:391
+#: src/Admin/ProductsList.php:285
+#: src/Admin/ProductsList.php:410
 msgid "Archive"
 msgstr "Archivieren"
 
@@ -7793,7 +7793,7 @@ msgid "You enter the initial stock per variant in the variant table."
 msgstr "Den Anfangsbestand erfasst du je Variante in der Variantentabelle."
 
 #: src/Admin/ProductForm.php:409
-#: src/Admin/ProductsList.php:450
+#: src/Admin/ProductsList.php:472
 #: src/Admin/StockOverview.php:421
 #: src/Admin/StockOverview.php:933
 #: src/Pro__premium_only/Audit/AuditPage.php:504
@@ -7860,7 +7860,7 @@ msgid "Main category"
 msgstr "Hauptkategorie"
 
 #: src/Admin/ProductForm.php:509
-#: src/Admin/ProductsList.php:449
+#: src/Admin/ProductsList.php:471
 msgid "– none –"
 msgstr "– keine –"
 
@@ -7982,13 +7982,13 @@ msgid "e.g. 44.90"
 msgstr "z. B. 44,90"
 
 #: src/Admin/ProductVariantsCard.php:112
-#: src/Admin/ProductsList.php:139
+#: src/Admin/ProductsList.php:140
 #: src/Pro__premium_only/Audit/AuditPage.php:491
 msgid "Price"
 msgstr "Preis"
 
 #: src/Admin/ProductVariantsCard.php:113
-#: src/Admin/ProductsList.php:295
+#: src/Admin/ProductsList.php:296
 #: src/Admin/StockOverview.php:936
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:563
 msgid "Apply"
@@ -8022,12 +8022,12 @@ msgid "EAN"
 msgstr "EAN"
 
 #: src/Admin/ProductVariantsCard.php:125
-#: src/Admin/ProductsList.php:448
+#: src/Admin/ProductsList.php:470
 msgid "Price (€)"
 msgstr "Preis (€)"
 
 #: src/Admin/ProductVariantsCard.php:127
-#: src/Admin/ProductsList.php:134
+#: src/Admin/ProductsList.php:135
 msgid "Image"
 msgstr "Bild"
 
@@ -8073,47 +8073,47 @@ msgstr "noch %d Stück"
 msgid "There is still <strong>%1$d item of stock without a variant</strong> (from before variants existed). This stock isn’t offered in the shop – please book it out under %2$s and book it in for the matching variants."
 msgstr "Es gibt noch <strong>%1$d Stück Bestand ohne Variante</strong> (von vor den Varianten). Dieser Bestand wird im Shop nicht angeboten – bitte unter %2$s ausbuchen und bei den passenden Varianten einbuchen."
 
-#: src/Admin/ProductsList.php:136
-#: src/Admin/ProductsList.php:447
+#: src/Admin/ProductsList.php:137
+#: src/Admin/ProductsList.php:469
 msgid "SKU"
 msgstr "SKU"
 
-#: src/Admin/ProductsList.php:166
+#: src/Admin/ProductsList.php:167
 msgid "Visible"
 msgstr "Sichtbar"
 
-#: src/Admin/ProductsList.php:168
+#: src/Admin/ProductsList.php:169
 #: src/Admin/ShopSnapshot.php:306
 msgid "Ready to go online"
 msgstr "Bereit zum Freischalten"
 
-#: src/Admin/ProductsList.php:169
+#: src/Admin/ProductsList.php:170
 msgid "Low/out of stock"
 msgstr "Bestand knapp/leer"
 
 #. translators: %s: link to the cleanup list
-#: src/Admin/ProductsList.php:171
+#: src/Admin/ProductsList.php:172
 #: src/Admin/ProductsPage.php:763
 #: src/Admin/ProductsPage.php:775
 msgid "Unused images"
 msgstr "Ungenutzte Bilder"
 
-#: src/Admin/ProductsList.php:190
+#: src/Admin/ProductsList.php:191
 msgid "These products have a price, stock, a photo, a description and a category, but are still hidden. Check them and switch them on one by one, or select them and choose \"Make visible\"."
 msgstr "Diese Artikel haben Preis, Bestand, Foto, Beschreibung und Kategorie, sind aber noch ausgeblendet. Prüfe sie und schalte sie einzeln frei – oder markiere sie und wähle „Sichtbar schalten“."
 
-#: src/Admin/ProductsList.php:207
+#: src/Admin/ProductsList.php:208
 msgid "Search: name, SKU, description"
 msgstr "Suche: Name, SKU, Beschreibung"
 
-#: src/Admin/ProductsList.php:207
+#: src/Admin/ProductsList.php:208
 #: src/Admin/StockOverview.php:552
 #: src/Modules/Agents/ShopTools.php:57
 #: src/Modules/Catalog/CatalogModule.php:184
 msgid "Search products"
 msgstr "Artikel suchen"
 
-#: src/Admin/ProductsList.php:215
+#: src/Admin/ProductsList.php:216
 #: src/Admin/StockOverview.php:558
 #: src/Admin/StockOverview.php:1076
 #: src/Admin/StockOverview.php:1104
@@ -8121,79 +8121,87 @@ msgstr "Artikel suchen"
 msgid "All categories"
 msgstr "Alle Kategorien"
 
-#: src/Admin/ProductsList.php:216
-#: src/Admin/ProductsList.php:291
+#: src/Admin/ProductsList.php:217
+#: src/Admin/ProductsList.php:292
 msgid "– no category –"
 msgstr "– ohne Kategorie –"
 
-#: src/Admin/ProductsList.php:240
+#: src/Admin/ProductsList.php:241
 msgid "The archive is empty."
 msgstr "Das Archiv ist leer."
 
-#: src/Admin/ProductsList.php:242
+#: src/Admin/ProductsList.php:243
 msgid "No products found for this selection."
 msgstr "Keine Artikel für diese Auswahl gefunden."
 
-#: src/Admin/ProductsList.php:244
+#: src/Admin/ProductsList.php:245
 msgid "No products yet."
 msgstr "Noch keine Artikel angelegt."
 
-#: src/Admin/ProductsList.php:251
+#: src/Admin/ProductsList.php:252
 #: src/Admin/SetupChecklist.php:42
 msgid "Add your first product"
 msgstr "Ersten Artikel anlegen"
 
-#: src/Admin/ProductsList.php:268
+#: src/Admin/ProductsList.php:269
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:556
 msgid "Bulk action"
 msgstr "Sammelaktion"
 
-#: src/Admin/ProductsList.php:269
+#: src/Admin/ProductsList.php:270
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:557
 msgid "Bulk action …"
 msgstr "Sammelaktion …"
 
-#: src/Admin/ProductsList.php:273
-#: src/Admin/ProductsList.php:395
+#: src/Admin/ProductsList.php:274
+#: src/Admin/ProductsList.php:414
 msgid "Delete permanently"
 msgstr "Endgültig löschen"
 
-#: src/Admin/ProductsList.php:275
+#: src/Admin/ProductsList.php:276
 msgid "Make visible"
 msgstr "Sichtbar schalten"
 
-#: src/Admin/ProductsList.php:276
+#: src/Admin/ProductsList.php:277
 msgid "Make hidden"
 msgstr "Unsichtbar schalten"
 
-#: src/Admin/ProductsList.php:280
+#: src/Admin/ProductsList.php:281
 msgid "Assign category …"
 msgstr "Kategorie zuweisen …"
 
-#: src/Admin/ProductsList.php:281
+#: src/Admin/ProductsList.php:282
 msgid "Change price by % …"
 msgstr "Preis um % ändern …"
 
-#: src/Admin/ProductsList.php:292
+#: src/Admin/ProductsList.php:293
 msgid "Percent"
 msgstr "Prozent"
 
-#: src/Admin/ProductsList.php:389
-#: src/Admin/ProductsList.php:445
+#: src/Admin/ProductsList.php:339
+msgid "Not in the shop: the category is switched off"
+msgstr "Nicht im Shop: Kategorie ist ausgeschaltet"
+
+#: src/Admin/ProductsList.php:341
+msgid "Not in the shop: the shop type is switched off"
+msgstr "Nicht im Shop: Shoptyp ist ausgeschaltet"
+
+#: src/Admin/ProductsList.php:408
+#: src/Admin/ProductsList.php:467
 msgid "Quick edit"
 msgstr "Schnellbearbeitung"
 
-#: src/Admin/ProductsList.php:395
+#: src/Admin/ProductsList.php:414
 msgid "Delete product permanently? This can’t be undone."
 msgstr "Artikel endgültig löschen? Das kann nicht rückgängig gemacht werden."
 
 #. translators: %s: product name
-#: src/Admin/ProductsList.php:407
+#: src/Admin/ProductsList.php:426
 #: src/Admin/StockOverview.php:624
 msgid "Select %s"
 msgstr "%s auswählen"
 
-#: src/Admin/ProductsList.php:412
+#: src/Admin/ProductsList.php:431
 msgid "hidden"
 msgstr "unsichtbar"
 
@@ -8507,355 +8515,359 @@ msgstr "Ansehen, was er kann"
 msgid "Design"
 msgstr "Design"
 
-#: src/Admin/Settings/DesignSection.php:113
+#: src/Admin/Settings/DesignSection.php:114
 msgid "The previous placeholder image is no longer used. You can delete it from the media library under Products → \"Unused images\"."
 msgstr "Das bisherige Platzhalterbild wird nicht mehr verwendet. Du kannst es unter Artikel → \"Ungenutzte Bilder\" aus der Mediathek löschen."
 
-#: src/Admin/Settings/DesignSection.php:169
+#: src/Admin/Settings/DesignSection.php:170
 msgid "Here you decide how the shop looks to customers. Start with “Like my theme”, check the preview and only change what doesn’t fit. Changes apply after saving."
 msgstr "Hier bestimmst du, wie der Shop für Kunden aussieht. Starte mit „Wie mein Theme“, prüfe die Vorschau und ändere nur, was nicht passt. Änderungen gelten nach dem Speichern."
 
-#: src/Admin/Settings/DesignSection.php:172
+#: src/Admin/Settings/DesignSection.php:173
 msgid "Jump to the preview ↓"
 msgstr "Zur Vorschau ↓"
 
-#: src/Admin/Settings/DesignSection.php:178
-#: src/Admin/Settings/DesignSection.php:184
+#: src/Admin/Settings/DesignSection.php:179
+#: src/Admin/Settings/DesignSection.php:185
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
 msgid "Basic style"
 msgstr "Grundstil"
 
-#: src/Admin/Settings/DesignSection.php:180
-#: src/Admin/Settings/DesignSection.php:214
+#: src/Admin/Settings/DesignSection.php:181
+#: src/Admin/Settings/DesignSection.php:215
 msgid "Like my theme"
 msgstr "Wie mein Theme"
 
-#: src/Admin/Settings/DesignSection.php:181
+#: src/Admin/Settings/DesignSection.php:182
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
 msgid "Clear"
 msgstr "Klar"
 
-#: src/Admin/Settings/DesignSection.php:182
+#: src/Admin/Settings/DesignSection.php:183
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
 msgid "Soft"
 msgstr "Weich"
 
-#: src/Admin/Settings/DesignSection.php:183
+#: src/Admin/Settings/DesignSection.php:184
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
 msgid "Angular"
 msgstr "Kantig"
 
-#: src/Admin/Settings/DesignSection.php:185
+#: src/Admin/Settings/DesignSection.php:186
 msgid "Sets corners and shadows. “Like my theme” takes what your theme provides; the other styles are ready-made looks. You can still change every setting below."
 msgstr "Legt Ecken und Schatten fest. „Wie mein Theme“ übernimmt, was dein Theme vorgibt; die anderen sind fertige Vorlagen. Jede Einstellung darunter kannst du trotzdem ändern."
 
-#: src/Admin/Settings/DesignSection.php:189
+#: src/Admin/Settings/DesignSection.php:190
 msgid "Main shop color"
 msgstr "Hauptfarbe des Shops"
 
-#: src/Admin/Settings/DesignSection.php:191
+#: src/Admin/Settings/DesignSection.php:192
 msgid "from the theme"
 msgstr "vom Theme"
 
-#: src/Admin/Settings/DesignSection.php:192
-#: src/Admin/Settings/DesignSection.php:337
+#: src/Admin/Settings/DesignSection.php:193
+#: src/Admin/Settings/DesignSection.php:341
 msgid "own color:"
 msgstr "eigene Farbe:"
 
-#: src/Admin/Settings/DesignSection.php:193
+#: src/Admin/Settings/DesignSection.php:194
 msgid "Own main color"
 msgstr "Eigene Hauptfarbe"
 
-#: src/Admin/Settings/DesignSection.php:197
+#: src/Admin/Settings/DesignSection.php:198
 msgid "Your theme uses:"
 msgstr "Dein Theme nutzt:"
 
-#: src/Admin/Settings/DesignSection.php:199
+#: src/Admin/Settings/DesignSection.php:200
 msgid "Your theme doesn’t reveal a color to WordPress. With “from the theme”, the shop uses the color your theme sets for Kontor Shop (help: Design → For web developers), otherwise a neutral blue."
 msgstr "Dein Theme verrät WordPress keine Farbe. Mit „vom Theme“ nutzt der Shop die Farbe, die dein Theme für Kontor Shop setzt (Hilfe: Design → Für Webmaster), sonst ein neutrales Blau."
 
-#: src/Admin/Settings/DesignSection.php:203
+#: src/Admin/Settings/DesignSection.php:204
 msgid "A fixed color is saved here. Earlier versions entered it automatically when saving – it overrides your theme’s color, even if the theme changes later."
 msgstr "Hier ist eine feste Farbe gespeichert. Frühere Versionen haben sie beim Speichern automatisch eingetragen – sie überschreibt die Farbe deines Themes, auch wenn sich das Theme später ändert."
 
-#: src/Admin/Settings/DesignSection.php:204
+#: src/Admin/Settings/DesignSection.php:205
 msgid "Use theme color"
 msgstr "Theme-Farbe verwenden"
 
-#: src/Admin/Settings/DesignSection.php:208
+#: src/Admin/Settings/DesignSection.php:209
 msgid "Used for buttons, active filters and links in the catalog, cart and checkout, unless a category has its own accent color (“Categories” menu). The text on buttons automatically turns white or dark so it stays readable."
 msgstr "Für Buttons, aktive Filter und Links in Katalog, Warenkorb und Kasse, sofern eine Kategorie keine eigene Akzentfarbe hat (Menü „Kategorien“). Die Schrift auf Buttons wird automatisch weiß oder dunkel, damit sie lesbar bleibt."
 
-#: src/Admin/Settings/DesignSection.php:212
-#: src/Admin/Settings/DesignSection.php:217
+#: src/Admin/Settings/DesignSection.php:213
+#: src/Admin/Settings/DesignSection.php:218
 msgid "Color scheme"
 msgstr "Farbschema"
 
-#: src/Admin/Settings/DesignSection.php:215
+#: src/Admin/Settings/DesignSection.php:216
 msgid "Light"
 msgstr "Hell"
 
-#: src/Admin/Settings/DesignSection.php:216
+#: src/Admin/Settings/DesignSection.php:217
 msgid "Dark"
 msgstr "Dunkel"
 
-#: src/Admin/Settings/DesignSection.php:221
+#: src/Admin/Settings/DesignSection.php:222
 msgid "Detected: your theme has a dark background – with “Like my theme”, cards, cart and checkout are dark too."
 msgstr "Erkannt: Dein Theme hat einen dunklen Hintergrund – mit „Wie mein Theme“ sind Karten, Warenkorb und Kasse ebenfalls dunkel."
 
-#: src/Admin/Settings/DesignSection.php:222
+#: src/Admin/Settings/DesignSection.php:223
 msgid "Detected: your theme has a light background."
 msgstr "Erkannt: Dein Theme hat einen hellen Hintergrund."
 
-#: src/Admin/Settings/DesignSection.php:224
+#: src/Admin/Settings/DesignSection.php:225
 msgid "Choose “Dark” if your website has a dark background. Your theme doesn’t reveal its background, so “Like my theme” stays light."
 msgstr "Wähle „Dunkel“, wenn deine Website einen dunklen Hintergrund hat. Dein Theme verrät seinen Hintergrund nicht, deshalb bleibt „Wie mein Theme“ hell."
 
-#: src/Admin/Settings/DesignSection.php:229
+#: src/Admin/Settings/DesignSection.php:230
 msgid "Corners"
 msgstr "Ecken"
 
-#: src/Admin/Settings/DesignSection.php:230
+#: src/Admin/Settings/DesignSection.php:231
 msgid "Own rounding"
 msgstr "Eigene Rundung"
 
-#: src/Admin/Settings/DesignSection.php:233
+#: src/Admin/Settings/DesignSection.php:234
 msgid "0 = square corners. Without “Own rounding”, the basic style decides."
 msgstr "0 = eckig. Ohne „Eigene Rundung“ entscheidet der Grundstil."
 
-#: src/Admin/Settings/DesignSection.php:237
-#: src/Admin/Settings/DesignSection.php:243
+#: src/Admin/Settings/DesignSection.php:238
+#: src/Admin/Settings/DesignSection.php:244
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:337
 msgid "Products per row"
 msgstr "Artikel pro Zeile"
 
-#: src/Admin/Settings/DesignSection.php:239
+#: src/Admin/Settings/DesignSection.php:240
 msgid "Automatic"
 msgstr "Automatisch"
 
-#: src/Admin/Settings/DesignSection.php:244
+#: src/Admin/Settings/DesignSection.php:245
 msgid "Maximum on a wide screen. Narrower screens show fewer; phones show two “Label” cards or one “Classic” card per row."
 msgstr "Höchstens so viele auf einem breiten Bildschirm. Schmalere zeigen weniger; am Handy stehen zwei „Etikett“-Karten oder eine „Klassisch“-Karte nebeneinander."
 
-#: src/Admin/Settings/DesignSection.php:248
-#: src/Admin/Settings/DesignSection.php:253
+#: src/Admin/Settings/DesignSection.php:249
+#: src/Admin/Settings/DesignSection.php:254
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:338
 msgid "Image format"
 msgstr "Bildformat"
 
-#: src/Admin/Settings/DesignSection.php:250
+#: src/Admin/Settings/DesignSection.php:251
 msgid "Standard"
 msgstr "Standard"
 
-#: src/Admin/Settings/DesignSection.php:251
+#: src/Admin/Settings/DesignSection.php:252
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:338
 msgid "Square"
 msgstr "Quadrat"
 
-#: src/Admin/Settings/DesignSection.php:252
+#: src/Admin/Settings/DesignSection.php:253
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:338
 msgid "Portrait 3:4"
 msgstr "Hoch 3:4"
 
-#: src/Admin/Settings/DesignSection.php:254
+#: src/Admin/Settings/DesignSection.php:255
 msgid "Product photos are cropped to this format in the catalog. “Standard” is portrait 4:5 for “Label” cards and landscape 4:3 for “Classic” cards. “Portrait” suits clothing, “Square” suits mixed photos. The product page always shows the whole image."
 msgstr "Artikelfotos werden im Katalog auf dieses Format zugeschnitten. „Standard“ ist Hochformat 4:5 bei „Etikett“-Karten und Querformat 4:3 bei „Klassisch“. „Hochformat“ passt zu Kleidung, „Quadratisch“ zu gemischten Fotos. Die Artikelseite zeigt immer das ganze Bild."
 
-#: src/Admin/Settings/DesignSection.php:258
-#: src/Admin/Settings/DesignSection.php:262
+#: src/Admin/Settings/DesignSection.php:259
+#: src/Admin/Settings/DesignSection.php:263
 msgid "Font of product names"
 msgstr "Schrift der Artikelnamen"
 
-#: src/Admin/Settings/DesignSection.php:260
+#: src/Admin/Settings/DesignSection.php:261
 msgid "Like the theme’s headings"
 msgstr "Wie die Überschriften im Theme"
 
-#: src/Admin/Settings/DesignSection.php:261
+#: src/Admin/Settings/DesignSection.php:262
 msgid "Like the body text"
 msgstr "Wie der Fließtext"
 
-#: src/Admin/Settings/DesignSection.php:265
+#: src/Admin/Settings/DesignSection.php:266
 msgid "Your theme doesn’t reveal its heading font to WordPress, so product names use the body text font. A web developer can set it (help: Design → For web developers)."
 msgstr "Dein Theme verrät WordPress seine Überschriften-Schrift nicht, deshalb nutzen Artikelnamen die Fließtext-Schrift. Ein Webmaster kann sie setzen (Hilfe: Design → Für Webmaster)."
 
-#: src/Admin/Settings/DesignSection.php:271
+#: src/Admin/Settings/DesignSection.php:272
 msgid "Product cards"
 msgstr "Artikelkarten"
 
-#: src/Admin/Settings/DesignSection.php:274
+#: src/Admin/Settings/DesignSection.php:275
 msgid "Label: price as a tag on the photo, sizes as buttons – one tap puts the size in the cart"
 msgstr "Etikett: Preis als Anhänger am Foto, Größen als Knöpfe – ein Tipp legt die Größe in den Warenkorb"
 
-#: src/Admin/Settings/DesignSection.php:275
+#: src/Admin/Settings/DesignSection.php:276
 msgid "Classic: photo, description, selection list, quantity and button"
 msgstr "Klassisch: Foto, Beschreibung, Auswahlliste, Menge und Knopf"
 
-#: src/Admin/Settings/DesignSection.php:280
+#: src/Admin/Settings/DesignSection.php:281
 msgid "With “Label”, every photo gets the same frame (portrait 4:5 unless you choose another image format). On photos on white the shop zooms in on the product, photos with a real background fill the frame. The shop remembers the size a customer chose and highlights it on all cards."
 msgstr "Bei „Etikett“ bekommt jedes Foto denselben Rahmen (Hochformat 4:5, außer du wählst unten ein anderes Bildformat). Bei Fotos auf Weiß zoomt der Shop auf den Artikel, Fotos mit echtem Hintergrund füllen den Rahmen. Der Shop merkt sich die Größe, die eine Kundin oder ein Kunde gewählt hat, und hebt sie auf allen Karten hervor."
 
-#: src/Admin/Settings/DesignSection.php:287
+#: src/Admin/Settings/DesignSection.php:286
+msgid "Show the first two lines of the description under the name (“Label” only, not on phones)"
+msgstr "Die ersten zwei Zeilen der Beschreibung unter dem Namen zeigen (nur „Etikett“, nicht am Handy)"
+
+#: src/Admin/Settings/DesignSection.php:291
 msgid "Product name on product pages"
 msgstr "Artikelname auf Artikelseiten"
 
-#: src/Admin/Settings/DesignSection.php:290
+#: src/Admin/Settings/DesignSection.php:294
 msgid "Shown by the shop as a heading next to the photo (recommended)"
 msgstr "Zeigt der Shop als Überschrift neben dem Foto (empfohlen)"
 
-#: src/Admin/Settings/DesignSection.php:291
+#: src/Admin/Settings/DesignSection.php:295
 msgid "Shown by the theme as the page title"
 msgstr "Zeigt das Theme als Seitentitel"
 
-#: src/Admin/Settings/DesignSection.php:296
+#: src/Admin/Settings/DesignSection.php:300
 msgid "Many themes show no page title on shop pages. Then the product name would be missing. Choose “theme” only if your theme shows the name above the page and it appears twice."
 msgstr "Viele Themes zeigen auf Shop-Seiten keinen Seitentitel – dann würde der Artikelname fehlen. Wähle „Theme“ nur, wenn dein Theme den Namen über der Seite zeigt und er doppelt erscheint."
 
-#: src/Admin/Settings/DesignSection.php:303
+#: src/Admin/Settings/DesignSection.php:307
 msgid "Card effect"
 msgstr "Karten-Effekt"
 
-#: src/Admin/Settings/DesignSection.php:306
+#: src/Admin/Settings/DesignSection.php:310
 msgid "Spotlight: the border glows in the accent color where the mouse is"
 msgstr "Spotlight: Rand leuchtet in der Akzentfarbe dort auf, wo die Maus ist"
 
-#: src/Admin/Settings/DesignSection.php:307
+#: src/Admin/Settings/DesignSection.php:311
 msgid "Lift: the card lifts slightly on hover"
 msgstr "Anheben: Karte hebt sich beim Überfahren leicht an"
 
-#: src/Admin/Settings/DesignSection.php:308
+#: src/Admin/Settings/DesignSection.php:312
 msgid "Calm: no effect"
 msgstr "Ruhig: kein Effekt"
 
-#: src/Admin/Settings/DesignSection.php:313
+#: src/Admin/Settings/DesignSection.php:317
 msgid "Only works on a computer with a mouse; on mobile the cards stay calm."
 msgstr "Wirkt nur am Computer mit Maus; am Handy bleiben die Karten ruhig."
 
-#: src/Admin/Settings/DesignSection.php:319
+#: src/Admin/Settings/DesignSection.php:323
 msgid "Floating cart button"
 msgstr "Schwebender Warenkorb-Button"
 
-#: src/Admin/Settings/DesignSection.php:322
+#: src/Admin/Settings/DesignSection.php:326
 msgid "show (bottom right, on all pages)"
 msgstr "anzeigen (unten rechts, auf allen Seiten)"
 
-#: src/Admin/Settings/DesignSection.php:323
+#: src/Admin/Settings/DesignSection.php:327
 msgid "Turn this off if you place the cart icon in your theme yourself - shortcode: [kontor_shop_cart_icon]."
 msgstr "Abschalten, wenn du das Warenkorb-Icon stattdessen selbst im Theme platzierst - Shortcode: [kontor_shop_cart_icon]."
 
-#: src/Admin/Settings/DesignSection.php:329
+#: src/Admin/Settings/DesignSection.php:333
 msgid "Only show once there are products in the cart"
 msgstr "Nur einblenden, sobald Artikel im Warenkorb liegen"
 
-#: src/Admin/Settings/DesignSection.php:330
+#: src/Admin/Settings/DesignSection.php:334
 msgid "When the cart is empty, the button stays hidden and appears automatically as soon as a product is added."
 msgstr "Ist der Warenkorb leer, bleibt der Button versteckt und erscheint automatisch, sobald ein Artikel hinzugefügt wird."
 
-#: src/Admin/Settings/DesignSection.php:334
+#: src/Admin/Settings/DesignSection.php:338
 msgid "Cart button color"
 msgstr "Farbe des Warenkorb-Buttons"
 
-#: src/Admin/Settings/DesignSection.php:335
+#: src/Admin/Settings/DesignSection.php:339
 msgid "Color:"
 msgstr "Farbe:"
 
-#: src/Admin/Settings/DesignSection.php:336
+#: src/Admin/Settings/DesignSection.php:340
 msgid "like the main color"
 msgstr "wie die Hauptfarbe"
 
-#: src/Admin/Settings/DesignSection.php:338
+#: src/Admin/Settings/DesignSection.php:342
 msgid "Own cart button color"
 msgstr "Eigene Farbe des Warenkorb-Buttons"
 
-#: src/Admin/Settings/DesignSection.php:342
+#: src/Admin/Settings/DesignSection.php:346
 msgid "Product search"
 msgstr "Produktsuche"
 
-#: src/Admin/Settings/DesignSection.php:345
+#: src/Admin/Settings/DesignSection.php:349
 msgid "Show search field in the catalog"
 msgstr "Suchfeld im Katalog anzeigen"
 
-#: src/Admin/Settings/DesignSection.php:358
+#: src/Admin/Settings/DesignSection.php:362
 msgid "Placeholder image"
 msgstr "Platzhalterbild"
 
-#: src/Admin/Settings/DesignSection.php:360
+#: src/Admin/Settings/DesignSection.php:364
 msgid "Shown for products without their own photo (e.g. your logo). Empty = neutral icon."
 msgstr "Wird bei Artikeln ohne eigenes Foto angezeigt (z. B. euer Logo). Leer = neutrales Symbol."
 
-#: src/Admin/Settings/DesignSection.php:384
+#: src/Admin/Settings/DesignSection.php:388
 msgid "For web developers: adjust CSS yourself"
 msgstr "Für Webmaster: CSS selbst anpassen"
 
-#: src/Admin/Settings/DesignSection.php:385
+#: src/Admin/Settings/DesignSection.php:389
 msgid "The settings above produce the block below. You can copy it into the style.css of your child theme and then choose “Like my theme” here, or add your own rules in the “Custom CSS” field."
 msgstr "Die Einstellungen oben ergeben den Block unten. Du kannst ihn in die style.css deines Child-Themes übernehmen und hier dann „Wie mein Theme“ wählen, oder eigene Regeln im Feld „Eigenes CSS“ ergänzen."
 
-#: src/Admin/Settings/DesignSection.php:386
+#: src/Admin/Settings/DesignSection.php:390
 msgid "All variables, class names and examples"
 msgstr "Alle Variablen, Klassennamen und Beispiele"
 
-#: src/Admin/Settings/DesignSection.php:388
+#: src/Admin/Settings/DesignSection.php:392
 msgid "Copy CSS"
 msgstr "CSS kopieren"
 
-#: src/Admin/Settings/DesignSection.php:390
+#: src/Admin/Settings/DesignSection.php:394
 msgid "Custom CSS"
 msgstr "Eigenes CSS"
 
-#: src/Admin/Settings/DesignSection.php:394
+#: src/Admin/Settings/DesignSection.php:398
 msgid "Loaded right after the shop styles on every page. Start your rules with a .kontor-shop-… class so they only affect the shop. HTML tags are removed."
 msgstr "Wird auf jeder Seite direkt nach den Shop-Styles geladen. Beginne deine Regeln mit einer .kontor-shop-…-Klasse, damit sie nur den Shop betreffen. HTML-Tags werden entfernt."
 
-#: src/Admin/Settings/DesignSection.php:396
+#: src/Admin/Settings/DesignSection.php:400
 msgid "Only users who may edit CSS in WordPress (usually administrators) can change this field."
 msgstr "Nur Benutzer, die in WordPress CSS bearbeiten dürfen (meist Administratoren), können dieses Feld ändern."
 
-#: src/Admin/Settings/DesignSection.php:409
+#: src/Admin/Settings/DesignSection.php:413
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:548
 msgid "Preview"
 msgstr "Vorschau"
 
-#: src/Admin/Settings/DesignSection.php:412
+#: src/Admin/Settings/DesignSection.php:416
 msgid "The shop page (with the shortcode [kontor_shop_catalog]) is missing, so there is no preview. Deactivating and reactivating Kontor Shop creates it again."
 msgstr "Die Shop-Seite (mit dem Shortcode [kontor_shop_catalog]) fehlt, deshalb gibt es keine Vorschau. Deaktivierst du Kontor Shop und aktivierst es wieder, wird sie neu angelegt."
 
-#: src/Admin/Settings/DesignSection.php:417
+#: src/Admin/Settings/DesignSection.php:421
 msgid "Preview width"
 msgstr "Breite der Vorschau"
 
-#: src/Admin/Settings/DesignSection.php:418
+#: src/Admin/Settings/DesignSection.php:422
 msgid "Computer"
 msgstr "Computer"
 
-#: src/Admin/Settings/DesignSection.php:421
+#: src/Admin/Settings/DesignSection.php:425
 msgid "Open shop"
 msgstr "Shop öffnen"
 
-#: src/Admin/Settings/DesignSection.php:423
+#: src/Admin/Settings/DesignSection.php:427
 msgid "Preview of the shop page with the current settings"
 msgstr "Vorschau der Shop-Seite mit den aktuellen Einstellungen"
 
-#: src/Admin/Settings/DesignSection.php:425
+#: src/Admin/Settings/DesignSection.php:429
 msgid "Shows your real shop page with the settings on the left – before saving. You can click through it; nothing is ordered unless you complete the checkout."
 msgstr "Zeigt deine echte Shop-Seite mit den Einstellungen links – noch vor dem Speichern. Du kannst dich durchklicken; bestellt wird nur, wenn du die Kasse abschließt."
 
 #. translators: 1: "white" or "dark", 2: contrast ratio, e.g. 7.9
-#: src/Admin/Settings/DesignSection.php:439
+#: src/Admin/Settings/DesignSection.php:443
 msgid "Text on buttons: %1$s · contrast %2$s : 1 – easy to read."
 msgstr "Schrift auf Buttons: %1$s · Kontrast %2$s : 1 – gut lesbar."
 
 #. translators: 1: "white" or "dark", 2: contrast ratio, e.g. 3.1
-#: src/Admin/Settings/DesignSection.php:441
+#: src/Admin/Settings/DesignSection.php:445
 msgid "Text on buttons: %1$s · contrast only %2$s : 1 – hard to read. Choose a darker or lighter color."
 msgstr "Schrift auf Buttons: %1$s · Kontrast nur %2$s : 1 – schlecht lesbar. Wähle eine dunklere oder hellere Farbe."
 
 #. translators: 1: "white" or "dark", 2: contrast ratio, e.g. 3.1
-#: src/Admin/Settings/DesignSection.php:442
+#: src/Admin/Settings/DesignSection.php:446
 msgid "white"
 msgstr "weiß"
 
 #. translators: 1: "white" or "dark", 2: contrast ratio, e.g. 3.1
-#: src/Admin/Settings/DesignSection.php:443
+#: src/Admin/Settings/DesignSection.php:447
 msgid "dark"
 msgstr "dunkel"
 
@@ -10208,8 +10220,8 @@ msgid "Sold 30 d."
 msgstr "Verkauft 30 T."
 
 #: src/Admin/StockOverview.php:430
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:270
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:285
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:275
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:290
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:378
 msgid "Requests"
 msgstr "Anfragen"
@@ -10228,8 +10240,8 @@ msgstr "Buchungsfehler – bitte prüfen"
 
 #: src/Admin/StockOverview.php:481
 #: src/Admin/StockOverview.php:514
-#: src/Modules/Catalog/LabelCard.php:65
-#: src/Modules/Catalog/LabelCard.php:67
+#: src/Modules/Catalog/LabelCard.php:68
+#: src/Modules/Catalog/LabelCard.php:70
 #: src/Pro__premium_only/Agents/StockFile.php:190
 msgid "Sold out"
 msgstr "Ausverkauft"
@@ -12543,11 +12555,11 @@ msgstr "Testmail von %s"
 #. translators: %s: shop name
 #: src/Infrastructure/Notifications/MailHealth.php:223
 msgid "This test email confirms that your shop's email sending works in principle.\n\nIf it doesn't arrive, check your spam folder and set up an SMTP plugin."
-msgstr "Diese Testmail bestaetigt, dass der Mailversand deines Shops grundsaetzlich funktioniert.\n\nKommt sie nicht an, pruefe den Spam-Ordner und richte ein SMTP-Plugin ein."
+msgstr "Diese Testmail bestätigt, dass der Mailversand deines Shops grundsätzlich funktioniert.\n\nKommt sie nicht an, prüfe den Spam-Ordner und richte ein SMTP-Plugin ein."
 
 #: src/Infrastructure/Notifications/MailHealth.php:233
 msgid "The server accepted the test email. Please check your inbox now (including spam)."
-msgstr "Der Server hat die Testmail angenommen. Bitte pruefe jetzt das Postfach (auch Spam)."
+msgstr "Der Server hat die Testmail angenommen. Bitte prüfe jetzt das Postfach (auch Spam)."
 
 #: src/Infrastructure/Notifications/MailHealth.php:236
 msgid "wp_mail() reports an error."
@@ -12555,12 +12567,12 @@ msgstr "wp_mail() meldet einen Fehler."
 
 #: src/Infrastructure/Notifications/MailHealth.php:247
 msgid "Email sending disrupted:"
-msgstr "Mailversand gestoert:"
+msgstr "Mailversand gestört:"
 
 #. translators: 1: error message, 2: time
 #: src/Infrastructure/Notifications/MailHealth.php:250
 msgid "The last email could not be sent (%1$s, %2$s). Customers may not receive a confirmation - see Settings -> System."
-msgstr "Die letzte Mail konnte nicht gesendet werden (%1$s, %2$s). Kunden erhalten ggf. keine Bestaetigung - siehe Einstellungen -> System."
+msgstr "Die letzte Mail konnte nicht gesendet werden (%1$s, %2$s). Kunden erhalten ggf. keine Bestätigung - siehe Einstellungen -> System."
 
 #: src/Infrastructure/Notifications/MailerFactory.php:30
 msgid "Default (wp_mail)"
@@ -13031,12 +13043,12 @@ msgstr "Warenkorb-Symbol mit Zähler, z. B. für den Kopfbereich. Schalte dann u
 
 #: src/Modules/Cart/CartModule.php:108
 msgid "Added"
-msgstr "Hinzugefuegt"
+msgstr "Hinzugefügt"
 
 #: src/Modules/Cart/CartModule.php:109
 #: src/Pro__premium_only/StockRequests/StockRequestService.php:148
 #: src/Pro__premium_only/StockRequests/StockRequestsModule.php:106
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:122
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:126
 msgid "Sorry, that didn't work. Please try again."
 msgstr "Das hat leider nicht geklappt. Bitte erneut versuchen."
 
@@ -13046,7 +13058,7 @@ msgstr "Fehler"
 
 #: src/Modules/Cart/CartModule.php:111
 msgid "The server isn't responding. Please check your connection and try again."
-msgstr "Der Server antwortet nicht. Bitte pruefe deine Verbindung und versuche es erneut."
+msgstr "Der Server antwortet nicht. Bitte prüfe deine Verbindung und versuche es erneut."
 
 #: src/Modules/Cart/CartModule.php:112
 msgid "Please select a variant first."
@@ -13081,13 +13093,13 @@ msgstr "Deine Sitzung ist abgelaufen. Bitte lade die Seite neu und versuche es n
 
 #. translators: %s: error reference number
 #: src/Modules/Cart/CartModule.php:239
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:141
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:145
 msgid "Sorry, that didn't work (technical error). Please try again. Error code: %s"
 msgstr "Das hat leider nicht geklappt (technischer Fehler). Bitte versuche es erneut. Fehlercode: %s"
 
 #: src/Modules/Cart/CartModule.php:305
 msgid "Open cart"
-msgstr "Warenkorb oeffnen"
+msgstr "Warenkorb öffnen"
 
 #: src/Modules/Cart/CartModule.php:317
 #: src/Modules/Checkout/CheckoutModule.php:398
@@ -13152,7 +13164,7 @@ msgstr "Alle %d Auswahlmöglichkeiten zeigen"
 
 #. translators: %s: chosen size, e.g. "M"
 #: src/Modules/Catalog/CatalogModule.php:94
-#: src/Modules/Catalog/LabelCard.php:152
+#: src/Modules/Catalog/LabelCard.php:186
 msgid "Add %s to cart"
 msgstr "%s in den Warenkorb legen"
 
@@ -13171,50 +13183,66 @@ msgid "Pages"
 msgstr "Seiten"
 
 #. translators: %s: tax rate in percent
-#: src/Modules/Catalog/CatalogModule.php:391
-#: src/Modules/Catalog/CatalogModule.php:435
-#: src/Modules/Catalog/LabelCard.php:104
+#: src/Modules/Catalog/CatalogModule.php:389
+#: src/Modules/Catalog/CatalogModule.php:433
+#: src/Modules/Catalog/LabelCard.php:112
 #: src/Modules/Seo/PageRenderer.php:89
 msgid "incl. %s %% VAT"
 msgstr "inkl. %s %% USt"
 
-#: src/Modules/Catalog/CatalogModule.php:404
-#: src/Modules/Catalog/LabelCard.php:189
+#: src/Modules/Catalog/CatalogModule.php:402
+#: src/Modules/Catalog/LabelCard.php:223
 #: src/Modules/Seo/PageRenderer.php:174
 #: src/Modules/Seo/PageRenderer.php:181
 msgid "Add to cart"
 msgstr "In den Warenkorb"
 
-#: src/Modules/Catalog/LabelCard.php:65
+#: src/Modules/Catalog/LabelCard.php:68
 msgid "Last units"
 msgstr "Letzte Stück"
 
+#: src/Modules/Catalog/LabelCard.php:150
+msgid "Won't be reordered"
+msgstr "Wird nicht nachbestellt"
+
+#. translators: %d: number of variants (sizes, colours, motifs …)
+#: src/Modules/Catalog/LabelCard.php:153
+msgid "%d variant"
+msgid_plural "%d variants"
+msgstr[0] "%d Variante"
+msgstr[1] "%d Varianten"
+
+#: src/Modules/Catalog/LabelCard.php:156
+#: src/Modules/Catalog/ProductNotes.php:29
+msgid "Currently unavailable"
+msgstr "Derzeit nicht verfügbar"
+
 #. translators: 1: product name, 2: option name such as "Size"
-#: src/Modules/Catalog/LabelCard.php:165
+#: src/Modules/Catalog/LabelCard.php:199
 msgid "%1$s: choose %2$s"
 msgstr "%1$s: %2$s wählen"
 
 #. translators: %s: product name
-#: src/Modules/Catalog/LabelCard.php:182
+#: src/Modules/Catalog/LabelCard.php:216
 msgid "Choose variant of %s"
 msgstr "Variante von %s wählen"
 
-#: src/Modules/Catalog/LabelCard.php:187
+#: src/Modules/Catalog/LabelCard.php:221
 msgid "Choose variant"
 msgstr "Variante wählen"
 
 #. translators: %s: size or other option value
-#: src/Modules/Catalog/LabelCard.php:226
+#: src/Modules/Catalog/LabelCard.php:260
 #: src/Modules/Seo/PageRenderer.php:218
 msgid "%s – sold out"
 msgstr "%s – ausverkauft"
 
 #. translators: 1: size or other option value, 2: product name
-#: src/Modules/Catalog/LabelCard.php:236
+#: src/Modules/Catalog/LabelCard.php:270
 msgid "Add %2$s in %1$s to cart"
 msgstr "%2$s in %1$s in den Warenkorb legen"
 
-#: src/Modules/Catalog/LabelCard.php:280
+#: src/Modules/Catalog/LabelCard.php:330
 #: src/Modules/Catalog/VariantPicker.php:81
 #: src/Pro__premium_only/Audit/AuditPage.php:180
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:409
@@ -13229,10 +13257,6 @@ msgstr "Auslaufartikel – nur solange der Vorrat reicht"
 #: src/Modules/Catalog/ProductNotes.php:24
 msgid "Sold out – won't be reordered"
 msgstr "Ausverkauft – wird nicht nachbestellt"
-
-#: src/Modules/Catalog/ProductNotes.php:29
-msgid "Currently unavailable"
-msgstr "Derzeit nicht verfuegbar"
 
 #. translators: %s: countries, e.g. "Austria and Germany"
 #: src/Modules/Catalog/ServiceInfo.php:33
@@ -13365,7 +13389,7 @@ msgstr "Deine Artikel sind bis %s Uhr für dich reserviert. Danach werden sie wi
 
 #: src/Modules/Checkout/CheckoutModule.php:834
 msgid "Your order is being processed - please don't close this window ..."
-msgstr "Deine Bestellung wird verarbeitet - bitte dieses Fenster nicht schliessen ..."
+msgstr "Deine Bestellung wird verarbeitet - bitte dieses Fenster nicht schließen ..."
 
 #. translators: %d: number of partial orders
 #: src/Modules/Checkout/CheckoutModule.php:852
@@ -13771,7 +13795,7 @@ msgstr "Rechnung jetzt erstellen"
 
 #: src/Modules/Media/MediaModule.php:85
 msgid "The image is still in use or wasn't uploaded through the shop, so it has been kept."
-msgstr "Das Bild wird noch verwendet oder wurde nicht ueber den Shop hochgeladen und bleibt deshalb erhalten."
+msgstr "Das Bild wird noch verwendet oder wurde nicht über den Shop hochgeladen und bleibt deshalb erhalten."
 
 #. translators: %s: email address
 #: src/Modules/Notifications/NotificationsModule.php:108
@@ -14078,7 +14102,7 @@ msgstr "Gesamtsumme (Euro)"
 #. translators: %d: retention period in years
 #: src/Modules/Privacy/PrivacyModule.php:150
 msgid "Order data isn't deleted yet because of the legal retention obligation (%d years) and will be anonymized after the period ends."
-msgstr "Bestelldaten werden wegen der gesetzlichen Aufbewahrungspflicht (%d Jahre) noch nicht geloescht und nach Fristablauf anonymisiert."
+msgstr "Bestelldaten werden wegen der gesetzlichen Aufbewahrungspflicht (%d Jahre) noch nicht gelöscht und nach Fristablauf anonymisiert."
 
 #: src/Modules/Privacy/PrivacyModule.php:188
 msgid "Web shop (Kontor Shop)"
@@ -14086,7 +14110,7 @@ msgstr "Webshop (Kontor Shop)"
 
 #: src/Modules/Privacy/PrivacyModule.php:189
 msgid "Suggested text for the privacy policy - please adapt it to your club and have it legally reviewed."
-msgstr "Vorschlag fuer die Datenschutzerklaerung - bitte an euren Verein anpassen und rechtlich pruefen lassen."
+msgstr "Vorschlag für die Datenschutzerklärung - bitte an euren Verein anpassen und rechtlich prüfen lassen."
 
 #: src/Modules/Privacy/PrivacyModule.php:205
 msgid "What data we process for orders"
@@ -14094,7 +14118,7 @@ msgstr "Welche Daten wir bei Bestellungen verarbeiten"
 
 #: src/Modules/Privacy/PrivacyModule.php:206
 msgid "When you place an order, we collect your name, email address and - for delivery - your delivery address, as well as details about the order (products, prices, payment method, payment reference) and the time you agreed to the terms and conditions and privacy policy. There are no customer accounts and no online payment; payments are made by bank transfer (prepayment or on invoice), and we don't store any bank details from you."
-msgstr "Bei einer Bestellung erfassen wir Name, E-Mail-Adresse und - bei Lieferung - die Lieferadresse sowie Angaben zur Bestellung (Artikel, Preise, Zahlungsart, Zahlungsreferenz) und den Zeitpunkt deiner Zustimmung zu AGB und Datenschutzerklaerung. Es gibt kein Kundenkonto und keine Online-Zahlung; Zahlungen erfolgen per Ueberweisung (Vorkasse oder auf Rechnung), Bankdaten von dir speichern wir nicht."
+msgstr "Bei einer Bestellung erfassen wir Name, E-Mail-Adresse und - bei Lieferung - die Lieferadresse sowie Angaben zur Bestellung (Artikel, Preise, Zahlungsart, Zahlungsreferenz) und den Zeitpunkt deiner Zustimmung zu AGB und Datenschutzerklärung. Es gibt kein Kundenkonto und keine Online-Zahlung; Zahlungen erfolgen per Überweisung (Vorkasse oder auf Rechnung), Bankdaten von dir speichern wir nicht."
 
 #: src/Modules/Privacy/PrivacyModule.php:210
 msgid "Purpose and legal basis"
@@ -14115,7 +14139,7 @@ msgstr "Bestelldaten bewahren wir wegen steuer- und unternehmensrechtlicher Pfli
 
 #: src/Modules/Privacy/PrivacyModule.php:222
 msgid "Recipients are our hosting provider, the email service we use (to send order confirmations), and the warehouse responsible for your order, which receives your delivery address to ship the goods."
-msgstr "Empfaenger sind unser Hosting-Anbieter, der von uns genutzte E-Mail-Versanddienst (Versand von Bestellbestaetigungen) sowie das jeweils zustaendige Lager, das deine Lieferadresse zum Versand der Ware erhaelt."
+msgstr "Empfänger sind unser Hosting-Anbieter, der von uns genutzte E-Mail-Versanddienst (Versand von Bestellbestätigungen) sowie das jeweils zuständige Lager, das deine Lieferadresse zum Versand der Ware erhält."
 
 #: src/Modules/Privacy/PrivacyModule.php:226
 msgid "Cookies"
@@ -14123,7 +14147,7 @@ msgstr "Cookies"
 
 #: src/Modules/Privacy/PrivacyModule.php:227
 msgid "The cart is stored in a technically necessary cookie (\"kontor_shop_cart\"). It contains only products and quantities, no personal data."
-msgstr "Der Warenkorb wird in einem technisch notwendigen Cookie (\"kontor_shop_cart\") gespeichert. Es enthaelt nur Artikel und Mengen, keine personenbezogenen Daten."
+msgstr "Der Warenkorb wird in einem technisch notwendigen Cookie (\"kontor_shop_cart\") gespeichert. Es enthält nur Artikel und Mengen, keine personenbezogenen Daten."
 
 #: src/Modules/Privacy/StockRequestData.php:45
 msgid "“When back in stock” notifications requested with this email address."
@@ -14134,7 +14158,7 @@ msgid "Requested on"
 msgstr "Angefragt am"
 
 #: src/Modules/Privacy/StockRequestData.php:52
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:100
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:118
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:739
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:896
 msgid "Requested quantity"
@@ -14189,11 +14213,11 @@ msgid "Show all"
 msgstr "Alle ansehen"
 
 #. translators: 1: image number, 2: count
-#: src/Modules/Seo/PageRenderer.php:299
+#: src/Modules/Seo/PageRenderer.php:300
 msgid "Show image %1$d of %2$d"
 msgstr "Bild %1$d von %2$d anzeigen"
 
-#: src/Modules/Seo/PageRenderer.php:335
+#: src/Modules/Seo/PageRenderer.php:336
 msgid "Breadcrumbs"
 msgstr "Brotkrumen"
 
@@ -14205,7 +14229,7 @@ msgstr "Der Shop ist gerade nicht erreichbar. Bitte in ein paar Minuten erneut v
 msgid "Temporarily unavailable"
 msgstr "Vorübergehend nicht verfügbar"
 
-#: src/Modules/Storefront/DesignModule.php:200
+#: src/Modules/Storefront/DesignModule.php:208
 msgid "You are not allowed to change the shop design."
 msgstr "Du darfst das Shop-Design nicht ändern."
 
@@ -17928,7 +17952,7 @@ msgstr "Auf Nachbestellliste"
 
 #: src/Pro__premium_only/Reorder/ReorderModule.php:121
 #: src/Pro__premium_only/Reorder/ReorderModule.php:139
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:344
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:349
 msgid "Reorder"
 msgstr "Nachbestellen"
 
@@ -18362,48 +18386,70 @@ msgstr "Neue Verfügbarkeitsanfrage: {{product_name}}"
 msgid "<p>Someone would like to be notified as soon as <strong>{{product_name}}</strong> is available again.</p><p><strong>Customer:</strong> {{customer_name}} ({{customer_email}})<br><strong>Requested quantity:</strong> {{requested_quantity}}</p><p><strong>Message:</strong> {{customer_message}}</p><p>Total open requests for this product: <strong>{{open_requests}}</strong></p><p>View requests: {{requests_url}}</p>"
 msgstr "<p>Jemand möchte benachrichtigt werden, sobald <strong>{{product_name}}</strong> wieder verfügbar ist.</p><p><strong>Kunde:</strong> {{customer_name}} ({{customer_email}})<br><strong>Gewünschte Menge:</strong> {{requested_quantity}}</p><p><strong>Nachricht:</strong> {{customer_message}}</p><p>Offene Anfragen zu diesem Artikel insgesamt: <strong>{{open_requests}}</strong></p><p>Anfragen ansehen: {{requests_url}}</p>"
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:67
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:71
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:130
+msgid "Notify me"
+msgstr "Benachrichtigen"
+
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:71
 msgid "Notify me when available"
 msgstr "Benachrichtigen, wenn verfügbar"
 
 #. translators: %s: product name
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:72
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:78
+msgid "Notify me when %s is available"
+msgstr "Benachrichtigen, wenn %s wieder da ist"
+
+#. translators: %s: product name
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:87
 msgid "Request notification for %s"
 msgstr "Benachrichtigung zu %s anfordern"
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:77
-msgid "We'll send you an email as soon as the product is back – or if it's no longer part of the range."
-msgstr "Wir schicken dir eine Mail, sobald der Artikel wieder da ist – oder falls er nicht mehr ins Sortiment kommt."
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:92
+msgid "As soon as it's back, we'll let you know."
+msgstr "Sobald es wieder da ist, sagen wir dir Bescheid."
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:84
-msgid "Any – as long as it's back"
-msgstr "Egal welche – Hauptsache wieder da"
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:93
+msgid "One email, nothing more. And if the product won't come back, you'll hear that too."
+msgstr "Eine Mail, mehr nicht. Und falls der Artikel nicht mehr ins Sortiment kommt, erfährst du auch das."
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:94
-msgid "Email address"
-msgstr "E-Mail-Adresse"
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:100
+msgid "Any"
+msgstr "Egal welche"
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:96
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:112
+msgid "Your email address"
+msgstr "Deine E-Mail-Adresse"
+
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:113
+msgid "name@example.com"
+msgstr "name@beispiel.at"
+
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:115
+msgid "Add your name, a quantity or a message"
+msgstr "Name, Menge oder eine Nachricht dazuschreiben"
+
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:116
 msgid "Name (optional)"
 msgstr "Name (optional)"
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:99
-msgid "Enter quantity or message (optional)"
-msgstr "Menge oder Nachricht angeben (optional)"
-
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:102
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:120
 msgid "Message to us"
 msgstr "Nachricht an uns"
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:112
-msgid "Request notification"
-msgstr "Benachrichtigung anfordern"
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:138
+msgid "Keep browsing"
+msgstr "Weiter stöbern"
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:129
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:161
+msgid "currently sold out"
+msgstr "derzeit ausverkauft"
+
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:187
 msgid "I agree that my details are stored so I can be informed about the availability of this product. More in the {datenschutz}."
 msgstr "Ich bin einverstanden, dass meine Angaben gespeichert werden, um mich über die Verfügbarkeit dieses Artikels zu informieren. Mehr dazu in der {datenschutz}."
 
-#: src/Pro__premium_only/StockRequests/StockRequestForm.php:142
+#: src/Pro__premium_only/StockRequests/StockRequestForm.php:200
 msgid "privacy policy"
 msgstr "Datenschutzerklärung"
 
@@ -18457,27 +18503,27 @@ msgstr "Du bist für diesen Artikel schon vorgemerkt – wir melden uns per Mail
 msgid "Almost done! We've sent you an email – please confirm your notification there."
 msgstr "Fast geschafft! Wir haben dir eine Mail geschickt – bitte bestätige darin deine Benachrichtigung."
 
-#: src/Pro__premium_only/StockRequests/StockRequestService.php:172
+#: src/Pro__premium_only/StockRequests/StockRequestService.php:173
 msgid "Thanks! We'll send you an email as soon as the product is available again."
 msgstr "Danke! Wir schicken dir eine Mail, sobald der Artikel wieder verfügbar ist."
 
-#: src/Pro__premium_only/StockRequests/StockRequestService.php:212
+#: src/Pro__premium_only/StockRequests/StockRequestService.php:213
 msgid "The request is no longer open."
 msgstr "Die Anfrage ist nicht mehr offen."
 
-#: src/Pro__premium_only/StockRequests/StockRequestService.php:218
+#: src/Pro__premium_only/StockRequests/StockRequestService.php:219
 msgid "The product isn't visible in the shop – please make it visible first."
 msgstr "Der Artikel ist im Shop nicht sichtbar – bitte erst sichtbar schalten."
 
-#: src/Pro__premium_only/StockRequests/StockRequestService.php:225
+#: src/Pro__premium_only/StockRequests/StockRequestService.php:226
 msgid "The requested variant no longer exists."
 msgstr "Die angefragte Variante gibt es nicht mehr."
 
-#: src/Pro__premium_only/StockRequests/StockRequestService.php:229
+#: src/Pro__premium_only/StockRequests/StockRequestService.php:230
 msgid "The product isn't available again yet (stock 0)."
 msgstr "Der Artikel ist noch nicht wieder verfügbar (Bestand 0)."
 
-#: src/Pro__premium_only/StockRequests/StockRequestService.php:233
+#: src/Pro__premium_only/StockRequests/StockRequestService.php:234
 msgid "The “Back in stock” email is turned off in the email templates."
 msgstr "Die Mail „Wieder verfügbar“ ist in den Mail-Vorlagen ausgeschaltet."
 
@@ -18557,105 +18603,118 @@ msgstr "Du bekommst zu diesem Artikel keine Benachrichtigung mehr."
 msgid "This link is no longer valid."
 msgstr "Dieser Link ist nicht mehr gültig."
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:127
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:110
+msgid "Almost done!"
+msgstr "Fast geschafft!"
+
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:111
+msgid "Thanks!"
+msgstr "Danke!"
+
+#. translators: label of the notify button after the request was sent
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:113
+msgid "Noted"
+msgstr "Vorgemerkt"
+
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:131
 msgid "Thanks! We'll email you."
 msgstr "Danke! Wir melden uns per Mail."
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:131
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:135
 msgid "Too many requests in a short time. Please try again later."
 msgstr "Zu viele Anfragen in kurzer Zeit. Bitte versuche es später noch einmal."
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:170
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:175
 msgid "Notification"
 msgstr "Benachrichtigung"
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:173
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:178
 msgid "This link is no longer valid – the request may have been deleted already."
 msgstr "Dieser Link ist nicht (mehr) gültig – die Anfrage wurde vielleicht schon gelöscht."
 
 #. translators: %s: product name (bold)
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:197
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:202
 msgid "Your notification for %s is already confirmed – we'll email you."
 msgstr "Deine Benachrichtigung zu %s ist bereits bestätigt – wir melden uns per Mail."
 
 #. translators: %s: product name (bold)
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:199
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:204
 msgid "The request for %s is already done."
 msgstr "Die Anfrage zu %s ist bereits erledigt."
 
 #. translators: %s: product name (bold)
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:204
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:209
 msgid "You won't get a notification (anymore) for %s."
 msgstr "Zu %s bekommst du keine Benachrichtigung (mehr)."
 
 #. translators: %s: product name (bold)
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:209
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:214
 msgid "Would you like to be notified as soon as %s is available again?"
 msgstr "Möchtest du benachrichtigt werden, sobald %s wieder verfügbar ist?"
 
 #. translators: %s: product name (bold)
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:211
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:216
 msgid "No more notifications for %s?"
 msgstr "Keine Benachrichtigung mehr zu %s?"
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:212
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:217
 msgid "Yes, confirm notification"
 msgstr "Ja, Benachrichtigung bestätigen"
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:212
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:217
 msgid "Unsubscribe from notification"
 msgstr "Benachrichtigung abbestellen"
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:286
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:291
 msgid "For sold-out products, customers can click “Notify me when available”. With double opt-in, a request only becomes “open” after the link in the confirmation email is clicked."
 msgstr "Bei ausverkauften Artikeln können Kunden „Benachrichtigen, wenn verfügbar“ anklicken. Mit Double-Opt-in ist die Anfrage erst nach dem Klick auf den Link in der Bestätigungsmail „offen“."
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:287
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:292
 msgid "Back in stock: when stock rises from 0 to more, all open requests automatically get an email (can be turned off under Settings → Back-in-stock requests). You can also click “Notify: back in stock” yourself – this only works if the product is visible and in stock."
 msgstr "Wieder da: Steigt der Bestand von 0 auf mehr, bekommen alle offenen Anfragen automatisch eine Mail (abschaltbar unter Einstellungen → Verfügbarkeitsanfragen). Du kannst auch selbst auf „Informieren: wieder da“ klicken – das geht nur, wenn der Artikel sichtbar ist und Bestand hat."
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:288
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:293
 msgid "Not coming back: tells customers the product will not be reordered – optionally with a note (e.g. an alternative), and if you like the product is archived right away. If you already know a product won’t be reordered, tick “Discontinued product” on the product – then there won’t be any requests for it."
 msgstr "Kommt nicht mehr: teilt den Kunden mit, dass der Artikel nicht nachbestellt wird – optional mit einem Hinweis (z. B. Alternative) und auf Wunsch wird der Artikel gleich archiviert. Steht schon vorher fest, dass ein Artikel nicht nachbestellt wird, setze am Artikel das Häkchen „Auslaufartikel“ – dann gibt es dafür gar keine Anfragen."
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:289
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:294
 msgid "“By product” shows how many customers are waiting for which product – handy for deciding whether to reorder. You edit the email texts under Settings → Email templates (“Notification …”, “Back in stock”, “No longer available”, “New back-in-stock request”)."
 msgstr "„Nach Artikel“ zeigt, wie viele Kunden auf welchen Artikel warten – praktisch für die Entscheidung, ob nachbestellt wird. Die Texte der Mails bearbeitest du unter Einstellungen → E-Mail-Vorlagen („Benachrichtigung …“, „Wieder verfügbar“, „Nicht mehr erhältlich“, „Neue Verfügbarkeitsanfrage“)."
 
 #. translators: 1: count, 2: product
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:338
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:343
 msgid "%1$d customer waiting for %2$s"
 msgid_plural "%1$d customers waiting for %2$s"
 msgstr[0] "%1$d Kunde wartet auf %2$s"
 msgstr[1] "%1$d Kunden warten auf %2$s"
 
 #. translators: 1: count, 2: product
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:342
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:347
 msgid "Availability request, product not yet available again"
 msgstr "Verfügbarkeitsanfrage, Artikel noch nicht wieder lieferbar"
 
 #. translators: 1: number, 2: link
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:379
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:384
 msgid "%1$d customer is waiting for this discontinued product. Under %2$s you can let them know it’s not coming back."
 msgid_plural "%1$d customers are waiting for this discontinued product. Under %2$s you can let them know it’s not coming back."
 msgstr[0] "Auf diesen Auslaufartikel wartet %1$d Kunde. Unter %2$s kannst du ihm mitteilen, dass er nicht mehr kommt."
 msgstr[1] "Auf diesen Auslaufartikel warten %1$d Kunden. Unter %2$s kannst du ihnen mitteilen, dass er nicht mehr kommt."
 
 #. translators: 1: number, 2: link
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:386
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:391
 msgid "Requests → “Not coming back …”"
 msgstr "Anfragen → „Kommt nicht mehr …“"
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:399
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:404
 msgid "Notification when a product is available again"
 msgstr "Benachrichtigung, wenn ein Artikel wieder verfügbar ist"
 
 #. translators: %d: days
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:402
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:407
 msgid "For sold-out products, you can ask to be notified by email. For this we store your email address, optionally your name, the desired quantity and your message, and the product. The legal basis is your consent (Art. 6(1)(a) GDPR), which you can withdraw at any time via the link in our emails. We'll send you at most one email when the product is back or no longer part of the range; after that, the request is closed and will be deleted after %d days."
 msgstr "Bei ausverkauften Artikeln kannst du dich per E-Mail benachrichtigen lassen. Dafür speichern wir deine E-Mail-Adresse, optional deinen Namen, die gewünschte Menge und deine Nachricht sowie den Artikel. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit über den Link in unseren Mails widerrufen kannst. Wir schicken dir höchstens eine Mail, wenn der Artikel wieder da ist oder nicht mehr ins Sortiment kommt; danach ist die Anfrage erledigt und wird nach %d Tagen gelöscht."
 
-#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:425
+#: src/Pro__premium_only/StockRequests/StockRequestsModule.php:430
 msgid "Go to shop"
 msgstr "Zum Shop"
 

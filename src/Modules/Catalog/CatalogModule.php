@@ -347,11 +347,9 @@ final class CatalogModule implements Registerable
                 'rows'         => $rows,
                 'available'    => $stock > 0,
                 'discontinued' => $product->discontinued,
-                'notes_html'   => $product->discontinued
-                    ? ProductNotes::discontinued(false)
-                    : ProductNotes::unavailable() . ProductNotes::unavailable_extra((int) $product->id, $product->name, $rows, true, 'card'),
+                'notes_html'   => $product->discontinued ? '' : ProductNotes::unavailable_extra((int) $product->id, $product->name, $rows, true, 'card'),
                 'heading'      => 'h3',
-            ]);
+            ] + (DesignModule::card_teaser($this->settings) ? ['teaser' => $product->description] : []));
         }
 
         // Stabile Anker-ID (#artikel-{id}) - dieselbe wie auf den Kategorieseiten.

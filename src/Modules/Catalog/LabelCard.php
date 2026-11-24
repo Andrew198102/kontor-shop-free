@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kontor\Shop\Modules\Catalog;
 
 use Kontor\Shop\Domain\Seo\PublicProduct;
+use Kontor\Shop\Modules\Storefront\DesignModule;
 
 /**
  * Artikelkarte im Stil "Etikett" (Einstellungen -> Design -> Artikelkarten):
@@ -44,14 +45,16 @@ final class LabelCard
      *   discontinued: bool,
      *   notes_html: string,
      *   heading: string,
-     * } $card attributes = fertige, escapte Attribute des <article>; notes_html/fine_html = escaptes HTML
+     *   teaser?: string,
+     * } $card attributes = fertige, escapte Attribute des <article>; fine_html = escaptes HTML;
+     *   notes_html = escaptes HTML fuer die Kaufzeile ausverkaufter Artikel (z. B. Pro: Knopf "Benachrichtigen")
      */
     public static function render(array $card): string
     {
         $id      = (int) $card['id'];
         $heading = in_array($card['heading'], ['h2', 'h3'], true) ? $card['heading'] : 'h3';
 
-        $html = '<article class="kontor-shop-product kontor-shop-product--label" id="artikel-' . $id . '" data-product-id="' . $id . '"' . $card['attributes'] . '>';
+        $html = '<article class="kontor-shop-product kontor-shop-product--label' . ($card['available'] ? '' : ' is-sold-out') . '" id="artikel-' . $id . '" data-product-id="' . $id . '"' . $card['attributes'] . '>';
 
         // Bildbuehne mit Preis-Anhaenger und Hinweisen
         // Freisteller mit bekanntem Produktrahmen: Karte zoomt auf das Produkt.
@@ -80,12 +83,17 @@ final class LabelCard
         $html .= '<' . $heading . ' class="kontor-shop-product__name">'
             . ($card['url'] !== '' ? '<a class="kontor-shop-product__link" href="' . esc_url($card['url']) . '">' . esc_html($card['name']) . '</a>' : esc_html($card['name']))
             . '</' . $heading . '>';
+        // Kurzbeschreibung (Design -> Artikelkarten): immer zwei Zeilen hoch, damit die Reihe gleich hoch bleibt.
+        if (isset($card['teaser'])) {
+            $html .= '<p class="kontor-shop-product__teaser">' . esc_html(self::teaser((string) $card['teaser'])) . '</p>';
+        }
+
         $html .= $card['fine_html'];
         $html .= '</div>';
 
         // Kaufzeile
         $html .= '<div class="kontor-shop-product__buy">';
-        $html .= $card['available'] ? self::buy($card) : $card['notes_html'];
+        $html .= $card['available'] ? self::buy($card) : self::sold_out($card);
 
         return $html . '</div></article>';
     }
@@ -121,11 +129,37 @@ final class LabelCard
             'rows'         => $product->variants,
             'available'    => $product->available,
             'discontinued' => $product->discontinued,
-            'notes_html'   => $product->discontinued
-                ? ProductNotes::discontinued(false)
-                : ProductNotes::unavailable() . ProductNotes::unavailable_extra($product->id, $product->name, $product->variants, true, 'card'),
+            'notes_html'   => $product->discontinued ? '' : ProductNotes::unavailable_extra($product->id, $product->name, $product->variants, true, 'card'),
             'heading'      => $heading,
-        ]);
+        ] + (DesignModule::card_teaser() ? ['teaser' => $product->description] : []));
+    }
+
+    /**
+     * Kaufzeile eines ausverkauften Artikels - gleich hoch wie die anderen,
+     * damit die Reihe ruhig bleibt: links leise "3 Varianten" bzw. ein kurzer
+     * Hinweis, rechts der Knopf "Benachrichtigen" (Pro, kommt
+     * ueber notes_html). "Ausverkauft" steht schon als Plakette am Foto.
+     *
+     * @param array<string, mixed> $card
+     */
+    private static function sold_out(array $card): string
+    {
+        $count = count($card['rows']);
+
+        if ($card['discontinued']) {
+            $hint = __('Won\'t be reordered', 'kontor-shop');
+        } elseif ($count > 1) {
+            /* translators: %d: number of variants (sizes, colours, motifs …) */
+            $hint = sprintf(_n('%d variant', '%d variants', $count, 'kontor-shop'), $count);
+        } elseif ($card['notes_html'] === '') {
+            // Ohne Knopf (Free) bleibt ein kurzer Hinweis; mit Knopf sagt die Plakette am Foto genug.
+            $hint = __('Currently unavailable', 'kontor-shop');
+        } else {
+            $hint = '';
+        }
+
+        return '<div class="kontor-shop-product__soldout"><span class="kontor-shop-product__soldout-hint">' . esc_html($hint) . '</span>'
+            . $card['notes_html'] . '</div>';
     }
 
     /**
@@ -254,6 +288,22 @@ final class LabelCard
     private static function icon_plus(): string
     {
         return '<svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>';
+    }
+
+    /**
+     * Kurzbeschreibung fuer die Karte: erster Absatz als Klartext, hoechstens
+     * etwa zwei Zeilen (den Rest schneidet CSS mit "…" ab).
+     */
+    public static function teaser(string $description): string
+    {
+        $text = trim((string) (preg_split('/\R{2,}/', trim(wp_strip_all_tags($description)))[0] ?? ''));
+        $text = (string) preg_replace('/\s+/u', ' ', $text);
+
+        if (function_exists('mb_strlen') && mb_strlen($text) > 160) {
+            $text = rtrim(mb_substr($text, 0, 159)) . '…';
+        }
+
+        return $text;
     }
 
     /**

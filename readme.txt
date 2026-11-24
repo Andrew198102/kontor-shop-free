@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.12
+Stable tag: 2.9.13
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,13 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.13 =
+* New: sold-out products no longer break the row. On "Label" cards they keep the same buy row as all others – on the left quietly "3 variants", on the right (Pro) a slim "Notify me" button; on phones only the bell. The red "Currently unavailable" line and the large two-line button are gone; the photo is slightly faded, the price tag grey, and the "Sold out" badge stays.
+* New (Pro): "Notify me when available" opens a window over the page instead of unfolding a long form inside the card (on phones it slides up from the bottom). It shows the product, says "As soon as it's back, we'll let you know.", offers the variants as buttons ("Any" preselected), asks for the email address and folds name, quantity and message away. Afterwards the same window confirms: "Almost done!" with the note about the confirmation email (double opt-in as before). The browser remembers the address for the next request. The product page uses the same button and window.
+* New: "Label" cards can show the first two lines of the description under the name (Settings → Design → Product cards, on by default, hidden on phones). The space is always two lines high, so all cards in a row stay the same height.
+* New: the product list warns when a product is switched to visible but appears nowhere in the shop because its category (or, with Pro, its shop type) is switched off – "Not in the shop: the category is switched off".
+* Fix: 17 German texts were written with "ae/oe/ue" instead of umlauts, among them "Derzeit nicht verfuegbar", "Warenkorb oeffnen", "Hinzugefuegt" and parts of the privacy policy proposal. They now use proper umlauts in all German language versions.
 
 = 2.9.12 =
 * New: product pages in the style of the "Label" cards. The product name now always appears as a heading next to the photo, with the category above it – many themes show no page title on shop pages, so the name was missing completely (also for search engines). If your theme shows the name itself and it now appears twice, choose Settings → Design → "Product name on product pages" → theme.

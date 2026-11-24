@@ -9,6 +9,7 @@ use Kontor\Shop\Admin\Ui\ListParams;
 use Kontor\Shop\Admin\Ui\Options;
 use Kontor\Shop\Admin\Ui\Pagination;
 use Kontor\Shop\Domain\Catalog\Product;
+use Kontor\Shop\Infrastructure\Catalog\CatalogScope;
 use Kontor\Shop\Infrastructure\Catalog\PublishCandidates;
 use Kontor\Shop\Infrastructure\Media\ManagedImages;
 use Kontor\Shop\Infrastructure\Repositories\CategoryRepository;
@@ -307,7 +308,7 @@ final class ProductsList
     /**
      * Nachschlage-Tabellen fuer die Zeilen (einmal je Seitenaufruf).
      *
-     * @return array{warehouses: array<int, string>, categories: array<int, string>}
+     * @return array{warehouses: array<int, string>, categories: array<int, string>, offline: array<int, string>}
      */
     public static function context(): array
     {
@@ -318,12 +319,30 @@ final class ProductsList
         }
 
         $categories = [];
+        $active     = [];
 
         foreach ((new CategoryRepository())->all() as $category) {
             $categories[(int) $category->id] = $category->name;
+
+            if ($category->active) {
+                $active[(int) $category->id] = $category;
+            }
         }
 
-        return ['warehouses' => $warehouses, 'categories' => $categories];
+        // Kategorien, deren Artikel im Shop nirgends erscheinen - gleiche Regel wie der Katalog
+        // (Kategorie aus, mit Pro auch: Shoptyp aus). Fuer den Hinweis an sichtbaren Artikeln.
+        $in_shop = CatalogScope::resolve('', $active)['categories'];
+        $offline = [];
+
+        foreach (array_keys($categories) as $category_id) {
+            if (!isset($active[$category_id])) {
+                $offline[$category_id] = __('Not in the shop: the category is switched off', 'kontor-shop');
+            } elseif (!isset($in_shop[$category_id])) {
+                $offline[$category_id] = __('Not in the shop: the shop type is switched off', 'kontor-shop');
+            }
+        }
+
+        return ['warehouses' => $warehouses, 'categories' => $categories, 'offline' => $offline];
     }
 
     /**
@@ -365,7 +384,7 @@ final class ProductsList
     }
 
     /**
-     * @param array{warehouses: array<int, string>, categories: array<int, string>} $ctx
+     * @param array{warehouses: array<int, string>, categories: array<int, string>, offline: array<int, string>} $ctx
      */
     private function row(Product $product, int $balance, array $ctx, bool $archive): string
     {
@@ -410,6 +429,9 @@ final class ProductsList
         $html .= '<td class="ks-col-image">' . $image . '</td>';
         $html .= '<td class="column-primary has-row-actions"><strong>' . ($archive ? esc_html($product->name) : '<a class="row-title" href="' . esc_url($name_link) . '">' . esc_html($product->name) . '</a>') . '</strong>'
             . ($product->active || $archive ? '' : ' ' . Badge::html(__('hidden', 'kontor-shop'), Badge::MUTED))
+            // Sichtbar geschaltet, erscheint aber nirgends (Kategorie bzw. Shoptyp aus).
+            . ($product->active && !$archive && $product->category_id !== null && isset($ctx['offline'][(int) $product->category_id])
+                ? ' ' . Badge::html((string) $ctx['offline'][(int) $product->category_id], Badge::WARN) : '')
             . ($product->discontinued && !$archive ? ' ' . Badge::html(__('Discontinued product', 'kontor-shop'), Badge::MUTED) : '')
             . ($product->has_variants() ? ' ' . Badge::html(implode(' × ', array_map(static fn (array $option): string => $option['name'], $product->variant_options)), Badge::INFO) : '')
             . '<div class="row-actions">' . implode(' | ', $actions) . '</div></td>';

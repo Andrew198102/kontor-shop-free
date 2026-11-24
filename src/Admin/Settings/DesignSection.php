@@ -83,6 +83,7 @@ final class DesignSection extends Section
             'placeholder_image_id'      => $new_placeholder,
             'card_effect'               => DesignModule::sanitize_card_effect($this->post('card_effect')),
             'card_layout'               => DesignModule::sanitize_card_layout($this->post('card_layout')),
+            'card_teaser'               => !empty($_POST['card_teaser']), // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce geprueft in SettingsPage::handle_request
             'detail_title'              => DesignModule::sanitize_detail_title($this->post('detail_title')),
         ];
 
@@ -280,7 +281,10 @@ final class DesignSection extends Section
         echo '<p class="description">' . esc_html__(
             'With “Label”, every photo gets the same frame (portrait 4:5 unless you choose another image format). On photos on white the shop zooms in on the product, photos with a real background fill the frame. The shop remembers the size a customer chose and highlights it on all cards.',
             'kontor-shop'
-        ) . '</p></fieldset></td></tr>';
+        ) . '</p>';
+        echo '<p><label><input type="checkbox" name="card_teaser" value="1" ' . checked((bool) $this->settings->get('design.card_teaser', true), true, false) . ' /> '
+            . esc_html__('Show the first two lines of the description under the name (“Label” only, not on phones)', 'kontor-shop') . '</label></p>';
+        echo '</fieldset></td></tr>';
 
         // Artikelname auf Artikel- und Kategorieseiten
         $detail_title = DesignModule::detail_title($this->settings);
