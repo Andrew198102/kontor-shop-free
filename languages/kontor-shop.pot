@@ -5663,7 +5663,7 @@ msgstr ""
 
 #: src/Admin/LogPage.php:129
 #: src/Admin/Settings/AgentsSection.php:49
-#: src/Admin/Settings/DesignSection.php:118
+#: src/Admin/Settings/DesignSection.php:119
 #: src/Admin/Settings/InvoicesSection.php:78
 #: src/Admin/Settings/LegalSection.php:67
 msgid "Settings saved."
@@ -5885,7 +5885,7 @@ msgstr ""
 
 #: src/Admin/MediaPicker.php:107
 #: src/Admin/ProductForm.php:209
-#: src/Admin/Settings/DesignSection.php:342
+#: src/Admin/Settings/DesignSection.php:359
 msgid "Choose image"
 msgstr ""
 
@@ -5926,13 +5926,13 @@ msgid "Permanently delete the selected products? This can’t be undone."
 msgstr ""
 
 #: src/Admin/Menu.php:179
-#: src/Admin/Settings/DesignSection.php:427
+#: src/Admin/Settings/DesignSection.php:444
 #: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:357
 msgid "Copied."
 msgstr ""
 
 #: src/Admin/Menu.php:180
-#: src/Admin/Settings/DesignSection.php:428
+#: src/Admin/Settings/DesignSection.php:445
 #: src/Pro__premium_only/Coupons/Admin/CouponTexts.php:358
 msgid "Text selected – now copy with Ctrl/⌘+C."
 msgstr ""
@@ -6284,7 +6284,7 @@ msgid "Email"
 msgstr ""
 
 #: src/Admin/OrderDetailView.php:103
-#: src/Admin/Settings/DesignSection.php:402
+#: src/Admin/Settings/DesignSection.php:419
 #: src/Admin/TemplatesPage.php:343
 #: src/Modules/Checkout/CheckoutModule.php:879
 #: src/Modules/Privacy/PrivacyModule.php:106
@@ -6975,7 +6975,7 @@ msgstr ""
 #: src/Admin/OrdersList.php:379
 #: src/Admin/ProductsList.php:165
 #: src/Admin/StockOverview.php:513
-#: src/Modules/Catalog/CatalogModule.php:232
+#: src/Modules/Catalog/CatalogModule.php:236
 #: src/Pro__premium_only/Agents/StockFile.php:188
 msgid "All"
 msgstr ""
@@ -7621,7 +7621,7 @@ msgid "Your own number for finding it again – only visible internally."
 msgstr ""
 
 #: src/Admin/ProductForm.php:177
-#: src/Modules/Seo/PageRenderer.php:100
+#: src/Modules/Seo/PageRenderer.php:129
 #: src/Pro__premium_only/Audit/AuditPage.php:489
 msgid "Brand"
 msgstr ""
@@ -8109,7 +8109,7 @@ msgstr ""
 #: src/Admin/ProductsList.php:207
 #: src/Admin/StockOverview.php:552
 #: src/Modules/Agents/ShopTools.php:57
-#: src/Modules/Catalog/CatalogModule.php:180
+#: src/Modules/Catalog/CatalogModule.php:184
 msgid "Search products"
 msgstr ""
 
@@ -8507,339 +8507,355 @@ msgstr ""
 msgid "Design"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:112
+#: src/Admin/Settings/DesignSection.php:113
 msgid "The previous placeholder image is no longer used. You can delete it from the media library under Products → \"Unused images\"."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:168
+#: src/Admin/Settings/DesignSection.php:169
 msgid "Here you decide how the shop looks to customers. Start with “Like my theme”, check the preview and only change what doesn’t fit. Changes apply after saving."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:171
+#: src/Admin/Settings/DesignSection.php:172
 msgid "Jump to the preview ↓"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:177
-#: src/Admin/Settings/DesignSection.php:183
+#: src/Admin/Settings/DesignSection.php:178
+#: src/Admin/Settings/DesignSection.php:184
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
 msgid "Basic style"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:179
-#: src/Admin/Settings/DesignSection.php:213
-msgid "Like my theme"
-msgstr ""
-
 #: src/Admin/Settings/DesignSection.php:180
-#: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
-msgid "Clear"
+#: src/Admin/Settings/DesignSection.php:214
+msgid "Like my theme"
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:181
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
-msgid "Soft"
+msgid "Clear"
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:182
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
+msgid "Soft"
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:183
+#: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:336
 msgid "Angular"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:184
+#: src/Admin/Settings/DesignSection.php:185
 msgid "Sets corners and shadows. “Like my theme” takes what your theme provides; the other styles are ready-made looks. You can still change every setting below."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:188
+#: src/Admin/Settings/DesignSection.php:189
 msgid "Main shop color"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:190
+#: src/Admin/Settings/DesignSection.php:191
 msgid "from the theme"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:191
-#: src/Admin/Settings/DesignSection.php:320
+#: src/Admin/Settings/DesignSection.php:192
+#: src/Admin/Settings/DesignSection.php:337
 msgid "own color:"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:192
+#: src/Admin/Settings/DesignSection.php:193
 msgid "Own main color"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:196
+#: src/Admin/Settings/DesignSection.php:197
 msgid "Your theme uses:"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:198
+#: src/Admin/Settings/DesignSection.php:199
 msgid "Your theme doesn’t reveal a color to WordPress. With “from the theme”, the shop uses the color your theme sets for Kontor Shop (help: Design → For web developers), otherwise a neutral blue."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:202
+#: src/Admin/Settings/DesignSection.php:203
 msgid "A fixed color is saved here. Earlier versions entered it automatically when saving – it overrides your theme’s color, even if the theme changes later."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:203
+#: src/Admin/Settings/DesignSection.php:204
 msgid "Use theme color"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:207
+#: src/Admin/Settings/DesignSection.php:208
 msgid "Used for buttons, active filters and links in the catalog, cart and checkout, unless a category has its own accent color (“Categories” menu). The text on buttons automatically turns white or dark so it stays readable."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:211
-#: src/Admin/Settings/DesignSection.php:216
+#: src/Admin/Settings/DesignSection.php:212
+#: src/Admin/Settings/DesignSection.php:217
 msgid "Color scheme"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:214
+#: src/Admin/Settings/DesignSection.php:215
 msgid "Light"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:215
+#: src/Admin/Settings/DesignSection.php:216
 msgid "Dark"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:220
+#: src/Admin/Settings/DesignSection.php:221
 msgid "Detected: your theme has a dark background – with “Like my theme”, cards, cart and checkout are dark too."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:221
+#: src/Admin/Settings/DesignSection.php:222
 msgid "Detected: your theme has a light background."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:223
+#: src/Admin/Settings/DesignSection.php:224
 msgid "Choose “Dark” if your website has a dark background. Your theme doesn’t reveal its background, so “Like my theme” stays light."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:228
+#: src/Admin/Settings/DesignSection.php:229
 msgid "Corners"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:229
+#: src/Admin/Settings/DesignSection.php:230
 msgid "Own rounding"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:232
+#: src/Admin/Settings/DesignSection.php:233
 msgid "0 = square corners. Without “Own rounding”, the basic style decides."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:236
-#: src/Admin/Settings/DesignSection.php:242
+#: src/Admin/Settings/DesignSection.php:237
+#: src/Admin/Settings/DesignSection.php:243
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:337
 msgid "Products per row"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:238
+#: src/Admin/Settings/DesignSection.php:239
 msgid "Automatic"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:243
+#: src/Admin/Settings/DesignSection.php:244
 msgid "Maximum on a wide screen. Narrower screens show fewer; phones show two “Label” cards or one “Classic” card per row."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:247
-#: src/Admin/Settings/DesignSection.php:252
+#: src/Admin/Settings/DesignSection.php:248
+#: src/Admin/Settings/DesignSection.php:253
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:338
 msgid "Image format"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:249
-msgid "Standard"
-msgstr ""
-
 #: src/Admin/Settings/DesignSection.php:250
-#: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:338
-msgid "Square"
+msgid "Standard"
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:251
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:338
+msgid "Square"
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:252
+#: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:338
 msgid "Portrait 3:4"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:253
+#: src/Admin/Settings/DesignSection.php:254
 msgid "Product photos are cropped to this format in the catalog. “Standard” is portrait 4:5 for “Label” cards and landscape 4:3 for “Classic” cards. “Portrait” suits clothing, “Square” suits mixed photos. The product page always shows the whole image."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:257
-#: src/Admin/Settings/DesignSection.php:261
+#: src/Admin/Settings/DesignSection.php:258
+#: src/Admin/Settings/DesignSection.php:262
 msgid "Font of product names"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:259
+#: src/Admin/Settings/DesignSection.php:260
 msgid "Like the theme’s headings"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:260
+#: src/Admin/Settings/DesignSection.php:261
 msgid "Like the body text"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:264
+#: src/Admin/Settings/DesignSection.php:265
 msgid "Your theme doesn’t reveal its heading font to WordPress, so product names use the body text font. A web developer can set it (help: Design → For web developers)."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:270
+#: src/Admin/Settings/DesignSection.php:271
 msgid "Product cards"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:273
+#: src/Admin/Settings/DesignSection.php:274
 msgid "Label: price as a tag on the photo, sizes as buttons – one tap puts the size in the cart"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:274
+#: src/Admin/Settings/DesignSection.php:275
 msgid "Classic: photo, description, selection list, quantity and button"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:279
-msgid "With “Label”, every photo gets the same frame (portrait 4:5 unless you choose another image format). Photos on white are shown whole, photos with a real background fill the frame. The shop remembers the size a customer chose and highlights it on all cards."
+#: src/Admin/Settings/DesignSection.php:280
+msgid "With “Label”, every photo gets the same frame (portrait 4:5 unless you choose another image format). On photos on white the shop zooms in on the product, photos with a real background fill the frame. The shop remembers the size a customer chose and highlights it on all cards."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:286
-msgid "Card effect"
-msgstr ""
-
-#: src/Admin/Settings/DesignSection.php:289
-msgid "Spotlight: the border glows in the accent color where the mouse is"
+#: src/Admin/Settings/DesignSection.php:287
+msgid "Product name on product pages"
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:290
-msgid "Lift: the card lifts slightly on hover"
+msgid "Shown by the shop as a heading next to the photo (recommended)"
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:291
-msgid "Calm: no effect"
+msgid "Shown by the theme as the page title"
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:296
-msgid "Only works on a computer with a mouse; on mobile the cards stay calm."
+msgid "Many themes show no page title on shop pages. Then the product name would be missing. Choose “theme” only if your theme shows the name above the page and it appears twice."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:302
-msgid "Floating cart button"
-msgstr ""
-
-#: src/Admin/Settings/DesignSection.php:305
-msgid "show (bottom right, on all pages)"
+#: src/Admin/Settings/DesignSection.php:303
+msgid "Card effect"
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:306
-msgid "Turn this off if you place the cart icon in your theme yourself - shortcode: [kontor_shop_cart_icon]."
+msgid "Spotlight: the border glows in the accent color where the mouse is"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:312
-msgid "Only show once there are products in the cart"
+#: src/Admin/Settings/DesignSection.php:307
+msgid "Lift: the card lifts slightly on hover"
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:308
+msgid "Calm: no effect"
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:313
-msgid "When the cart is empty, the button stays hidden and appears automatically as soon as a product is added."
-msgstr ""
-
-#: src/Admin/Settings/DesignSection.php:317
-msgid "Cart button color"
-msgstr ""
-
-#: src/Admin/Settings/DesignSection.php:318
-msgid "Color:"
+msgid "Only works on a computer with a mouse; on mobile the cards stay calm."
 msgstr ""
 
 #: src/Admin/Settings/DesignSection.php:319
+msgid "Floating cart button"
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:322
+msgid "show (bottom right, on all pages)"
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:323
+msgid "Turn this off if you place the cart icon in your theme yourself - shortcode: [kontor_shop_cart_icon]."
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:329
+msgid "Only show once there are products in the cart"
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:330
+msgid "When the cart is empty, the button stays hidden and appears automatically as soon as a product is added."
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:334
+msgid "Cart button color"
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:335
+msgid "Color:"
+msgstr ""
+
+#: src/Admin/Settings/DesignSection.php:336
 msgid "like the main color"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:321
+#: src/Admin/Settings/DesignSection.php:338
 msgid "Own cart button color"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:325
+#: src/Admin/Settings/DesignSection.php:342
 msgid "Product search"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:328
+#: src/Admin/Settings/DesignSection.php:345
 msgid "Show search field in the catalog"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:341
+#: src/Admin/Settings/DesignSection.php:358
 msgid "Placeholder image"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:343
+#: src/Admin/Settings/DesignSection.php:360
 msgid "Shown for products without their own photo (e.g. your logo). Empty = neutral icon."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:367
+#: src/Admin/Settings/DesignSection.php:384
 msgid "For web developers: adjust CSS yourself"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:368
+#: src/Admin/Settings/DesignSection.php:385
 msgid "The settings above produce the block below. You can copy it into the style.css of your child theme and then choose “Like my theme” here, or add your own rules in the “Custom CSS” field."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:369
+#: src/Admin/Settings/DesignSection.php:386
 msgid "All variables, class names and examples"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:371
+#: src/Admin/Settings/DesignSection.php:388
 msgid "Copy CSS"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:373
+#: src/Admin/Settings/DesignSection.php:390
 msgid "Custom CSS"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:377
+#: src/Admin/Settings/DesignSection.php:394
 msgid "Loaded right after the shop styles on every page. Start your rules with a .kontor-shop-… class so they only affect the shop. HTML tags are removed."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:379
+#: src/Admin/Settings/DesignSection.php:396
 msgid "Only users who may edit CSS in WordPress (usually administrators) can change this field."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:392
+#: src/Admin/Settings/DesignSection.php:409
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:548
 msgid "Preview"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:395
+#: src/Admin/Settings/DesignSection.php:412
 msgid "The shop page (with the shortcode [kontor_shop_catalog]) is missing, so there is no preview. Deactivating and reactivating Kontor Shop creates it again."
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:400
+#: src/Admin/Settings/DesignSection.php:417
 msgid "Preview width"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:401
+#: src/Admin/Settings/DesignSection.php:418
 msgid "Computer"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:404
+#: src/Admin/Settings/DesignSection.php:421
 msgid "Open shop"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:406
+#: src/Admin/Settings/DesignSection.php:423
 msgid "Preview of the shop page with the current settings"
 msgstr ""
 
-#: src/Admin/Settings/DesignSection.php:408
+#: src/Admin/Settings/DesignSection.php:425
 msgid "Shows your real shop page with the settings on the left – before saving. You can click through it; nothing is ordered unless you complete the checkout."
 msgstr ""
 
 #. translators: 1: "white" or "dark", 2: contrast ratio, e.g. 7.9
-#: src/Admin/Settings/DesignSection.php:422
+#: src/Admin/Settings/DesignSection.php:439
 msgid "Text on buttons: %1$s · contrast %2$s : 1 – easy to read."
 msgstr ""
 
 #. translators: 1: "white" or "dark", 2: contrast ratio, e.g. 3.1
-#: src/Admin/Settings/DesignSection.php:424
+#: src/Admin/Settings/DesignSection.php:441
 msgid "Text on buttons: %1$s · contrast only %2$s : 1 – hard to read. Choose a darker or lighter color."
 msgstr ""
 
 #. translators: 1: "white" or "dark", 2: contrast ratio, e.g. 3.1
-#: src/Admin/Settings/DesignSection.php:425
+#: src/Admin/Settings/DesignSection.php:442
 msgid "white"
 msgstr ""
 
 #. translators: 1: "white" or "dark", 2: contrast ratio, e.g. 3.1
-#: src/Admin/Settings/DesignSection.php:426
+#: src/Admin/Settings/DesignSection.php:443
 msgid "dark"
 msgstr ""
 
@@ -9997,7 +10013,7 @@ msgstr ""
 #: src/Admin/ShopSnapshot.php:166
 #: src/Infrastructure/Frontend/PageInstaller.php:30
 #: src/Modules/Blocks/BlocksModule.php:116
-#: src/Modules/Seo/Links.php:101
+#: src/Modules/Seo/Links.php:115
 #: src/Pro__premium_only/Seo/MeridianAdapter.php:133
 msgid "Shop"
 msgstr ""
@@ -10183,7 +10199,7 @@ msgid "Everything is in the green – nothing to do."
 msgstr ""
 
 #: src/Admin/StockOverview.php:408
-#: src/Modules/Catalog/CatalogModule.php:202
+#: src/Modules/Catalog/CatalogModule.php:206
 msgid "No products found."
 msgstr ""
 
@@ -10212,8 +10228,8 @@ msgstr ""
 
 #: src/Admin/StockOverview.php:481
 #: src/Admin/StockOverview.php:514
-#: src/Modules/Catalog/LabelCard.php:59
-#: src/Modules/Catalog/LabelCard.php:61
+#: src/Modules/Catalog/LabelCard.php:65
+#: src/Modules/Catalog/LabelCard.php:67
 #: src/Pro__premium_only/Agents/StockFile.php:190
 msgid "Sold out"
 msgstr ""
@@ -13096,8 +13112,8 @@ msgid "This variant is currently unavailable."
 msgstr ""
 
 #: src/Modules/Catalog/CatalogModule.php:82
-#: src/Modules/Seo/PageRenderer.php:61
-#: src/Pro__premium_only/Seo/CategoryPages.php:221
+#: src/Modules/Seo/PageRenderer.php:82
+#: src/Pro__premium_only/Seo/CategoryPages.php:193
 msgid "In stock"
 msgstr ""
 
@@ -13110,7 +13126,7 @@ msgid "Next image"
 msgstr ""
 
 #: src/Modules/Catalog/CatalogModule.php:86
-#: src/Modules/Seo/PageRenderer.php:151
+#: src/Modules/Seo/PageRenderer.php:280
 msgid "Enlarge image"
 msgstr ""
 
@@ -13134,63 +13150,71 @@ msgstr ""
 msgid "Show all %d options"
 msgstr ""
 
-#: src/Modules/Catalog/CatalogModule.php:182
+#. translators: %s: chosen size, e.g. "M"
+#: src/Modules/Catalog/CatalogModule.php:94
+#: src/Modules/Catalog/LabelCard.php:152
+msgid "Add %s to cart"
+msgstr ""
+
+#. translators: %s: size the customer chose last time, e.g. "M"
+#: src/Modules/Catalog/CatalogModule.php:96
+msgid "Your size %s is already selected – you chose it last time."
+msgstr ""
+
+#: src/Modules/Catalog/CatalogModule.php:186
 msgid "Search products …"
 msgstr ""
 
-#: src/Modules/Catalog/CatalogModule.php:262
-#: src/Pro__premium_only/Seo/CategoryPages.php:233
+#: src/Modules/Catalog/CatalogModule.php:266
+#: src/Pro__premium_only/Seo/CategoryPages.php:205
 msgid "Pages"
 msgstr ""
 
 #. translators: %s: tax rate in percent
-#: src/Modules/Catalog/CatalogModule.php:386
-#: src/Modules/Catalog/CatalogModule.php:430
-#: src/Modules/Seo/PageRenderer.php:55
-#: src/Pro__premium_only/Seo/CategoryPages.php:183
+#: src/Modules/Catalog/CatalogModule.php:391
+#: src/Modules/Catalog/CatalogModule.php:435
+#: src/Modules/Catalog/LabelCard.php:104
+#: src/Modules/Seo/PageRenderer.php:89
 msgid "incl. %s %% VAT"
 msgstr ""
 
-#: src/Modules/Catalog/CatalogModule.php:399
-#: src/Modules/Catalog/LabelCard.php:145
-#: src/Modules/Seo/PageRenderer.php:67
+#: src/Modules/Catalog/CatalogModule.php:404
+#: src/Modules/Catalog/LabelCard.php:189
+#: src/Modules/Seo/PageRenderer.php:174
+#: src/Modules/Seo/PageRenderer.php:181
 msgid "Add to cart"
 msgstr ""
 
-#: src/Modules/Catalog/LabelCard.php:59
+#: src/Modules/Catalog/LabelCard.php:65
 msgid "Last units"
 msgstr ""
 
-#. translators: %s: product name
-#: src/Modules/Catalog/LabelCard.php:108
-msgid "Add %s to cart"
-msgstr ""
-
 #. translators: 1: product name, 2: option name such as "Size"
-#: src/Modules/Catalog/LabelCard.php:121
+#: src/Modules/Catalog/LabelCard.php:165
 msgid "%1$s: choose %2$s"
 msgstr ""
 
 #. translators: %s: product name
-#: src/Modules/Catalog/LabelCard.php:138
+#: src/Modules/Catalog/LabelCard.php:182
 msgid "Choose variant of %s"
 msgstr ""
 
-#: src/Modules/Catalog/LabelCard.php:143
+#: src/Modules/Catalog/LabelCard.php:187
 msgid "Choose variant"
 msgstr ""
 
 #. translators: %s: size or other option value
-#: src/Modules/Catalog/LabelCard.php:182
+#: src/Modules/Catalog/LabelCard.php:226
+#: src/Modules/Seo/PageRenderer.php:218
 msgid "%s – sold out"
 msgstr ""
 
 #. translators: 1: size or other option value, 2: product name
-#: src/Modules/Catalog/LabelCard.php:192
+#: src/Modules/Catalog/LabelCard.php:236
 msgid "Add %2$s in %1$s to cart"
 msgstr ""
 
-#: src/Modules/Catalog/LabelCard.php:236
+#: src/Modules/Catalog/LabelCard.php:280
 #: src/Modules/Catalog/VariantPicker.php:81
 #: src/Pro__premium_only/Audit/AuditPage.php:180
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:409
@@ -13208,6 +13232,61 @@ msgstr ""
 
 #: src/Modules/Catalog/ProductNotes.php:29
 msgid "Currently unavailable"
+msgstr ""
+
+#. translators: %s: countries, e.g. "Austria and Germany"
+#: src/Modules/Catalog/ServiceInfo.php:33
+msgid "Free shipping to %s"
+msgstr ""
+
+#. translators: %s: countries, e.g. "Austria and Germany"
+#: src/Modules/Catalog/ServiceInfo.php:34
+msgid "Free shipping"
+msgstr ""
+
+#. translators: 1: countries, e.g. "Austria and Germany", 2: shipping cost such as "6,90 €"
+#: src/Modules/Catalog/ServiceInfo.php:38
+msgid "Shipping to %1$s: %2$s"
+msgstr ""
+
+#. translators: %s: shipping cost such as "6,90 €"
+#: src/Modules/Catalog/ServiceInfo.php:40
+msgid "Shipping: %s"
+msgstr ""
+
+#. translators: %s: order value such as "100 €"
+#: src/Modules/Catalog/ServiceInfo.php:44
+msgid "free from %s"
+msgstr ""
+
+#: src/Modules/Catalog/ServiceInfo.php:54
+msgid "Or pick it up yourself for free – and pay in cash if you like"
+msgstr ""
+
+#: src/Modules/Catalog/ServiceInfo.php:55
+msgid "Or pick it up yourself for free"
+msgstr ""
+
+#: src/Modules/Catalog/ServiceInfo.php:63
+msgid "bank transfer with QR code for your banking app"
+msgstr ""
+
+#: src/Modules/Catalog/ServiceInfo.php:64
+msgid "bank transfer"
+msgstr ""
+
+#: src/Modules/Catalog/ServiceInfo.php:68
+msgid "on invoice"
+msgstr ""
+
+#. translators: %s: payment methods, e.g. "bank transfer, on invoice"
+#: src/Modules/Catalog/ServiceInfo.php:83
+msgid "Pay by %s"
+msgstr ""
+
+#. translators: 1: list of countries, 2: last country
+#: src/Modules/Catalog/ServiceInfo.php:133
+msgid "%1$s and %2$s"
 msgstr ""
 
 #. translators: %s: product name
@@ -14069,42 +14148,64 @@ msgstr ""
 msgid "Notified on"
 msgstr ""
 
-#: src/Modules/Seo/Links.php:100
+#: src/Modules/Seo/Links.php:114
 msgid "Home"
 msgstr ""
 
-#: src/Modules/Seo/PageRenderer.php:99
+#: src/Modules/Seo/PageRenderer.php:128
 #: src/Pro__premium_only/Audit/AuditPage.php:487
 msgid "Product number"
 msgstr ""
 
-#: src/Modules/Seo/PageRenderer.php:101
+#: src/Modules/Seo/PageRenderer.php:130
 #: src/Pro__premium_only/Audit/AuditPage.php:488
 msgid "GTIN"
 msgstr ""
 
-#: src/Modules/Seo/PageRenderer.php:116
-msgid "Category:"
+#: src/Modules/Seo/PageRenderer.php:169
+msgid "One less"
+msgstr ""
+
+#: src/Modules/Seo/PageRenderer.php:172
+msgid "One more"
+msgstr ""
+
+#: src/Modules/Seo/PageRenderer.php:178
+msgid "Go to cart"
+msgstr ""
+
+#. translators: %s: category name
+#: src/Modules/Seo/PageRenderer.php:242
+msgid "More from %s"
+msgstr ""
+
+#. translators: %s: category name
+#: src/Modules/Seo/PageRenderer.php:243
+msgid "You might also like"
+msgstr ""
+
+#: src/Modules/Seo/PageRenderer.php:244
+msgid "Show all"
 msgstr ""
 
 #. translators: 1: image number, 2: count
-#: src/Modules/Seo/PageRenderer.php:166
+#: src/Modules/Seo/PageRenderer.php:299
 msgid "Show image %1$d of %2$d"
 msgstr ""
 
-#: src/Modules/Seo/PageRenderer.php:185
+#: src/Modules/Seo/PageRenderer.php:335
 msgid "Breadcrumbs"
 msgstr ""
 
-#: src/Modules/Seo/RouteController.php:208
+#: src/Modules/Seo/RouteController.php:209
 msgid "The shop is currently unreachable. Please try again in a few minutes."
 msgstr ""
 
-#: src/Modules/Seo/RouteController.php:209
+#: src/Modules/Seo/RouteController.php:210
 msgid "Temporarily unavailable"
 msgstr ""
 
-#: src/Modules/Storefront/DesignModule.php:181
+#: src/Modules/Storefront/DesignModule.php:200
 msgid "You are not allowed to change the shop design."
 msgstr ""
 
@@ -17325,29 +17426,37 @@ msgstr ""
 msgid "only for recognized members"
 msgstr ""
 
+#: src/Pro__premium_only/Membership/MembershipModule.php:192
+msgid "on invoice (members only)"
+msgstr ""
+
+#: src/Pro__premium_only/Membership/MembershipModule.php:210
+msgid "members ship for free"
+msgstr ""
+
 #. translators: %s: member name
-#: src/Pro__premium_only/Membership/MembershipModule.php:237
+#: src/Pro__premium_only/Membership/MembershipModule.php:275
 msgid "Logged in as a member (%s) – member benefits apply."
 msgstr ""
 
 #. translators: %s: member name
-#: src/Pro__premium_only/Membership/MembershipModule.php:240
+#: src/Pro__premium_only/Membership/MembershipModule.php:278
 msgid "Logged in as a member – member benefits apply."
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:250
+#: src/Pro__premium_only/Membership/MembershipModule.php:288
 msgid "You're logged in, but no member benefits currently apply to your account (for example, because the membership fee hasn't been recorded yet). If you have questions, please contact the club."
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:263
+#: src/Pro__premium_only/Membership/MembershipModule.php:301
 msgid "Member?"
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:264
+#: src/Pro__premium_only/Membership/MembershipModule.php:302
 msgid "Log in now"
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:265
+#: src/Pro__premium_only/Membership/MembershipModule.php:303
 msgid "and enjoy member benefits."
 msgstr ""
 
@@ -17840,16 +17949,16 @@ msgid "Text selected – copy it with Ctrl/⌘+C."
 msgstr ""
 
 #. translators: %d: page number
-#: src/Pro__premium_only/Seo/CategoryPages.php:117
+#: src/Pro__premium_only/Seo/CategoryPages.php:116
 msgid "Page %d"
 msgstr ""
 
 #. translators: 1: category name, 2: shop name
-#: src/Pro__premium_only/Seo/CategoryPages.php:127
+#: src/Pro__premium_only/Seo/CategoryPages.php:126
 msgid "%1$s in %2$s: %3$d products."
 msgstr ""
 
-#: src/Pro__premium_only/Seo/CategoryPages.php:158
+#: src/Pro__premium_only/Seo/CategoryPages.php:157
 msgid "There are currently no products in this category."
 msgstr ""
 

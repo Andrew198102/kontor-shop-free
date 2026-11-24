@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.11
+Stable tag: 2.9.12
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,15 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.12 =
+* New: product pages in the style of the "Label" cards. The product name now always appears as a heading next to the photo, with the category above it – many themes show no page title on shop pages, so the name was missing completely (also for search engines). If your theme shows the name itself and it now appears twice, choose Settings → Design → "Product name on product pages" → theme.
+* New: on product pages the price hangs as a tag next to "In stock", the short description comes first, and sizes are large buttons instead of a selection list. The size a customer chose last time is already selected ("Your size S is already selected"). Sold-out sizes are struck through; choosing one shows "Notify me when available" as before. Quantity has − and + buttons, and the button says what happens: "Add S to cart". After adding, a line with "Go to cart" appears.
+* New: three short info lines under the button, taken from your settings: shipping (flat rate, "free from" amount, countries), self pickup, and payment methods. Only what is set up appears; the exact shipping cost is still calculated at checkout. Pro adds "members ship for free" and "on invoice (members only)" where set.
+* New: "More from <category>" below the product with up to four cards from the same category, available products first.
+* New: on phones a bar with price and button stays at the bottom while the button above is out of view. Without a chosen size it jumps to the sizes.
+* Fix: photos on white looked small on cards and product pages. The AI photos are landscape, and the product covers only about 40 % of the width; shown whole, a shirt filled less than half the frame. The shop now measures once per photo where the product is and zooms in so it fills about 85 % of the frame. A pale grey frame left around some AI photos no longer shows. No new photos are needed.
+* Fix (Pro): a member's price in the price tag was green on green and could not be read. It now uses the tag's text colour.
 
 = 2.9.11 =
 * New: product cards in the style "Label" (Settings → Design → Product cards, now the default). The price hangs as a tag on the photo, the category is a small line, the name has at most two lines. Sizes are buttons right on the card: one tap puts exactly that size in the cart, sold-out sizes are struck through, and what doesn't fit in the row opens with "+2" above the photo. The shop remembers the size a customer chose (in their browser, letter and number sizes separately) and highlights it on all cards. Products without variants get a round "+" button; products with several options (e.g. size and colour) open the usual selection above the photo. On phones, two cards sit side by side. "Classic" keeps the previous layout.

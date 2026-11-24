@@ -202,6 +202,9 @@
                 return false;
             });
 
+            // Artikelseite mit Groessen-Knoepfen: die Liste ist ausgeblendet, Fokus auf den ersten Knopf.
+            open = form.querySelector('[data-ks-detail-sizes]:not([hidden]) [data-ks-pick]') || open;
+
             toast(text('chooseVariant', 'Please select a variant first.'), true);
 
             if (open) {
@@ -220,6 +223,11 @@
                 if (quick) {
                     // Rueckmeldung am Foto (product.js), Knopf bleibt wie er ist.
                     form.dispatchEvent(new CustomEvent('kontorShopQuickAdded', { bubbles: true, detail: { form: form, button: button, variantId: variantId } }));
+                } else if (form.hasAttribute('data-ks-detail')) {
+                    // Artikelseite: Hinweis mit "Zum Warenkorb" unter dem Knopf (product.js).
+                    button.classList.add('is-done');
+                    window.setTimeout(function () { button.classList.remove('is-done'); }, 1600);
+                    form.dispatchEvent(new CustomEvent('kontorShopAdded', { bubbles: true, detail: { form: form, variantId: variantId, quantity: quantity } }));
                 } else {
                     flash(button, text('added', 'Added'), true);
                 }
@@ -282,6 +290,17 @@
         }
 
         var toggle = event.target.closest('#kontor-shop-cart-toggle');
+
+        // "Zum Warenkorb" auf der Artikelseite: Seitenleiste oeffnen, wenn es sie gibt.
+        var openCart = event.target.closest('[data-ks-open-cart]');
+
+        if (openCart && document.getElementById('kontor-shop-cart-drawer')) {
+            event.preventDefault();
+            lastTrigger = openCart;
+            openDrawer();
+
+            return;
+        }
 
         if (toggle) {
             event.preventDefault();

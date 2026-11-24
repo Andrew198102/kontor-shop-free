@@ -68,6 +68,25 @@ final class DesignModule implements Registerable
         return self::sanitize_card_layout((string) $settings->get('design.card_layout', 'label'));
     }
 
+    /**
+     * Wer zeigt auf Artikel- und Kategorieseiten den Namen als Ueberschrift (H1)?
+     * shop = der Shop im Kaufbereich (Standard; den Seitentitel des Themes blendet
+     * er dann aus), theme = das Theme wie bei normalen Seiten.
+     */
+    public const DETAIL_TITLES = ['shop', 'theme'];
+
+    public static function sanitize_detail_title(string $value): string
+    {
+        return in_array($value, self::DETAIL_TITLES, true) ? $value : 'shop';
+    }
+
+    public static function detail_title(?Repository $settings = null): string
+    {
+        $settings ??= Plugin::instance()->settings() ?? new Repository();
+
+        return self::sanitize_detail_title((string) $settings->get('design.detail_title', 'shop'));
+    }
+
     public static function sanitize_card_effect(string $value): string
     {
         return in_array($value, self::CARD_EFFECTS, true) ? $value : 'spotlight';

@@ -90,6 +90,10 @@ final class CatalogModule implements Registerable
             'yourSize'    => __('your size', 'kontor-shop'),
             /* translators: %d: number of sizes or other options */
             'moreOptions' => __('Show all %d options', 'kontor-shop'),
+            /* translators: %s: chosen size, e.g. "M" */
+            'addSize'     => __('Add %s to cart', 'kontor-shop'),
+            /* translators: %s: size the customer chose last time, e.g. "M" */
+            'sizePreselected' => __('Your size %s is already selected – you chose it last time.', 'kontor-shop'),
         ]);
 
     }
@@ -335,6 +339,7 @@ final class CatalogModule implements Registerable
                 'attributes'   => $data_category . ' data-search="' . esc_attr($search_text) . '"' . $style,
                 'image_html'   => ProductImage::render($product->image_id, $product->name, 'medium_large', $placeholder, '', $product->image_alt),
                 'cutout'       => ProductImage::is_cutout($product->image_id),
+                'box'          => ProductImage::product_box($product->image_id),
                 'category'     => $category?->name ?? '',
                 'price_text'   => $rows !== [] ? LabelCard::price_text($rows, $product->price) : LabelCard::price_label($product->price),
                 'fine_html'    => $this->fine_print($product, $rows),

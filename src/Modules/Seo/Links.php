@@ -43,6 +43,20 @@ final class Links
         return is_string($url) && $url !== '' ? $url : $this->absolute('/' . $this->urls->base() . '/');
     }
 
+    /** Warenkorb-Seite (Einstellung general.cart_page_id), sonst die Katalogseite. */
+    public function cart(): string
+    {
+        $id  = (int) $this->settings->get('general.cart_page_id', 0);
+        $url = $id > 0 && get_post_status($id) === 'publish' ? get_permalink($id) : false;
+
+        return is_string($url) && $url !== '' ? $url : $this->shop();
+    }
+
+    public function settings(): Repository
+    {
+        return $this->settings;
+    }
+
     public function product(PublicProduct $product): string
     {
         return $this->absolute($this->urls->product_path($product->slug, $product->id));

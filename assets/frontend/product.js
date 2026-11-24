@@ -39,7 +39,9 @@
                 url: el.getAttribute('src'),
                 srcset: el.getAttribute('srcset') || '',
                 alt: el.getAttribute('alt') || '',
-                full: zoom ? zoom.getAttribute('href') : ''
+                full: zoom ? zoom.getAttribute('href') : '',
+                stage: zoom ? stageOf(zoom) : '',
+                box: zoom ? (zoom.getAttribute('style') || '') : ''
             };
         }
 
@@ -62,6 +64,22 @@
             link.setAttribute('href', target.full);
         }
 
+        // Bildbuehne der Artikelseite: Freisteller zoomen aufs Produkt (is-cutout has-box),
+        // andere Bilder (auch Variantenbilder ohne Angabe) werden ganz gezeigt.
+        if (link) {
+            link.classList.remove('is-cutout', 'has-box');
+
+            if (target.stage) {
+                target.stage.split(' ').forEach(function (cls) { if (cls) { link.classList.add(cls); } });
+            }
+
+            if (target.box) {
+                link.setAttribute('style', target.box);
+            } else {
+                link.removeAttribute('style');
+            }
+        }
+
         root.querySelectorAll('[data-ks-gallery-thumb]').forEach(function (thumb) {
             var active = thumb.getAttribute('data-url') === target.url;
 
@@ -73,6 +91,10 @@
                 thumb.removeAttribute('aria-current');
             }
         });
+    }
+
+    function stageOf(link) {
+        return ['is-cutout', 'has-box'].filter(function (cls) { return link.classList.contains(cls); }).join(' ');
     }
 
     /* ---------- Variantenauswahl ---------- */
@@ -303,7 +325,9 @@
                 url: thumb.getAttribute('data-url'),
                 srcset: thumb.getAttribute('data-srcset'),
                 alt: thumb.getAttribute('data-alt'),
-                full: thumb.getAttribute('data-full')
+                full: thumb.getAttribute('data-full'),
+                stage: thumb.getAttribute('data-stage') || '',
+                box: thumb.getAttribute('data-box') || ''
             });
 
             return;
@@ -615,6 +639,238 @@
         }
     }
 
+    /* ---------- Artikelseite: Groessen-Knoepfe, Menge, Rueckmeldung ---------- */
+
+    /**
+     * Groessen-Knoepfe steuern die (dann ausgeblendete) Auswahlliste - so
+     * gelten Preis, Verfuegbarkeit, Bild und "Benachrichtigen" wie gehabt.
+     * Die gemerkte Groesse (Etikett-Karten) ist vorausgewaehlt.
+     */
+    function initDetailSizes(form) {
+        var row = form.querySelector('[data-ks-detail-sizes]');
+        var select = form.querySelector('select[data-ks-option]');
+
+        if (!row || !select) {
+            return;
+        }
+
+        var picker = select.closest('.kontor-shop-variants');
+        var chips = Array.prototype.slice.call(row.querySelectorAll('[data-ks-pick]'));
+        var button = form.querySelector('button[type="submit"]');
+        var hint = row.querySelector('[data-ks-size-hint]');
+        var label = button ? button.textContent : '';
+
+        row.hidden = false;
+
+        if (picker) {
+            picker.classList.add('is-chips');
+        }
+
+        function sync() {
+            chips.forEach(function (chip) {
+                chip.setAttribute('aria-pressed', chip.getAttribute('data-ks-pick') === select.value ? 'true' : 'false');
+            });
+
+            if (button) {
+                button.textContent = select.value ? text('addSize', 'Add %s to cart').replace('%s', select.value) : label;
+            }
+        }
+
+        function pick(value) {
+            select.value = value;
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+            sync();
+        }
+
+        chips.forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                if (hint) {
+                    hint.hidden = true;
+                }
+
+                pick(chip.getAttribute('data-ks-pick'));
+            });
+        });
+
+        if (!select.value) {
+            var sizes = storedSizes();
+            var mine = chips.filter(function (chip) {
+                var value = chip.getAttribute('data-ks-pick');
+
+                return !chip.classList.contains('is-out') && sizes[sizeKey(row, value)] === value;
+            })[0];
+
+            if (mine) {
+                pick(mine.getAttribute('data-ks-pick'));
+                mine.classList.add('is-mine');
+
+                if (hint) {
+                    hint.textContent = text('sizePreselected', 'Your size %s is already selected.').replace('%s', mine.getAttribute('data-ks-pick'));
+                    hint.hidden = false;
+                }
+            }
+        }
+
+        sync();
+    }
+
+    /**
+     * Kaufleiste am Handy: sichtbar, solange der Kaufknopf nicht im Bild ist.
+     * Ohne gewaehlte Groesse springt sie zu den Groessen, sonst legt sie in
+     * den Warenkorb (dasselbe Formular, gleiche Rueckmeldung).
+     */
+    function initBuybar(form) {
+        var root = form.closest('.kontor-shop-detail');
+        var bar = root ? root.querySelector('[data-ks-buybar]') : null;
+        var submit = form.querySelector('button[type="submit"]');
+
+        if (!bar || !submit || !window.IntersectionObserver || !window.matchMedia) {
+            return;
+        }
+
+        var narrow = window.matchMedia('(max-width: 860px)');
+        var price = bar.querySelector('[data-ks-buybar-price]');
+        var button = bar.querySelector('[data-ks-buybar-button]');
+        var tag = root.querySelector('[data-ks-price]');
+        var submitVisible = true;
+
+        function refresh() {
+            var show = narrow.matches && !submitVisible;
+
+            if (show) {
+                price.textContent = tag ? tag.textContent.trim() : '';
+                button.textContent = submit.textContent;
+                button.disabled = submit.disabled;
+            }
+
+            bar.hidden = !show;
+            document.documentElement.classList.toggle('kontor-shop-buybar-open', show);
+
+            if (show) {
+                document.documentElement.style.setProperty('--ks-buybar-height', bar.offsetHeight + 'px');
+            }
+
+            if (window.FabDock && window.FabDock.update) {
+                window.FabDock.update();
+            }
+        }
+
+        new IntersectionObserver(function (entries) {
+            submitVisible = entries[0].isIntersecting;
+            refresh();
+        }).observe(submit);
+
+        if (narrow.addEventListener) {
+            narrow.addEventListener('change', refresh);
+        }
+
+        form.addEventListener('change', refresh);
+        form.addEventListener('click', function () { window.setTimeout(refresh, 0); });
+
+        button.addEventListener('click', function () {
+            var select = form.querySelector('select[data-ks-option]');
+            var sizes = form.querySelector('[data-ks-detail-sizes]:not([hidden])');
+
+            if (sizes && select && !select.value) {
+                sizes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                var first = sizes.querySelector('[data-ks-pick]:not(.is-out)');
+
+                if (first) {
+                    first.focus({ preventScroll: true });
+                }
+
+                return;
+            }
+
+            if (form.requestSubmit) {
+                form.requestSubmit(submit);
+            } else {
+                submit.click();
+            }
+        });
+    }
+
+    function initDetail(scope) {
+        scope.querySelectorAll('form[data-ks-detail]').forEach(function (form) {
+            if (form.ksDetailReady) {
+                return;
+            }
+
+            form.ksDetailReady = true;
+            initDetailSizes(form);
+            initBuybar(form);
+
+            form.querySelectorAll('[data-ks-qty-step]').forEach(function (step) {
+                step.hidden = false;
+            });
+
+            var qty = form.querySelector('[data-ks-qty]');
+
+            if (qty) {
+                qty.classList.add('is-stepper');
+            }
+        });
+    }
+
+    document.addEventListener('click', function (event) {
+        var step = event.target.closest('[data-ks-qty-step]');
+
+        if (!step) {
+            return;
+        }
+
+        var input = step.closest('[data-ks-qty]').querySelector('input[type="number"]');
+        var min = parseInt(input.getAttribute('min') || '1', 10);
+        var value = (parseInt(input.value, 10) || min) + parseInt(step.getAttribute('data-ks-qty-step'), 10);
+
+        input.value = String(Math.max(min, value));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    // Rueckmeldung auf der Artikelseite (cart.js): Hinweis mit "Zum Warenkorb", Groesse merken.
+    document.addEventListener('kontorShopAdded', function (event) {
+        var detail = event.detail || {};
+        var form = detail.form;
+
+        if (!form || !form.hasAttribute('data-ks-detail')) {
+            return;
+        }
+
+        var row = form.querySelector('[data-ks-detail-sizes]');
+        var select = row && !row.hidden ? form.querySelector('select[data-ks-option]') : null;
+        var chosen = Array.prototype.map.call(form.querySelectorAll('select[data-ks-option]'), function (sel) { return sel.value; })
+            .filter(Boolean).join(' / ');
+
+        if (row && select && select.value) {
+            rememberSize(row, select.value);
+        }
+
+        var quantity = parseInt(detail.quantity, 10) || 1;
+        var message = chosen ? text('addedSize', '%s in cart').replace('%s', chosen) : text('addedPlain', 'In cart');
+        var box = form.parentNode.querySelector('[data-ks-detail-added]');
+
+        if (box) {
+            box.querySelector('[data-ks-added-text]').textContent = '✓ ' + (quantity > 1 ? quantity + ' × ' : '') + message;
+            box.hidden = false;
+        }
+
+        // Kaufleiste: der Hinweis oben ist gerade nicht zu sehen.
+        var root = form.closest('.kontor-shop-detail');
+        var barButton = root ? root.querySelector('[data-ks-buybar]:not([hidden]) [data-ks-buybar-button]') : null;
+
+        if (barButton) {
+            var before = barButton.textContent;
+
+            barButton.textContent = '✓ ' + message;
+            barButton.classList.add('is-done');
+            window.setTimeout(function () {
+                barButton.textContent = before;
+                barButton.classList.remove('is-done');
+            }, 1800);
+        }
+    });
+
     function init(scope) {
         scope.querySelectorAll('[data-ks-variant-data]').forEach(function (picker) {
             if (!picker.ksReady) {
@@ -623,6 +879,7 @@
             }
         });
 
+        initDetail(scope);
         initQuick(scope);
     }
 

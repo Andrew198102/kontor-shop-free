@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Modules\Catalog;
 
+use Kontor\Shop\Domain\Seo\PublicProduct;
+
 /**
  * Artikelkarte im Stil "Etikett" (Einstellungen -> Design -> Artikelkarten):
  * feste Bildbuehne, Preis als Anhaenger am Foto, Kategorie als kleine Zeile,
@@ -32,6 +34,7 @@ final class LabelCard
      *   attributes: string,
      *   image_html: string,
      *   cutout: bool,
+     *   box?: array{x0: float, y0: float, x1: float, y1: float, ratio: float}|null,
      *   category: string,
      *   price_text: string,
      *   fine_html: string,
@@ -51,7 +54,10 @@ final class LabelCard
         $html = '<article class="kontor-shop-product kontor-shop-product--label" id="artikel-' . $id . '" data-product-id="' . $id . '"' . $card['attributes'] . '>';
 
         // Bildbuehne mit Preis-Anhaenger und Hinweisen
-        $html .= '<div class="kontor-shop-product__media' . ($card['cutout'] ? ' is-cutout' : '') . '" data-ks-media>' . $card['image_html'];
+        // Freisteller mit bekanntem Produktrahmen: Karte zoomt auf das Produkt.
+        $box_style = $card['cutout'] ? ProductImage::box_style($card['box'] ?? null) : '';
+        $html .= '<div class="kontor-shop-product__media' . ($card['cutout'] ? ' is-cutout' : '') . ($box_style !== '' ? ' has-box' : '') . '"'
+            . ($box_style !== '' ? ' style="' . esc_attr($box_style) . '"' : '') . ' data-ks-media>' . $card['image_html'];
         $html .= '<p class="kontor-shop-product__tag" data-ks-price data-product-id="' . $id . '"><span class="kontor-shop-product__price--normal">'
             . esc_html($card['price_text']) . '</span></p>';
 
@@ -82,6 +88,44 @@ final class LabelCard
         $html .= $card['available'] ? self::buy($card) : $card['notes_html'];
 
         return $html . '</div></article>';
+    }
+
+    /**
+     * Karte aus den oeffentlichen Artikeldaten (Kategorieseiten, "Mehr aus ..."
+     * auf der Artikelseite) - ohne Kategoriezeile, die steht dort schon darueber.
+     */
+    public static function from_public(PublicProduct $product, string $url, string $heading, int $placeholder_id): string
+    {
+        $fine = '<p class="kontor-shop-unit-price" data-ks-unit-price' . ($product->unit_price === '' ? ' hidden' : '') . '>' . esc_html($product->unit_price) . '</p>';
+
+        if ($product->tax_rate !== null && $product->tax_rate > 0) {
+            $fine .= '<p class="kontor-shop-product__tax">' . esc_html(sprintf(
+                /* translators: %s: tax rate in percent */
+                __('incl. %s %% VAT', 'kontor-shop'),
+                number_format_i18n($product->tax_rate, $product->tax_rate == floor($product->tax_rate) ? 0 : 1)
+            )) . '</p>';
+        }
+
+        return self::render([
+            'id'           => $product->id,
+            'name'         => $product->name,
+            'url'          => $url,
+            'attributes'   => '',
+            'image_html'   => ProductImage::render($product->image_id > 0 ? $product->image_id : null, $product->name, 'medium_large', $placeholder_id, '', $product->image_alt),
+            'cutout'       => ProductImage::is_cutout($product->image_id),
+            'box'          => ProductImage::product_box($product->image_id),
+            'category'     => '',
+            'price_text'   => $product->has_variants() ? self::price_text($product->variants, $product->price) : self::price_label($product->price),
+            'fine_html'    => $fine,
+            'options'      => $product->variant_options,
+            'rows'         => $product->variants,
+            'available'    => $product->available,
+            'discontinued' => $product->discontinued,
+            'notes_html'   => $product->discontinued
+                ? ProductNotes::discontinued(false)
+                : ProductNotes::unavailable() . ProductNotes::unavailable_extra($product->id, $product->name, $product->variants, true, 'card'),
+            'heading'      => $heading,
+        ]);
     }
 
     /**

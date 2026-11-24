@@ -59,6 +59,7 @@ final class RouteController
         add_action('template_redirect', [$this, 'apply_status'], 1);
         add_filter('redirect_canonical', [$this, 'stop_canonical_redirect']);
         add_filter('page_link', [$this, 'fake_permalink'], 10, 2);
+        add_filter('the_title', [$this, 'hide_theme_title'], 10, 2);
     }
 
     /**
@@ -222,6 +223,22 @@ final class RouteController
         return (string) get_query_var('kontor_shop_route') !== '' ? false : $redirect;
     }
 
+    /**
+     * Gibt der Shop den Namen selbst als H1 aus (PageRenderer::shows_h1),
+     * blendet er den Seitentitel des Themes aus - nur fuer den virtuellen
+     * Beitrag und erst im Seitenkoerper (nach wp_head), damit Fenstertitel,
+     * Meta-Angaben und SEO-Plugins den Namen behalten. Themes geben einen
+     * leeren Titel in der Regel gar nicht aus.
+     */
+    public function hide_theme_title(mixed $title, mixed $post_id = 0): mixed
+    {
+        if ((int) $post_id !== self::FAKE_POST_ID || !did_action('wp_head') || (string) get_query_var('kontor_shop_route') === '') {
+            return $title;
+        }
+
+        return PageRenderer::shows_h1() ? '' : $title;
+    }
+
     public function fake_permalink(string $link, int $post_id): string
     {
         return $post_id === self::FAKE_POST_ID && $this->canonical !== '' ? $this->canonical : $link;
@@ -250,7 +267,35 @@ final class RouteController
             $product
         );
 
-        return $this->renderer->product($product, $crumbs);
+        return $this->renderer->product($product, $crumbs, $this->related($product));
+    }
+
+    /**
+     * Bis zu vier weitere Artikel der Hauptkategorie (fuer "Mehr aus ..."),
+     * verfuegbare zuerst, ohne den Artikel selbst.
+     *
+     * @return array<int, PublicProduct>
+     */
+    private function related(PublicProduct $product): array
+    {
+        if ($product->category_id === null) {
+            return [];
+        }
+
+        $category = $this->catalog->visible_categories()[$product->category_id] ?? null;
+
+        if ($category === null) {
+            return [];
+        }
+
+        $items = array_values(array_filter(
+            $this->catalog->in_category($category, 1, 9)['items'],
+            static fn (PublicProduct $other): bool => $other->id !== $product->id
+        ));
+
+        usort($items, static fn (PublicProduct $a, PublicProduct $b): int => (int) $b->available <=> (int) $a->available);
+
+        return array_slice($items, 0, 4);
     }
 
     /**

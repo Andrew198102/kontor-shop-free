@@ -83,6 +83,7 @@ final class DesignSection extends Section
             'placeholder_image_id'      => $new_placeholder,
             'card_effect'               => DesignModule::sanitize_card_effect($this->post('card_effect')),
             'card_layout'               => DesignModule::sanitize_card_layout($this->post('card_layout')),
+            'detail_title'              => DesignModule::sanitize_detail_title($this->post('detail_title')),
         ];
 
         // Eigenes CSS nur mit dem WordPress-Recht dafuer (wie "Zusaetzliches CSS" im Customizer); sonst bleibt der gespeicherte Wert.
@@ -277,7 +278,23 @@ final class DesignSection extends Section
                 . checked($card_layout, $value, false) . ' /> ' . esc_html($label) . '</label>';
         }
         echo '<p class="description">' . esc_html__(
-            'With “Label”, every photo gets the same frame (portrait 4:5 unless you choose another image format). Photos on white are shown whole, photos with a real background fill the frame. The shop remembers the size a customer chose and highlights it on all cards.',
+            'With “Label”, every photo gets the same frame (portrait 4:5 unless you choose another image format). On photos on white the shop zooms in on the product, photos with a real background fill the frame. The shop remembers the size a customer chose and highlights it on all cards.',
+            'kontor-shop'
+        ) . '</p></fieldset></td></tr>';
+
+        // Artikelname auf Artikel- und Kategorieseiten
+        $detail_title = DesignModule::detail_title($this->settings);
+        $this->row_open(__('Product name on product pages', 'kontor-shop'));
+        echo '<fieldset>';
+        foreach ([
+            'shop'  => __('Shown by the shop as a heading next to the photo (recommended)', 'kontor-shop'),
+            'theme' => __('Shown by the theme as the page title', 'kontor-shop'),
+        ] as $value => $label) {
+            echo '<label class="ks-radio-line"><input type="radio" name="detail_title" value="' . esc_attr($value) . '" '
+                . checked($detail_title, $value, false) . ' /> ' . esc_html($label) . '</label>';
+        }
+        echo '<p class="description">' . esc_html__(
+            'Many themes show no page title on shop pages. Then the product name would be missing. Choose “theme” only if your theme shows the name above the page and it appears twice.',
             'kontor-shop'
         ) . '</p></fieldset></td></tr>';
 

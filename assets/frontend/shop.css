@@ -658,7 +658,33 @@
     width: 90%;
     height: 90%;
     object-fit: contain;
-    mix-blend-mode: var(--kontor-shop-cutout-blend, multiply);
+    mix-blend-mode: var(--kontor-shop-cutout-blend, multiply);    /* Fast-Weiss (z. B. ein blasser Rest-Rahmen um KI-Fotos) wird Weiss und verschwindet im Grund. */
+    filter: brightness(1.03);
+}
+
+/* Freisteller mit Produktrahmen (ProductImage::product_box): auf das Produkt
+   zoomen, statt das ganze Foto mit viel Weiss zu zeigen. Das Produkt fuellt
+   --ks-fill der Buehne in der knapperen Richtung, hoechstens 4-fach.
+   --ks-bx/by = Mitte, --ks-bw/bh = Groesse des Produkts im Bild (Anteile),
+   --ks-ir = Breite/Hoehe des Bildes. */
+.kontor-shop-product--label .kontor-shop-product__media.is-cutout.has-box .kontor-shop-img:not(.kontor-shop-img--placeholder),
+.kontor-shop-detail--page .kontor-shop-gallery__main.has-box .kontor-shop-img {
+    --ks-fill: .84;
+    inset: auto;
+    left: 50%;
+    top: 50%;
+    width: min(
+        calc(var(--ks-fill) / var(--ks-bw) * 100%),
+        calc(var(--ks-fill) * var(--ks-ir) / (var(--ks-bh) * (var(--kontor-shop-image-ratio, 4 / 5))) * 100%),
+        400%
+    );
+    height: auto;
+    aspect-ratio: var(--ks-ir);
+    max-width: none;
+    max-height: none;
+    object-fit: fill;
+    translate: calc(var(--ks-bx) * -100%) calc(var(--ks-by) * -100%);
+    transform-origin: calc(var(--ks-bx) * 100%) calc(var(--ks-by) * 100%);
 }
 
 /* Preis als Anhaenger: Form und Farbe im ::before (clip-path wuerde den
@@ -2250,4 +2276,508 @@
 .kontor-shop-preorder.is-closed {
     border-left-color: var(--ks-muted);
     color: var(--ks-muted);
+}
+
+/* ==================== Artikelseite ====================
+   Modules\Seo\PageRenderer::product(): Galerie links auf derselben
+   Bildbuehne wie die Etikett-Karten (Freisteller zoomen aufs Produkt, Fotos
+   mit Hintergrund ganz), rechts der Kaufbereich, darunter "Mehr aus ...".
+   Am Handy untereinander, mit Kaufleiste unten (product.js). */
+
+.kontor-shop-detail--page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.kontor-shop-detail .kontor-shop-detail__main {
+    display: grid;
+    gap: 1.75rem;
+    align-items: start;
+}
+
+@media (min-width: 861px) {
+    .kontor-shop-detail__main {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+        gap: clamp(2rem, 4vw, 3.5rem);
+    }
+}
+
+/* Galerie */
+.kontor-shop-detail--page .kontor-shop-gallery.has-thumbs {
+    display: grid;
+    grid-template-columns: 4.75rem minmax(0, 1fr);
+    gap: .875rem;
+    align-items: start;
+}
+
+.kontor-shop-detail--page .kontor-shop-gallery__main {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: var(--kontor-shop-image-ratio, 4 / 5);
+    border-radius: var(--ks-card-radius);
+    background: var(--ks-soft);
+}
+
+.kontor-shop-detail--page .kontor-shop-gallery__main .kontor-shop-img {
+    position: absolute;
+    inset: 4%;
+    width: 92%;
+    height: 92%;
+    object-fit: contain;
+}
+
+.kontor-shop-detail--page .kontor-shop-gallery__main.is-cutout .kontor-shop-img {
+    mix-blend-mode: var(--kontor-shop-cutout-blend, multiply);
+    filter: brightness(1.03);
+}
+
+.kontor-shop-detail--page .kontor-shop-gallery__main.has-box .kontor-shop-img {
+    --ks-fill: .82;
+}
+
+.kontor-shop-gallery__zoom {
+    position: absolute;
+    right: .875rem;
+    bottom: .875rem;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    color: #211b19;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+    pointer-events: none;
+}
+
+.kontor-shop-detail--page .kontor-shop-gallery.has-thumbs .kontor-shop-gallery__thumbs {
+    order: -1;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0;
+}
+
+.kontor-shop-detail--page .kontor-shop-gallery__thumb {
+    width: 4.75rem;
+    height: 5.9rem;
+    background: var(--ks-soft);
+    opacity: 1;
+}
+
+.kontor-shop-detail--page .kontor-shop-gallery__thumb img {
+    mix-blend-mode: var(--kontor-shop-cutout-blend, multiply);
+}
+
+.kontor-shop-detail--page .kontor-shop-gallery__thumb.is-active {
+    border-color: var(--ks-card-accent, var(--ks-primary));
+}
+
+@media (max-width: 860px) {
+    .kontor-shop-detail--page .kontor-shop-gallery.has-thumbs {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .kontor-shop-detail--page .kontor-shop-gallery.has-thumbs .kontor-shop-gallery__thumbs {
+        order: 1;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .kontor-shop-detail--page .kontor-shop-gallery__thumb {
+        width: 3.75rem;
+        height: 4.7rem;
+    }
+}
+
+/* Kaufbereich */
+.kontor-shop-detail .kontor-shop-detail__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    min-width: 0;
+}
+
+.kontor-shop-detail .kontor-shop-detail__head {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+.kontor-shop-detail .kontor-shop-detail__category {
+    margin: 0;
+    color: var(--ks-card-accent, var(--ks-primary));
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.kontor-shop-detail .kontor-shop-detail__category a {
+    color: var(--ks-card-accent, var(--ks-primary));
+    text-decoration: none;
+}
+
+.kontor-shop-detail .kontor-shop-detail__title {
+    margin: 0;
+    font-family: var(--ks-heading-font);
+    font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem);
+    line-height: 1.15;
+    color: var(--ks-text);
+}
+
+.kontor-shop-detail .kontor-shop-detail__pricing {
+    display: flex;
+    align-items: center;
+    gap: .75rem 1.25rem;
+    flex-wrap: wrap;
+}
+
+/* Preis als Etikett wie auf den Karten, etwas groesser. */
+.kontor-shop-detail .kontor-shop-detail__tag {
+    position: relative;
+    z-index: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 .4em;
+    margin: 0;
+    padding: .4em 1em .4em 1.7em;
+    color: var(--ks-card-on-accent, var(--ks-on-primary));
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, .18));
+    transform: rotate(-3deg);
+    transform-origin: 0 50%;
+}
+
+.kontor-shop-detail .kontor-shop-detail__tag::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--ks-card-accent, var(--ks-primary));
+    clip-path: polygon(.85em 0, 100% 0, 100% 100%, .85em 100%, 0 50%);
+}
+
+.kontor-shop-detail .kontor-shop-detail__tag::after {
+    content: "";
+    position: absolute;
+    left: .75em;
+    top: 50%;
+    width: .3em;
+    height: .3em;
+    margin-top: -.15em;
+    border-radius: 50%;
+    background: var(--ks-surface);
+}
+
+.kontor-shop-detail .kontor-shop-detail__pricing .kontor-shop-product__availability {
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: .5em;
+    color: var(--ks-card-accent, var(--ks-primary));
+}
+
+.kontor-shop-detail .kontor-shop-detail__pricing .kontor-shop-product__availability::before {
+    content: "";
+    width: .55em;
+    height: .55em;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.kontor-shop-detail .kontor-shop-detail__body .kontor-shop-unit-price,
+.kontor-shop-detail .kontor-shop-detail__body .kontor-shop-product__tax {
+    margin: -.5rem 0 0;
+}
+
+.kontor-shop-detail .kontor-shop-detail__description {
+    font-size: 1.08rem;
+    line-height: 1.55;
+}
+
+.kontor-shop-detail .kontor-shop-detail__description p {
+    margin: 0 0 .6em;
+}
+
+.kontor-shop-detail .kontor-shop-detail__description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Groessen-Knoepfe (die Auswahlliste bleibt fuer product.js darunter, ausgeblendet). */
+.kontor-shop-detail .kontor-shop-detail__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.kontor-shop-detail .kontor-shop-detail__sizes {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.kontor-shop-detail .kontor-shop-detail__sizes[hidden],
+.kontor-shop-variants.is-chips .kontor-shop-variants__field {
+    display: none;
+}
+
+.kontor-shop-detail .kontor-shop-detail__sizes-label {
+    margin: 0;
+    font-weight: 700;
+    font-size: .95rem;
+}
+
+.kontor-shop-detail .kontor-shop-detail__sizes .kontor-shop-sizes {
+    gap: .6rem;
+}
+
+.kontor-shop-add-to-cart .kontor-shop-detail__sizes .kontor-shop-size {
+    flex: none;
+    min-width: 3.75rem;
+    min-height: 3.25rem;
+    padding: 0 .9em;
+    border: 1.5px solid color-mix(in srgb, var(--ks-text) 22%, transparent);
+    border-radius: var(--ks-radius);
+    background: var(--ks-surface);
+    color: var(--ks-text);
+    font-size: 1.05rem;
+    font-weight: 700;
+    filter: none;
+    opacity: 1;
+}
+
+.kontor-shop-add-to-cart .kontor-shop-detail__sizes .kontor-shop-size:hover {
+    border-color: var(--ks-text);
+    color: var(--ks-text);
+    filter: none;
+}
+
+.kontor-shop-add-to-cart .kontor-shop-detail__sizes .kontor-shop-size[aria-pressed="true"] {
+    border: 2px solid var(--ks-card-accent, var(--ks-primary));
+    background: color-mix(in srgb, var(--ks-card-accent, var(--ks-primary)) 12%, var(--ks-surface));
+}
+
+.kontor-shop-add-to-cart .kontor-shop-detail__sizes .kontor-shop-size.is-out {
+    color: var(--ks-muted);
+    border-style: dashed;
+}
+
+.kontor-shop-detail .kontor-shop-detail__size-hint {
+    margin: -.2rem 0 0;
+    font-size: .9rem;
+    color: var(--ks-muted);
+}
+
+/* Menge mit - und +, daneben der Knopf */
+.kontor-shop-detail .kontor-shop-detail__buy {
+    display: flex;
+    gap: .625rem;
+    align-items: stretch;
+}
+
+.kontor-shop-qty {
+    display: flex;
+}
+
+.kontor-shop-qty.is-stepper {
+    align-items: center;
+    border: 1.5px solid var(--ks-border);
+    border-radius: var(--ks-radius);
+    background: var(--ks-surface);
+    overflow: hidden;
+}
+
+.kontor-shop-add-to-cart .kontor-shop-qty.is-stepper input[type="number"] {
+    width: 2.6em;
+    min-height: 3.25rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-weight: 700;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.kontor-shop-qty.is-stepper input::-webkit-inner-spin-button,
+.kontor-shop-qty.is-stepper input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.kontor-shop-add-to-cart .kontor-shop-qty__step {
+    flex: none;
+    width: 2.75rem;
+    min-height: 3.25rem;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--ks-text);
+    font-size: 1.35rem;
+    font-weight: 400;
+}
+
+.kontor-shop-add-to-cart .kontor-shop-qty__step:hover {
+    background: var(--ks-soft);
+    color: var(--ks-text);
+    filter: none;
+}
+
+.kontor-shop-add-to-cart .kontor-shop-detail__submit {
+    flex: 1;
+    min-height: 3.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.kontor-shop-detail .kontor-shop-detail__added {
+    margin: -.25rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+    padding: .75rem 1rem;
+    border-radius: var(--ks-radius);
+    background: color-mix(in srgb, var(--ks-card-accent, var(--ks-primary)) 10%, var(--ks-surface));
+}
+
+.kontor-shop-detail .kontor-shop-detail__added[hidden] {
+    display: none;
+}
+
+.kontor-shop-detail .kontor-shop-detail__added a {
+    font-weight: 700;
+    color: var(--ks-card-accent, var(--ks-primary));
+}
+
+/* Infozeilen: Versand, Abholung, Bezahlen (Modules\Catalog\ServiceInfo) */
+.kontor-shop-detail .kontor-shop-detail__service {
+    list-style: none;
+    margin: .25rem 0 0;
+    padding: 1.1rem 0 0;
+    border-top: 1px dashed var(--ks-border);
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    font-size: .97rem;
+}
+
+.kontor-shop-detail .kontor-shop-detail__service li {
+    display: flex;
+    gap: .75rem;
+    align-items: flex-start;
+    margin: 0;
+}
+
+.kontor-shop-detail .kontor-shop-detail__service svg {
+    flex: none;
+    color: var(--ks-card-accent, var(--ks-primary));
+}
+
+.kontor-shop-detail--page .kontor-shop-detail__facts {
+    margin: 0;
+    font-size: .9rem;
+}
+
+/* "Mehr aus ..." */
+.kontor-shop-detail .kontor-shop-detail__related {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.kontor-shop-detail .kontor-shop-detail__related-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: .5rem 1rem;
+}
+
+.kontor-shop-detail .kontor-shop-detail__related-head h2 {
+    margin: 0;
+    font-family: var(--ks-heading-font);
+    font-size: clamp(1.35rem, 1.1rem + .8vw, 1.75rem);
+}
+
+.kontor-shop-detail .kontor-shop-detail__related-head a {
+    font-weight: 600;
+    color: var(--ks-card-accent, var(--ks-primary));
+}
+
+.kontor-shop-detail .kontor-shop-detail__related-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 860px) {
+    .kontor-shop-detail .kontor-shop-detail__related-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem .625rem;
+    }
+}
+
+/* Kaufleiste am Handy (product.js zeigt sie, wenn der Knopf nicht im Bild ist). */
+.kontor-shop-buybar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99980;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .75rem max(1rem, env(safe-area-inset-right)) max(.875rem, env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+    background: color-mix(in srgb, var(--ks-surface) 96%, transparent);
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, .1);
+}
+
+.kontor-shop-buybar[hidden] {
+    display: none;
+}
+
+.kontor-shop-buybar__price {
+    font-size: 1.15rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.kontor-shop-buybar .kontor-shop-buybar__button {
+    flex: 1;
+    min-height: 3.25rem;
+    font-weight: 700;
+}
+
+.kontor-shop-buybar .kontor-shop-buybar__button.is-done {
+    background: var(--ks-success);
+}
+
+/* Schwebende Knoepfe (Warenkorb, nach oben) ueber die Kaufleiste heben. */
+html.kontor-shop-buybar-open .fab-dock {
+    bottom: calc(var(--ks-buybar-height, 5rem) + 12px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kontor-shop-detail .kontor-shop-detail__tag {
+        transform: none;
+    }
+}
+
+/* Mitgliedspreis (Pro, member-price.js) im Preis-Etikett: Schrift in der
+   Etikettfarbe statt Akzentfarbe (sonst gruen auf gruen), alter Preis klein
+   und durchgestrichen davor. */
+.kontor-shop-product .kontor-shop-product__tag .kontor-shop-product__price--member,
+.kontor-shop-detail .kontor-shop-detail__tag .kontor-shop-product__price--member {
+    color: inherit;
+}
+
+.kontor-shop-product .kontor-shop-product__tag .kontor-shop-product__price--old,
+.kontor-shop-detail .kontor-shop-detail__tag .kontor-shop-product__price--old {
+    font-size: .8em;
+    opacity: .8;
 }

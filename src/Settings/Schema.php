@@ -172,6 +172,8 @@ final class Schema
                 // Aufbau der Artikelkarten: label ("Etikett": Preis am Foto,
                 // Groessen als Knoepfe) | classic (Text, Auswahl, Menge, Knopf).
                 'card_layout'               => 'label',
+                // Artikelname als Ueberschrift: shop (im Kaufbereich) | theme (Seitentitel des Themes).
+                'detail_title'              => 'shop',
                 // Grundstil (Ecken, Schatten): theme | clear | soft | square.
                 'style'                     => 'theme',
                 // Ecken in px; leer = wie Grundstil bzw. Theme.
