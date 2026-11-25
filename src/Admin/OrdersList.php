@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Admin;
 
+use Kontor\Shop\Admin\Ui\MemberAccountNotice;
 use Kontor\Shop\Infrastructure\Orders\ExternalPayments;
 use Kontor\Shop\Admin\Ui\Css;
 use Kontor\Shop\Admin\Ui\Badge;
@@ -481,6 +482,7 @@ final class OrdersList
         $html .= '<td class="column-primary"><div class="ks-order-id"><button type="button" class="ks-order-expand" data-ks-order-expand aria-expanded="false" aria-label="'
             . esc_attr__('Quick view', 'kontor-shop') . '">▸</button><div><strong><a class="row-title" href="' . esc_url(OrdersPage::url(['order' => $id])) . '">' . esc_html($order->order_number) . '</a></strong>'
             . ($order->is_member ? ' ' . Badge::html(__('Member', 'kontor-shop'), Badge::INFO) : '')
+            . MemberAccountNotice::list_badge($order)
             . '<div class="ks-muted ks-order-sub"><span title="' . esc_attr(mysql2date('d.m.Y H:i', (string) $order->created_at)) . '">' . esc_html(self::ago($days)) . '</span>'
             . ($order->self_pickup ? ' · ' . esc_html__('Pickup', 'kontor-shop') : '') . '</div></div></div></td>';
 

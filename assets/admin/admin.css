@@ -908,6 +908,14 @@ details[open] > .ks-health__bar .ks-health__more::after { content: " ▴"; }
 .ks-th-24 { width: 24%; } .ks-th-30 { width: 30%; } .ks-th-38 { width: 38%; }
 .ks-order-cols { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
 .ks-order-col { flex: 1 1 320px; min-width: 0; }
+/* Mitgliedskonto: Abweichungen zur Bestellung (Admin\Ui\MemberAccountNotice) */
+.ks-member-check { margin: 8px 0 2px; padding: 8px 10px; border-left: 4px solid #c3c4c7; background: #f6f7f7; border-radius: 2px; }
+.ks-member-check--person { border-left-color: #dba617; background: #fcf9e8; }
+.ks-member-check p { margin: 0 0 6px; }
+.ks-member-check summary { cursor: pointer; font-weight: 600; min-height: 24px; }
+.ks-member-check__table { margin-top: 6px; border-collapse: collapse; width: 100%; }
+.ks-member-check__table th, .ks-member-check__table td { padding: 3px 8px 3px 0; text-align: left; vertical-align: top; border-bottom: 1px solid #dcdcde; overflow-wrap: anywhere; }
+.ks-member-check__table thead th { font-weight: 600; color: #50575e; }
 .ks-actions--center { align-items: center; }
 .ks-actions--wide { gap: 16px; align-items: center; }
 .ks-inline-form--tight { display: inline-flex; gap: 6px; flex-wrap: nowrap; }

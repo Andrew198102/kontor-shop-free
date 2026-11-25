@@ -163,7 +163,7 @@ msgstr ""
 
 #: src/Admin/CategoriesPage.php:286
 #: src/Admin/CategoriesPage.php:367
-#: src/Admin/OrderDetailView.php:100
+#: src/Admin/OrderDetailView.php:101
 #: src/Admin/ProductForm.php:162
 #: src/Admin/ProductsList.php:136
 msgid "Name"
@@ -176,8 +176,8 @@ msgstr ""
 
 #: src/Admin/CategoriesPage.php:292
 #: src/Admin/Help.php:67
-#: src/Admin/OrderDetailView.php:186
-#: src/Admin/OrdersList.php:265
+#: src/Admin/OrderDetailView.php:187
+#: src/Admin/OrdersList.php:266
 #: src/Admin/OrdersPage.php:748
 msgid "Product"
 msgstr ""
@@ -234,7 +234,7 @@ msgstr ""
 
 #: src/Admin/CategoriesPage.php:333
 #: src/Admin/LogPage.php:209
-#: src/Admin/OrdersList.php:837
+#: src/Admin/OrdersList.php:839
 #: src/Admin/ProductForm.php:151
 #: src/Admin/ProductForm.php:353
 msgid "Save"
@@ -283,7 +283,7 @@ msgid "For buttons and accents on pages of this category."
 msgstr ""
 
 #: src/Admin/CategoriesPage.php:377
-#: src/Admin/OrderDetailView.php:584
+#: src/Admin/OrderDetailView.php:585
 #: src/Admin/WarehousesPage.php:389
 #: src/Modules/Privacy/PrivacyModule.php:111
 #: src/Modules/Privacy/StockRequestData.php:54
@@ -395,26 +395,26 @@ msgid "Set up now"
 msgstr ""
 
 #: src/Admin/DashboardWidget.php:96
-#: src/Admin/OrdersList.php:349
-#: src/Admin/OrdersList.php:372
-#: src/Admin/OrdersList.php:739
+#: src/Admin/OrdersList.php:350
+#: src/Admin/OrdersList.php:373
+#: src/Admin/OrdersList.php:741
 msgid "Payment open"
 msgstr ""
 
 #. translators: %d: pieces
 #: src/Admin/DashboardWidget.php:100
 #: src/Admin/DashboardWidget.php:153
-#: src/Admin/OrdersList.php:357
-#: src/Admin/OrdersList.php:373
+#: src/Admin/OrdersList.php:358
+#: src/Admin/OrdersList.php:374
 #: src/Admin/ShopSnapshot.php:288
 msgid "To ship"
 msgstr ""
 
 #: src/Admin/DashboardWidget.php:104
-#: src/Admin/OrderDetailView.php:144
-#: src/Admin/OrdersList.php:376
+#: src/Admin/OrderDetailView.php:145
+#: src/Admin/OrdersList.php:377
 #: src/Admin/ShopSnapshot.php:293
-#: src/Modules/Checkout/CheckoutModule.php:1476
+#: src/Modules/Checkout/CheckoutModule.php:1507
 msgid "Refund"
 msgstr ""
 
@@ -488,7 +488,7 @@ msgstr ""
 
 #: src/Admin/Help.php:58
 #: src/Admin/Menu.php:384
-#: src/Admin/OrdersList.php:183
+#: src/Admin/OrdersList.php:184
 #: src/Pro__premium_only/Agents/AgentsPage.php:505
 #: src/Pro__premium_only/Dashboard/TrendCard.php:39
 msgid "Orders"
@@ -529,8 +529,8 @@ msgstr ""
 #: src/Admin/Help.php:74
 #: src/Admin/Menu.php:221
 #: src/Admin/Menu.php:391
-#: src/Admin/OrderDetailView.php:382
-#: src/Admin/OrderDetailView.php:464
+#: src/Admin/OrderDetailView.php:383
+#: src/Admin/OrderDetailView.php:465
 msgid "Stock"
 msgstr ""
 
@@ -552,9 +552,9 @@ msgstr ""
 
 #: src/Admin/Help.php:82
 #: src/Admin/HelpCenter/Content/SetupArticles.php:687
-#: src/Admin/OrderDetailView.php:186
-#: src/Admin/OrderDetailView.php:329
-#: src/Admin/OrdersList.php:444
+#: src/Admin/OrderDetailView.php:187
+#: src/Admin/OrderDetailView.php:330
+#: src/Admin/OrdersList.php:445
 msgid "Warehouse"
 msgstr ""
 
@@ -1802,278 +1802,290 @@ msgstr ""
 msgid "Each order remembers whether the customer was a member. Search engines only ever see the regular price."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:116
-msgid "Which provider should I choose?"
+#: src/Admin/HelpCenter/Content/ProArticles.php:113
+msgid "Each order also remembers which member account was logged in. If name or email on the order differ from that member’s profile, the order shows “Bought for someone else?” with a list of the differences."
 msgstr ""
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:117
+msgid "Which provider should I choose?"
+msgstr ""
+
+#: src/Admin/HelpCenter/Content/ProArticles.php:118
 msgid "If your members already have a WordPress account with their own role, choose “WordPress user roles”. If you manage memberships with Paid Memberships Pro or MemberPress, choose that plugin – it appears in the list once it is active. Club software with its own login can connect through an add-on."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:120
+#: src/Admin/HelpCenter/Content/ProArticles.php:121
 msgid "A member is logged in but doesn’t get the member price."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:121
+#: src/Admin/HelpCenter/Content/ProArticles.php:122
 msgid "Check the rule under “Membership benefits apply to”. With the paid fee rule, the fee for the current year must be marked as paid in the member management. The member then sees a note at checkout that no benefits apply right now."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:124
+#: src/Admin/HelpCenter/Content/ProArticles.php:125
+msgid "Can a member order for someone else?"
+msgstr ""
+
+#: src/Admin/HelpCenter/Content/ProArticles.php:126
+msgid "Yes, nothing is blocked. The order shows which member account was used and what differs from the member profile (Orders → order → “Member”), so you can follow up if needed. Changes at checkout only apply to that order – the member data in your member management stays untouched."
+msgstr ""
+
+#: src/Admin/HelpCenter/Content/ProArticles.php:129
 msgid "Can members use a discount code on top?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:125
+#: src/Admin/HelpCenter/Content/ProArticles.php:130
 msgid "Yes. A discount code is calculated after the member price."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:135
+#: src/Admin/HelpCenter/Content/ProArticles.php:140
 #: src/Admin/Upgrade/PricingPage.php:220
 msgid "Several warehouses with warehouse managers"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:136
+#: src/Admin/HelpCenter/Content/ProArticles.php:141
 msgid "Each warehouse ships its own products, and its warehouse manager takes care of it."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:137
+#: src/Admin/HelpCenter/Content/ProArticles.php:142
 msgid "warehouse warehouses warehouse manager location storage regional group split order bank account shipping order permission"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:138
+#: src/Admin/HelpCenter/Content/ProArticles.php:143
 msgid "With Pro you can create as many warehouses as you need, for example one per regional group. Each warehouse can have a warehouse manager who books its stock and ships its orders."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:140
+#: src/Admin/HelpCenter/Content/ProArticles.php:145
 msgid "Open Kontor Shop → Warehouses and click “Add new warehouse”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:141
+#: src/Admin/HelpCenter/Content/ProArticles.php:146
 msgid "Enter the name, the contact name and the sender address."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:142
+#: src/Admin/HelpCenter/Content/ProArticles.php:147
 msgid "Under “Warehouse manager”, choose the WordPress user who looks after this warehouse."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:143
+#: src/Admin/HelpCenter/Content/ProArticles.php:148
 msgid "If prepayments for this warehouse go to a different account, choose it under “Bank account (prepayment)”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:144
+#: src/Admin/HelpCenter/Content/ProArticles.php:149
 msgid "Click “Create warehouse”. Then choose this warehouse in the products that are stored there."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:147
+#: src/Admin/HelpCenter/Content/ProArticles.php:152
 msgid "The warehouse manager gets the permission automatically. They book stock for their warehouse and ship its orders. If you remove them or delete the warehouse, the permission is revoked again."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:148
+#: src/Admin/HelpCenter/Content/ProArticles.php:153
 msgid "As soon as an order can be shipped (paid, or right away on invoice), each warehouse gets its own “Shipping order to warehouse” email with only its products. It goes to the warehouse manager. The recipients chosen in the email template get a copy."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:149
+#: src/Admin/HelpCenter/Content/ProArticles.php:154
 msgid "If a cart contains products from warehouses with different bank accounts, the order is split into several orders, one per account, each with its own payment details. You set how shipping is charged under Settings → Shipping & returns → “Shipping for split orders”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:150
+#: src/Admin/HelpCenter/Content/ProArticles.php:155
 msgid "The dashboard shows a “Warehouse” card: per warehouse the packages to pack, how long the oldest has been waiting, low or empty products and the managers."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:154
+#: src/Admin/HelpCenter/Content/ProArticles.php:159
 msgid "Can one person manage several warehouses?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:155
+#: src/Admin/HelpCenter/Content/ProArticles.php:160
 msgid "Yes. Choose the same user for each warehouse. Settings → Roles shows who manages which warehouse."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:158
+#: src/Admin/HelpCenter/Content/ProArticles.php:163
 msgid "What if a warehouse has no warehouse manager?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:159
+#: src/Admin/HelpCenter/Content/ProArticles.php:164
 msgid "Then its shipping orders only go to the copy recipients of the email template. If there are none, they go to the shop operator."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:162
+#: src/Admin/HelpCenter/Content/ProArticles.php:167
 msgid "What happens to extra warehouses without Pro?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:163
+#: src/Admin/HelpCenter/Content/ProArticles.php:168
 msgid "They stay visible and their products stay in the shop, but only the main warehouse can be edited. Warehouse managers no longer have their own access."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:172
+#: src/Admin/HelpCenter/Content/ProArticles.php:177
 msgid "Packing on the phone and partial shipments"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:173
+#: src/Admin/HelpCenter/Content/ProArticles.php:178
 msgid "Pack straight from the order email, tick off products and ship what is there."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:174
+#: src/Admin/HelpCenter/Content/ProArticles.php:179
 msgid "pack packing phone mobile ship shipment partial shipment tracking number pick list shelf warehouse email carrier pickup"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:175
+#: src/Admin/HelpCenter/Content/ProArticles.php:180
 msgid "The packing view is made for the phone in the stockroom. It shows what to get from the shelf. You tick off each product, enter the tracking number and record the shipment in one go. If something is missing, you ship the rest later."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:177
+#: src/Admin/HelpCenter/Content/ProArticles.php:182
 msgid "Open the “Shipping order to warehouse” email and tap the link next to “Pack now (also on your phone)”. Or open Orders and click “Pack”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:178
+#: src/Admin/HelpCenter/Content/ProArticles.php:183
 msgid "Log in if WordPress asks you to. Warehouse managers only see the orders of their warehouse."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:179
+#: src/Admin/HelpCenter/Content/ProArticles.php:184
 msgid "Get the products listed under “Get from the shelf”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:180
+#: src/Admin/HelpCenter/Content/ProArticles.php:185
 msgid "Tick off each product as soon as it is in the package."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:181
+#: src/Admin/HelpCenter/Content/ProArticles.php:186
 msgid "Choose the carrier and enter the tracking number from the shipping label. Leave “Notify customer by email (with tracking)” ticked."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:182
+#: src/Admin/HelpCenter/Content/ProArticles.php:187
 msgid "Tap the save button, for example “All packed – save as shipped” or “Ship 2 of 3 – the rest stays open”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:185
+#: src/Admin/HelpCenter/Content/ProArticles.php:190
 msgid "The ticked products count as shipped, and the customer gets the shipping email with the tracking number."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:186
+#: src/Admin/HelpCenter/Content/ProArticles.php:191
 msgid "Products you didn’t tick stay open. The order is marked “Remaining” and shows up in the packing view again for the rest."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:187
+#: src/Admin/HelpCenter/Content/ProArticles.php:192
 msgid "For pickup orders, you tick off what was picked up and save. There is no tracking number."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:188
+#: src/Admin/HelpCenter/Content/ProArticles.php:193
 msgid "“Everything to pack” collects all open orders on one page, with a shelf list per warehouse."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:189
+#: src/Admin/HelpCenter/Content/ProArticles.php:194
 msgid "A partial shipment also works in the order list with “Record shipment …”. The rest is then recorded with “Record remaining shipment …”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:193
+#: src/Admin/HelpCenter/Content/ProArticles.php:198
 msgid "The link shows “This order was not found or doesn’t belong to your warehouse.”"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:194
+#: src/Admin/HelpCenter/Content/ProArticles.php:199
 msgid "You are logged in with a user who doesn’t manage this warehouse. Log in as the warehouse manager or ask a shop manager."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:197
+#: src/Admin/HelpCenter/Content/ProArticles.php:202
 msgid "Does packing change the stock?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:198
+#: src/Admin/HelpCenter/Content/ProArticles.php:203
 msgid "No new booking is made. Stock already went down with the order. The shipment only records that the goods have left the warehouse."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:201
+#: src/Admin/HelpCenter/Content/ProArticles.php:206
 msgid "Can I pack on a computer too?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:202
+#: src/Admin/HelpCenter/Content/ProArticles.php:207
 msgid "Yes. The view works in any browser. It is just laid out for small screens."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:211
+#: src/Admin/HelpCenter/Content/ProArticles.php:216
 #: src/Admin/Upgrade/PricingPage.php:179
 #: src/Admin/Upgrade/PricingPage.php:221
 msgid "Discount codes and campaigns"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:212
+#: src/Admin/HelpCenter/Content/ProArticles.php:217
 msgid "Codes for newsletters, flyers or the club party: a percentage or a fixed amount off the cart."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:213
+#: src/Admin/HelpCenter/Content/ProArticles.php:218
 msgid "discount coupon voucher code promo campaign series percent fixed amount checkout redeem expire flyer newsletter"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:214
+#: src/Admin/HelpCenter/Content/ProArticles.php:219
 msgid "A discount code lowers the price of the whole cart, by a percentage or by a fixed amount. You can create one code for everyone, a series of one-time codes for flyers, or a personal code for one person."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:216
+#: src/Admin/HelpCenter/Content/ProArticles.php:221
 msgid "Open Kontor Shop → Discounts and click “+ New campaign”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:217
+#: src/Admin/HelpCenter/Content/ProArticles.php:222
 msgid "Choose the occasion, for example “One code for everyone” or “One-time codes to hand out”. This fills in suitable presets."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:218
+#: src/Admin/HelpCenter/Content/ProArticles.php:223
 msgid "Set the discount: “Percent of order value” or “Fixed amount”, and optionally a minimum order value."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:219
+#: src/Admin/HelpCenter/Content/ProArticles.php:224
 msgid "Set how long the code is valid and how often it can be redeemed, for example “Only once per email address”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:220
+#: src/Admin/HelpCenter/Content/ProArticles.php:225
 msgid "Enter the code, or for a series a prefix and the number of codes."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:221
+#: src/Admin/HelpCenter/Content/ProArticles.php:226
 msgid "Check the summary and click “Add discount code” or “Generate … codes”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:224
+#: src/Admin/HelpCenter/Content/ProArticles.php:229
 msgid "Customers enter the code at checkout under “Apply discount code”. The discount appears as its own line in the order and in the emails."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:225
+#: src/Admin/HelpCenter/Content/ProArticles.php:230
 msgid "The discount applies to the products, never to shipping. The free shipping threshold is checked after the discount. Members get the discount on top of the member price."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:226
+#: src/Admin/HelpCenter/Content/ProArticles.php:231
 msgid "A code counts as redeemed with the completed order. If the order is cancelled, the redemption is released again."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:227
+#: src/Admin/HelpCenter/Content/ProArticles.php:232
 msgid "Redeemed codes can’t be deleted, only switched off, because they appear in orders."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:228
+#: src/Admin/HelpCenter/Content/ProArticles.php:233
 msgid "The page of a campaign shows redemptions, discount granted and revenue. There you can extend all codes at once, generate more codes or download the list as CSV."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:232
+#: src/Admin/HelpCenter/Content/ProArticles.php:237
 msgid "What if a code is no longer valid when the customer orders?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:233
+#: src/Admin/HelpCenter/Content/ProArticles.php:238
 msgid "The shop removes it, tells the customer why, for example expired or used up, and asks them to check the new total before ordering again."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:236
+#: src/Admin/HelpCenter/Content/ProArticles.php:241
 msgid "How do I see codes that run out soon?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:237
+#: src/Admin/HelpCenter/Content/ProArticles.php:242
 msgid "Click the figure “Expires in 14 days” at the top of the Discounts page. It shows the codes you should extend soon."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:240
+#: src/Admin/HelpCenter/Content/ProArticles.php:245
 msgid "Is there something faster than the five steps?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:241
+#: src/Admin/HelpCenter/Content/ProArticles.php:246
 msgid "Yes. Click “Compact form” to have all fields on one page. The shop remembers your choice."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:251
+#: src/Admin/HelpCenter/Content/ProArticles.php:256
 #: src/Modules/Privacy/StockRequestData.php:44
 #: src/Pro__premium_only/StockRequests/StockRequestSettings.php:36
 #: src/Pro__premium_only/StockRequests/StockRequestsModule.php:277
@@ -2081,970 +2093,970 @@ msgstr ""
 msgid "Back-in-stock requests"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:252
+#: src/Admin/HelpCenter/Content/ProArticles.php:257
 msgid "Customers ask to be notified about sold-out products and get an email when they are back."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:253
+#: src/Admin/HelpCenter/Content/ProArticles.php:258
 msgid "back in stock notify notification sold out request waiting list availability email restock discontinued double opt-in"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:254
+#: src/Admin/HelpCenter/Content/ProArticles.php:259
 msgid "For sold-out products, the shop shows the button “Notify me when available”. Customers leave their email address and get an email as soon as the product is back, or when it won’t come back. You see how many people are waiting for what."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:256
+#: src/Admin/HelpCenter/Content/ProArticles.php:261
 msgid "Open Settings → Back-in-stock requests and check that “Customers can ask to be notified about sold-out products” is ticked."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:257
+#: src/Admin/HelpCenter/Content/ProArticles.php:262
 msgid "Leave “Double opt-in” and “Notify automatically” ticked, and save."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:258
+#: src/Admin/HelpCenter/Content/ProArticles.php:263
 msgid "Open Kontor Shop → Requests to see who is waiting. “By product” shows the totals per product."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:259
+#: src/Admin/HelpCenter/Content/ProArticles.php:264
 msgid "Book the delivery as usual. As soon as stock rises from 0, the waiting customers get the “Back in stock” email."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:260
+#: src/Admin/HelpCenter/Content/ProArticles.php:265
 msgid "If a product won’t come back, tick its requests and choose “Notify: no longer coming …”. You can add a note, for example an alternative."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:261
+#: src/Admin/HelpCenter/Content/ProArticles.php:266
 msgid "Someone asked by phone or at the counter? Click “Record request” and enter it yourself."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:264
+#: src/Admin/HelpCenter/Content/ProArticles.php:269
 msgid "With double opt-in, the customer first gets a confirmation email. The request only becomes “Open” after they click the link. By default, unconfirmed requests are deleted after 7 days."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:265
+#: src/Admin/HelpCenter/Content/ProArticles.php:270
 msgid "The “Back in stock” email only goes out when the product is visible and in stock. Each request is notified once and then shows “Notified: back in stock”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:266
+#: src/Admin/HelpCenter/Content/ProArticles.php:271
 msgid "Customers can unsubscribe with the link in the email. The request then shows “Unsubscribed by customer”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:267
+#: src/Admin/HelpCenter/Content/ProArticles.php:272
 msgid "Waiting requests also put the product on the reorder list, so you order enough."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:268
+#: src/Admin/HelpCenter/Content/ProArticles.php:273
 msgid "By default, completed requests are deleted after 365 days. Open requests stay as long as they are open."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:269
+#: src/Admin/HelpCenter/Content/ProArticles.php:274
 msgid "Products marked “Discontinued product” don’t show the button at all."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:273
+#: src/Admin/HelpCenter/Content/ProArticles.php:278
 msgid "I booked stock, but nobody got an email."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:274
+#: src/Admin/HelpCenter/Content/ProArticles.php:279
 msgid "Check that the product is visible, that “Notify automatically” is on and that the email template is switched on. You can also tick the requests and choose “Notify: back in stock” yourself."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:277
+#: src/Admin/HelpCenter/Content/ProArticles.php:282
 msgid "Where do I change the email texts?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:278
+#: src/Admin/HelpCenter/Content/ProArticles.php:283
 msgid "Under Settings → Email templates: “Notification …”, “Back in stock”, “No longer available” and “New back-in-stock request”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:281
+#: src/Admin/HelpCenter/Content/ProArticles.php:286
 msgid "What about data protection?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:282
+#: src/Admin/HelpCenter/Content/ProArticles.php:287
 msgid "Customers tick a privacy checkbox. In its text, {datenschutz} becomes a link to your privacy policy. Mention the notifications in your privacy policy."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:292
+#: src/Admin/HelpCenter/Content/ProArticles.php:297
 msgid "Match the bank statement"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:293
+#: src/Admin/HelpCenter/Content/ProArticles.php:298
 msgid "Upload the statement – the shop finds the orders, you confirm"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:294
+#: src/Admin/HelpCenter/Content/ProArticles.php:299
 msgid "bank statement camt camt.053 xml iso 20022 reconcile match payments transfer import treasurer online banking"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:296
+#: src/Admin/HelpCenter/Content/ProArticles.php:301
 msgid "Instead of comparing every transfer with the order list by hand, you upload the bank statement. The shop suggests which order each incoming payment belongs to; you confirm, and the orders are booked as paid with the booking date of the bank."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:298
+#: src/Admin/HelpCenter/Content/ProArticles.php:303
 msgid "In online banking, export the statement as camt.053 (often called “ISO 20022”, “camt” or “XML statement”)."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:299
+#: src/Admin/HelpCenter/Content/ProArticles.php:304
 msgid "Open Kontor Shop → Bank statement and upload the file."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:300
+#: src/Admin/HelpCenter/Content/ProArticles.php:305
 msgid "Check the list: “sure” means payment reference and amount match – these are preselected. With “check amount” or “maybe”, look closely and choose the order yourself if needed."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:301
+#: src/Admin/HelpCenter/Content/ProArticles.php:306
 msgid "Click “Book selected payments”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:304
+#: src/Admin/HelpCenter/Content/ProArticles.php:309
 msgid "The chosen orders are marked as paid with the booking date from the statement; the customers get the payment confirmation and the warehouse the shipping order."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:305
+#: src/Admin/HelpCenter/Content/ProArticles.php:310
 msgid "Payments without a suggestion stay in the list until you assign them or discard the statement. Uploading the same statement again is harmless: already paid orders are marked as such."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:308
+#: src/Admin/HelpCenter/Content/ProArticles.php:313
 msgid "Is the bank file stored?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:308
+#: src/Admin/HelpCenter/Content/ProArticles.php:313
 msgid "No. The shop only reads the incoming payments and keeps them for two hours so you can check them. The file itself is not saved."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:309
+#: src/Admin/HelpCenter/Content/ProArticles.php:314
 msgid "A customer forgot the payment reference."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:309
+#: src/Admin/HelpCenter/Content/ProArticles.php:314
 msgid "If exactly one open order has that amount and the payer’s name matches the customer, the shop suggests it as “maybe”. Otherwise choose the order in the drop-down list yourself."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:317
+#: src/Admin/HelpCenter/Content/ProArticles.php:322
 msgid "Group orders (e.g. club clothing)"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:318
+#: src/Admin/HelpCenter/Content/ProArticles.php:323
 msgid "Collect orders until a deadline, then order the sizes from the supplier in one go"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:319
+#: src/Admin/HelpCenter/Content/ProArticles.php:324
 msgid "group order collective order pre-order preorder club clothing jersey sizes deadline supplier order list csv"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:321
+#: src/Admin/HelpCenter/Content/ProArticles.php:326
 msgid "For goods you only order once you know how many are needed – such as club jerseys or jackets – members can order until a deadline, even though nothing is in stock yet. After the deadline you see per size how many pieces to order from the supplier."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:323
+#: src/Admin/HelpCenter/Content/ProArticles.php:328
 msgid "Create the product with its sizes as usual. Stock can stay at 0."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:324
+#: src/Admin/HelpCenter/Content/ProArticles.php:329
 msgid "Open Kontor Shop → Group orders, choose the product, set the order deadline and, if you like, a note such as “Delivery expected in January”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:325
+#: src/Admin/HelpCenter/Content/ProArticles.php:330
 msgid "Make the product visible. Until the deadline it can be ordered; the shop shows the deadline on the product."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:326
+#: src/Admin/HelpCenter/Content/ProArticles.php:331
 msgid "After the deadline, download the size list as CSV and send it to the supplier."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:327
+#: src/Admin/HelpCenter/Content/ProArticles.php:332
 msgid "When the goods arrive, click “Book the delivery”, enter the quantities and ship the orders as usual."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:330
+#: src/Admin/HelpCenter/Content/ProArticles.php:335
 msgid "Until the deadline, orders are accepted without stock; the stock goes below zero. That minus is exactly the quantity still owed to customers."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:331
+#: src/Admin/HelpCenter/Content/ProArticles.php:336
 msgid "After the deadline the normal stock applies again: the product is sold out until you book the delivery. Payment, invoices and reminders work as for every other order."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:334
+#: src/Admin/HelpCenter/Content/ProArticles.php:339
 msgid "Should customers pay in advance?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:334
+#: src/Admin/HelpCenter/Content/ProArticles.php:339
 msgid "That depends on the club. With prepayment you know for sure who really takes the goods. Note that the automatic cancellation of unpaid orders also applies to group orders."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:335
+#: src/Admin/HelpCenter/Content/ProArticles.php:340
 msgid "Can I extend the deadline?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:335
+#: src/Admin/HelpCenter/Content/ProArticles.php:340
 msgid "Yes – change the date and save. Orders already placed stay included."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:336
+#: src/Admin/HelpCenter/Content/ProArticles.php:341
 msgid "What happens if I end the group order?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:336
+#: src/Admin/HelpCenter/Content/ProArticles.php:341
 msgid "The product follows the normal stock again. All orders stay as they are."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:344
+#: src/Admin/HelpCenter/Content/ProArticles.php:349
 msgid "Automatic payment reminders and cancellation"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:345
+#: src/Admin/HelpCenter/Content/ProArticles.php:350
 msgid "Unpaid orders get reminders by themselves, and unpaid prepayment orders are cancelled after a grace period."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:346
+#: src/Admin/HelpCenter/Content/ProArticles.php:351
 msgid "payment reminder dunning overdue unpaid cancel cancellation auto-cancellation grace period deadline invoice prepayment bank transfer"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:347
+#: src/Admin/HelpCenter/Content/ProArticles.php:352
 msgid "Nobody has to chase unpaid orders by hand. The shop reminds customers of open prepayment orders every day, sends a final reminder on the last day of the payment deadline and cancels the order after a grace period. Orders on invoice get reminders without cancellation."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:349
+#: src/Admin/HelpCenter/Content/ProArticles.php:354
 msgid "Open Settings → Payment & sales tax."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:350
+#: src/Admin/HelpCenter/Content/ProArticles.php:355
 msgid "Check the “Payment deadline for prepayment”, for example 14 days."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:351
+#: src/Admin/HelpCenter/Content/ProArticles.php:356
 msgid "At “Payment reminder”, set after how many days the first reminder goes out and at what time. 0 days switches the automatic reminder off."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:352
+#: src/Admin/HelpCenter/Content/ProArticles.php:357
 msgid "At “Auto-cancellation”, decide whether unpaid prepayment orders are cancelled, and set the grace period in days."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:353
+#: src/Admin/HelpCenter/Content/ProArticles.php:358
 msgid "If you offer payment on invoice, set in that part how many days lie between reminders. 0 means only one reminder."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:354
+#: src/Admin/HelpCenter/Content/ProArticles.php:359
 msgid "Save. You edit the texts under Settings → Email templates: “Payment reminder”, “Final payment reminder” and “Invoice payment reminder”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:357
+#: src/Admin/HelpCenter/Content/ProArticles.php:362
 msgid "Prepayment: from the set day on, the customer gets the “Payment reminder” with the payment details every day at the set hour, until the order is paid or cancelled. A reminder you send by hand counts as that day’s reminder."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:358
+#: src/Admin/HelpCenter/Content/ProArticles.php:363
 msgid "With auto-cancellation, the daily reminders stop the day before the deadline ends. On the last day, the customer gets the “Final payment reminder” with the cancellation date."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:359
+#: src/Admin/HelpCenter/Content/ProArticles.php:364
 msgid "During the grace period nothing happens. If the order is still unpaid after that, it is cancelled with the reason “not paid”: the goods go back to the warehouse, the customer gets the cancellation email and the cashier the internal one."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:360
+#: src/Admin/HelpCenter/Content/ProArticles.php:365
 msgid "Example with a 14-day deadline and 2 days of grace: final reminder on day 14, cancellation on day 17."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:361
+#: src/Admin/HelpCenter/Content/ProArticles.php:366
 msgid "Invoice: the first reminder goes out the day after the payment term, then at the set interval. There is no cancellation, because the goods are already with the customer."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:365
+#: src/Admin/HelpCenter/Content/ProArticles.php:370
 msgid "Is this switched on right after activating Pro?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:366
+#: src/Admin/HelpCenter/Content/ProArticles.php:371
 msgid "No. Reminders for prepayment and auto-cancellation start switched off, so nothing is sent or cancelled without your decision. Good values to start with: first reminder 2 days after ordering at 9 o’clock, grace period 2 days. Reminders for orders on invoice run as soon as you offer payment on invoice."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:369
+#: src/Admin/HelpCenter/Content/ProArticles.php:374
 msgid "Can a customer who paid on time be cancelled?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:370
+#: src/Admin/HelpCenter/Content/ProArticles.php:375
 msgid "The grace period protects against that. Bank transfers often take one to two business days, and the cashier still has to record the payment. Choose the grace period so your cashier can check the account in time."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:373
+#: src/Admin/HelpCenter/Content/ProArticles.php:378
 msgid "A customer gets no reminder. Why?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:374
+#: src/Admin/HelpCenter/Content/ProArticles.php:379
 msgid "Check that the email template is switched on and that emails are being sent (Settings → Email sending). Reminders go out once a day, during the hour you set."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:383
+#: src/Admin/HelpCenter/Content/ProArticles.php:388
 msgid "Reorder list and stock reach"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:384
+#: src/Admin/HelpCenter/Content/ProArticles.php:389
 msgid "See how long your stock lasts and get a ready list for the next order from your supplier."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:385
+#: src/Admin/HelpCenter/Content/ProArticles.php:390
 msgid "reorder restock supplier purchase order reach coverage lasts for minimum stock sold out low list copy delivery"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:386
+#: src/Admin/HelpCenter/Content/ProArticles.php:391
 msgid "The stock list shows for each product how long the stock will probably last. The reorder list collects everything that is low or requested and suggests quantities, so you can send your supplier an order in a minute."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:388
+#: src/Admin/HelpCenter/Content/ProArticles.php:393
 msgid "Open Kontor Shop → Stock."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:389
+#: src/Admin/HelpCenter/Content/ProArticles.php:394
 msgid "Look at the “Lasts for” column. Click its heading to sort by it."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:390
+#: src/Admin/HelpCenter/Content/ProArticles.php:395
 msgid "Click “Reorder list”. The number on the button shows how many products should be reordered."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:391
+#: src/Admin/HelpCenter/Content/ProArticles.php:396
 msgid "Check the quantities in the “To order” column and change them if needed. 0 removes a row."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:392
+#: src/Admin/HelpCenter/Content/ProArticles.php:397
 msgid "To add more products, tick them in the list and click “On reorder list”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:393
+#: src/Admin/HelpCenter/Content/ProArticles.php:398
 msgid "Click “Copy text” and paste it into your email to the supplier. When the goods arrive, click “Has arrived → Record delivery”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:396
+#: src/Admin/HelpCenter/Content/ProArticles.php:401
 msgid "“Lasts for” is estimated from the sales of the last 30 days, for example “~3 weeks”. With too few sales it says “too few sales”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:397
+#: src/Admin/HelpCenter/Content/ProArticles.php:402
 msgid "A product lands on the list by itself when its stock is at or below the minimum stock, or when customers are waiting for it with a back-in-stock request."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:398
+#: src/Admin/HelpCenter/Content/ProArticles.php:403
 msgid "The suggestion fills up to double the minimum stock, or to the minimum stock plus the last 30 days of sales, and at least as much as customers have requested."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:399
+#: src/Admin/HelpCenter/Content/ProArticles.php:404
 msgid "“Has arrived → Record delivery” opens the delivery form with the quantities filled in. Stock only changes when you book it there."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:400
+#: src/Admin/HelpCenter/Content/ProArticles.php:405
 msgid "On the dashboard, the tile for low and sold-out products is called “Reorder” and opens the list. Products marked “Discontinued product” are left out."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:404
+#: src/Admin/HelpCenter/Content/ProArticles.php:409
 msgid "A product is missing from the list."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:405
+#: src/Admin/HelpCenter/Content/ProArticles.php:410
 msgid "Products only land on the list by themselves if they have a minimum stock or waiting requests. Set a minimum stock, or add the product with “On reorder list”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:408
+#: src/Admin/HelpCenter/Content/ProArticles.php:413
 msgid "Does the shop send anything to my supplier?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:409
+#: src/Admin/HelpCenter/Content/ProArticles.php:414
 msgid "No. The shop only prepares the text. You send it yourself."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:418
+#: src/Admin/HelpCenter/Content/ProArticles.php:423
 msgid "Key figures and alarm email"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:419
+#: src/Admin/HelpCenter/Content/ProArticles.php:424
 msgid "The dashboard shows what is stuck and how the shop is doing. An email warns you about disruptions."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:420
+#: src/Admin/HelpCenter/Content/ProArticles.php:425
 msgid "dashboard key figures stuck trend revenue orders last 30 days alarm alert email shop health red warning widget"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:421
+#: src/Admin/HelpCenter/Content/ProArticles.php:426
 msgid "On the dashboard, Pro shows what has been waiting longer than usual and how orders and revenue have developed. If the shop has a serious problem, for example emails aren’t being sent, the alarm email tells you before customers complain."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:423
+#: src/Admin/HelpCenter/Content/ProArticles.php:428
 msgid "Open Kontor Shop → Dashboard."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:424
+#: src/Admin/HelpCenter/Content/ProArticles.php:429
 msgid "Check the “Stuck” card. Each entry says how long it has been waiting and has a button that opens exactly those orders or products."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:425
+#: src/Admin/HelpCenter/Content/ProArticles.php:430
 msgid "Look at “Last 30 days”: orders and revenue compared with the 30 days before, with small curves for the last 8 weeks."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:426
+#: src/Admin/HelpCenter/Content/ProArticles.php:431
 msgid "Open Settings → System. Under “Alert email for disruptions”, check that the alarm email is ticked."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:427
+#: src/Admin/HelpCenter/Content/ProArticles.php:432
 msgid "Click “Test alert email” to see what an alarm looks like and whether it arrives."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:430
+#: src/Admin/HelpCenter/Content/ProArticles.php:435
 msgid "“Stuck” lists, for example, paid packages not yet shipped per warehouse, waiting pickups, overdue payments, pending refunds, products that are visible but sold out, and an unusually long time without an order. Everyone only sees what concerns their role."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:431
+#: src/Admin/HelpCenter/Content/ProArticles.php:436
 msgid "“Last 30 days” doesn’t count cancelled orders. The WordPress dashboard widget also shows how many things are stuck."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:432
+#: src/Admin/HelpCenter/Content/ProArticles.php:437
 msgid "The alarm email goes to the WordPress admin address when the shop health turns red: email sending disrupted, background tasks stuck, critical errors, or the shop can’t take orders."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:433
+#: src/Admin/HelpCenter/Content/ProArticles.php:438
 msgid "You get one email when it happens, at most one reminder a day while it lasts, and an all-clear when everything works again. The shop checks this every hour."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:437
+#: src/Admin/HelpCenter/Content/ProArticles.php:442
 msgid "The alarm goes to the wrong address."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:438
+#: src/Admin/HelpCenter/Content/ProArticles.php:443
 msgid "It goes to the administration email address of WordPress. Change it in WordPress under Settings → General."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:441
+#: src/Admin/HelpCenter/Content/ProArticles.php:446
 msgid "The test alarm doesn’t arrive."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:442
+#: src/Admin/HelpCenter/Content/ProArticles.php:447
 msgid "Then a real alarm wouldn’t arrive either. Check Settings → Email sending and send a test email there."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:445
+#: src/Admin/HelpCenter/Content/ProArticles.php:450
 msgid "When is something “stuck”?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:446
+#: src/Admin/HelpCenter/Content/ProArticles.php:451
 msgid "When it waits longer than usual, for example a payment after its deadline. A pause in orders only counts once it is three times the usual gap and at least 14 days."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:455
+#: src/Admin/HelpCenter/Content/ProArticles.php:460
 msgid "CSV export of orders and stock"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:456
+#: src/Admin/HelpCenter/Content/ProArticles.php:461
 msgid "Download the orders for the treasurer or the stock list for a spreadsheet."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:457
+#: src/Admin/HelpCenter/Content/ProArticles.php:462
 msgid "export csv excel spreadsheet download orders stock accounting treasurer bookkeeping list report"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:458
+#: src/Admin/HelpCenter/Content/ProArticles.php:463
 msgid "The CSV export gives you orders or stock as a file you can open in Excel, LibreOffice or Numbers, for example for the treasurer’s bookkeeping or the annual report."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:460
+#: src/Admin/HelpCenter/Content/ProArticles.php:465
 msgid "Open Kontor Shop → Orders."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:461
+#: src/Admin/HelpCenter/Content/ProArticles.php:466
 msgid "Filter the list if needed, for example by status, search term or period."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:462
+#: src/Admin/HelpCenter/Content/ProArticles.php:467
 msgid "Click “Export CSV”. To export only certain orders, tick them and click “CSV of selection”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:463
+#: src/Admin/HelpCenter/Content/ProArticles.php:468
 msgid "For stock, open Kontor Shop → Stock, filter if needed and click “Export CSV”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:464
+#: src/Admin/HelpCenter/Content/ProArticles.php:469
 msgid "Open the downloaded file in your spreadsheet program."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:467
+#: src/Admin/HelpCenter/Content/ProArticles.php:472
 msgid "The orders file has one line per order: number, payment reference, date, status, member yes or no, customer, contact, addresses, items, amounts with discount, VAT and shipping, payment method, bank account and the dates of payment, shipping and cancellation."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:468
+#: src/Admin/HelpCenter/Content/ProArticles.php:473
 msgid "At the top, the file states when it was created and which filter was used."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:469
+#: src/Admin/HelpCenter/Content/ProArticles.php:474
 msgid "The stock file has one line per product and size: warehouse, stock, on shelf, minimum stock, sales in the last 30 days, how long it lasts, waiting requests and status."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:470
+#: src/Admin/HelpCenter/Content/ProArticles.php:475
 msgid "The file uses semicolons as separators and is saved so that Excel shows umlauts correctly."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:471
+#: src/Admin/HelpCenter/Content/ProArticles.php:476
 msgid "Orders can be exported by shop managers and cashiers."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:475
+#: src/Admin/HelpCenter/Content/ProArticles.php:480
 msgid "The file contains personal data. What should I watch out for?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:476
+#: src/Admin/HelpCenter/Content/ProArticles.php:481
 msgid "It contains names, addresses and email addresses. Only store it where your club allows it, and delete it when you no longer need it."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:479
+#: src/Admin/HelpCenter/Content/ProArticles.php:484
 msgid "Is there a stock count list without Pro?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:480
+#: src/Admin/HelpCenter/Content/ProArticles.php:485
 msgid "Yes. The count list for printing is part of the free version."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:489
+#: src/Admin/HelpCenter/Content/ProArticles.php:494
 #: src/Pro__premium_only/Audit/AuditModule.php:80
 #: src/Pro__premium_only/Audit/AuditPage.php:460
 msgid "Change log"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:490
+#: src/Admin/HelpCenter/Content/ProArticles.php:495
 msgid "See who changed what and when, protected against later tampering."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:491
+#: src/Admin/HelpCenter/Content/ProArticles.php:496
 msgid "audit log change log changes history who changed tamper-proof trace protocol retention check"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:492
+#: src/Admin/HelpCenter/Content/ProArticles.php:497
 msgid "The change log records important changes in the shop: products, categories, warehouses, orders, manual stock bookings, discount codes, settings, permissions and API accesses. Entries can’t be edited or deleted, so you can always trace who did what."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:494
+#: src/Admin/HelpCenter/Content/ProArticles.php:499
 msgid "Open Kontor Shop → Logs and switch to the “Changes” view."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:495
+#: src/Admin/HelpCenter/Content/ProArticles.php:500
 msgid "Filter by area, by date or with a search term, such as a product, a user or a value."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:496
+#: src/Admin/HelpCenter/Content/ProArticles.php:501
 msgid "Click “History #…” on an entry to see all changes to that object. In the product form, the link “Change log” takes you there directly."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:497
+#: src/Admin/HelpCenter/Content/ProArticles.php:502
 msgid "Click “Check log for tampering” to check the whole log."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:498
+#: src/Admin/HelpCenter/Content/ProArticles.php:503
 msgid "Under “Keep (days)”, set how long entries are kept, and save."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:501
+#: src/Admin/HelpCenter/Content/ProArticles.php:506
 msgid "Each entry shows the time, who made the change, the action, the object, old and new values, and the source, for example shop admin, API, automatic or website. Changes made by an AI assistant carry its name."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:502
+#: src/Admin/HelpCenter/Content/ProArticles.php:507
 msgid "Each entry is chained to the one before and signed. The check shows whether entries were changed, removed or inserted."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:503
+#: src/Admin/HelpCenter/Content/ProArticles.php:508
 msgid "Customer data and secrets such as tokens and passwords are not stored in the log."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:504
+#: src/Admin/HelpCenter/Content/ProArticles.php:509
 msgid "Older entries are removed automatically once a day: by default after 730 days, at least after 180 and at most after 3650. The cleanup and every change to this setting are logged themselves."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:505
+#: src/Admin/HelpCenter/Content/ProArticles.php:510
 msgid "Only users who may change the settings see the log."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:509
+#: src/Admin/HelpCenter/Content/ProArticles.php:514
 msgid "The page shows a tip about KONTOR_SHOP_AUDIT_KEY. What do I do?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:510
+#: src/Admin/HelpCenter/Content/ProArticles.php:515
 msgid "For stronger protection, your webmaster can set a key of your own in wp-config.php. Until then, the WordPress salts are used. Once the key changes, older entries stay readable but can no longer be recalculated."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:513
+#: src/Admin/HelpCenter/Content/ProArticles.php:518
 msgid "The check reports inconsistencies."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:514
+#: src/Admin/HelpCenter/Content/ProArticles.php:519
 msgid "Something changed the database directly, outside the shop. Note the entries listed and ask your webmaster to compare them with a backup."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:517
+#: src/Admin/HelpCenter/Content/ProArticles.php:522
 msgid "Why don’t I see every sale as a stock booking?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:518
+#: src/Admin/HelpCenter/Content/ProArticles.php:523
 msgid "The log records manual stock bookings. Sales and cancellations from orders are in the stock history of each product."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:528
+#: src/Admin/HelpCenter/Content/ProArticles.php:533
 msgid "Cashier API"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:529
+#: src/Admin/HelpCenter/Content/ProArticles.php:534
 msgid "Your treasurer books payments in another program, for example the club management software."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:530
+#: src/Admin/HelpCenter/Content/ProArticles.php:535
 msgid "api interface cashier treasurer token rest integration club software payment booking refund cancellation connected system developer"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:531
+#: src/Admin/HelpCenter/Content/ProArticles.php:536
 msgid "The cashier API connects the shop to another program, such as your club management software. There, the treasurer sees open payments and refunds and books “paid”, “cancelled” or “refund done” without opening the shop admin. The payment status itself stays in the shop."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:533
+#: src/Admin/HelpCenter/Content/ProArticles.php:538
 msgid "Ask whoever looks after your club software whether it supports the Kontor Shop cashier API. A developer sets up that side."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:534
+#: src/Admin/HelpCenter/Content/ProArticles.php:539
 msgid "Open Settings → APIs."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:535
+#: src/Admin/HelpCenter/Content/ProArticles.php:540
 msgid "Under “Add new access”, enter the name of the connected system, for example “Club cash register”, and choose the permissions: cashier or read only."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:536
+#: src/Admin/HelpCenter/Content/ProArticles.php:541
 msgid "Click “Create access and generate token”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:537
+#: src/Admin/HelpCenter/Content/ProArticles.php:542
 msgid "Copy the token right away, because it is shown only once. Pass it to the developer through a safe channel, together with the “API address” shown on the page."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:540
+#: src/Admin/HelpCenter/Content/ProArticles.php:545
 msgid "Every booking through the API runs through the same steps as in the admin: status change, stock booking on cancellation, emails to the customer and an entry in the order history."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:541
+#: src/Admin/HelpCenter/Content/ProArticles.php:546
 msgid "The order shows which connected system made the booking. Each connected system gets its own access, so you can block one without affecting the others."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:542
+#: src/Admin/HelpCenter/Content/ProArticles.php:547
 msgid "If the connected system takes over payments, the page says “Payments are booked in …” and the shop hides “Mark as paid” and “Refund done”. WordPress administrators keep an emergency exit on the order page."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:543
+#: src/Admin/HelpCenter/Content/ProArticles.php:548
 msgid "“Generate new token” makes the old token invalid immediately. “Remove” blocks the access immediately."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:544
+#: src/Admin/HelpCenter/Content/ProArticles.php:549
 msgid "The API only accepts requests over HTTPS."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:548
+#: src/Admin/HelpCenter/Content/ProArticles.php:553
 msgid "For developers"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:550
+#: src/Admin/HelpCenter/Content/ProArticles.php:555
 msgid "The settings page links to the developer documentation. In short: REST endpoints under /wp-json/kontor-shop/v1/cashier, the token as a Bearer header, JSON, and an Idempotency-Key header for every booking."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:556
+#: src/Admin/HelpCenter/Content/ProArticles.php:561
 msgid "Do I need this?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:557
+#: src/Admin/HelpCenter/Content/ProArticles.php:562
 msgid "Only if your treasurer works in another program that supports this API. Otherwise, mark payments as paid in the order list as usual."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:560
+#: src/Admin/HelpCenter/Content/ProArticles.php:565
 msgid "The token is lost."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:561
+#: src/Admin/HelpCenter/Content/ProArticles.php:566
 msgid "The shop doesn’t keep the token itself and can’t show it again. Click “Generate new token” and enter the new one in the connected system."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:564
+#: src/Admin/HelpCenter/Content/ProArticles.php:569
 msgid "How do I switch “Payments are booked in …” off again?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:565
+#: src/Admin/HelpCenter/Content/ProArticles.php:570
 msgid "Switch off the payment source in the connected system, or remove the access in the shop."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:575
+#: src/Admin/HelpCenter/Content/ProArticles.php:580
 msgid "Shop types: separate shop areas"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:576
+#: src/Admin/HelpCenter/Content/ProArticles.php:581
 msgid "Several shops on one website, each with its own page and accent color."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:577
+#: src/Admin/HelpCenter/Content/ProArticles.php:582
 msgid "shop type shop types area section several shops accent color shortcode page catalog switcher"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:578
+#: src/Admin/HelpCenter/Content/ProArticles.php:583
 msgid "A shop type is a separate shop area, for example “Hunting” and “Regular”, with its own accent color and its own page. Categories belong to a shop type, and products to categories. In the catalog, customers can switch between the areas."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:580
+#: src/Admin/HelpCenter/Content/ProArticles.php:585
 msgid "Open Settings → Shop types and click “Create new shop type”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:581
+#: src/Admin/HelpCenter/Content/ProArticles.php:586
 msgid "Enter the name customers will see and choose a color, or tick “Use the shop’s primary color”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:582
+#: src/Admin/HelpCenter/Content/ProArticles.php:587
 msgid "Leave “Create the page with the shortcode automatically” ticked, or place the shortcode from the list on a page of your own."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:583
+#: src/Admin/HelpCenter/Content/ProArticles.php:588
 msgid "Optional: under “Design of this shop area”, set the style, products per row and image format, for example portrait images for clothing."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:584
+#: src/Admin/HelpCenter/Content/ProArticles.php:589
 msgid "Open Kontor Shop → Categories and choose the shop type for each category."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:585
+#: src/Admin/HelpCenter/Content/ProArticles.php:590
 msgid "Change the order of the shop types by dragging or with the arrows."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:588
+#: src/Admin/HelpCenter/Content/ProArticles.php:593
 msgid "The page with the shortcode [kontor_shop_catalog shop=\"…\"] shows only this area, in its color."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:589
+#: src/Admin/HelpCenter/Content/ProArticles.php:594
 msgid "On the general shop page, customers switch between the areas with the buttons “All shops” and the area names."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:590
+#: src/Admin/HelpCenter/Content/ProArticles.php:595
 msgid "Products without a category color of their own take the color of their shop type."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:591
+#: src/Admin/HelpCenter/Content/ProArticles.php:596
 msgid "A switched-off shop type hides its categories and products everywhere in the shop, also for AI assistants."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:592
+#: src/Admin/HelpCenter/Content/ProArticles.php:597
 msgid "If you delete a shop type, its page stays and you can remove it yourself."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:596
+#: src/Admin/HelpCenter/Content/ProArticles.php:601
 msgid "The catalog is empty."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:597
+#: src/Admin/HelpCenter/Content/ProArticles.php:602
 msgid "Probably no shop type is active. Switch at least one on under Settings → Shop types."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:600
+#: src/Admin/HelpCenter/Content/ProArticles.php:605
 msgid "A subcategory can’t be saved."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:601
+#: src/Admin/HelpCenter/Content/ProArticles.php:606
 msgid "The parent category has to be in the same shop type."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:604
+#: src/Admin/HelpCenter/Content/ProArticles.php:609
 msgid "What happens without Pro?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:605
+#: src/Admin/HelpCenter/Content/ProArticles.php:610
 msgid "The catalog shows all categories together. Shop types and the assignment of categories are kept."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:615
+#: src/Admin/HelpCenter/Content/ProArticles.php:620
 msgid "AI assistants for your team"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:616
+#: src/Admin/HelpCenter/Content/ProArticles.php:621
 msgid "Manage products, stock, orders and discount codes by chat with ChatGPT, Claude or Gemini."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:617
+#: src/Admin/HelpCenter/Content/ProArticles.php:622
 msgid "ai assistant chatgpt claude gemini mcp chat connector agent access key team artificial intelligence"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:618
+#: src/Admin/HelpCenter/Content/ProArticles.php:623
 msgid "With Pro, everyone on the shop team can connect their own AI assistant to the shop. You simply write what needs doing, for example “Book 20 caps as goods receipt”, and the assistant does it with your permissions. Customers’ assistants can also fill a cart and hand over a ready checkout link."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:620
+#: src/Admin/HelpCenter/Content/ProArticles.php:625
 msgid "An administrator opens Settings → AI assistants, ticks “Team access” and saves."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:621
+#: src/Admin/HelpCenter/Content/ProArticles.php:626
 msgid "Each person opens Kontor Shop → AI assistant and clicks “Create access”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:622
+#: src/Admin/HelpCenter/Content/ProArticles.php:627
 msgid "Choose your app and what the assistant may do: “Look only” or “Look and change”. Give the access a name, for example “ChatGPT on my phone”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:623
+#: src/Admin/HelpCenter/Content/ProArticles.php:628
 msgid "Click “Copy address”. The address is shown only once. Treat it like a password."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:624
+#: src/Admin/HelpCenter/Content/ProArticles.php:629
 msgid "Add the address in your app as a connector. “Connect your app” on the same page shows the steps for ChatGPT, Claude and Gemini."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:625
+#: src/Admin/HelpCenter/Content/ProArticles.php:630
 msgid "Start a chat, switch on the shop connector and write what you need. “Ideas to try” gives you first examples."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:628
+#: src/Admin/HelpCenter/Content/ProArticles.php:633
 msgid "The assistant works only with your permissions: a cashier can book payments, a warehouse manager only their own warehouse. An access with “Look only” changes nothing."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:629
+#: src/Admin/HelpCenter/Content/ProArticles.php:634
 msgid "Before deleting a product or cancelling an order, the assistant has to show a summary and ask you. Nothing happens until you agree."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:630
+#: src/Admin/HelpCenter/Content/ProArticles.php:635
 #: src/Pro__premium_only/Agents/AgentsPage.php:527
 msgid "Every change is logged with your name and “AI assistant” (Logs → Changes)."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:631
+#: src/Admin/HelpCenter/Content/ProArticles.php:636
 msgid "New products created by chat start hidden unless you ask for them to be visible, so you can check them first."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:632
+#: src/Admin/HelpCenter/Content/ProArticles.php:637
 msgid "Settings, users and roles stay in the admin. The assistant can’t change them."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:633
+#: src/Admin/HelpCenter/Content/ProArticles.php:638
 msgid "If you revoke an access, it stops working immediately. Administrators can revoke the accesses of the whole team, for example when someone leaves."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:637
+#: src/Admin/HelpCenter/Content/ProArticles.php:642
 msgid "For customers: what Free already does and what Pro adds"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:639
+#: src/Admin/HelpCenter/Content/ProArticles.php:644
 msgid "In the free version, you can switch on the shop access for customers under Settings → AI assistants. Customers’ assistants can then search your products and see regular prices and whether something is in stock. They see only what any visitor sees on the website, without logging in."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:640
+#: src/Admin/HelpCenter/Content/ProArticles.php:645
 msgid "With Pro, the customer’s assistant can also fill the cart, prepare a checkout link that is valid for 24 hours, and look up the order status with the order number and email address. The customer always places the order themselves."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:641
+#: src/Admin/HelpCenter/Content/ProArticles.php:646
 msgid "Both accesses stay off until you switch them on."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:645
+#: src/Admin/HelpCenter/Content/ProArticles.php:650
 msgid "Data protection"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:647
+#: src/Admin/HelpCenter/Content/ProArticles.php:652
 msgid "When you ask about orders, customer data such as names and addresses goes to the AI provider. Only use providers your club has approved for this, and mention it in your privacy policy."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:653
+#: src/Admin/HelpCenter/Content/ProArticles.php:658
 msgid "Which apps work?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:654
+#: src/Admin/HelpCenter/Content/ProArticles.php:659
 msgid "Claude, also on the free plan. ChatGPT via “Plugins” → “Add custom MCP server”, depending on your plan. Gemini where custom apps are available. And other apps that support MCP over HTTP."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:657
+#: src/Admin/HelpCenter/Content/ProArticles.php:662
 msgid "I lost my phone."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:658
+#: src/Admin/HelpCenter/Content/ProArticles.php:663
 msgid "Open Kontor Shop → AI assistant and click “Revoke” on that access. It stops working immediately."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:661
+#: src/Admin/HelpCenter/Content/ProArticles.php:666
 msgid "Can the assistant place orders for customers?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:662
+#: src/Admin/HelpCenter/Content/ProArticles.php:667
 msgid "No. It can fill the cart and prepare a checkout link, but the customer places the order."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:672
+#: src/Admin/HelpCenter/Content/ProArticles.php:677
 msgid "Search engine extras"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:673
+#: src/Admin/HelpCenter/Content/ProArticles.php:678
 msgid "Product data for Google, category pages and approved notes on returns, delivery time and warranty."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:674
+#: src/Admin/HelpCenter/Content/ProArticles.php:679
 msgid "seo google search engine structured data json-ld schema category pages meridian returns warranty delivery time sitemap"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:675
+#: src/Admin/HelpCenter/Content/ProArticles.php:680
 msgid "Pro helps search engines and AI search understand your products. Product pages get structured data with price and availability, each category gets its own page, and approved notes on returns, delivery time and warranty appear on product pages."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:677
+#: src/Admin/HelpCenter/Content/ProArticles.php:682
 msgid "Open Settings → Shipping & returns and go to step 3 “Delivery time & returns”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:678
+#: src/Admin/HelpCenter/Content/ProArticles.php:683
 msgid "Enter the return period in days, who pays for return shipping, the processing time and the delivery time."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:679
+#: src/Admin/HelpCenter/Content/ProArticles.php:684
 msgid "Tick “Reviewed – may be published” and save. The details apply to your domestic country from step 1."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:680
+#: src/Admin/HelpCenter/Content/ProArticles.php:685
 msgid "Under Settings → Legal & warranty, enter the warranty in months and an optional note, and save."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:681
+#: src/Admin/HelpCenter/Content/ProArticles.php:686
 msgid "Under Settings → Design, set “Products per category page”."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:682
+#: src/Admin/HelpCenter/Content/ProArticles.php:687
 msgid "If you use the Meridian SEO plugin, keep it at version 0.7.0 or newer."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:685
+#: src/Admin/HelpCenter/Content/ProArticles.php:690
 msgid "Each product page carries structured data for Google: name, regular price, availability, and product number, brand and GTIN if you entered them. There are no made-up ratings."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:686
+#: src/Admin/HelpCenter/Content/ProArticles.php:691
 msgid "Search engines only ever see the regular price. The member price is shown only to logged-in members."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:687
+#: src/Admin/HelpCenter/Content/ProArticles.php:692
 msgid "Each category gets its own page under /shop/kategorie/…, including its subcategories and split into pages."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:688
+#: src/Admin/HelpCenter/Content/ProArticles.php:693
 msgid "Returns and delivery time appear on product pages and in the structured data only after approval and with a country. The warranty appears only as text on the product page."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:689
+#: src/Admin/HelpCenter/Content/ProArticles.php:694
 msgid "With Meridian SEO, the shop hands its products to Meridian for the sitemap and search data, and Meridian takes care of titles and descriptions. Without Meridian, the shop outputs its own title, description and canonical address."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:693
+#: src/Admin/HelpCenter/Content/ProArticles.php:698
 msgid "Why are there no default values for returns?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:694
+#: src/Admin/HelpCenter/Content/ProArticles.php:699
 msgid "These details bind your club. They must match your terms and the cancellation policy, so the shop publishes nothing until you enter and approve them."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:697
+#: src/Admin/HelpCenter/Content/ProArticles.php:702
 msgid "Meridian SEO shows a notice that it is too old."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:698
+#: src/Admin/HelpCenter/Content/ProArticles.php:703
 msgid "Update Meridian SEO to version 0.7.0 or newer. Until then, the shop hands no search engine data to it."
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:701
+#: src/Admin/HelpCenter/Content/ProArticles.php:706
 msgid "Which product details help most?"
 msgstr ""
 
-#: src/Admin/HelpCenter/Content/ProArticles.php:702
+#: src/Admin/HelpCenter/Content/ProArticles.php:707
 msgid "A clear name, a description, an image with alt text, and if you have them the product number, brand and GTIN (EAN)."
 msgstr ""
 
@@ -3510,10 +3522,10 @@ msgid "With Kontor Shop Pro, you can offer “On invoice” to recognized member
 msgstr ""
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:121
-#: src/Admin/OrdersList.php:616
+#: src/Admin/OrdersList.php:618
 #: src/Admin/Settings/PaymentSection.php:254
 #: src/Domain/Order/PaymentMethod.php:50
-#: src/Modules/Checkout/CheckoutModule.php:940
+#: src/Modules/Checkout/CheckoutModule.php:971
 msgid "Cash on pickup"
 msgstr ""
 
@@ -3546,7 +3558,7 @@ msgid "Automatic payment reminders and automatic cancellation of unpaid orders c
 msgstr ""
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:137
-#: src/Admin/OrderDetailView.php:189
+#: src/Admin/OrderDetailView.php:190
 #: src/Admin/ProductForm.php:301
 #: src/Admin/Settings/PaymentSection.php:63
 #: src/Admin/SystemCheck.php:236
@@ -5627,15 +5639,15 @@ msgid "Check"
 msgstr ""
 
 #: src/Admin/HelpCenter/HelpCenter.php:381
-#: src/Admin/OrdersList.php:740
-#: src/Modules/Checkout/CheckoutModule.php:1401
+#: src/Admin/OrdersList.php:742
+#: src/Modules/Checkout/CheckoutModule.php:1432
 msgid "done"
 msgstr ""
 
 #: src/Admin/HelpCenter/HelpCenter.php:381
-#: src/Admin/OrderDetailView.php:207
-#: src/Admin/OrdersList.php:597
-#: src/Admin/OrdersList.php:800
+#: src/Admin/OrderDetailView.php:208
+#: src/Admin/OrdersList.php:599
+#: src/Admin/OrdersList.php:802
 #: src/Admin/SettingsPage.php:243
 msgid "open"
 msgstr ""
@@ -5682,7 +5694,7 @@ msgid "Reference (KS-…), message or area"
 msgstr ""
 
 #: src/Admin/LogPage.php:152
-#: src/Admin/OrdersList.php:449
+#: src/Admin/OrdersList.php:450
 #: src/Admin/ProductsList.php:220
 #: src/Admin/StockOverview.php:559
 #: src/Pro__premium_only/Audit/AuditPage.php:183
@@ -5690,7 +5702,7 @@ msgid "Filter"
 msgstr ""
 
 #: src/Admin/LogPage.php:161
-#: src/Admin/OrderDetailView.php:584
+#: src/Admin/OrderDetailView.php:585
 #: src/Pro__premium_only/Audit/AuditPage.php:220
 msgid "Time"
 msgstr ""
@@ -5719,7 +5731,7 @@ msgid "Report"
 msgstr ""
 
 #: src/Admin/LogPage.php:176
-#: src/Pro__premium_only/Packing/OrderPackView.php:151
+#: src/Pro__premium_only/Packing/OrderPackView.php:152
 msgid "Details"
 msgstr ""
 
@@ -5954,15 +5966,15 @@ msgstr ""
 
 #: src/Admin/Menu.php:194
 #: src/Admin/Menu.php:227
-#: src/Admin/OrderDetailView.php:407
-#: src/Admin/OrderDetailView.php:489
+#: src/Admin/OrderDetailView.php:408
+#: src/Admin/OrderDetailView.php:490
 #: src/Admin/OrdersPage.php:786
 msgid "Cancel"
 msgstr ""
 
 #: src/Admin/Menu.php:195
-#: src/Admin/OrderDetailView.php:503
-#: src/Admin/OrdersList.php:223
+#: src/Admin/OrderDetailView.php:504
+#: src/Admin/OrdersList.php:224
 msgid "Mark as paid"
 msgstr ""
 
@@ -6019,7 +6031,7 @@ msgid "Please choose a variant."
 msgstr ""
 
 #: src/Admin/Menu.php:218
-#: src/Admin/OrderDetailView.php:186
+#: src/Admin/OrderDetailView.php:187
 #: src/Admin/OrdersPage.php:748
 #: src/Admin/StockOverview.php:911
 #: src/Admin/StockPage.php:179
@@ -6250,426 +6262,410 @@ msgid "Warehouses"
 msgstr ""
 
 #. translators: %s: order number
-#: src/Admin/OrderDetailView.php:77
+#: src/Admin/OrderDetailView.php:78
 msgid "Order %s"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:81
+#: src/Admin/OrderDetailView.php:82
 msgid "partially picked up"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:81
+#: src/Admin/OrderDetailView.php:82
 msgid "partially shipped"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:83
+#: src/Admin/OrderDetailView.php:84
 msgid "Back to order list"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:98
+#: src/Admin/OrderDetailView.php:99
 msgid "Customer & delivery"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:101
+#: src/Admin/OrderDetailView.php:102
 #: src/Admin/Settings/InvoicesSection.php:120
 #: src/Admin/Settings/MailSection.php:105
-#: src/Modules/Checkout/CheckoutModule.php:876
-#: src/Modules/Privacy/PrivacyModule.php:105
+#: src/Admin/Ui/MemberAccountNotice.php:48
+#: src/Modules/Checkout/CheckoutModule.php:907
 msgid "Email"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:103
+#: src/Admin/OrderDetailView.php:104
 #: src/Admin/Settings/DesignSection.php:423
 #: src/Admin/TemplatesPage.php:343
-#: src/Modules/Checkout/CheckoutModule.php:884
-#: src/Modules/Privacy/PrivacyModule.php:106
+#: src/Admin/Ui/MemberAccountNotice.php:49
+#: src/Modules/Checkout/CheckoutModule.php:915
 msgid "Phone"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:106
-#: src/Admin/OrdersList.php:483
+#: src/Admin/OrderDetailView.php:107
+#: src/Admin/OrdersList.php:484
 #: src/Pro__premium_only/Export/OrdersExport.php:111
 msgid "Member"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:106
-#: src/Admin/ShipmentDialog.php:267
-#: src/Admin/WarehousesPage.php:307
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:443
-#: src/Pro__premium_only/Export/OrdersExport.php:136
-msgid "yes"
-msgstr ""
-
-#: src/Admin/OrderDetailView.php:106
-#: src/Admin/ShipmentDialog.php:268
-#: src/Admin/WarehousesPage.php:307
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:443
-#: src/Pro__premium_only/Export/OrdersExport.php:136
-msgid "no"
-msgstr ""
-
-#: src/Admin/OrderDetailView.php:108
+#: src/Admin/OrderDetailView.php:109
 #: src/Pro__premium_only/Export/OrdersExport.php:112
 msgid "Delivery method"
 msgstr ""
 
 #. translators: %s: amount such as "100 €"
-#: src/Admin/OrderDetailView.php:109
-#: src/Admin/OrdersList.php:471
-#: src/Admin/OrdersList.php:814
+#: src/Admin/OrderDetailView.php:110
+#: src/Admin/OrdersList.php:472
+#: src/Admin/OrdersList.php:816
 #: src/Admin/Settings/ShippingSection.php:314
-#: src/Modules/Checkout/CheckoutModule.php:1641
+#: src/Modules/Checkout/CheckoutModule.php:1672
 msgid "Self pickup"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:113
+#: src/Admin/OrderDetailView.php:114
 msgid "Invoice to"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:116
+#: src/Admin/OrderDetailView.php:117
 #: src/Modules/Notifications/NotificationsModule.php:416
 msgid "same as shipping address"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:127
+#: src/Admin/OrderDetailView.php:128
 msgid "Payment & history"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:130
+#: src/Admin/OrderDetailView.php:131
 #: src/Admin/TemplatesPage.php:355
-#: src/Modules/Checkout/CheckoutModule.php:954
+#: src/Modules/Checkout/CheckoutModule.php:985
 #: src/Pro__premium_only/Export/OrdersExport.php:114
 msgid "Payment method"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:135
+#: src/Admin/OrderDetailView.php:136
 #: src/Pro__premium_only/Audit/AuditPage.php:512
 #: src/Pro__premium_only/Export/OrdersExport.php:114
 msgid "Bank account"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:138
+#: src/Admin/OrderDetailView.php:139
 #: src/Admin/TemplatesPage.php:347
 #: src/Infrastructure/Invoices/InvoicePdf.php:205
-#: src/Modules/Checkout/CheckoutModule.php:1452
-#: src/Modules/Checkout/CheckoutModule.php:1590
+#: src/Modules/Checkout/CheckoutModule.php:1483
+#: src/Modules/Checkout/CheckoutModule.php:1621
 msgid "Payment reference"
 msgstr ""
 
 #. translators: %s: open refund amount
-#: src/Admin/OrderDetailView.php:147
+#: src/Admin/OrderDetailView.php:148
 msgid "open: %s €"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:148
+#: src/Admin/OrderDetailView.php:149
 msgid "transfer to the customer, then click “Refund done” below"
 msgstr ""
 
 #. translators: %s: refunded amount
-#: src/Admin/OrderDetailView.php:150
+#: src/Admin/OrderDetailView.php:151
 msgid "%s € done"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:153
-#: src/Modules/Checkout/CheckoutModule.php:1422
+#: src/Admin/OrderDetailView.php:154
+#: src/Modules/Checkout/CheckoutModule.php:1453
 msgid "Ordered on"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:159
-#: src/Admin/OrderDetailView.php:168
+#: src/Admin/OrderDetailView.php:160
+#: src/Admin/OrderDetailView.php:169
 #: src/Admin/Settings/PaymentSection.php:280
 msgid "Payment due date"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:159
+#: src/Admin/OrderDetailView.php:160
 #: src/Admin/TemplatesPage.php:348
 msgid "Payment deadline"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:163
+#: src/Admin/OrderDetailView.php:164
 msgid "overdue – check payment or send a reminder"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:164
+#: src/Admin/OrderDetailView.php:165
 msgid "overdue – check payment or cancel"
 msgstr ""
 
 #. translators: %d: days
-#: src/Admin/OrderDetailView.php:170
+#: src/Admin/OrderDetailView.php:171
 msgid "%d days from shipment of the whole order"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:174
+#: src/Admin/OrderDetailView.php:175
 #: src/Pro__premium_only/Export/OrdersExport.php:114
 msgid "Paid on"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:175
+#: src/Admin/OrderDetailView.php:176
 msgid "Shipped/picked up on"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:176
+#: src/Admin/OrderDetailView.php:177
 #: src/Pro__premium_only/Export/OrdersExport.php:115
 msgid "Cancelled on"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:177
+#: src/Admin/OrderDetailView.php:178
 #: src/Modules/Privacy/PrivacyModule.php:112
 msgid "Consent to terms and conditions/privacy policy"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:184
-#: src/Admin/OrdersList.php:795
+#: src/Admin/OrderDetailView.php:185
+#: src/Admin/OrdersList.php:797
 #: src/Admin/StockOverview.php:1107
 #: src/Modules/Privacy/PrivacyModule.php:109
 #: src/Pro__premium_only/Export/OrdersExport.php:112
 msgid "Items"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:186
-#: src/Admin/OrderDetailView.php:260
+#: src/Admin/OrderDetailView.php:187
+#: src/Admin/OrderDetailView.php:261
 #: src/Admin/Settings/ShippingSection.php:37
 #: src/Infrastructure/Invoices/InvoicePdf.php:140
-#: src/Modules/Checkout/CheckoutModule.php:1034
+#: src/Modules/Checkout/CheckoutModule.php:1065
 msgid "Shipping"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:189
+#: src/Admin/OrderDetailView.php:190
 #: src/Infrastructure/Invoices/InvoicePdf.php:124
 msgid "Unit price"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:189
-#: src/Admin/OrderDetailView.php:261
-#: src/Admin/OrdersList.php:268
+#: src/Admin/OrderDetailView.php:190
+#: src/Admin/OrderDetailView.php:262
+#: src/Admin/OrdersList.php:269
 #: src/Admin/StockPage.php:201
 #: src/Admin/TemplatesPage.php:354
 msgid "Total"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:202
-#: src/Admin/OrdersList.php:562
-#: src/Admin/OrdersList.php:738
-#: src/Admin/OrdersList.php:799
+#: src/Admin/OrderDetailView.php:203
+#: src/Admin/OrdersList.php:564
+#: src/Admin/OrdersList.php:740
+#: src/Admin/OrdersList.php:801
 #: src/Domain/Order/OrderStatus.php:66
 msgid "cancelled"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:205
-#: src/Admin/OrdersList.php:536
-#: src/Admin/OrdersList.php:800
+#: src/Admin/OrderDetailView.php:206
+#: src/Admin/OrdersList.php:538
+#: src/Admin/OrdersList.php:802
 msgid "out"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:208
+#: src/Admin/OrderDetailView.php:209
 msgid "after payment"
 msgstr ""
 
 #. translators: %d: pieces
-#: src/Admin/OrderDetailView.php:214
+#: src/Admin/OrderDetailView.php:215
 #: src/Pro__premium_only/Export/OrdersExport.php:125
 msgid "%d returned"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:240
-#: src/Modules/Checkout/CheckoutModule.php:1028
-#: src/Modules/Checkout/CheckoutModule.php:1537
+#: src/Admin/OrderDetailView.php:241
+#: src/Modules/Checkout/CheckoutModule.php:1059
+#: src/Modules/Checkout/CheckoutModule.php:1568
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:557
 #: src/Pro__premium_only/Export/OrdersExport.php:113
 msgid "Order value"
 msgstr ""
 
 #. translators: %s: discount code
-#: src/Admin/OrderDetailView.php:255
+#: src/Admin/OrderDetailView.php:256
 #: src/Infrastructure/Invoices/InvoicePdf.php:134
-#: src/Modules/Checkout/CheckoutModule.php:1084
+#: src/Modules/Checkout/CheckoutModule.php:1115
 msgid "Discount (%s)"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:257
+#: src/Admin/OrderDetailView.php:258
 msgid "View code"
 msgstr ""
 
 #. translators: %s: tax rate
-#: src/Admin/OrderDetailView.php:266
+#: src/Admin/OrderDetailView.php:267
 msgid "included VAT %s %% (incl. share of shipping)"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:328
-#: src/Modules/Checkout/CheckoutModule.php:1491
+#: src/Admin/OrderDetailView.php:329
+#: src/Modules/Checkout/CheckoutModule.php:1522
 msgid "Shipments"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:329
+#: src/Admin/OrderDetailView.php:330
 #: src/Admin/StockOverview.php:1115
 #: src/Admin/StockPage.php:804
 #: src/Infrastructure/Invoices/InvoicePdf.php:81
 msgid "Date"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:330
+#: src/Admin/OrderDetailView.php:331
 msgid "Carrier / tracking"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:330
-#: src/Admin/OrderDetailView.php:585
+#: src/Admin/OrderDetailView.php:331
+#: src/Admin/OrderDetailView.php:586
 #: src/Admin/StockOverview.php:974
 #: src/Admin/StockPage.php:203
 #: src/Admin/StockPage.php:794
 msgid "Note"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:330
-#: src/Admin/OrderDetailView.php:585
+#: src/Admin/OrderDetailView.php:331
+#: src/Admin/OrderDetailView.php:586
 msgid "By"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:335
-#: src/Admin/OrdersList.php:570
-#: src/Admin/OrdersList.php:800
+#: src/Admin/OrderDetailView.php:336
+#: src/Admin/OrdersList.php:572
+#: src/Admin/OrdersList.php:802
 #: src/Admin/ShipmentDialog.php:76
 #: src/Admin/ShipmentDialog.php:282
 msgid "picked up"
 msgstr ""
 
 #. translators: %s: order number
-#: src/Admin/OrderDetailView.php:367
+#: src/Admin/OrderDetailView.php:368
 msgid "Cancel products – %s"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:368
-#: src/Admin/OrderDetailView.php:440
+#: src/Admin/OrderDetailView.php:369
+#: src/Admin/OrderDetailView.php:441
 #: src/Admin/ShipmentDialog.php:106
 #: src/Admin/StockOverview.php:902
 #: src/Admin/StockOverview.php:931
 msgid "Close"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:372
+#: src/Admin/OrderDetailView.php:373
 msgid "The order is paid: the goods value of the cancelled products will be noted as a refund to the customer. Products that have already shipped can’t be cancelled here."
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:373
+#: src/Admin/OrderDetailView.php:374
 msgid "The order is not paid yet: the amount due is reduced by the goods value of the cancelled products. Products that have already shipped can’t be cancelled here."
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:381
-#: src/Admin/OrderDetailView.php:456
+#: src/Admin/OrderDetailView.php:382
+#: src/Admin/OrderDetailView.php:457
 msgid "after discount"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:383
+#: src/Admin/OrderDetailView.php:384
 msgid "Goods back to warehouse"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:384
+#: src/Admin/OrderDetailView.php:385
 msgid "not returned: defective / damaged"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:385
+#: src/Admin/OrderDetailView.php:386
 msgid "not returned: lost / stolen"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:386
-#: src/Admin/OrderDetailView.php:468
+#: src/Admin/OrderDetailView.php:387
+#: src/Admin/OrderDetailView.php:469
 msgid "no stock booking"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:392
+#: src/Admin/OrderDetailView.php:393
 msgid "Reason (appears in the email to the customer)"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:393
+#: src/Admin/OrderDetailView.php:394
 msgid "e.g. sorry, sold out / no longer available"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:396
-#: src/Admin/OrderDetailView.php:478
+#: src/Admin/OrderDetailView.php:397
+#: src/Admin/OrderDetailView.php:479
 #: src/Admin/OrdersPage.php:778
 msgid "Refund to the customer"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:398
+#: src/Admin/OrderDetailView.php:399
 msgid "Suggestion = goods value of the selected products (if all products are cancelled, incl. shipping). You can adjust it."
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:400
+#: src/Admin/OrderDetailView.php:401
 msgid "New amount due:"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:404
+#: src/Admin/OrderDetailView.php:405
 #: src/Admin/ShipmentDialog.php:234
-#: src/Pro__premium_only/Packing/OrderPackView.php:201
+#: src/Pro__premium_only/Packing/OrderPackView.php:206
 msgid "Notify customer by email"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:408
+#: src/Admin/OrderDetailView.php:409
 msgid "Really cancel the selected products?"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:409
+#: src/Admin/OrderDetailView.php:410
 msgid "Cancel selected products"
 msgstr ""
 
 #. translators: %s: order number
-#: src/Admin/OrderDetailView.php:439
+#: src/Admin/OrderDetailView.php:440
 msgid "Record return – %s"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:444
+#: src/Admin/OrderDetailView.php:445
 msgid "The order is paid: the goods value of the returned products will be noted as a refund to the customer. If everything comes back, shipping is included."
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:445
+#: src/Admin/OrderDetailView.php:446
 msgid "The invoice is not paid yet: the open amount is reduced by the goods value of the returned products. If everything comes back, shipping is dropped too."
 msgstr ""
 
 #. translators: 1: units still returnable, 2: delivered
-#: src/Admin/OrderDetailView.php:460
+#: src/Admin/OrderDetailView.php:461
 msgid "of %1$d pcs. back (delivered: %2$d)"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:465
+#: src/Admin/OrderDetailView.php:466
 msgid "Goods OK: back to warehouse"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:466
+#: src/Admin/OrderDetailView.php:467
 msgid "defective / damaged (not sellable)"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:467
+#: src/Admin/OrderDetailView.php:468
 msgid "did not arrive / lost"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:474
+#: src/Admin/OrderDetailView.php:475
 msgid "Note (appears in the email to the customer)"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:475
+#: src/Admin/OrderDetailView.php:476
 msgid "e.g. withdrawal, doesn’t fit, exchange"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:480
+#: src/Admin/OrderDetailView.php:481
 msgid "Suggestion = goods value of the return (if everything comes back: incl. shipping). You can adjust it, e.g. for reduced value; 0 = no refund."
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:482
+#: src/Admin/OrderDetailView.php:483
 msgid "New invoice amount:"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:486
+#: src/Admin/OrderDetailView.php:487
 msgid "Notify customer by email (“Return received”)"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:490
+#: src/Admin/OrderDetailView.php:491
 msgid "Book the return now?"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:491
+#: src/Admin/OrderDetailView.php:492
 msgid "Book return"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:497
+#: src/Admin/OrderDetailView.php:498
 #: src/Pro__premium_only/Api/ApiSection.php:117
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:476
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:739
@@ -6677,92 +6673,92 @@ msgid "Actions"
 msgstr ""
 
 #. translators: %s: email
-#: src/Admin/OrderDetailView.php:507
-#: src/Admin/OrdersList.php:761
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:161
+#: src/Admin/OrderDetailView.php:508
+#: src/Admin/OrdersList.php:763
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:162
 msgid "Send payment reminder"
 msgstr ""
 
 #. translators: %s: email
-#: src/Admin/OrderDetailView.php:509
-#: src/Admin/OrdersList.php:759
+#: src/Admin/OrderDetailView.php:510
+#: src/Admin/OrdersList.php:761
 msgid "Send the payment reminder to %s now?"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:516
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:121
+#: src/Admin/OrderDetailView.php:517
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:122
 msgid "Cancel order"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:520
-#: src/Admin/OrdersList.php:358
+#: src/Admin/OrderDetailView.php:521
+#: src/Admin/OrdersList.php:359
 #: src/Domain/Notifications/DefaultTemplates.php:162
 msgid "Ready for pickup"
 msgstr ""
 
 #. translators: %s: email
-#: src/Admin/OrderDetailView.php:522
+#: src/Admin/OrderDetailView.php:523
 msgid "Send %s the email “Ready for pickup” now?"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:533
-#: src/Admin/OrdersList.php:769
+#: src/Admin/OrderDetailView.php:534
+#: src/Admin/OrdersList.php:771
 msgid "Cancel products …"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:538
-#: src/Admin/OrdersList.php:773
+#: src/Admin/OrderDetailView.php:539
+#: src/Admin/OrdersList.php:775
 msgid "Record return …"
 msgstr ""
 
 #. translators: %s: refund amount
-#: src/Admin/OrderDetailView.php:543
+#: src/Admin/OrderDetailView.php:544
 msgid "Refund %s € done"
 msgstr ""
 
 #. translators: %s: refund amount
-#: src/Admin/OrderDetailView.php:543
+#: src/Admin/OrderDetailView.php:544
 msgid "Did you transfer the amount back to the customer?"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:549
+#: src/Admin/OrderDetailView.php:550
 msgid "Undo payment"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:549
+#: src/Admin/OrderDetailView.php:550
 msgid "Set this order back to “open”? Use this if it was marked as paid by mistake. The customer is not notified."
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:553
+#: src/Admin/OrderDetailView.php:554
 msgid "Delete order"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:553
+#: src/Admin/OrderDetailView.php:554
 msgid "Permanently delete this order? Products that have not been shipped go back to the warehouse. This can’t be undone."
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:566
+#: src/Admin/OrderDetailView.php:567
 msgid "Confirmation email"
 msgstr ""
 
 #. translators: %s: customer email address
-#: src/Admin/OrderDetailView.php:570
+#: src/Admin/OrderDetailView.php:571
 msgid "Resend to %s"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:576
+#: src/Admin/OrderDetailView.php:577
 msgid "other email address"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:577
+#: src/Admin/OrderDetailView.php:578
 msgid "Forward to this address"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:583
+#: src/Admin/OrderDetailView.php:584
 msgid "Status history"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:593
+#: src/Admin/OrderDetailView.php:594
 #: src/Admin/Settings/SystemSection.php:24
 #: src/Admin/StockOverview.php:866
 #: src/Pro__premium_only/Audit/AuditPage.php:242
@@ -6770,204 +6766,205 @@ msgid "System"
 msgstr ""
 
 #. translators: %s: name of the counterpart system, e.g. club treasury
-#: src/Admin/OrderDetailView.php:617
+#: src/Admin/OrderDetailView.php:618
 msgid "Payments are booked in %s."
 msgstr ""
 
 #. translators: %s: name of the counterpart system, e.g. club treasury
-#: src/Admin/OrderDetailView.php:619
+#: src/Admin/OrderDetailView.php:620
 msgid "As soon as the cashier books it there, the order shows as “paid” here and can be shipped."
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:620
+#: src/Admin/OrderDetailView.php:621
 msgid "Open in the cashier system ↗"
 msgstr ""
 
-#: src/Admin/OrderDetailView.php:630
+#: src/Admin/OrderDetailView.php:631
 msgid "Counterpart system"
 msgstr ""
 
 #. translators: %s: name of the counterpart system
-#: src/Admin/OrderDetailView.php:634
+#: src/Admin/OrderDetailView.php:635
 msgid "%s not reachable? Book here anyway …"
 msgstr ""
 
 #. translators: %s: name of the counterpart system
-#: src/Admin/OrderDetailView.php:638
+#: src/Admin/OrderDetailView.php:639
 msgid "Normally the cashier books in %s. A booking made here appears there in the history as “booked in shop”."
 msgstr ""
 
 #. translators: %s: order total
-#: src/Admin/OrderDetailView.php:644
+#: src/Admin/OrderDetailView.php:645
 msgid "Book as paid here anyway (%s €)"
 msgstr ""
 
 #. translators: %s: order total
-#: src/Admin/OrderDetailView.php:645
+#: src/Admin/OrderDetailView.php:646
 msgid "Really book as paid in the shop, even though payments are otherwise booked in the leading cashier system?"
 msgstr ""
 
 #. translators: %s: refund amount
-#: src/Admin/OrderDetailView.php:650
+#: src/Admin/OrderDetailView.php:651
 msgid "Here anyway: refund %s € done"
 msgstr ""
 
 #. translators: %s: refund amount
-#: src/Admin/OrderDetailView.php:651
+#: src/Admin/OrderDetailView.php:652
 msgid "Really book as refunded in the shop, even though payments are otherwise booked in the leading cashier system?"
 msgstr ""
 
 #. translators: %s: name of the connected system
-#: src/Admin/OrderDetailView.php:713
+#: src/Admin/OrderDetailView.php:714
 msgid "via %s"
 msgstr ""
 
 #. translators: %s: order number
-#: src/Admin/OrdersList.php:186
-#: src/Admin/OrdersList.php:231
+#: src/Admin/OrdersList.php:187
+#: src/Admin/OrdersList.php:232
 #: src/Admin/ShopSnapshot.php:288
 #: src/Pro__premium_only/Dashboard/Stalls.php:172
-#: src/Pro__premium_only/Packing/OrderPackView.php:59
+#: src/Pro__premium_only/Packing/OrderPackView.php:60
 msgid "Pack"
 msgstr ""
 
 #. translators: %d: count
-#: src/Admin/OrdersList.php:215
+#: src/Admin/OrdersList.php:216
 msgid "Filtered to %d order from the dashboard."
 msgid_plural "Filtered to %d orders from the dashboard."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/OrdersList.php:217
+#: src/Admin/OrdersList.php:218
 msgid "Show all orders"
 msgstr ""
 
-#: src/Admin/OrdersList.php:227
+#: src/Admin/OrdersList.php:228
 msgid "Mark as shipped/picked up"
 msgstr ""
 
-#: src/Admin/OrdersList.php:244
+#: src/Admin/OrdersList.php:245
 #: src/Admin/StockOverview.php:402
 msgid "Clear selection"
 msgstr ""
 
-#: src/Admin/OrdersList.php:249
+#: src/Admin/OrdersList.php:250
 msgid "No orders yet."
 msgstr ""
 
-#: src/Admin/OrdersList.php:249
+#: src/Admin/OrdersList.php:250
 msgid "All done – nothing to do right now."
 msgstr ""
 
-#: src/Admin/OrdersList.php:250
+#: src/Admin/OrdersList.php:251
 msgid "No orders found for this selection."
 msgstr ""
 
-#: src/Admin/OrdersList.php:262
+#: src/Admin/OrdersList.php:263
 #: src/Admin/StockOverview.php:417
 msgid "Select all"
 msgstr ""
 
-#: src/Admin/OrdersList.php:263
+#: src/Admin/OrdersList.php:264
+#: src/Admin/Ui/MemberAccountNotice.php:124
 #: src/Infrastructure/Invoices/InvoicePdf.php:90
 #: src/Pro__premium_only/Audit/AuditPage.php:455
 #: src/Pro__premium_only/Preorders/PreordersModule.php:405
 msgid "Order"
 msgstr ""
 
-#: src/Admin/OrdersList.php:264
+#: src/Admin/OrdersList.php:265
 #: src/Pro__premium_only/Export/OrdersExport.php:111
 #: src/Pro__premium_only/Preorders/PreordersModule.php:405
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:472
 msgid "Customer"
 msgstr ""
 
-#: src/Admin/OrdersList.php:266
+#: src/Admin/OrdersList.php:267
 msgid "Progress"
 msgstr ""
 
-#: src/Admin/OrdersList.php:267
+#: src/Admin/OrdersList.php:268
 #: src/Admin/Settings/PaymentSection.php:61
 #: src/Admin/Upgrade/PricingPage.php:274
 msgid "Payment"
 msgstr ""
 
-#: src/Admin/OrdersList.php:269
+#: src/Admin/OrdersList.php:270
 #: src/Admin/TemplatesPage.php:362
 msgid "Next step"
 msgstr ""
 
-#: src/Admin/OrdersList.php:349
+#: src/Admin/OrdersList.php:350
 msgid "not paid yet"
 msgstr ""
 
-#: src/Admin/OrdersList.php:350
+#: src/Admin/OrdersList.php:351
 msgid "overdue"
 msgstr ""
 
-#: src/Admin/OrdersList.php:351
+#: src/Admin/OrdersList.php:352
 msgid "Payment deadline or due date passed"
 msgstr ""
 
-#: src/Admin/OrdersList.php:352
+#: src/Admin/OrdersList.php:353
 msgid "no payment deadline set"
 msgstr ""
 
 #. translators: %d: pieces
-#: src/Admin/OrdersList.php:355
+#: src/Admin/OrdersList.php:356
 #: src/Pro__premium_only/Dashboard/TrendCard.php:51
 msgid "%d pcs."
 msgstr ""
 
 #. translators: %d: pieces
-#: src/Admin/OrdersList.php:357
+#: src/Admin/OrdersList.php:358
 msgid "paid or on invoice, not shipped yet"
 msgstr ""
 
-#: src/Admin/OrdersList.php:357
-#: src/Admin/OrdersList.php:720
+#: src/Admin/OrdersList.php:358
+#: src/Admin/OrdersList.php:722
 msgid "in progress at the warehouse"
 msgstr ""
 
-#: src/Admin/OrdersList.php:358
+#: src/Admin/OrdersList.php:359
 msgid "waiting for pickup"
 msgstr ""
 
-#: src/Admin/OrdersList.php:359
+#: src/Admin/OrdersList.php:360
 #: src/Pro__premium_only/Dashboard/Stalls.php:266
 msgid "Refund pending"
 msgstr ""
 
-#: src/Admin/OrdersList.php:359
+#: src/Admin/OrdersList.php:360
 msgid "Money back to customer"
 msgstr ""
 
-#: src/Admin/OrdersList.php:371
+#: src/Admin/OrdersList.php:372
 msgid "To do"
 msgstr ""
 
-#: src/Admin/OrdersList.php:374
-#: src/Admin/OrdersList.php:485
+#: src/Admin/OrdersList.php:375
+#: src/Admin/OrdersList.php:487
 #: src/Admin/ShopSnapshot.php:289
-#: src/Pro__premium_only/Packing/OrderPackView.php:149
+#: src/Pro__premium_only/Packing/OrderPackView.php:150
 msgid "Pickup"
 msgstr ""
 
-#: src/Admin/OrdersList.php:375
+#: src/Admin/OrdersList.php:376
 msgid "Partially out"
 msgstr ""
 
-#: src/Admin/OrdersList.php:377
+#: src/Admin/OrdersList.php:378
 #: src/Pro__premium_only/Agents/AgentsPage.php:445
 msgid "Done"
 msgstr ""
 
-#: src/Admin/OrdersList.php:378
+#: src/Admin/OrdersList.php:379
 #: src/Admin/Ui/Badge.php:52
 msgid "Cancelled"
 msgstr ""
 
-#: src/Admin/OrdersList.php:379
+#: src/Admin/OrdersList.php:380
 #: src/Admin/ProductsList.php:166
 #: src/Admin/StockOverview.php:513
 #: src/Modules/Catalog/CatalogModule.php:236
@@ -6975,61 +6972,61 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: src/Admin/OrdersList.php:383
+#: src/Admin/OrdersList.php:384
 msgid "Overdue"
 msgstr ""
 
-#: src/Admin/OrdersList.php:414
+#: src/Admin/OrdersList.php:415
 msgid "Number, name, email, reference, or product …"
 msgstr ""
 
-#: src/Admin/OrdersList.php:415
+#: src/Admin/OrdersList.php:416
 msgid "Search orders"
 msgstr ""
 
-#: src/Admin/OrdersList.php:428
+#: src/Admin/OrdersList.php:429
 #: src/Pro__premium_only/Export/OrdersExport.php:181
 msgid "Period"
 msgstr ""
 
-#: src/Admin/OrdersList.php:429
+#: src/Admin/OrdersList.php:430
 msgid "All time"
 msgstr ""
 
-#: src/Admin/OrdersList.php:430
+#: src/Admin/OrdersList.php:431
 msgid "Today"
 msgstr ""
 
-#: src/Admin/OrdersList.php:431
+#: src/Admin/OrdersList.php:432
 msgid "Last 7 days"
 msgstr ""
 
-#: src/Admin/OrdersList.php:432
+#: src/Admin/OrdersList.php:433
 #: src/Pro__premium_only/Dashboard/TrendCard.php:38
 msgid "Last 30 days"
 msgstr ""
 
-#: src/Admin/OrdersList.php:433
+#: src/Admin/OrdersList.php:434
 msgid "Last 90 days"
 msgstr ""
 
-#: src/Admin/OrdersList.php:435
+#: src/Admin/OrdersList.php:436
 msgid "Shipping method"
 msgstr ""
 
-#: src/Admin/OrdersList.php:435
+#: src/Admin/OrdersList.php:436
 msgid "Shipping + pickup"
 msgstr ""
 
-#: src/Admin/OrdersList.php:435
+#: src/Admin/OrdersList.php:436
 msgid "shipping only"
 msgstr ""
 
-#: src/Admin/OrdersList.php:435
+#: src/Admin/OrdersList.php:436
 msgid "pickup only"
 msgstr ""
 
-#: src/Admin/OrdersList.php:438
+#: src/Admin/OrdersList.php:439
 #: src/Admin/ProductsList.php:211
 #: src/Admin/StockOverview.php:555
 #: src/Admin/StockOverview.php:959
@@ -7037,24 +7034,24 @@ msgstr ""
 msgid "All warehouses"
 msgstr ""
 
-#: src/Admin/OrdersList.php:447
+#: src/Admin/OrdersList.php:448
 msgid "Customers"
 msgstr ""
 
-#: src/Admin/OrdersList.php:447
+#: src/Admin/OrdersList.php:448
 #: src/Admin/Settings/ShippingSection.php:203
 msgid "All customers"
 msgstr ""
 
-#: src/Admin/OrdersList.php:447
+#: src/Admin/OrdersList.php:448
 msgid "members only"
 msgstr ""
 
-#: src/Admin/OrdersList.php:447
+#: src/Admin/OrdersList.php:448
 msgid "non-members only"
 msgstr ""
 
-#: src/Admin/OrdersList.php:452
+#: src/Admin/OrdersList.php:453
 #: src/Admin/ProductsList.php:224
 #: src/Admin/StockOverview.php:562
 #: src/Pro__premium_only/Audit/AuditPage.php:186
@@ -7063,241 +7060,241 @@ msgid "Reset filter"
 msgstr ""
 
 #. translators: %s: order number
-#: src/Admin/OrdersList.php:477
+#: src/Admin/OrdersList.php:478
 msgid "Select order %s"
 msgstr ""
 
-#: src/Admin/OrdersList.php:482
+#: src/Admin/OrdersList.php:483
 msgid "Quick view"
 msgstr ""
 
-#: src/Admin/OrdersList.php:512
+#: src/Admin/OrdersList.php:514
 #: src/Admin/StockOverview.php:816
 msgid "today"
 msgstr ""
 
-#: src/Admin/OrdersList.php:513
+#: src/Admin/OrdersList.php:515
 #: src/Admin/StockOverview.php:817
 msgid "yesterday"
 msgstr ""
 
 #. translators: %d: days
-#: src/Admin/OrdersList.php:515
+#: src/Admin/OrdersList.php:517
 #: src/Admin/StockOverview.php:819
 msgid "%d days ago"
 msgstr ""
 
-#: src/Admin/OrdersList.php:528
+#: src/Admin/OrdersList.php:530
 msgid "all cancelled"
 msgstr ""
 
 #. translators: 1: number of line items, 2: items
-#: src/Admin/OrdersList.php:549
+#: src/Admin/OrdersList.php:551
 msgid "%1$d products · %2$d items"
 msgstr ""
 
-#: src/Admin/OrdersList.php:570
+#: src/Admin/OrdersList.php:572
 #: src/Admin/ShipmentDialog.php:76
 #: src/Admin/ShipmentDialog.php:282
 #: src/Domain/Order/OrderStatus.php:64
-#: src/Modules/Checkout/CheckoutModule.php:1518
+#: src/Modules/Checkout/CheckoutModule.php:1549
 msgid "shipped"
 msgstr ""
 
-#: src/Admin/OrdersList.php:572
+#: src/Admin/OrdersList.php:574
 msgid "your part is out"
 msgstr ""
 
-#: src/Admin/OrdersList.php:573
+#: src/Admin/OrdersList.php:575
 msgid "partially out"
 msgstr ""
 
-#: src/Admin/OrdersList.php:574
+#: src/Admin/OrdersList.php:576
 msgid "ready for pickup"
 msgstr ""
 
-#: src/Admin/OrdersList.php:575
+#: src/Admin/OrdersList.php:577
 msgid "ready to pack"
 msgstr ""
 
-#: src/Admin/OrdersList.php:578
-#: src/Admin/OrdersList.php:653
+#: src/Admin/OrdersList.php:580
+#: src/Admin/OrdersList.php:655
 #: src/Domain/Order/OrderStatus.php:63
 msgid "paid"
 msgstr ""
 
-#: src/Admin/OrdersList.php:581
+#: src/Admin/OrdersList.php:583
 msgid "Invoice overdue"
 msgstr ""
 
-#: src/Admin/OrdersList.php:581
+#: src/Admin/OrdersList.php:583
 msgid "Invoice open"
 msgstr ""
 
-#: src/Admin/OrdersList.php:583
+#: src/Admin/OrdersList.php:585
 msgid "Payment overdue"
 msgstr ""
 
-#: src/Admin/OrdersList.php:583
-#: src/Admin/OrdersList.php:724
+#: src/Admin/OrdersList.php:585
+#: src/Admin/OrdersList.php:726
 msgid "waiting for payment"
 msgstr ""
 
-#: src/Admin/OrdersList.php:616
+#: src/Admin/OrdersList.php:618
 msgid "paid on handover"
 msgstr ""
 
-#: src/Admin/OrdersList.php:620
+#: src/Admin/OrdersList.php:622
 #: src/Admin/Settings/PaymentSection.php:248
 #: src/Domain/Order/PaymentMethod.php:49
 #: src/Modules/Agents/ShopTools.php:147
-#: src/Modules/Checkout/CheckoutModule.php:939
+#: src/Modules/Checkout/CheckoutModule.php:970
 msgid "On invoice"
 msgstr ""
 
-#: src/Admin/OrdersList.php:620
+#: src/Admin/OrdersList.php:622
 msgid "due after shipping"
 msgstr ""
 
-#: src/Admin/OrdersList.php:626
+#: src/Admin/OrdersList.php:628
 msgid "open since today"
 msgstr ""
 
 #. translators: %d: days
-#: src/Admin/OrdersList.php:628
+#: src/Admin/OrdersList.php:630
 msgid "open for %d day"
 msgid_plural "open for %d days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/OrdersList.php:632
+#: src/Admin/OrdersList.php:634
 #: src/Infrastructure/Invoices/InvoicePdf.php:77
-#: src/Modules/Checkout/CheckoutModule.php:919
+#: src/Modules/Checkout/CheckoutModule.php:950
 #: src/Modules/Invoices/InvoicesModule.php:486
 #: src/Modules/Invoices/InvoicesModule.php:518
 msgid "Invoice"
 msgstr ""
 
 #. translators: %s: date
-#: src/Admin/OrdersList.php:637
+#: src/Admin/OrdersList.php:639
 msgid "Deadline was %s"
 msgstr ""
 
 #. translators: %s: date
-#: src/Admin/OrdersList.php:637
+#: src/Admin/OrdersList.php:639
 msgid "Deadline until %s"
 msgstr ""
 
 #. translators: %s: date
-#: src/Admin/OrdersList.php:645
+#: src/Admin/OrdersList.php:647
 #: src/Pro__premium_only/Dashboard/Stalls.php:236
 msgid "reminded on %s"
 msgstr ""
 
 #. translators: %s: amount
-#: src/Admin/OrdersList.php:663
+#: src/Admin/OrdersList.php:665
 msgid "Refund %s €"
 msgstr ""
 
 #. translators: %s: name of the connected system
-#: src/Admin/OrdersList.php:681
+#: src/Admin/OrdersList.php:683
 msgid "book in %s"
 msgstr ""
 
-#: src/Admin/OrdersList.php:686
+#: src/Admin/OrdersList.php:688
 msgid "Payments are booked in the cash register"
 msgstr ""
 
-#: src/Admin/OrdersList.php:694
+#: src/Admin/OrdersList.php:696
 msgid "Paid ✓"
 msgstr ""
 
 #. translators: 1: amount, 2: customer
-#: src/Admin/OrdersList.php:698
+#: src/Admin/OrdersList.php:700
 msgid "Refunded %1$s € to %2$s?"
 msgstr ""
 
 #. translators: 1: amount, 2: customer
-#: src/Admin/OrdersList.php:701
+#: src/Admin/OrdersList.php:703
 msgid "Refund done"
 msgstr ""
 
 #. translators: %s: warehouse names
-#: src/Admin/OrdersList.php:714
+#: src/Admin/OrdersList.php:716
 msgid "waiting for warehouse %s"
 msgstr ""
 
-#: src/Admin/OrdersList.php:734
+#: src/Admin/OrdersList.php:736
 msgid "track"
 msgstr ""
 
-#: src/Admin/OrdersList.php:748
+#: src/Admin/OrdersList.php:750
 msgid "Open details"
 msgstr ""
 
-#: src/Admin/OrdersList.php:753
+#: src/Admin/OrdersList.php:755
 msgid "Packing view (mobile)"
 msgstr ""
 
-#: src/Admin/OrdersList.php:765
+#: src/Admin/OrdersList.php:767
 msgid "Resend confirmation"
 msgstr ""
 
-#: src/Admin/OrdersList.php:779
+#: src/Admin/OrdersList.php:781
 msgid "Cancel order …"
 msgstr ""
 
-#: src/Admin/OrdersList.php:782
+#: src/Admin/OrdersList.php:784
 msgid "More actions"
 msgstr ""
 
 #. translators: 1: shipping, 2: payment reference
-#: src/Admin/OrdersList.php:809
+#: src/Admin/OrdersList.php:811
 msgid "Shipping %1$s € · Payment reference %2$s"
 msgstr ""
 
-#: src/Admin/OrdersList.php:816
-#: src/Modules/Checkout/CheckoutModule.php:892
-#: src/Modules/Checkout/CheckoutModule.php:1646
+#: src/Admin/OrdersList.php:818
+#: src/Modules/Checkout/CheckoutModule.php:923
+#: src/Modules/Checkout/CheckoutModule.php:1677
 msgid "Delivery"
 msgstr ""
 
-#: src/Admin/OrdersList.php:817
+#: src/Admin/OrdersList.php:819
 #: src/Admin/Settings/AgentsSection.php:71
-#: src/Modules/Checkout/CheckoutModule.php:1632
+#: src/Modules/Checkout/CheckoutModule.php:1663
 #: src/Pro__premium_only/Agents/AgentsPage.php:516
 #: src/Pro__premium_only/Api/ApiSection.php:85
 msgid "Copy"
 msgstr ""
 
-#: src/Admin/OrdersList.php:823
+#: src/Admin/OrdersList.php:825
 msgid "History & notes"
 msgstr ""
 
-#: src/Admin/OrdersList.php:836
+#: src/Admin/OrdersList.php:838
 msgid "Internal note, e.g. “Customer will call back”"
 msgstr ""
 
-#: src/Admin/OrdersList.php:836
+#: src/Admin/OrdersList.php:838
 #: src/Admin/ShipmentDialog.php:265
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:526
-#: src/Pro__premium_only/Packing/OrderPackView.php:203
+#: src/Pro__premium_only/Packing/OrderPackView.php:208
 msgid "Internal note"
 msgstr ""
 
-#: src/Admin/OrdersList.php:838
+#: src/Admin/OrdersList.php:840
 msgid "Open all details →"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:266
-#: src/Modules/Checkout/CheckoutModule.php:1260
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:193
+#: src/Modules/Checkout/CheckoutModule.php:1291
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:194
 msgid "Order not found."
 msgstr ""
 
 #. translators: %s: name of the connected system
 #: src/Admin/OrdersPage.php:334
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:212
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:213
 msgid "Payments are booked in %s – please book them there."
 msgstr ""
 
@@ -7307,13 +7304,13 @@ msgid "Booked in the shop (emergency exit; payments otherwise go through %s)."
 msgstr ""
 
 #: src/Admin/OrdersPage.php:369
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:347
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:348
 msgid "The payment date must be between the order date and today."
 msgstr ""
 
 #. translators: %s: date
 #: src/Admin/OrdersPage.php:381
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:355
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:356
 #: src/Pro__premium_only/Api/CashierApiModule.php:345
 msgid "Payment received on %s."
 msgstr ""
@@ -7329,13 +7326,13 @@ msgid "%s marked as paid – the customer gets the payment confirmation, and the
 msgstr ""
 
 #: src/Admin/OrdersPage.php:411
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:514
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:515
 msgid "A payment reminder is only available for open prepayment orders and shipped invoices that haven’t been paid yet."
 msgstr ""
 
 #. translators: 1: order number, 2: email
 #: src/Admin/OrdersPage.php:416
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:520
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:521
 msgid "%1$s: Payment reminder sent to %2$s."
 msgstr ""
 
@@ -7353,12 +7350,12 @@ msgid "%1$s: “Ready for pickup” sent to %2$s."
 msgstr ""
 
 #: src/Admin/OrdersPage.php:460
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:498
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:499
 msgid "The note is empty."
 msgstr ""
 
 #: src/Admin/OrdersPage.php:463
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:501
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:502
 msgid "Note:"
 msgstr ""
 
@@ -7452,22 +7449,22 @@ msgid "already shipped"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:763
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:438
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:439
 msgid "Back to the warehouse (goods are fine)"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:764
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:439
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:440
 msgid "Not returned: defective / damaged"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:765
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:440
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:441
 msgid "Not returned: lost / stolen"
 msgstr ""
 
 #: src/Admin/OrdersPage.php:766
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:441
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:442
 msgid "Don’t book back (no stock booking)"
 msgstr ""
 
@@ -8536,7 +8533,7 @@ msgstr ""
 
 #: src/Admin/Settings/CheckoutSection.php:75
 #: src/Admin/TemplatesPage.php:360
-#: src/Modules/Checkout/CheckoutModule.php:1649
+#: src/Modules/Checkout/CheckoutModule.php:1680
 #: src/Modules/Privacy/PrivacyModule.php:107
 #: src/Pro__premium_only/Export/OrdersExport.php:112
 msgid "Billing address"
@@ -9287,8 +9284,8 @@ msgid "Label"
 msgstr ""
 
 #: src/Admin/Settings/PaymentSection.php:168
-#: src/Modules/Checkout/CheckoutModule.php:1449
-#: src/Modules/Checkout/CheckoutModule.php:1587
+#: src/Modules/Checkout/CheckoutModule.php:1480
+#: src/Modules/Checkout/CheckoutModule.php:1618
 msgid "Account holder"
 msgstr ""
 
@@ -9767,19 +9764,19 @@ msgstr ""
 
 #. translators: 1: order value such as "100 €", 2: country
 #: src/Admin/Settings/ShippingSection.php:332
-#: src/Pro__premium_only/Membership/MembershipModule.php:230
+#: src/Pro__premium_only/Membership/MembershipModule.php:253
 msgid "members ship for free"
 msgstr ""
 
 #. translators: %s: shipping cost
 #: src/Admin/Settings/ShippingSection.php:334
-#: src/Pro__premium_only/Membership/MembershipModule.php:233
+#: src/Pro__premium_only/Membership/MembershipModule.php:256
 msgid "members: %s"
 msgstr ""
 
 #. translators: 1: domestic country, 2: shipping cost domestic, 3: shipping cost abroad
 #: src/Admin/Settings/ShippingSection.php:336
-#: src/Pro__premium_only/Membership/MembershipModule.php:237
+#: src/Pro__premium_only/Membership/MembershipModule.php:260
 msgid "members: %1$s %2$s, abroad %3$s"
 msgstr ""
 
@@ -10003,7 +10000,7 @@ msgstr ""
 #: src/Admin/ShipmentDialog.php:143
 #: src/Admin/ShipmentDialog.php:160
 #: src/Admin/ShipmentDialog.php:190
-#: src/Pro__premium_only/Packing/OrderPackView.php:171
+#: src/Pro__premium_only/Packing/OrderPackView.php:176
 msgid "Warehouse %s"
 msgstr ""
 
@@ -10050,12 +10047,12 @@ msgstr ""
 
 #: src/Admin/ShipmentDialog.php:213
 #: src/Admin/ShipmentDialog.php:262
-#: src/Pro__premium_only/Packing/OrderPackView.php:187
+#: src/Pro__premium_only/Packing/OrderPackView.php:192
 msgid "Carrier"
 msgstr ""
 
 #: src/Admin/ShipmentDialog.php:221
-#: src/Pro__premium_only/Packing/OrderPackView.php:194
+#: src/Pro__premium_only/Packing/OrderPackView.php:199
 msgid "Tracking number (optional)"
 msgstr ""
 
@@ -10064,7 +10061,7 @@ msgid "copy from the shipping label"
 msgstr ""
 
 #: src/Admin/ShipmentDialog.php:230
-#: src/Pro__premium_only/Packing/OrderPackView.php:203
+#: src/Pro__premium_only/Packing/OrderPackView.php:208
 msgid "Internal note (optional)"
 msgstr ""
 
@@ -10111,7 +10108,7 @@ msgstr ""
 #: src/Admin/ShipmentDialog.php:260
 #: src/Admin/Ui/Badge.php:51
 #: src/Infrastructure/Orders/ShipmentRecorder.php:142
-#: src/Modules/Checkout/CheckoutModule.php:1377
+#: src/Modules/Checkout/CheckoutModule.php:1408
 msgid "Picked up"
 msgstr ""
 
@@ -10133,6 +10130,22 @@ msgstr ""
 
 #: src/Admin/ShipmentDialog.php:266
 msgid "Email to the customer"
+msgstr ""
+
+#: src/Admin/ShipmentDialog.php:267
+#: src/Admin/Ui/MemberAccountNotice.php:92
+#: src/Admin/WarehousesPage.php:307
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:444
+#: src/Pro__premium_only/Export/OrdersExport.php:136
+msgid "yes"
+msgstr ""
+
+#: src/Admin/ShipmentDialog.php:268
+#: src/Admin/Ui/MemberAccountNotice.php:92
+#: src/Admin/WarehousesPage.php:307
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:444
+#: src/Pro__premium_only/Export/OrdersExport.php:136
+msgid "no"
 msgstr ""
 
 #: src/Admin/ShipmentDialog.php:269
@@ -11085,22 +11098,22 @@ msgid "none on file - customers see no bank details for prepayment"
 msgstr ""
 
 #: src/Admin/SystemCheck.php:221
-#: src/Modules/Checkout/CheckoutModule.php:1225
+#: src/Modules/Checkout/CheckoutModule.php:1256
 msgid "Terms and conditions"
 msgstr ""
 
 #: src/Admin/SystemCheck.php:221
-#: src/Modules/Checkout/CheckoutModule.php:1226
+#: src/Modules/Checkout/CheckoutModule.php:1257
 msgid "Right of withdrawal"
 msgstr ""
 
 #: src/Admin/SystemCheck.php:221
-#: src/Modules/Checkout/CheckoutModule.php:1227
+#: src/Modules/Checkout/CheckoutModule.php:1258
 msgid "Privacy policy"
 msgstr ""
 
 #: src/Admin/SystemCheck.php:221
-#: src/Modules/Checkout/CheckoutModule.php:1228
+#: src/Modules/Checkout/CheckoutModule.php:1259
 msgid "Legal notice"
 msgstr ""
 
@@ -11278,7 +11291,7 @@ msgid "Warehouse name"
 msgstr ""
 
 #: src/Admin/TemplatesPage.php:346
-#: src/Modules/Checkout/CheckoutModule.php:1420
+#: src/Modules/Checkout/CheckoutModule.php:1451
 #: src/Modules/Privacy/PrivacyModule.php:102
 #: src/Pro__premium_only/Export/OrdersExport.php:110
 msgid "Order number"
@@ -11357,14 +11370,14 @@ msgid "Link to order (backend)"
 msgstr ""
 
 #: src/Admin/Ui/Badge.php:49
-#: src/Modules/Checkout/CheckoutModule.php:1384
-#: src/Modules/Checkout/CheckoutModule.php:1390
+#: src/Modules/Checkout/CheckoutModule.php:1415
+#: src/Modules/Checkout/CheckoutModule.php:1421
 msgid "Paid"
 msgstr ""
 
 #: src/Admin/Ui/Badge.php:50
 #: src/Infrastructure/Orders/ShipmentRecorder.php:142
-#: src/Modules/Checkout/CheckoutModule.php:1377
+#: src/Modules/Checkout/CheckoutModule.php:1408
 msgid "Shipped"
 msgstr ""
 
@@ -11373,6 +11386,92 @@ msgstr ""
 #: src/Modules/Notifications/NotificationsModule.php:587
 #: src/Pro__premium_only/StockRequests/StockRequestsPage.php:624
 msgid "Note: %s"
+msgstr ""
+
+#. translators: 1: member name, 2: membership number
+#: src/Admin/Ui/MemberAccountNotice.php:38
+msgid "%1$s (no. %2$s)"
+msgstr ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:50
+#: src/Modules/Checkout/CheckoutModule.php:938
+#: src/Modules/Checkout/CheckoutModule.php:957
+msgid "Street and house number"
+msgstr ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:51
+#: src/Modules/Checkout/CheckoutModule.php:941
+#: src/Modules/Checkout/CheckoutModule.php:960
+msgid "Postal code"
+msgstr ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:52
+#: src/Modules/Checkout/CheckoutModule.php:942
+#: src/Modules/Checkout/CheckoutModule.php:961
+msgid "City"
+msgstr ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:53
+#: src/Modules/Checkout/CheckoutModule.php:944
+#: src/Modules/Checkout/CheckoutModule.php:963
+msgid "Country"
+msgstr ""
+
+#. translators: %s: member name with membership number
+#: src/Admin/Ui/MemberAccountNotice.php:66
+msgid "Ordered via the member account of %s – probably for someone else."
+msgstr ""
+
+#. translators: %s: member name with membership number
+#: src/Admin/Ui/MemberAccountNotice.php:74
+msgid "Ordered via the member account of %s – some details differ from the member profile."
+msgstr ""
+
+#. translators: %s: member name with membership number
+#: src/Admin/Ui/MemberAccountNotice.php:81
+msgid "Ordered via the member account of %s."
+msgstr ""
+
+#. translators: %s: member name with membership number
+#: src/Admin/Ui/MemberAccountNotice.php:101
+msgid "Member account: %s"
+msgstr ""
+
+#. translators: %s: customer name on the order
+#: src/Admin/Ui/MemberAccountNotice.php:113
+msgid "The order is in the name of %s – probably bought for someone else."
+msgstr ""
+
+#. translators: %s: customer name on the order
+#: src/Admin/Ui/MemberAccountNotice.php:116
+msgid "Some details differ from the member profile."
+msgstr ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:117
+msgid "That's allowed – just for your information, follow up if needed."
+msgstr ""
+
+#. translators: %d: number of differing fields
+#: src/Admin/Ui/MemberAccountNotice.php:120
+msgid "Show difference (%d)"
+msgid_plural "Show differences (%d)"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:123
+msgid "Field"
+msgstr ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:124
+msgid "Member profile"
+msgstr ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:146
+msgid "Bought for someone else?"
+msgstr ""
+
+#: src/Admin/Ui/MemberAccountNotice.php:146
+msgid "Differs from profile"
 msgstr ""
 
 #. translators: %s: number of entries
@@ -12164,11 +12263,11 @@ msgstr ""
 msgid "Kontor Shop – Club Shop with Bank Transfer & Pickup Pro"
 msgstr ""
 
-#: src/Core/Lifecycle.php:176
+#: src/Core/Lifecycle.php:178
 msgid "Shop manager"
 msgstr ""
 
-#: src/Core/Lifecycle.php:265
+#: src/Core/Lifecycle.php:267
 msgid "Main account"
 msgstr ""
 
@@ -12576,7 +12675,7 @@ msgstr ""
 
 #: src/Infrastructure/Invoices/InvoicePdf.php:101
 #: src/Infrastructure/Invoices/InvoicePdf.php:226
-#: src/Modules/Checkout/CheckoutModule.php:925
+#: src/Modules/Checkout/CheckoutModule.php:956
 #: src/Pro__premium_only/Export/OrdersExport.php:112
 msgid "VAT ID"
 msgstr ""
@@ -12586,15 +12685,15 @@ msgid "Qty"
 msgstr ""
 
 #: src/Infrastructure/Invoices/InvoicePdf.php:124
-#: src/Modules/Checkout/CheckoutModule.php:1448
-#: src/Modules/Checkout/CheckoutModule.php:1586
+#: src/Modules/Checkout/CheckoutModule.php:1479
+#: src/Modules/Checkout/CheckoutModule.php:1617
 #: src/Pro__premium_only/BankStatement/BankStatementModule.php:358
 msgid "Amount"
 msgstr ""
 
 #. translators: %s: discount code
 #: src/Infrastructure/Invoices/InvoicePdf.php:135
-#: src/Modules/Checkout/CheckoutModule.php:1086
+#: src/Modules/Checkout/CheckoutModule.php:1117
 #: src/Pro__premium_only/Audit/AuditPage.php:518
 #: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:340
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:145
@@ -13254,7 +13353,7 @@ msgid "Open cart"
 msgstr ""
 
 #: src/Modules/Cart/CartModule.php:317
-#: src/Modules/Checkout/CheckoutModule.php:399
+#: src/Modules/Checkout/CheckoutModule.php:400
 msgid "Your cart is empty."
 msgstr ""
 
@@ -13442,422 +13541,402 @@ msgid "Pay by %s"
 msgstr ""
 
 #. translators: %s: product name
-#: src/Modules/Checkout/CheckoutModule.php:319
-#: src/Modules/Checkout/CheckoutModule.php:343
+#: src/Modules/Checkout/CheckoutModule.php:320
+#: src/Modules/Checkout/CheckoutModule.php:344
 msgid "Sorry, \"%s\" is no longer available and was removed from your cart."
 msgstr ""
 
 #. translators: 1: product name, 2: available quantity
-#: src/Modules/Checkout/CheckoutModule.php:331
+#: src/Modules/Checkout/CheckoutModule.php:332
 msgid "Only %2$d of \"%1$s\" are still available - the quantity was adjusted."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:383
+#: src/Modules/Checkout/CheckoutModule.php:384
 msgid "This link is invalid or has expired. You'll find the details of your order in our emails – if you have questions, just reply to them."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:415
+#: src/Modules/Checkout/CheckoutModule.php:416
 #: src/Pro__premium_only/Coupons/CheckoutCoupons.php:141
 msgid "Your session has expired. Your entries are still there - just submit the form again."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:439
+#: src/Modules/Checkout/CheckoutModule.php:440
 msgid "Please select a payment method."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:441
+#: src/Modules/Checkout/CheckoutModule.php:442
 msgid "Cash payment is only possible if you pick up the order yourself. Please choose another payment method or self pickup."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:445
+#: src/Modules/Checkout/CheckoutModule.php:446
 msgid "Please accept the terms and conditions and the right of withdrawal to place your order."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:449
+#: src/Modules/Checkout/CheckoutModule.php:450
 msgid "Please confirm that you've read the privacy policy to place your order."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:455
+#: src/Modules/Checkout/CheckoutModule.php:456
 msgid "Please check the highlighted field - your order hasn't been submitted yet."
 msgid_plural "Please check the highlighted fields - your order hasn't been submitted yet."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s: product name
-#: src/Modules/Checkout/CheckoutModule.php:494
+#: src/Modules/Checkout/CheckoutModule.php:495
 msgid "There's not enough stock left of \"%s\". Please adjust the quantity in your cart - your entries will be kept."
 msgstr ""
 
 #. translators: %s: product name
-#: src/Modules/Checkout/CheckoutModule.php:510
+#: src/Modules/Checkout/CheckoutModule.php:511
 msgid "Sorry, the product \"%s\" is no longer available. Please remove it from your cart."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:573
+#: src/Modules/Checkout/CheckoutModule.php:576
 msgid "Your order hasn't been submitted yet. Please check the total and then submit your order again."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:700
+#: src/Modules/Checkout/CheckoutModule.php:731
 msgid "Nothing to pay (€0.00) – automatically booked as paid when you order."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:702
+#: src/Modules/Checkout/CheckoutModule.php:733
 msgid "Shop (automatic)"
 msgstr ""
 
 #. translators: %s: error reference number, e.g. KS-1A2B3C
-#: src/Modules/Checkout/CheckoutModule.php:728
+#: src/Modules/Checkout/CheckoutModule.php:759
 msgid "Sorry, a technical error occurred while processing your order. Your order was NOT submitted and you haven't been charged. Please try again in a few minutes. If the problem persists, please contact the shop and mention this error code: %s"
 msgstr ""
 
 #. translators: %s: time
-#: src/Modules/Checkout/CheckoutModule.php:834
+#: src/Modules/Checkout/CheckoutModule.php:865
 msgid "Your products are reserved for you until %s. After that, they'll be released again."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:839
+#: src/Modules/Checkout/CheckoutModule.php:870
 msgid "Your order is being processed - please don't close this window ..."
 msgstr ""
 
 #. translators: %d: number of partial orders
-#: src/Modules/Checkout/CheckoutModule.php:857
+#: src/Modules/Checkout/CheckoutModule.php:888
 msgid "Your products come from different warehouses and will be split into %d separate orders, each with its own payment."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:871
-#: src/Modules/Checkout/CheckoutModule.php:1645
+#: src/Modules/Checkout/CheckoutModule.php:902
+#: src/Modules/Checkout/CheckoutModule.php:1676
 msgid "Your details"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:873
+#: src/Modules/Checkout/CheckoutModule.php:904
 msgid "First name"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:874
+#: src/Modules/Checkout/CheckoutModule.php:905
 msgid "Last name"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:878
+#: src/Modules/Checkout/CheckoutModule.php:909
 msgid "This is where we send the order confirmation."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:884
-#: src/Modules/Checkout/CheckoutModule.php:906
-#: src/Modules/Checkout/CheckoutModule.php:924
-#: src/Modules/Checkout/CheckoutModule.php:927
+#: src/Modules/Checkout/CheckoutModule.php:915
+#: src/Modules/Checkout/CheckoutModule.php:937
+#: src/Modules/Checkout/CheckoutModule.php:955
+#: src/Modules/Checkout/CheckoutModule.php:958
 msgid "(optional)"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:886
+#: src/Modules/Checkout/CheckoutModule.php:917
 msgid "For questions about the delivery."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:897
+#: src/Modules/Checkout/CheckoutModule.php:928
 msgid "I'll pick it up myself (no shipping cost)"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:906
-#: src/Modules/Checkout/CheckoutModule.php:924
+#: src/Modules/Checkout/CheckoutModule.php:937
+#: src/Modules/Checkout/CheckoutModule.php:955
 msgid "Company"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:907
-#: src/Modules/Checkout/CheckoutModule.php:926
-msgid "Street and house number"
-msgstr ""
-
-#: src/Modules/Checkout/CheckoutModule.php:908
-#: src/Modules/Checkout/CheckoutModule.php:927
+#: src/Modules/Checkout/CheckoutModule.php:939
+#: src/Modules/Checkout/CheckoutModule.php:958
 msgid "Address line 2"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:908
+#: src/Modules/Checkout/CheckoutModule.php:939
 msgid "(optional, e.g. staircase/unit)"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:910
-#: src/Modules/Checkout/CheckoutModule.php:929
-msgid "Postal code"
-msgstr ""
-
-#: src/Modules/Checkout/CheckoutModule.php:911
-#: src/Modules/Checkout/CheckoutModule.php:930
-msgid "City"
-msgstr ""
-
-#: src/Modules/Checkout/CheckoutModule.php:913
-#: src/Modules/Checkout/CheckoutModule.php:932
-msgid "Country"
-msgstr ""
-
-#: src/Modules/Checkout/CheckoutModule.php:921
+#: src/Modules/Checkout/CheckoutModule.php:952
 msgid "Billing address is different / invoice to a company"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:925
+#: src/Modules/Checkout/CheckoutModule.php:956
 msgid "(optional, e.g. ATU12345678)"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:938
+#: src/Modules/Checkout/CheckoutModule.php:969
 msgid "Prepayment (bank transfer)"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:943
+#: src/Modules/Checkout/CheckoutModule.php:974
 msgid "We set your order aside, and you pay in cash when you pick it up."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:944
+#: src/Modules/Checkout/CheckoutModule.php:975
 msgid "You transfer first, and we ship after we receive your payment."
 msgstr ""
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:948
+#: src/Modules/Checkout/CheckoutModule.php:979
 msgid "We ship right away, and you pay by bank transfer within %d days of shipping."
 msgstr ""
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:951
+#: src/Modules/Checkout/CheckoutModule.php:982
 msgid "We ship right away, and you pay by bank transfer after receiving the goods."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:981
+#: src/Modules/Checkout/CheckoutModule.php:1012
 msgid "All prices are final prices including the VAT shown, plus shipping."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:982
+#: src/Modules/Checkout/CheckoutModule.php:1013
 msgid "All prices plus shipping."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1013
+#: src/Modules/Checkout/CheckoutModule.php:1044
 msgid "Your order"
 msgstr ""
 
 #. translators: %s: tax rate in percent
-#: src/Modules/Checkout/CheckoutModule.php:1072
+#: src/Modules/Checkout/CheckoutModule.php:1103
 msgid "included VAT %s %% (goods)"
 msgstr ""
 
 #. translators: %s: tax rate in percent
-#: src/Modules/Checkout/CheckoutModule.php:1072
+#: src/Modules/Checkout/CheckoutModule.php:1103
 msgid "included VAT %s %%"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1276
+#: src/Modules/Checkout/CheckoutModule.php:1307
 msgid "Thank you – we've received your order!"
 msgstr ""
 
 #. translators: %s: email address
-#: src/Modules/Checkout/CheckoutModule.php:1280
+#: src/Modules/Checkout/CheckoutModule.php:1311
 msgid "We've sent a confirmation with all the details to %s. Didn't arrive? Please check your spam folder, too."
 msgstr ""
 
 #. translators: %s: email address
-#: src/Modules/Checkout/CheckoutModule.php:1283
+#: src/Modules/Checkout/CheckoutModule.php:1314
 msgid "Please save or print this page – it has all the details about your order and payment."
 msgstr ""
 
 #. translators: %s: order number(s)
-#: src/Modules/Checkout/CheckoutModule.php:1289
+#: src/Modules/Checkout/CheckoutModule.php:1320
 msgid "Your order %s"
 msgstr ""
 
 #. translators: %s: date/time
-#: src/Modules/Checkout/CheckoutModule.php:1294
+#: src/Modules/Checkout/CheckoutModule.php:1325
 msgid "Status as of %s"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1300
+#: src/Modules/Checkout/CheckoutModule.php:1331
 msgid "Your products were split into several orders (different warehouses). Please pay each order separately with its own payment reference."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1330
+#: src/Modules/Checkout/CheckoutModule.php:1361
 msgid "Print / save as PDF"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1331
+#: src/Modules/Checkout/CheckoutModule.php:1362
 msgid "Continue shopping"
 msgstr ""
 
 #. translators: %d: number of days
-#: src/Modules/Checkout/CheckoutModule.php:1336
+#: src/Modules/Checkout/CheckoutModule.php:1367
 msgid "You can reach this page through the link in our emails – while your order is in progress and for %d days after."
 msgstr ""
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1368
+#: src/Modules/Checkout/CheckoutModule.php:1399
 msgid "This order was cancelled on %s."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1380
+#: src/Modules/Checkout/CheckoutModule.php:1411
 msgid "Ordered"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1387
+#: src/Modules/Checkout/CheckoutModule.php:1418
 msgid "Partly picked up"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1387
+#: src/Modules/Checkout/CheckoutModule.php:1418
 msgid "Partly shipped"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1434
+#: src/Modules/Checkout/CheckoutModule.php:1465
 msgid "Pay now: by bank transfer (prepayment)"
 msgstr ""
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1440
+#: src/Modules/Checkout/CheckoutModule.php:1471
 msgid "Please transfer the amount by %s at the latest. The goods are reserved for you until then – after that, the order will be cancelled automatically."
 msgstr ""
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1442
+#: src/Modules/Checkout/CheckoutModule.php:1473
 msgid "Please transfer the amount by %s at the latest. The goods are reserved for you until then."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1455
-#: src/Modules/Checkout/CheckoutModule.php:1594
+#: src/Modules/Checkout/CheckoutModule.php:1486
+#: src/Modules/Checkout/CheckoutModule.php:1625
 msgid "Please be sure to include the payment reference with your transfer – it's the only way we can match your payment."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1462
+#: src/Modules/Checkout/CheckoutModule.php:1493
 msgid "Pay on pickup: in cash"
 msgstr ""
 
 #. translators: %s: amount
-#: src/Modules/Checkout/CheckoutModule.php:1464
+#: src/Modules/Checkout/CheckoutModule.php:1495
 msgid "Please bring %s € in cash when you pick up your order. We'll let you know by email as soon as it's ready."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1468
+#: src/Modules/Checkout/CheckoutModule.php:1499
 msgid "Nothing to pay"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1469
+#: src/Modules/Checkout/CheckoutModule.php:1500
 msgid "Your discount code covers the full amount. We'll set your order aside for pickup."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1470
+#: src/Modules/Checkout/CheckoutModule.php:1501
 msgid "Your discount code covers the full amount. We'll ship your order as soon as it's packed."
 msgstr ""
 
 #. translators: %s: amount
-#: src/Modules/Checkout/CheckoutModule.php:1479
+#: src/Modules/Checkout/CheckoutModule.php:1510
 msgid "We're transferring %s € back to you – this is being processed."
 msgstr ""
 
 #. translators: %s: amount
-#: src/Modules/Checkout/CheckoutModule.php:1484
+#: src/Modules/Checkout/CheckoutModule.php:1515
 msgid "%s € has been transferred back to you."
 msgstr ""
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1499
+#: src/Modules/Checkout/CheckoutModule.php:1530
 msgid "Shipped on %s"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1503
+#: src/Modules/Checkout/CheckoutModule.php:1534
 msgid "Track shipment"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1509
+#: src/Modules/Checkout/CheckoutModule.php:1540
 msgid "Your products"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1522
+#: src/Modules/Checkout/CheckoutModule.php:1553
 msgid "returned"
 msgstr ""
 
 #. translators: %d: pieces
-#: src/Modules/Checkout/CheckoutModule.php:1524
+#: src/Modules/Checkout/CheckoutModule.php:1555
 msgid "%d pcs returned"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1543
+#: src/Modules/Checkout/CheckoutModule.php:1574
 msgid "Shipping (self pickup)"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1567
+#: src/Modules/Checkout/CheckoutModule.php:1598
 msgid "Payment: on invoice"
 msgstr ""
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:1573
+#: src/Modules/Checkout/CheckoutModule.php:1604
 msgid "You get the goods first – there's nothing to do right now. You pay by bank transfer within %d days of shipping; the payment details are also in the shipping email."
 msgstr ""
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:1576
+#: src/Modules/Checkout/CheckoutModule.php:1607
 msgid "You get the goods first – there's nothing to do right now. You pay by bank transfer after receiving them; the payment details are also in the shipping email."
 msgstr ""
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1580
+#: src/Modules/Checkout/CheckoutModule.php:1611
 msgid "Please transfer the amount by %s at the latest."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1611
+#: src/Modules/Checkout/CheckoutModule.php:1642
 msgid "QR code for the bank transfer"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1618
+#: src/Modules/Checkout/CheckoutModule.php:1649
 msgid "Scan with your banking app – amount, IBAN and payment reference are filled in automatically."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1631
+#: src/Modules/Checkout/CheckoutModule.php:1662
 msgid "Copied"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1646
+#: src/Modules/Checkout/CheckoutModule.php:1677
 #: src/Modules/Privacy/PrivacyModule.php:108
 #: src/Pro__premium_only/Export/OrdersExport.php:112
 msgid "Shipping address"
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1652
+#: src/Modules/Checkout/CheckoutModule.php:1683
 msgid "VAT ID:"
 msgstr ""
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1668
+#: src/Modules/Checkout/CheckoutModule.php:1699
 msgid "Transfer the amount with the payment reference by %s."
 msgstr ""
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1671
+#: src/Modules/Checkout/CheckoutModule.php:1702
 msgid "Transfer the amount with the payment reference."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1673
+#: src/Modules/Checkout/CheckoutModule.php:1704
 msgid "As soon as your money has arrived, we'll set the goods aside for pickup."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1674
+#: src/Modules/Checkout/CheckoutModule.php:1705
 msgid "As soon as your money has arrived, we'll ship your order."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1677
+#: src/Modules/Checkout/CheckoutModule.php:1708
 msgid "We'll set the goods aside for you to pick up."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1678
+#: src/Modules/Checkout/CheckoutModule.php:1709
 msgid "We'll ship your order."
 msgstr ""
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:1683
+#: src/Modules/Checkout/CheckoutModule.php:1714
 msgid "After receiving the goods, you transfer the amount with the payment reference – within %d days of shipping."
 msgstr ""
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:1686
+#: src/Modules/Checkout/CheckoutModule.php:1717
 msgid "After receiving the goods, you transfer the amount with the payment reference."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1690
+#: src/Modules/Checkout/CheckoutModule.php:1721
 msgid "You'll get another email from us when it ships."
 msgstr ""
 
-#: src/Modules/Checkout/CheckoutModule.php:1693
+#: src/Modules/Checkout/CheckoutModule.php:1724
 msgid "What happens next"
 msgstr ""
 
@@ -14542,7 +14621,7 @@ msgstr ""
 
 #: src/Pro__premium_only/Agents/AgentsPage.php:279
 #: src/Pro__premium_only/Agents/AgentsPage.php:441
-#: src/Pro__premium_only/Packing/OrderPackView.php:155
+#: src/Pro__premium_only/Packing/OrderPackView.php:160
 msgid "Copy address"
 msgstr ""
 
@@ -15163,45 +15242,45 @@ msgstr ""
 msgid "Could not be saved."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:65
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:66
 msgid "List orders"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:82
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:83
 msgid "Get order"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:92
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:93
 msgid "Mark order as paid"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:105
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:106
 msgid "Record shipment or pickup"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:138
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:139
 msgid "Record refund as done"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:151
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:152
 msgid "Add order note"
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:384
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:422
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:385
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:423
 msgid "This order is already cancelled."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:385
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:386
 msgid "This order has already gone out completely."
 msgstr ""
 
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:426
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:427
 msgid "This order can no longer be cancelled completely – items have already gone out (use a return in the shop admin instead)."
 msgstr ""
 
 #. translators: 1: order number, 2: customer name, 3: total, 4: what happens with the stock, 5: yes/no
-#: src/Pro__premium_only/Agents/Tools/OrderTools.php:433
+#: src/Pro__premium_only/Agents/Tools/OrderTools.php:434
 msgid "Cancel order %1$s from %2$s (%3$s €) completely. Stock: %4$s. Email to the customer: %5$s."
 msgstr ""
 
@@ -17274,7 +17353,7 @@ msgid "“Last 30 days” compares orders and revenue with the 30 days before; t
 msgstr ""
 
 #: src/Pro__premium_only/Dashboard/Stalls.php:154
-#: src/Pro__premium_only/Packing/OrderPackView.php:150
+#: src/Pro__premium_only/Packing/OrderPackView.php:151
 msgid "Remaining"
 msgstr ""
 
@@ -17574,33 +17653,33 @@ msgstr ""
 msgid "only for recognized members"
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:195
+#: src/Pro__premium_only/Membership/MembershipModule.php:218
 msgid "on invoice (members only)"
 msgstr ""
 
 #. translators: %s: member name
-#: src/Pro__premium_only/Membership/MembershipModule.php:308
+#: src/Pro__premium_only/Membership/MembershipModule.php:331
 msgid "Logged in as a member (%s) – member benefits apply."
 msgstr ""
 
 #. translators: %s: member name
-#: src/Pro__premium_only/Membership/MembershipModule.php:311
+#: src/Pro__premium_only/Membership/MembershipModule.php:334
 msgid "Logged in as a member – member benefits apply."
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:321
+#: src/Pro__premium_only/Membership/MembershipModule.php:344
 msgid "You're logged in, but no member benefits currently apply to your account (for example, because the membership fee hasn't been recorded yet). If you have questions, please contact the club."
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:334
+#: src/Pro__premium_only/Membership/MembershipModule.php:357
 msgid "Member?"
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:335
+#: src/Pro__premium_only/Membership/MembershipModule.php:358
 msgid "Log in now"
 msgstr ""
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:336
+#: src/Pro__premium_only/Membership/MembershipModule.php:359
 msgid "and enjoy member benefits."
 msgstr ""
 
@@ -17714,70 +17793,70 @@ msgid "(plugin not active)"
 msgstr ""
 
 #. translators: %s: order number
-#: src/Pro__premium_only/Packing/OrderPackView.php:57
+#: src/Pro__premium_only/Packing/OrderPackView.php:58
 msgid "Pack: %s"
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:68
+#: src/Pro__premium_only/Packing/OrderPackView.php:69
 msgid "This order was not found or doesn’t belong to your warehouse."
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:69
+#: src/Pro__premium_only/Packing/OrderPackView.php:70
 msgid "This order is done – there’s nothing left for you to pack."
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:69
+#: src/Pro__premium_only/Packing/OrderPackView.php:70
 msgid "All packed – nothing to ship right now."
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:73
+#: src/Pro__premium_only/Packing/OrderPackView.php:74
 msgid "View order"
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:76
+#: src/Pro__premium_only/Packing/OrderPackView.php:77
 msgid "Everything to pack"
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:103
+#: src/Pro__premium_only/Packing/OrderPackView.php:104
 msgid "Get from the shelf"
 msgstr ""
 
 #. translators: 1: warehouse, 2: number of orders
-#: src/Pro__premium_only/Packing/OrderPackView.php:108
+#: src/Pro__premium_only/Packing/OrderPackView.php:109
 msgid "Warehouse %1$s · %2$d order"
 msgid_plural "Warehouse %1$s · %2$d orders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:195
+#: src/Pro__premium_only/Packing/OrderPackView.php:200
 msgid "from the shipping label"
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:202
+#: src/Pro__premium_only/Packing/OrderPackView.php:207
 msgid "Notify customer by email (with tracking)"
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:205
+#: src/Pro__premium_only/Packing/OrderPackView.php:210
 msgid "All picked up – save"
 msgstr ""
 
-#: src/Pro__premium_only/Packing/OrderPackView.php:205
+#: src/Pro__premium_only/Packing/OrderPackView.php:210
 msgid "All packed – save as shipped"
 msgstr ""
 
 #. translators: 1: number of ticked products, 2: total number of products
-#: src/Pro__premium_only/Packing/OrderPackView.php:208
+#: src/Pro__premium_only/Packing/OrderPackView.php:213
 msgid "%1$d of %2$d picked up – save"
 msgstr ""
 
 #. translators: 1: number of ticked products, 2: total number of products
-#: src/Pro__premium_only/Packing/OrderPackView.php:210
+#: src/Pro__premium_only/Packing/OrderPackView.php:215
 msgid "Ship %1$d of %2$d – the rest stays open"
 msgstr ""
 
 #. translators: 1: number of ticked products, 2: total number of products
-#: src/Pro__premium_only/Packing/OrderPackView.php:211
-#: src/Pro__premium_only/Packing/OrderPackView.php:211
+#: src/Pro__premium_only/Packing/OrderPackView.php:216
+#: src/Pro__premium_only/Packing/OrderPackView.php:216
 msgid "Tick off products as you pack them"
 msgstr ""
 

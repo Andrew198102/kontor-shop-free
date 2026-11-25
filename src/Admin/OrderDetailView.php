@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Admin;
 
+use Kontor\Shop\Admin\Ui\MemberAccountNotice;
 use Kontor\Shop\Infrastructure\Orders\ExternalPayments;
 use Kontor\Shop\Admin\Ui\Css;
 use Kontor\Shop\Admin\Ui\Badge;
@@ -103,7 +104,7 @@ final class OrderDetailView
             $this->row(__('Phone', 'kontor-shop'), '<a href="tel:' . esc_attr(preg_replace('/[^\d+]/', '', $order->customer_phone)) . '">' . esc_html($order->customer_phone) . '</a>');
         }
 
-        $this->row(__('Member', 'kontor-shop'), $order->is_member ? esc_html__('yes', 'kontor-shop') : esc_html__('no', 'kontor-shop'));
+        $this->row(__('Member', 'kontor-shop'), MemberAccountNotice::detail_html($order));
         $this->row(
             __('Delivery method', 'kontor-shop'),
             $order->self_pickup ? esc_html__('Self pickup', 'kontor-shop') : nl2br(esc_html((string) $order->delivery_address))

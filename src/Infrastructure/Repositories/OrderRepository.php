@@ -6,6 +6,7 @@ namespace Kontor\Shop\Infrastructure\Repositories;
 
 // phpcs:disable WordPress.DB.DirectDatabaseQuery -- eigene Tabellen des Plugins, kein WP-Objektcache-Bezug
 
+use Kontor\Shop\Domain\Membership\MemberAccountCheck;
 use Kontor\Shop\Domain\Order\Order;
 use Kontor\Shop\Domain\Order\OrderItem;
 use Kontor\Shop\Domain\Order\OrderNumber;
@@ -966,6 +967,9 @@ final class OrderRepository
                 : null,
             'discount_code'      => isset($data['discount_code']) && $data['discount_code'] !== '' ? (string) $data['discount_code'] : null,
             'discount_total'     => (float) ($data['discount_total'] ?? 0),
+            'member_snapshot'    => isset($data['member_account']) && $data['member_account'] instanceof MemberAccountCheck
+                ? $data['member_account']->to_json()
+                : null,
         ];
     }
 

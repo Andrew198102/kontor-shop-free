@@ -26,6 +26,8 @@ final class MemberInfo
         public readonly string $postal_code = '',
         public readonly string $city = '',
         public readonly string $country = '',
+        /** Kennung der Person in der Quelle (z. B. Kontakt-ID im Vereinssystem), null = liefert die Quelle nicht */
+        public readonly ?string $member_id = null,
     ) {
     }
 

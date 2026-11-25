@@ -9,6 +9,7 @@ use Kontor\Shop\Domain\Payment\EpcQr;
 use Kontor\Shop\Settings\TextDefaults;
 use Kontor\Shop\Context\Membership;
 use Kontor\Shop\Context\RequestContext;
+use Kontor\Shop\Domain\Membership\MemberAccountCheck;
 use Kontor\Shop\Core\Registerable;
 use Kontor\Shop\Domain\Cart\Cart;
 use Kontor\Shop\Domain\Checkout\CheckoutAborted;
@@ -565,6 +566,8 @@ final class CheckoutModule implements Registerable
 
             $shipping_costs = $this->shipping->calculate_for_groups($self_pickup, $is_member, $group_totals, ShippingRates::is_abroad($this->settings, (string) ($values['country'] ?? '')));
             $token          = wp_generate_password(32, false, false);
+            // Vor der Transaktion: der Provider fragt dafuer ggf. ein externes System (Login/Profil).
+            $values['member_account'] = $this->member_account($values);
             $orders_created = $this->create_orders($groups, $group_totals, $shipping_costs, $values, $is_member, $payment_method, $token, $group_discounts);
         } catch (CheckoutAborted $e) {
             // Von einer Erweiterung abgebrochen (z. B. Rabattcode unter Sperre nicht mehr gueltig): kein technischer Fehler.
@@ -606,6 +609,33 @@ final class CheckoutModule implements Registerable
         }
 
         return array_map(static fn (Order $order): int => (int) $order->id, $orders_created);
+    }
+
+    /**
+     * Mit welchem Mitgliedskonto wird bestellt, und was weicht davon ab?
+     *
+     * Filter kontor_shop/checkout/member_account: Pro (Mitgliedschaft) liefert
+     * hier ein Domain\Membership\MemberAccountCheck, wenn eine Person mit
+     * ihrem Mitgliedskonto angemeldet ist. Ohne Pro/Login: null. Ein Fehler
+     * dabei darf die Bestellung nie verhindern - dann wird nur nichts vermerkt.
+     *
+     * @param array<string, mixed> $values gepruefte Kassenfelder
+     */
+    private function member_account(array $values): ?MemberAccountCheck
+    {
+        if (!has_filter('kontor_shop/checkout/member_account')) {
+            return null;
+        }
+
+        try {
+            $check = apply_filters('kontor_shop/checkout/member_account', null, $values, RequestContext::from_globals());
+        } catch (\Throwable $e) {
+            Logger::exception($e, 'checkout', 'Mitgliedskonto zur Bestellung nicht ermittelbar - Bestellung laeuft ohne Vermerk weiter');
+
+            return null;
+        }
+
+        return $check instanceof MemberAccountCheck ? $check : null;
     }
 
     /**
@@ -668,6 +698,7 @@ final class CheckoutModule implements Registerable
                     'checkout_token'    => $token,
                     'discount_code'     => $discount_label,
                     'discount_total'    => $group_discounts[$account_id] ?? 0.0,
+                    'member_account'    => $values['member_account'] ?? null,
                     'shipping_tax'      => TaxCalculator::allocate_shipping(
                         $shipping_cost,
                         array_map(static fn (array $item): array => ['tax_rate' => $item['tax_rate'], 'line_total' => round((float) $item['line_total'] - (float) $item['discount'], 2)], $group_items),

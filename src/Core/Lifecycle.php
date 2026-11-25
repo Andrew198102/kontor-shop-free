@@ -46,10 +46,12 @@ use function Kontor\Shop\Database\prepare_seo_slugs;
  * Bestellungen, discount an Positionen). Seit Schema 22: Tabelle mail_outbox
  * (Postausgang fuer nicht zugestellte Mails, Infrastructure\Notifications\MailOutbox).
  * Seit Schema 23: Tabelle invoices (Rechnungen und Gutschriften, Modules\Invoices).
+ * Seit Schema 24: Spalte orders.member_snapshot (mit welchem Mitgliedskonto bestellt
+ * wurde und was abweicht, Domain\Membership\MemberAccountCheck).
  */
 final class Lifecycle
 {
-    private const SCHEMA_VERSION        = 23;
+    private const SCHEMA_VERSION        = 24;
     private const SETTINGS_CAP_MIGRATED = 'kontor_shop_settings_cap_migrated';
     private const SCHEMA_VERSION_OPTION = 'kontor_shop_schema_version';
     /** Ausgabe (free/pro) beim letzten Boot - ein Wechsel leert einmal die Rewrite-Regeln. */

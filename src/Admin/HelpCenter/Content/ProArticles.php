@@ -110,6 +110,7 @@ final class ProArticles
                     __('The member’s name, email, phone and address are filled in at checkout and can be changed there. Only what is sent with the order is saved.', 'kontor-shop'),
                     __('The shop checks the membership again at most every 5 minutes. A cancelled membership or a missing fee takes effect after 5 minutes at the latest.', 'kontor-shop'),
                     __('Each order remembers whether the customer was a member. Search engines only ever see the regular price.', 'kontor-shop'),
+                    __('Each order also remembers which member account was logged in. If name or email on the order differ from that member’s profile, the order shows “Bought for someone else?” with a list of the differences.', 'kontor-shop'),
                 ],
                 'faq'      => [
                     [
@@ -119,6 +120,10 @@ final class ProArticles
                     [
                         'q' => __('A member is logged in but doesn’t get the member price.', 'kontor-shop'),
                         'a' => __('Check the rule under “Membership benefits apply to”. With the paid fee rule, the fee for the current year must be marked as paid in the member management. The member then sees a note at checkout that no benefits apply right now.', 'kontor-shop'),
+                    ],
+                    [
+                        'q' => __('Can a member order for someone else?', 'kontor-shop'),
+                        'a' => __('Yes, nothing is blocked. The order shows which member account was used and what differs from the member profile (Orders → order → “Member”), so you can follow up if needed. Changes at checkout only apply to that order – the member data in your member management stays untouched.', 'kontor-shop'),
                     ],
                     [
                         'q' => __('Can members use a discount code on top?', 'kontor-shop'),

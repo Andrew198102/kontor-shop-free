@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Kontor\Shop\Domain\Order;
 
+use Kontor\Shop\Domain\Membership\MemberAccountCheck;
+
 /**
  * Bestell-Entity (Abschnitt 5.3). Reines Datenobjekt - Persistenz macht
  * Infrastructure\Repositories\OrderRepository.
@@ -55,6 +57,8 @@ final class Order
         public readonly ?string $discount_code = null,
         /** Rabatt auf den Warenwert; items_total ist bereits um ihn reduziert */
         public readonly float $discount_total = 0.0,
+        /** Mit welchem Mitgliedskonto bestellt wurde und was davon abweicht (Pro), null = ohne Mitglieds-Login */
+        public readonly ?MemberAccountCheck $member_account = null,
     ) {
     }
 
@@ -186,7 +190,8 @@ final class Order
             self::nullable($row['paid_with'] ?? null),
             self::nullable($row['updated_at'] ?? null),
             self::nullable($row['discount_code'] ?? null),
-            (float) ($row['discount_total'] ?? 0)
+            (float) ($row['discount_total'] ?? 0),
+            MemberAccountCheck::from_json($row['member_snapshot'] ?? null)
         );
     }
 

@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.14
+Stable tag: 2.9.15
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,11 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.15 =
+* New (Pro): each order remembers which member account was logged in (name, membership number). If name or email on the order differ from that member's profile – e.g. a member buys at member prices for someone else – the order list shows "Bought for someone else?" and the order shows the differences (field, member profile, order). Nothing is blocked; it's just for your information.
+* New (Pro): the cashier interface and the AI order tools also report the member account and the differences.
+* Changed: membership providers can pass the person's ID in their member management (MemberInfo::$member_id).
 
 = 2.9.14 =
 * New: shipping prices for domestic and abroad. Your domestic country gets its own price, all other shipping countries another one ("Abroad" left empty = same as domestic). Checkout switches the shipping price as soon as the customer picks a country; the product page shows both, e.g. "Shipping to Austria: €5.90, to Germany: €12".
