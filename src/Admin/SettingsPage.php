@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kontor\Shop\Admin;
 
 use Kontor\Shop\Admin\Settings\AgentsSection;
+use Kontor\Shop\Admin\Settings\CheckoutSection;
 use Kontor\Shop\Admin\Settings\DesignSection;
 use Kontor\Shop\Admin\Settings\InvoicesSection;
 use Kontor\Shop\Admin\Settings\LegalSection;
@@ -43,6 +44,7 @@ final class SettingsPage
             new PaymentSection($settings),
             new InvoicesSection($settings),
             new ShippingSection($settings),
+            new CheckoutSection($settings),
             new LegalSection($settings),
             new MailSection($settings),
             new TemplatesSection($settings),
@@ -152,6 +154,11 @@ final class SettingsPage
         $current->render();
 
         foreach ($current->forms() as $form) {
+            // Karten im Formular des Bereichs (ein Speichern), z. B. Pro: Lieferzeit & Rueckgabe unter Versand.
+            if ($form->embedded()) {
+                continue;
+            }
+
             echo '<h2 class="ks-group-title">' . esc_html($form->label()) . '</h2>';
             $form->render();
         }

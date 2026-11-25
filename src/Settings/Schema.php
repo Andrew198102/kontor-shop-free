@@ -32,8 +32,13 @@ final class Schema
             ],
 
             'shipping' => [
-                'flat_rate'         => 0.00,
+                'flat_rate'         => 0.00, // Versand ins Inland
+                // Versand in alle anderen Lieferlaender; null = wie Inland (Modules\Shipping\ShippingRates).
+                'flat_rate_abroad'  => null,
+                // Inland (ISO-Code); leer = erstes Lieferland.
+                'home_country'      => '',
                 'free_from_amount'  => 0.00, // 0 = deaktiviert
+                'free_abroad'       => true, // "Versandkostenfrei ab" gilt auch im Ausland
                 'allow_self_pickup' => true,
                 // Versand bei aufgeteilten Bestellungen (Modules\Shipping\SplitShipping):
                 // separate | unified | custom (mit split_flat_rate).

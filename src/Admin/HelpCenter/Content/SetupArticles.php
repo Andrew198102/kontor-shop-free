@@ -166,20 +166,19 @@ final class SetupArticles
             'id'         => 'setup-shipping',
             'group'      => 'setup',
             'title'      => __('Shipping & pickup', 'kontor-shop'),
-            'summary'    => __('Shipping costs, free shipping, pickup, countries and checkout fields.', 'kontor-shop'),
+            'summary'    => __('Countries, shipping costs domestic and abroad, free shipping and pickup.', 'kontor-shop'),
             'pro'        => false,
-            'keywords'   => 'shipping cost flat rate free shipping threshold self pickup collect countries phone billing address order status link split orders returns delivery time',
-            'what'       => __('Here you set what shipping costs, when it is free, whether customers may pick up their order, and what checkout asks for.', 'kontor-shop'),
+            'keywords'   => 'shipping cost flat rate domestic abroad international foreign countries free shipping threshold self pickup collect member price preview split orders returns delivery time phone billing address order status link checkout',
+            'what'       => __('Here you set where you deliver, what shipping costs at home and abroad, when it is free and whether customers may pick up their order. A preview shows right away what customers pay.', 'kontor-shop'),
             'steps'      => [
                 ['text' => __('Open Kontor Shop → Settings → Shipping. With Pro, the section is called “Shipping & returns”.', 'kontor-shop'), 'url' => Section::url('shipping')],
-                __('Enter the “Flat shipping rate” per order, e.g. 5.90.', 'kontor-shop'),
-                __('Optional: enter an amount under “Free shipping from”.', 'kontor-shop'),
-                __('Tick “Self pickup” if customers may collect their order.', 'kontor-shop'),
-                __('Tick the countries you deliver to under “Shipping countries”.', 'kontor-shop'),
+                __('Step 1 “Where do you deliver?”: choose your domestic country. If you ship abroad, tick “Also deliver abroad” and add the countries. Tick “Offer self pickup” if customers may collect their order.', 'kontor-shop'),
+                __('Step 2 “What does shipping cost?”: enter the price per order for domestic and, if different, for abroad, e.g. 5.90 and 12. The preview next to it shows what customers pay.', 'kontor-shop'),
+                __('Optional: tick “Free shipping from” and enter the goods value.', 'kontor-shop'),
                 __('Click “Save” at the bottom.', 'kontor-shop'),
             ],
             'effect'     => [
-                __('Checkout calculates shipping right away: pickup costs nothing, orders from the free-shipping amount cost nothing, all others pay the flat rate.', 'kontor-shop'),
+                __('Checkout calculates shipping right away from the delivery country: pickup costs nothing, orders from the free-shipping amount cost nothing, all others pay the price for domestic or abroad.', 'kontor-shop'),
                 __('With self pickup ticked, checkout offers the “Pickup” option.', 'kontor-shop'),
                 __('For delivery, customers can only choose a country you ticked. The postal code is checked to match the country.', 'kontor-shop'),
                 __('Every email to the customer contains a personal link to the status of their order. It works while the order is in progress and for the number of days you set afterwards.', 'kontor-shop'),
@@ -190,15 +189,15 @@ final class SetupArticles
                     'paragraphs' => [__('The shop checks these rules from top to bottom and uses the first one that fits:', 'kontor-shop')],
                     'list'       => [
                         __('Self pickup chosen: €0.', 'kontor-shop'),
-                        __('With Pro, if turned on: members pay no shipping.', 'kontor-shop'),
-                        __('The goods value reaches “Free shipping from”: €0.', 'kontor-shop'),
-                        __('Otherwise: the flat shipping rate.', 'kontor-shop'),
-                        __('0 as flat rate means free shipping for everyone. 0 under “Free shipping from” means there is no such threshold.', 'kontor-shop'),
+                        __('The goods value reaches “Free shipping from”: €0. Abroad only if “also applies abroad” is ticked.', 'kontor-shop'),
+                        __('Otherwise: the price for the delivery country, domestic or abroad. With Pro, members pay their member price if you entered one.', 'kontor-shop'),
+                        __('0 means free of charge. “Abroad” left empty means the same price as domestic.', 'kontor-shop'),
                     ],
                 ],
                 [
-                    'title' => __('Fields at checkout', 'kontor-shop'),
-                    'list'  => [
+                    'title'      => __('Fields at checkout', 'kontor-shop'),
+                    'paragraphs' => [__('These are under Settings → Checkout:', 'kontor-shop')],
+                    'list'       => [
                         __('Phone number at checkout: don’t ask, optional or required. Useful for questions about the delivery.', 'kontor-shop'),
                         __('Billing address: lets customers enter a different billing address or a company with VAT ID.', 'kontor-shop'),
                         __('Order status link for customers: how many days after shipping, pickup or cancellation the link in the emails still works (1 to 365, default 30).', 'kontor-shop'),
@@ -213,16 +212,16 @@ final class SetupArticles
                 ],
                 [
                     'title'      => __('Returns & delivery time (Pro)', 'kontor-shop'),
-                    'paragraphs' => [__('With Kontor Shop Pro, this section has a second form “Returns & delivery time”. What you enter and approve there appears on the product pages and in the data for Google and AI search.', 'kontor-shop')],
+                    'paragraphs' => [__('With Kontor Shop Pro, the page has a third step “Delivery time & returns”. What you enter and approve there appears on the product pages and in the data for Google and AI search.', 'kontor-shop')],
                 ],
             ],
             'faq'        => [
-                ['q' => __('Can I charge more for heavy items or for other countries?', 'kontor-shop'), 'a' => __('No. The shop knows one flat rate per order, a free-shipping amount and pickup. Choose a flat rate that covers your usual parcel.', 'kontor-shop')],
+                ['q' => __('Can I charge more for other countries?', 'kontor-shop'), 'a' => __('Yes. Step 2 has one price for your domestic country and one for all other countries you deliver to. Prices by weight or per single country are not available.', 'kontor-shop')],
                 ['q' => __('Does pickup depend on the shipping countries?', 'kontor-shop'), 'a' => __('No. Pickup works independently of the countries you ticked.', 'kontor-shop')],
                 ['q' => __('Why did a customer get two orders?', 'kontor-shop'), 'a' => __('Their cart had products from warehouses with different bank accounts. Each account gets its own order, so the money goes to the right account. Shipping then follows “Shipping for split orders”.', 'kontor-shop')],
             ],
             'related'    => ['setup-payment', 'setup-warehouses', 'orders-ship', 'pro-members', 'pro-seo'],
-            'help_pages' => ['settings-shipping'],
+            'help_pages' => ['settings-shipping', 'settings-checkout'],
         ];
     }
 
@@ -761,7 +760,7 @@ final class SetupArticles
                 [
                     'title' => __('The four groups', 'kontor-shop'),
                     'list'  => [
-                        __('Sell: Payment & sales tax, Shipping, Legal. With Pro also Membership.', 'kontor-shop'),
+                        __('Sell: Payment & sales tax, Invoices, Shipping, Checkout, Legal. With Pro also Membership.', 'kontor-shop'),
                         __('Communication: Email sending, Email templates. With Pro also Back-in-stock requests.', 'kontor-shop'),
                         __('Shop appearance: Design. With Pro also Shop types.', 'kontor-shop'),
                         __('Technical: Roles, AI assistants, System. With Pro also APIs.', 'kontor-shop'),

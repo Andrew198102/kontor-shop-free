@@ -134,7 +134,7 @@ msgstr "Kategorie „%s“ gelöscht."
 #: src/Admin/CategoriesPage.php:272
 #: src/Admin/CategoriesPage.php:331
 #: src/Admin/Help.php:88
-#: src/Admin/HelpCenter/Content/SetupArticles.php:637
+#: src/Admin/HelpCenter/Content/SetupArticles.php:636
 #: src/Admin/Menu.php:397
 msgid "Categories"
 msgstr "Kategorien"
@@ -320,7 +320,7 @@ msgid "%1$d of %2$d done"
 msgstr "%1$d von %2$d erledigt"
 
 #: src/Admin/DashboardPage.php:176
-#: src/Admin/Settings/ShippingSection.php:138
+#: src/Admin/Settings/CheckoutSection.php:67
 #: src/Admin/Ui/Form.php:20
 #: src/Admin/Ui/Form.php:42
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:458
@@ -414,7 +414,7 @@ msgstr "Zu versenden"
 #: src/Admin/OrderDetailView.php:144
 #: src/Admin/OrdersList.php:376
 #: src/Admin/ShopSnapshot.php:293
-#: src/Modules/Checkout/CheckoutModule.php:1469
+#: src/Modules/Checkout/CheckoutModule.php:1476
 msgid "Refund"
 msgstr "Rückzahlung"
 
@@ -551,7 +551,7 @@ msgid "Record delivery books in several products at once. During a stock count, 
 msgstr "Lieferung erfassen bucht mehrere Artikel auf einmal ein. Bei der Inventur werden nur Abweichungen als Korrektur gebucht."
 
 #: src/Admin/Help.php:82
-#: src/Admin/HelpCenter/Content/SetupArticles.php:688
+#: src/Admin/HelpCenter/Content/SetupArticles.php:687
 #: src/Admin/OrderDetailView.php:186
 #: src/Admin/OrderDetailView.php:329
 #: src/Admin/OrdersList.php:444
@@ -574,7 +574,7 @@ msgstr "Kategorien sind die Filter im Shop. Ziehe eine Zeile an den Pfeilen, um 
 #: src/Admin/Help.php:93
 #: src/Admin/LogPage.php:196
 #: src/Admin/Menu.php:402
-#: src/Admin/SettingsPage.php:138
+#: src/Admin/SettingsPage.php:140
 #: src/Modules/Agents/OfferPage.php:151
 msgid "Settings"
 msgstr "Einstellungen"
@@ -1775,8 +1775,8 @@ msgid "Open a product and set the “Member discount” in the “Price & tax”
 msgstr "Öffne einen Artikel und stell in der Karte „Preis & Steuer“ den „Mitgliedsrabatt“ ein, in Prozent oder in Euro. Speichere den Artikel."
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:104
-msgid "Optional: under Settings → Shipping & returns, tick “Members don’t pay shipping”."
-msgstr "Optional: Hake unter Einstellungen → Versand & Rückgabe „Mitglieder zahlen keinen Versand“ an."
+msgid "Optional: under Settings → Shipping & returns, enter a price for members in the “Members” column, for domestic and abroad (0 = free shipping)."
+msgstr "Optional: unter Einstellungen → Versand & Rückgabe in der Spalte „Mitglieder“ einen Preis für Mitglieder eintragen, fürs Inland und fürs Ausland (0 = versandkostenfrei)."
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:105
 msgid "Optional: under Settings → Payment & sales tax, tick “only for recognized members” for payment on invoice."
@@ -2981,16 +2981,16 @@ msgid "Pro helps search engines and AI search understand your products. Product 
 msgstr "Pro hilft Suchmaschinen und KI-Suche, deine Artikel zu verstehen. Artikelseiten bekommen strukturierte Daten mit Preis und Verfügbarkeit, jede Kategorie bekommt eine eigene Seite, und freigegebene Angaben zu Rückgabe, Lieferzeit und Gewährleistung stehen auf den Artikelseiten."
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:677
-msgid "Open Settings → Shipping & returns and scroll down to “Returns & delivery time”."
-msgstr "Öffne Einstellungen → Versand & Rückgabe und scroll nach unten zu „Rückgabe & Lieferzeit“."
+msgid "Open Settings → Shipping & returns and go to step 3 “Delivery time & returns”."
+msgstr "Einstellungen → Versand & Rückgabe öffnen und zu Schritt 3 „Lieferzeit & Rückgabe“ gehen."
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:678
 msgid "Enter the return period in days, who pays for return shipping, the processing time and the delivery time."
 msgstr "Trag die Rückgabefrist in Tagen ein, wer die Rücksendung zahlt, die Bearbeitungszeit und die Versanddauer."
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:679
-msgid "Enter the two-letter country code, for example AT, tick “This information has been reviewed by the club and may be published” and save."
-msgstr "Trag den zweistelligen Ländercode ein, zum Beispiel AT, hake „Diese Angaben sind vom Verein geprüft und dürfen veröffentlicht werden“ an und speichere."
+msgid "Tick “Reviewed – may be published” and save. The details apply to your domestic country from step 1."
+msgstr "„Geprüft – darf veröffentlicht werden“ anhaken und speichern. Die Angaben gelten für euer Inland aus Schritt 1."
 
 #: src/Admin/HelpCenter/Content/ProArticles.php:680
 msgid "Under Settings → Legal & warranty, enter the warranty in months and an optional note, and save."
@@ -3513,7 +3513,7 @@ msgstr "Mit Kontor Shop Pro kannst du „Auf Rechnung“ nur für erkannte Mitgl
 #: src/Admin/OrdersList.php:616
 #: src/Admin/Settings/PaymentSection.php:254
 #: src/Domain/Order/PaymentMethod.php:50
-#: src/Modules/Checkout/CheckoutModule.php:935
+#: src/Modules/Checkout/CheckoutModule.php:940
 msgid "Cash on pickup"
 msgstr "Barzahlung bei Abholung"
 
@@ -3622,526 +3622,521 @@ msgid "Shipping & pickup"
 msgstr "Versand & Abholung"
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:169
-msgid "Shipping costs, free shipping, pickup, countries and checkout fields."
-msgstr "Versandkosten, Gratisversand, Abholung, Länder und Felder an der Kasse."
+msgid "Countries, shipping costs domestic and abroad, free shipping and pickup."
+msgstr "Lieferländer, Versandkosten für Inland und Ausland, Gratisversand und Selbstabholung."
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:172
-msgid "Here you set what shipping costs, when it is free, whether customers may pick up their order, and what checkout asks for."
-msgstr "Hier legst du fest, was der Versand kostet, wann er gratis ist, ob Kunden ihre Bestellung abholen dürfen und was die Kasse abfragt."
+msgid "Here you set where you deliver, what shipping costs at home and abroad, when it is free and whether customers may pick up their order. A preview shows right away what customers pay."
+msgstr "Hier legt ihr fest, wohin ihr liefert, was der Versand im Inland und ins Ausland kostet, wann er gratis ist und ob Kunden selbst abholen dürfen. Eine Vorschau zeigt sofort, was Kunden zahlen."
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:174
 msgid "Open Kontor Shop → Settings → Shipping. With Pro, the section is called “Shipping & returns”."
 msgstr "Öffne Kontor Shop → Einstellungen → Versand. Mit Pro heisst der Bereich „Versand & Rückgabe“."
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:175
-msgid "Enter the “Flat shipping rate” per order, e.g. 5.90."
-msgstr "Trag die „Versandpauschale“ je Bestellung ein, z. B. 5,90."
+msgid "Step 1 “Where do you deliver?”: choose your domestic country. If you ship abroad, tick “Also deliver abroad” and add the countries. Tick “Offer self pickup” if customers may collect their order."
+msgstr "Schritt 1 „Wohin liefert ihr?“: euer Inland wählen. Liefert ihr ins Ausland, „Auch ins Ausland liefern“ anhaken und die Länder hinzufügen. „Selbstabholung anbieten“ anhaken, wenn Kunden selbst abholen dürfen."
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:176
-msgid "Optional: enter an amount under “Free shipping from”."
-msgstr "Optional: Trag unter „Versandkostenfrei ab“ einen Betrag ein."
+msgid "Step 2 “What does shipping cost?”: enter the price per order for domestic and, if different, for abroad, e.g. 5.90 and 12. The preview next to it shows what customers pay."
+msgstr "Schritt 2 „Was kostet der Versand?“: den Preis pro Bestellung fürs Inland und, wenn anders, fürs Ausland eintragen, z. B. 5,90 und 12. Die Vorschau daneben zeigt, was Kunden zahlen."
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:177
-msgid "Tick “Self pickup” if customers may collect their order."
-msgstr "Hake „Selbstabholung“ an, wenn Kunden ihre Bestellung abholen dürfen."
+msgid "Optional: tick “Free shipping from” and enter the goods value."
+msgstr "Optional: „Versandkostenfrei ab“ anhaken und den Warenwert eintragen."
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:178
-msgid "Tick the countries you deliver to under “Shipping countries”."
-msgstr "Hake unter „Lieferländer“ die Länder an, in die du lieferst."
-
-#: src/Admin/HelpCenter/Content/SetupArticles.php:179
-#: src/Admin/HelpCenter/Content/SetupArticles.php:248
+#: src/Admin/HelpCenter/Content/SetupArticles.php:247
 msgid "Click “Save” at the bottom."
 msgstr "Klick unten auf „Speichern“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:182
-msgid "Checkout calculates shipping right away: pickup costs nothing, orders from the free-shipping amount cost nothing, all others pay the flat rate."
-msgstr "Die Kasse rechnet den Versand sofort: Abholung kostet nichts, Bestellungen ab dem Gratisversand-Betrag kosten nichts, alle anderen zahlen die Pauschale."
+#: src/Admin/HelpCenter/Content/SetupArticles.php:181
+msgid "Checkout calculates shipping right away from the delivery country: pickup costs nothing, orders from the free-shipping amount cost nothing, all others pay the price for domestic or abroad."
+msgstr "Die Kasse rechnet den Versand sofort nach dem Lieferland: Abholung kostet nichts, Bestellungen ab der Gratis-Grenze kosten nichts, alle anderen zahlen den Preis fürs Inland bzw. Ausland."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:183
+#: src/Admin/HelpCenter/Content/SetupArticles.php:182
 msgid "With self pickup ticked, checkout offers the “Pickup” option."
 msgstr "Mit angehakter Selbstabholung bietet die Kasse die Option „Abholung“ an."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:184
+#: src/Admin/HelpCenter/Content/SetupArticles.php:183
 msgid "For delivery, customers can only choose a country you ticked. The postal code is checked to match the country."
 msgstr "Für den Versand können Kunden nur ein Land wählen, das du angehakt hast. Die Postleitzahl wird passend zum Land geprüft."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:185
+#: src/Admin/HelpCenter/Content/SetupArticles.php:184
 msgid "Every email to the customer contains a personal link to the status of their order. It works while the order is in progress and for the number of days you set afterwards."
 msgstr "Jede Mail an den Kunden enthält einen persönlichen Link zum Stand seiner Bestellung. Er funktioniert, solange die Bestellung läuft, und danach noch so viele Tage, wie du einstellst."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:189
+#: src/Admin/HelpCenter/Content/SetupArticles.php:188
 msgid "How shipping is calculated"
 msgstr "So wird der Versand berechnet"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:190
+#: src/Admin/HelpCenter/Content/SetupArticles.php:189
 msgid "The shop checks these rules from top to bottom and uses the first one that fits:"
 msgstr "Der Shop prüft diese Regeln von oben nach unten und nimmt die erste, die passt:"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:192
+#: src/Admin/HelpCenter/Content/SetupArticles.php:191
 msgid "Self pickup chosen: €0."
 msgstr "Selbstabholung gewählt: 0 €."
 
+#: src/Admin/HelpCenter/Content/SetupArticles.php:192
+msgid "The goods value reaches “Free shipping from”: €0. Abroad only if “also applies abroad” is ticked."
+msgstr "Der Warenwert erreicht „Versandkostenfrei ab“: 0 €. Im Ausland nur, wenn „gilt auch fürs Ausland“ angehakt ist."
+
 #: src/Admin/HelpCenter/Content/SetupArticles.php:193
-msgid "With Pro, if turned on: members pay no shipping."
-msgstr "Mit Pro, wenn eingeschaltet: Mitglieder zahlen keinen Versand."
+msgid "Otherwise: the price for the delivery country, domestic or abroad. With Pro, members pay their member price if you entered one."
+msgstr "Sonst: der Preis für das Lieferland, Inland oder Ausland. Mit Pro zahlen Mitglieder ihren Mitgliederpreis, wenn ihr einen eingetragen habt."
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:194
-msgid "The goods value reaches “Free shipping from”: €0."
-msgstr "Der Warenwert erreicht „Versandkostenfrei ab“: 0 €."
+msgid "0 means free of charge. “Abroad” left empty means the same price as domestic."
+msgstr "0 heisst kostenlos. „Ausland“ leer heisst gleicher Preis wie im Inland."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:195
-msgid "Otherwise: the flat shipping rate."
-msgstr "Sonst: die Versandpauschale."
-
-#: src/Admin/HelpCenter/Content/SetupArticles.php:196
-msgid "0 as flat rate means free shipping for everyone. 0 under “Free shipping from” means there is no such threshold."
-msgstr "0 als Pauschale heisst Gratisversand für alle. 0 bei „Versandkostenfrei ab“ heisst, es gibt keine solche Grenze."
-
-#: src/Admin/HelpCenter/Content/SetupArticles.php:200
+#: src/Admin/HelpCenter/Content/SetupArticles.php:198
 msgid "Fields at checkout"
 msgstr "Felder an der Kasse"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:202
+#: src/Admin/HelpCenter/Content/SetupArticles.php:199
+msgid "These are under Settings → Checkout:"
+msgstr "Diese findet ihr unter Einstellungen → Kasse:"
+
+#: src/Admin/HelpCenter/Content/SetupArticles.php:201
 msgid "Phone number at checkout: don’t ask, optional or required. Useful for questions about the delivery."
 msgstr "Telefonnummer im Checkout: nicht abfragen, optional oder Pflichtfeld. Praktisch für Rückfragen zur Lieferung."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:203
+#: src/Admin/HelpCenter/Content/SetupArticles.php:202
 msgid "Billing address: lets customers enter a different billing address or a company with VAT ID."
 msgstr "Rechnungsadresse: Kunden können eine andere Rechnungsadresse oder eine Firma mit UID angeben."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:204
+#: src/Admin/HelpCenter/Content/SetupArticles.php:203
 msgid "Order status link for customers: how many days after shipping, pickup or cancellation the link in the emails still works (1 to 365, default 30)."
 msgstr "Bestellstatus-Link für Kunden: wie viele Tage nach Versand, Abholung oder Storno der Link in den Mails noch funktioniert (1 bis 365, Standard 30)."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:208
-#: src/Admin/Settings/ShippingSection.php:158
+#: src/Admin/HelpCenter/Content/SetupArticles.php:207
 msgid "Shipping for split orders"
 msgstr "Versand bei aufgeteilten Bestellungen"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:210
+#: src/Admin/HelpCenter/Content/SetupArticles.php:209
 msgid "If a cart contains products from warehouses with different bank accounts, the shop splits it into one order per account. With only one bank account, this never happens."
 msgstr "Liegen Artikel aus Lagern mit verschiedenen Bankkonten im Warenkorb, teilt der Shop ihn in eine Bestellung je Konto auf. Mit nur einem Bankkonto passiert das nie."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:211
+#: src/Admin/HelpCenter/Content/SetupArticles.php:210
 msgid "“Separate”: each order calculates its own shipping, so the customer may pay twice. “Unified”: shipping is calculated once for the whole cart. “Custom price”: a fixed flat rate you set for split orders. With “Unified” and “Custom price”, shipping is charged on the first order only."
 msgstr "„Getrennt“: Jede Bestellung rechnet ihren Versand selbst, der Kunde zahlt also unter Umständen doppelt. „Vereinheitlicht“: Der Versand wird einmal für den ganzen Warenkorb berechnet. „Eigener Preis“: eine feste Pauschale, die du für aufgeteilte Bestellungen festlegst. Bei „Vereinheitlicht“ und „Eigener Preis“ wird der Versand nur bei der ersten Bestellung verrechnet."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:215
+#: src/Admin/HelpCenter/Content/SetupArticles.php:214
 msgid "Returns & delivery time (Pro)"
 msgstr "Rückgabe & Lieferzeit (Pro)"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:216
-msgid "With Kontor Shop Pro, this section has a second form “Returns & delivery time”. What you enter and approve there appears on the product pages and in the data for Google and AI search."
-msgstr "Mit Kontor Shop Pro hat dieser Bereich ein zweites Formular „Rückgabe & Lieferzeit“. Was du dort einträgst und freigibst, erscheint auf den Artikelseiten und in den Daten für Google und KI-Suche."
+#: src/Admin/HelpCenter/Content/SetupArticles.php:215
+msgid "With Kontor Shop Pro, the page has a third step “Delivery time & returns”. What you enter and approve there appears on the product pages and in the data for Google and AI search."
+msgstr "Mit Kontor Shop Pro hat die Seite einen dritten Schritt „Lieferzeit & Rückgabe“. Was ihr dort eintragt und freigebt, erscheint auf den Artikelseiten und in den Daten für Google und KI-Suchen."
+
+#: src/Admin/HelpCenter/Content/SetupArticles.php:219
+msgid "Can I charge more for other countries?"
+msgstr "Kann ich für andere Länder mehr verlangen?"
+
+#: src/Admin/HelpCenter/Content/SetupArticles.php:219
+msgid "Yes. Step 2 has one price for your domestic country and one for all other countries you deliver to. Prices by weight or per single country are not available."
+msgstr "Ja. In Schritt 2 gibt es einen Preis für euer Inland und einen für alle anderen Länder, in die ihr liefert. Preise nach Gewicht oder je einzelnem Land gibt es nicht."
 
 #: src/Admin/HelpCenter/Content/SetupArticles.php:220
-msgid "Can I charge more for heavy items or for other countries?"
-msgstr "Kann ich für schwere Artikel oder andere Länder mehr verlangen?"
-
-#: src/Admin/HelpCenter/Content/SetupArticles.php:220
-msgid "No. The shop knows one flat rate per order, a free-shipping amount and pickup. Choose a flat rate that covers your usual parcel."
-msgstr "Nein. Der Shop kennt eine Pauschale je Bestellung, einen Betrag für Gratisversand und die Abholung. Wähl eine Pauschale, die dein übliches Paket abdeckt."
-
-#: src/Admin/HelpCenter/Content/SetupArticles.php:221
 msgid "Does pickup depend on the shipping countries?"
 msgstr "Hängt die Abholung von den Lieferländern ab?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:221
+#: src/Admin/HelpCenter/Content/SetupArticles.php:220
 msgid "No. Pickup works independently of the countries you ticked."
 msgstr "Nein. Abholung funktioniert unabhängig von den angehakten Ländern."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:222
+#: src/Admin/HelpCenter/Content/SetupArticles.php:221
 msgid "Why did a customer get two orders?"
 msgstr "Warum hat ein Kunde zwei Bestellungen bekommen?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:222
+#: src/Admin/HelpCenter/Content/SetupArticles.php:221
 msgid "Their cart had products from warehouses with different bank accounts. Each account gets its own order, so the money goes to the right account. Shipping then follows “Shipping for split orders”."
 msgstr "In seinem Warenkorb lagen Artikel aus Lagern mit verschiedenen Bankkonten. Jedes Konto bekommt eine eigene Bestellung, damit das Geld auf dem richtigen Konto landet. Der Versand richtet sich dann nach „Versand bei aufgeteilten Bestellungen“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:237
+#: src/Admin/HelpCenter/Content/SetupArticles.php:236
 msgid "Legal texts & checkout confirmations"
 msgstr "Rechtstexte & Bestätigungen an der Kasse"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:238
+#: src/Admin/HelpCenter/Content/SetupArticles.php:237
 msgid "Link terms, withdrawal and privacy pages, set checkbox and button texts."
 msgstr "AGB-, Widerrufs- und Datenschutzseite verlinken, Texte für Checkboxen und Button festlegen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:241
+#: src/Admin/HelpCenter/Content/SetupArticles.php:240
 msgid "Here you link your legal texts to checkout and decide what customers must confirm before they order. The texts themselves are normal WordPress pages that your club writes."
 msgstr "Hier verknüpfst du deine Rechtstexte mit der Kasse und legst fest, was Kunden vor dem Bestellen bestätigen müssen. Die Texte selbst sind normale WordPress-Seiten, die dein Verein schreibt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:243
+#: src/Admin/HelpCenter/Content/SetupArticles.php:242
 msgid "Create the pages under Pages → Add New in WordPress, e.g. terms and conditions, right of withdrawal, privacy policy and legal notice, and publish them."
 msgstr "Leg die Seiten in WordPress unter Seiten → Erstellen an, z. B. AGB, Widerrufsbelehrung, Datenschutzerklärung und Impressum, und veröffentliche sie."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:244
+#: src/Admin/HelpCenter/Content/SetupArticles.php:243
 msgid "Open Kontor Shop → Settings → Legal."
 msgstr "Öffne Kontor Shop → Einstellungen → Rechtliches."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:245
+#: src/Admin/HelpCenter/Content/SetupArticles.php:244
 msgid "Under “1. Link legal texts”, choose the matching page in each list."
 msgstr "Wähl unter „1. Rechtstexte verlinken“ in jeder Liste die passende Seite."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:246
+#: src/Admin/HelpCenter/Content/SetupArticles.php:245
 msgid "Under “2. Confirmations in the checkout”, check the required checkboxes and their texts."
 msgstr "Prüf unter „2. Bestätigungen im Checkout“ die Pflicht-Checkboxen und ihre Texte."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:247
+#: src/Admin/HelpCenter/Content/SetupArticles.php:246
 msgid "Under “3. Texts at the order button”, check the “Order button text”."
 msgstr "Prüf unter „3. Texte beim Bestell-Button“ den „Text des Bestell-Buttons“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:251
+#: src/Admin/HelpCenter/Content/SetupArticles.php:250
 msgid "Checkout shows the checkboxes with links to your pages. A customer can only order after ticking them. The time of consent is saved with the order."
 msgstr "An der Kasse stehen die Checkboxen mit Links zu deinen Seiten. Ein Kunde kann erst bestellen, wenn er sie anhakt. Der Zeitpunkt der Zustimmung wird mit der Bestellung gespeichert."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:252
+#: src/Admin/HelpCenter/Content/SetupArticles.php:251
 msgid "The last button in checkout shows your text."
 msgstr "Der letzte Button an der Kasse zeigt deinen Text."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:253
+#: src/Admin/HelpCenter/Content/SetupArticles.php:252
 msgid "As soon as the terms and privacy pages are selected, the “open” marker next to Legal disappears."
 msgstr "Sobald AGB- und Datenschutzseite gewählt sind, verschwindet die Markierung „offen“ bei Rechtliches."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:257
+#: src/Admin/HelpCenter/Content/SetupArticles.php:256
 msgid "Placeholders in the checkbox texts"
 msgstr "Platzhalter in den Checkbox-Texten"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:258
+#: src/Admin/HelpCenter/Content/SetupArticles.php:257
 msgid "These placeholders become links to the pages you selected. If a page isn’t selected, the word appears without a link."
 msgstr "Diese Platzhalter werden zu Links auf die gewählten Seiten. Ist eine Seite nicht gewählt, steht das Wort ohne Link da."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:260
+#: src/Admin/HelpCenter/Content/SetupArticles.php:259
 msgid "{agb}: terms and conditions"
 msgstr "{agb}: AGB"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:261
+#: src/Admin/HelpCenter/Content/SetupArticles.php:260
 msgid "{widerruf}: right of withdrawal"
 msgstr "{widerruf}: Widerrufsbelehrung"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:262
+#: src/Admin/HelpCenter/Content/SetupArticles.php:261
 msgid "{datenschutz}: privacy policy"
 msgstr "{datenschutz}: Datenschutzerklärung"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:263
+#: src/Admin/HelpCenter/Content/SetupArticles.php:262
 msgid "{impressum}: legal notice"
 msgstr "{impressum}: Impressum"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:264
+#: src/Admin/HelpCenter/Content/SetupArticles.php:263
 #: src/Admin/Settings/LegalSection.php:117
 msgid "Example: I accept the {agb} and have read the {widerruf}."
 msgstr "Beispiel: Ich akzeptiere die {agb} und habe die {widerruf} gelesen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:268
+#: src/Admin/HelpCenter/Content/SetupArticles.php:267
 msgid "Texts at the order button"
 msgstr "Texte beim Bestell-Button"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:270
+#: src/Admin/HelpCenter/Content/SetupArticles.php:269
 msgid "Additional price text: an optional line above the order button. The VAT line is added automatically from “Payment & sales tax”."
 msgstr "Zusatztext Preise: eine optionale Zeile über dem Bestell-Button. Die Umsatzsteuer-Zeile kommt automatisch aus „Zahlung & Umsatzsteuer“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:271
+#: src/Admin/HelpCenter/Content/SetupArticles.php:270
 msgid "Order button text: in Austria, the button must make clear that the order has to be paid, e.g. “Order with obligation to pay”."
 msgstr "Text des Bestell-Buttons: In Österreich muss der Button klar machen, dass die Bestellung kostenpflichtig ist, z. B. „Zahlungspflichtig bestellen“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:275
+#: src/Admin/HelpCenter/Content/SetupArticles.php:274
 msgid "Privacy & retention"
 msgstr "Datenschutz & Aufbewahrung"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:277
+#: src/Admin/HelpCenter/Content/SetupArticles.php:276
 msgid "Order data are accounting records, in Austria usually for 7 years. The shop never deletes anything on its own. If someone asks for erasure via WordPress → Tools → Erase Personal Data, their orders are only anonymized after the retention period."
 msgstr "Bestelldaten sind Buchhaltungsunterlagen, in Österreich meist 7 Jahre lang. Der Shop löscht nie von selbst. Verlangt jemand über WordPress → Werkzeuge → Personenbezogene Daten löschen die Löschung, werden seine Bestellungen erst nach der Aufbewahrungsfrist anonymisiert."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:278
+#: src/Admin/HelpCenter/Content/SetupArticles.php:277
 msgid "Suggested text for your privacy policy is in WordPress under Settings → Privacy."
 msgstr "Einen Textvorschlag für deine Datenschutzerklärung findest du in WordPress unter Einstellungen → Datenschutz."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:282
+#: src/Admin/HelpCenter/Content/SetupArticles.php:281
 #: src/Admin/Settings/LegalSection.php:147
 msgid "Spam protection"
 msgstr "Spamschutz"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:283
+#: src/Admin/HelpCenter/Content/SetupArticles.php:282
 msgid "Checkout protects itself against bots without a captcha and without settings: a hidden field that only bots fill in, a check that the form wasn’t sent within seconds, and at most 5 orders from the same internet connection within 15 minutes."
 msgstr "Die Kasse schützt sich ohne Captcha und ohne Einstellungen vor Bots: ein verstecktes Feld, das nur Bots ausfüllen, eine Prüfung, ob das Formular innerhalb von Sekunden abgeschickt wurde, und höchstens 5 Bestellungen von derselben Internetverbindung in 15 Minuten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:286
+#: src/Admin/HelpCenter/Content/SetupArticles.php:285
 msgid "Warranty (Pro)"
 msgstr "Gewährleistung (Pro)"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:287
+#: src/Admin/HelpCenter/Content/SetupArticles.php:286
 msgid "With Kontor Shop Pro, this section is called “Legal & warranty” and has a second form “Warranty”. Your warranty details then appear on the product pages and in the data for Google and AI search."
 msgstr "Mit Kontor Shop Pro heisst dieser Bereich „Rechtliches & Gewährleistung“ und hat ein zweites Formular „Gewährleistung“. Deine Angaben zur Gewährleistung erscheinen dann auf den Artikelseiten und in den Daten für Google und KI-Suche."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:291
+#: src/Admin/HelpCenter/Content/SetupArticles.php:290
 msgid "Does Kontor Shop write the legal texts for me?"
 msgstr "Schreibt Kontor Shop die Rechtstexte für mich?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:291
+#: src/Admin/HelpCenter/Content/SetupArticles.php:290
 msgid "No. The texts come from your club or your legal counsel. The shop only links them and asks for consent."
 msgstr "Nein. Die Texte kommen von deinem Verein oder deiner Rechtsberatung. Der Shop verlinkt sie nur und holt die Zustimmung ein."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:292
+#: src/Admin/HelpCenter/Content/SetupArticles.php:291
 msgid "Can I turn off the checkboxes?"
 msgstr "Kann ich die Checkboxen abschalten?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:292
+#: src/Admin/HelpCenter/Content/SetupArticles.php:291
 msgid "Yes, untick them under “Required checkboxes”. Then customers order without confirming. Ask your legal counsel whether that is allowed for you."
 msgstr "Ja, nimm unter „Pflicht-Checkboxen“ die Häkchen weg. Dann bestellen Kunden ohne Bestätigung. Frag deine Rechtsberatung, ob das für dich erlaubt ist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:293
+#: src/Admin/HelpCenter/Content/SetupArticles.php:292
 msgid "I use Polylang or WPML. Which page do I choose?"
 msgstr "Ich verwende Polylang oder WPML. Welche Seite wähle ich?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:293
+#: src/Admin/HelpCenter/Content/SetupArticles.php:292
 msgid "The page in the main language. Visitors automatically get the translated page linked, if there is one."
 msgstr "Die Seite in der Hauptsprache. Besucher bekommen automatisch die übersetzte Seite verlinkt, wenn es eine gibt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:294
+#: src/Admin/HelpCenter/Content/SetupArticles.php:293
 msgid "A customer sees “Too many orders in a short time”."
 msgstr "Ein Kunde sieht „Zu viele Bestellungen in kurzer Zeit“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:294
+#: src/Admin/HelpCenter/Content/SetupArticles.php:293
 msgid "That is the spam protection. It allows at most 5 orders from the same internet connection within 15 minutes. This limit can be reached when many people order over the same Wi-Fi, e.g. at a club event. Ask the customer to try again a few minutes later."
 msgstr "Das ist der Spamschutz. Er erlaubt höchstens 5 Bestellungen von derselben Internetverbindung in 15 Minuten. Diese Grenze kann erreicht werden, wenn viele Leute über dasselbe WLAN bestellen, z. B. bei einer Vereinsveranstaltung. Bitte den Kunden, es ein paar Minuten später noch einmal zu versuchen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:309
+#: src/Admin/HelpCenter/Content/SetupArticles.php:308
 msgid "Membership & member benefits"
 msgstr "Mitgliedschaft & Mitgliedsvorteile"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:310
+#: src/Admin/HelpCenter/Content/SetupArticles.php:309
 msgid "In the free version everyone is a guest. Pro recognizes members."
 msgstr "In der Free-Version sind alle Gäste. Pro erkennt Mitglieder."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:313
+#: src/Admin/HelpCenter/Content/SetupArticles.php:312
 msgid "Members can get benefits in the shop: a member price, free shipping and payment after receipt. For that, the shop must know who is a member. This needs Kontor Shop Pro."
 msgstr "Mitglieder können im Shop Vorteile bekommen: einen Mitgliedspreis, Gratisversand und Zahlung nach Erhalt. Dafür muss der Shop wissen, wer Mitglied ist. Das braucht Kontor Shop Pro."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:315
+#: src/Admin/HelpCenter/Content/SetupArticles.php:314
 msgid "Decide whether members should get benefits at all. If not, there is nothing to set up."
 msgstr "Überleg, ob Mitglieder überhaupt Vorteile bekommen sollen. Wenn nicht, gibt es nichts einzurichten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:316
+#: src/Admin/HelpCenter/Content/SetupArticles.php:315
 msgid "If yes: get Kontor Shop Pro."
 msgstr "Wenn ja: Hol dir Kontor Shop Pro."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:316
+#: src/Admin/HelpCenter/Content/SetupArticles.php:315
 #: src/Admin/HelpCenter/HelpCenter.php:258
 #: src/Admin/Upgrade/PricingPage.php:95
 msgid "Plans & pricing"
 msgstr "Pläne & Preise"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:317
+#: src/Admin/HelpCenter/Content/SetupArticles.php:316
 msgid "Open Kontor Shop → Settings → Membership. This section only exists with Pro."
 msgstr "Öffne Kontor Shop → Einstellungen → Mitgliedschaft. Diesen Bereich gibt es nur mit Pro."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:318
+#: src/Admin/HelpCenter/Content/SetupArticles.php:317
 msgid "Choose the “Membership provider” your club uses for member logins."
 msgstr "Wähl den „Mitgliedschafts-Provider“, über den sich die Mitglieder deines Vereins anmelden."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:319
+#: src/Admin/HelpCenter/Content/SetupArticles.php:318
 msgid "Choose who gets benefits under “Membership benefits apply to” and click “Save”."
 msgstr "Wähl unter „Mitgliedsvorteile gelten für“, wer Vorteile bekommt, und klick auf „Speichern“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:320
+#: src/Admin/HelpCenter/Content/SetupArticles.php:319
 msgid "Set the member prices on the products, and the member options under Shipping and Payment."
 msgstr "Trag die Mitgliedspreise bei den Artikeln ein und stell die Mitglieder-Optionen unter Versand und Zahlung ein."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:323
+#: src/Admin/HelpCenter/Content/SetupArticles.php:322
 msgid "Free version: nobody counts as a member. Everyone pays the normal price and normal shipping and sees the payment methods you set."
 msgstr "Free-Version: Niemand gilt als Mitglied. Alle zahlen den Normalpreis und den normalen Versand und sehen die Zahlungsarten, die du eingestellt hast."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:324
+#: src/Admin/HelpCenter/Content/SetupArticles.php:323
 msgid "With Pro and a provider: logged-in members see their member price, and the benefits you turned on apply at checkout."
 msgstr "Mit Pro und Provider: Angemeldete Mitglieder sehen ihren Mitgliedspreis, und die eingeschalteten Vorteile gelten an der Kasse."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:325
+#: src/Admin/HelpCenter/Content/SetupArticles.php:324
 msgid "Their name, email, phone and address are prefilled at checkout. Only what is sent with the order is saved."
 msgstr "Name, E-Mail, Telefon und Adresse sind an der Kasse schon ausgefüllt. Gespeichert wird nur, was mit der Bestellung abgeschickt wird."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:326
+#: src/Admin/HelpCenter/Content/SetupArticles.php:325
 msgid "Visitors who aren’t logged in see “Member? Log in now” in the cart and at checkout, as long as the login notice is on."
 msgstr "Wer nicht angemeldet ist, sieht im Warenkorb und an der Kasse „Mitglied? Jetzt anmelden“, solange der Anmelde-Hinweis eingeschaltet ist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:330
+#: src/Admin/HelpCenter/Content/SetupArticles.php:329
 msgid "The fields with Pro"
 msgstr "Die Felder mit Pro"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:332
+#: src/Admin/HelpCenter/Content/SetupArticles.php:331
 msgid "Membership provider: how the shop knows whether someone is a member. The shop has no login of its own. “No membership provider” means everyone is a guest."
 msgstr "Mitgliedschafts-Provider: woher der Shop weiss, ob jemand Mitglied ist. Der Shop hat keine eigene Anmeldung. „Kein Mitgliedschafts-Provider“ heisst: Alle sind Gäste."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:333
+#: src/Admin/HelpCenter/Content/SetupArticles.php:332
 msgid "Membership benefits apply to: all active members, or only members whose fee for the current year is marked as paid."
 msgstr "Mitgliedsvorteile gelten für: alle aktiven Mitglieder oder nur Mitglieder, deren Beitrag für das laufende Jahr als bezahlt eingetragen ist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:334
+#: src/Admin/HelpCenter/Content/SetupArticles.php:333
 msgid "Previous year’s fee is still valid until: only for “paid fee”. Example 31.03.: until the end of March, last year’s fee is enough."
 msgstr "Vorjahresbeitrag reicht noch bis: nur bei „bezahlter Beitrag“. Beispiel 31.03.: Bis Ende März reicht der Beitrag vom Vorjahr."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:335
+#: src/Admin/HelpCenter/Content/SetupArticles.php:334
 msgid "Login notice and login page: the link in the cart and at checkout. Leave the login page empty to use the provider’s own login page."
 msgstr "Anmelde-Hinweis und Anmeldeseite: der Link im Warenkorb und an der Kasse. Lass die Anmeldeseite leer, dann gilt die Anmeldeseite des Providers."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:336
+#: src/Admin/HelpCenter/Content/SetupArticles.php:335
 msgid "The shop checks the membership status again at most every 5 minutes. A cancelled membership or a missing fee takes effect within 5 minutes."
 msgstr "Der Shop fragt den Mitgliedsstatus höchstens alle 5 Minuten neu ab. Ein Austritt oder ein fehlender Beitrag wirkt also spätestens nach 5 Minuten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:341
+#: src/Admin/HelpCenter/Content/SetupArticles.php:340
 msgid "Can I give members a discount in the free version?"
 msgstr "Kann ich Mitgliedern in der Free-Version einen Rabatt geben?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:341
+#: src/Admin/HelpCenter/Content/SetupArticles.php:340
 msgid "Not automatically, because the free version doesn’t know who is a member. Member prices and discount codes come with Kontor Shop Pro."
 msgstr "Nicht automatisch, denn die Free-Version weiss nicht, wer Mitglied ist. Mitgliedspreise und Rabattcodes gibt es mit Kontor Shop Pro."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:342
+#: src/Admin/HelpCenter/Content/SetupArticles.php:341
 msgid "Do members need a separate shop account?"
 msgstr "Brauchen Mitglieder ein eigenes Shop-Konto?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:342
+#: src/Admin/HelpCenter/Content/SetupArticles.php:341
 msgid "No. Members log in where your club already manages them, through the membership provider. The shop then recognizes them."
 msgstr "Nein. Mitglieder melden sich dort an, wo dein Verein sie schon verwaltet, über den Mitgliedschafts-Provider. Der Shop erkennt sie dann."
 
 #. translators: %s: settings section
-#: src/Admin/HelpCenter/Content/SetupArticles.php:357
+#: src/Admin/HelpCenter/Content/SetupArticles.php:356
 #: src/Admin/Settings/MailSection.php:26
 #: src/Admin/ShopSnapshot.php:211
 #: src/Modules/Notifications/PoweredBy.php:155
 msgid "Email sending"
 msgstr "E-Mail-Versand"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:358
+#: src/Admin/HelpCenter/Content/SetupArticles.php:357
 msgid "Sender, SMTP plugin, recipients of “New order” and the outbox."
 msgstr "Absender, SMTP-Plugin, Empfänger von „Neue Bestellung“ und Postausgang."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:361
+#: src/Admin/HelpCenter/Content/SetupArticles.php:360
 msgid "The shop sends emails to customers and to you. Here you set where they come from and who hears about new orders, so that the emails arrive and don’t end up in spam."
 msgstr "Der Shop schickt Mails an Kunden und an dich. Hier legst du fest, von wem sie kommen und wer von neuen Bestellungen erfährt, damit die Mails ankommen und nicht im Spam landen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:363
+#: src/Admin/HelpCenter/Content/SetupArticles.php:362
 msgid "Open Kontor Shop → Settings → Email sending."
 msgstr "Öffne Kontor Shop → Einstellungen → E-Mail-Versand."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:364
+#: src/Admin/HelpCenter/Content/SetupArticles.php:363
 msgid "If the notice under “Email sending method” recommends it, install and set up an SMTP plugin such as WP Mail SMTP."
 msgstr "Wenn der Hinweis unter „Mail-Versandweg“ es empfiehlt, installier und richte ein SMTP-Plugin wie WP Mail SMTP ein."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:365
+#: src/Admin/HelpCenter/Content/SetupArticles.php:364
 msgid "Enter a “Sender name”, e.g. the name of your club shop."
 msgstr "Trag einen „Absendernamen“ ein, z. B. den Namen deines Vereinsshops."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:366
+#: src/Admin/HelpCenter/Content/SetupArticles.php:365
 msgid "Enter a “Sender address” on your website’s domain and a “Reply to” address that someone reads."
 msgstr "Trag eine „Absenderadresse“ auf der Domain deiner Website ein und eine Adresse bei „Antworten an“, die jemand liest."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:367
+#: src/Admin/HelpCenter/Content/SetupArticles.php:366
 msgid "Under “Shop owner address”, enter who gets new orders. Separate several addresses with commas."
 msgstr "Trag unter „Adresse Shop-Betreiber“ ein, wer neue Bestellungen bekommt. Trenne mehrere Adressen mit Kommas."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:368
+#: src/Admin/HelpCenter/Content/SetupArticles.php:367
 msgid "Click “Save”, then send a test email under Settings → System."
 msgstr "Klick auf „Speichern“ und schick dann unter Einstellungen → System eine Testmail."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:371
+#: src/Admin/HelpCenter/Content/SetupArticles.php:370
 msgid "Customers see your sender name and address in their inbox. Their replies go to the “Reply to” address."
 msgstr "Kunden sehen deinen Absendernamen und deine Adresse im Posteingang. Ihre Antworten gehen an die Adresse bei „Antworten an“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:372
+#: src/Admin/HelpCenter/Content/SetupArticles.php:371
 msgid "The shop owner address gets “New order” and warnings about serious errors. If it is empty, the email address of the WordPress administrator is used."
 msgstr "Die Adresse Shop-Betreiber bekommt „Neue Bestellung“ und Warnungen bei schweren Fehlern. Ist sie leer, wird die E-Mail-Adresse des WordPress-Administrators verwendet."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:373
+#: src/Admin/HelpCenter/Content/SetupArticles.php:372
 msgid "If an email can’t be sent, it waits in the “Outbox” at the bottom and is retried automatically after 5 minutes, 30 minutes, 2, 6 and 24 hours."
 msgstr "Kann eine Mail nicht verschickt werden, wartet sie unten im „Postausgang“ und wird automatisch nach 5 Minuten, 30 Minuten, 2, 6 und 24 Stunden erneut versucht."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:377
+#: src/Admin/HelpCenter/Content/SetupArticles.php:376
 msgid "Why an SMTP plugin?"
 msgstr "Warum ein SMTP-Plugin?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:379
+#: src/Admin/HelpCenter/Content/SetupArticles.php:378
 msgid "Without one, WordPress sends emails straight from the web server. Many mailboxes treat them as spam or reject them. An SMTP plugin sends through a real mailbox of your club instead."
 msgstr "Ohne eines verschickt WordPress Mails direkt vom Webserver. Viele Postfächer halten sie für Spam oder lehnen sie ab. Ein SMTP-Plugin verschickt stattdessen über ein echtes Postfach deines Vereins."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:380
+#: src/Admin/HelpCenter/Content/SetupArticles.php:379
 msgid "The section shows whether an SMTP plugin was found. If you may install plugins, you also get a link to install or set up WP Mail SMTP."
 msgstr "Der Bereich zeigt, ob ein SMTP-Plugin gefunden wurde. Darfst du Plugins installieren, bekommst du auch einen Link, um WP Mail SMTP zu installieren oder einzurichten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:384
+#: src/Admin/HelpCenter/Content/SetupArticles.php:383
 msgid "Sender and reply address"
 msgstr "Absender und Antwortadresse"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:386
+#: src/Admin/HelpCenter/Content/SetupArticles.php:385
 msgid "Sender name: how the sender appears in the inbox. Empty uses the default of WordPress or the SMTP plugin."
 msgstr "Absendername: so erscheint der Absender im Posteingang. Leer = Vorgabe von WordPress oder dem SMTP-Plugin."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:387
+#: src/Admin/HelpCenter/Content/SetupArticles.php:386
 msgid "Sender address: use an address on your own domain that your SMTP account may send from. Addresses like @gmail.com usually end up in spam. The section warns you if the domain doesn’t match."
 msgstr "Absenderadresse: Nimm eine Adresse auf deiner eigenen Domain, von der dein SMTP-Konto senden darf. Adressen wie @gmail.com landen meist im Spam. Der Bereich warnt dich, wenn die Domain nicht passt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:388
+#: src/Admin/HelpCenter/Content/SetupArticles.php:387
 msgid "If “Force From Email” is on in WP Mail SMTP, its address always wins. The section then tells you."
 msgstr "Ist in WP Mail SMTP „Absender erzwingen“ aktiv, gilt immer dessen Adresse. Der Bereich sagt dir das dann."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:389
+#: src/Admin/HelpCenter/Content/SetupArticles.php:388
 msgid "Reply to: optional. Useful when the sender is a no-reply address."
 msgstr "Antworten an: optional. Praktisch, wenn der Absender eine No-Reply-Adresse ist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:393
+#: src/Admin/HelpCenter/Content/SetupArticles.php:392
 #: src/Admin/Settings/MailSection.php:91
 msgid "Outbox"
 msgstr "Postausgang"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:395
+#: src/Admin/HelpCenter/Content/SetupArticles.php:394
 msgid "Emails that no sending method accepted are listed here with the last error."
 msgstr "Mails, die kein Versandweg angenommen hat, stehen hier mit dem letzten Fehler."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:396
+#: src/Admin/HelpCenter/Content/SetupArticles.php:395
 msgid "After the last automatic attempt, an email counts as “abandoned”."
 msgstr "Nach dem letzten automatischen Versuch gilt eine Mail als „aufgegeben“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:397
+#: src/Admin/HelpCenter/Content/SetupArticles.php:396
 msgid "“Resend now” tries all listed emails again, e.g. after you fixed the SMTP plugin."
 msgstr "„Jetzt erneut senden“ versucht alle aufgelisteten Mails noch einmal, z. B. nachdem du das SMTP-Plugin repariert hast."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:398
+#: src/Admin/HelpCenter/Content/SetupArticles.php:397
 msgid "“Discard” removes a single email. Abandoned emails are deleted after 30 days."
 msgstr "„Verwerfen“ entfernt eine einzelne Mail. Aufgegebene Mails werden nach 30 Tagen gelöscht."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:402
+#: src/Admin/HelpCenter/Content/SetupArticles.php:401
 msgid "The line “Club shop with Kontor Shop”"
 msgstr "Die Zeile „Vereinsshop mit Kontor Shop“"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:403
+#: src/Admin/HelpCenter/Content/SetupArticles.php:402
 msgid "In the free version, you can show a small line “Club shop with Kontor Shop” with a link under your emails and on the order confirmation. It is voluntary and only appears if you agree. Untick it under “4. Support Kontor Shop” to remove it. Pro never shows this line."
 msgstr "In der Free-Version kannst du unter deinen Mails und auf der Bestellbestätigung eine kleine Zeile „Vereinsshop mit Kontor Shop“ mit Link zeigen. Das ist freiwillig und erscheint nur, wenn du zustimmst. Nimm das Häkchen unter „4. Kontor Shop unterstützen“ weg, um sie zu entfernen. Pro zeigt diese Zeile nie."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:407
+#: src/Admin/HelpCenter/Content/SetupArticles.php:406
 msgid "Customers say they got no order confirmation."
 msgstr "Kunden sagen, sie haben keine Bestellbestätigung bekommen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:407
+#: src/Admin/HelpCenter/Content/SetupArticles.php:406
 msgid "Ask them to check their spam folder. Then look at the outbox in this section and at “Last email sent” in Settings → System. The most common causes are a missing SMTP plugin or a sender address from another domain."
 msgstr "Bitte sie, im Spam-Ordner nachzusehen. Schau dann in den Postausgang in diesem Bereich und bei „Letzter Mailversand“ unter Einstellungen → System. Die häufigsten Ursachen sind ein fehlendes SMTP-Plugin oder eine Absenderadresse von einer anderen Domain."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:408
+#: src/Admin/HelpCenter/Content/SetupArticles.php:407
 msgid "Can several people get the “New order” email?"
 msgstr "Können mehrere Leute die Mail „Neue Bestellung“ bekommen?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:408
+#: src/Admin/HelpCenter/Content/SetupArticles.php:407
 msgid "Yes. Enter several addresses separated by commas, or add users and addresses under Settings → Email templates → “New order”."
 msgstr "Ja. Trag mehrere Adressen getrennt durch Kommas ein, oder füg unter Einstellungen → E-Mail-Vorlagen → „Neue Bestellung“ Benutzer und Adressen hinzu."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:409
+#: src/Admin/HelpCenter/Content/SetupArticles.php:408
 msgid "Where do I change what the emails say?"
 msgstr "Wo ändere ich, was in den Mails steht?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:409
+#: src/Admin/HelpCenter/Content/SetupArticles.php:408
 msgid "Under Kontor Shop → Settings → Email templates."
 msgstr "Unter Kontor Shop → Einstellungen → E-Mail-Vorlagen."
 
 #. translators: %s: link “Email templates”
-#: src/Admin/HelpCenter/Content/SetupArticles.php:424
+#: src/Admin/HelpCenter/Content/SetupArticles.php:423
 #: src/Admin/Settings/MailSection.php:187
 #: src/Admin/Settings/MailSection.php:213
 #: src/Admin/Settings/TemplatesSection.php:32
@@ -4149,700 +4144,700 @@ msgstr "Unter Kontor Shop → Einstellungen → E-Mail-Vorlagen."
 msgid "Email templates"
 msgstr "E-Mail-Vorlagen"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:425
+#: src/Admin/HelpCenter/Content/SetupArticles.php:424
 msgid "Which emails the shop sends and what they say."
 msgstr "Welche Mails der Shop verschickt und was darin steht."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:428
+#: src/Admin/HelpCenter/Content/SetupArticles.php:427
 msgid "The shop comes with ready-made texts for every email. Here you switch single emails on or off, change their texts and choose who gets the internal ones."
 msgstr "Der Shop bringt für jede Mail fertige Texte mit. Hier schaltest du einzelne Mails ein oder aus, änderst ihre Texte und wählst, wer die internen Mails bekommt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:430
+#: src/Admin/HelpCenter/Content/SetupArticles.php:429
 msgid "Open Kontor Shop → Settings → Email templates."
 msgstr "Öffne Kontor Shop → Einstellungen → E-Mail-Vorlagen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:431
+#: src/Admin/HelpCenter/Content/SetupArticles.php:430
 msgid "Click an email in the list on the left, e.g. “Order confirmation”."
 msgstr "Klick links in der Liste auf eine Mail, z. B. „Bestellbestätigung“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:432
+#: src/Admin/HelpCenter/Content/SetupArticles.php:431
 msgid "Change the subject and the text. Click a placeholder to insert it where the cursor is."
 msgstr "Ändere Betreff und Text. Klick auf einen Platzhalter, um ihn an der Stelle des Cursors einzufügen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:433
+#: src/Admin/HelpCenter/Content/SetupArticles.php:432
 msgid "For internal emails, choose the people under “Recipients”."
 msgstr "Wähl bei internen Mails unter „Empfänger“ die Personen aus."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:434
+#: src/Admin/HelpCenter/Content/SetupArticles.php:433
 msgid "Click “Save & send test email to me” to see the email with sample data."
 msgstr "Klick auf „Speichern & Testmail an mich“, um die Mail mit Beispieldaten zu sehen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:435
+#: src/Admin/HelpCenter/Content/SetupArticles.php:434
 msgid "Click “Save” when you are happy with it."
 msgstr "Klick auf „Speichern“, wenn du zufrieden bist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:438
+#: src/Admin/HelpCenter/Content/SetupArticles.php:437
 msgid "From the next email on, your text is used. The placeholders are replaced with the data of the real order."
 msgstr "Ab der nächsten Mail gilt dein Text. Die Platzhalter werden durch die Daten der echten Bestellung ersetzt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:439
+#: src/Admin/HelpCenter/Content/SetupArticles.php:438
 msgid "An email with “Send this email” unticked isn’t sent anymore. The list shows it as “off”."
 msgstr "Eine Mail ohne Häkchen bei „Diese Mail verschicken“ wird nicht mehr verschickt. Die Liste zeigt sie als „aus“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:440
+#: src/Admin/HelpCenter/Content/SetupArticles.php:439
 msgid "“Reset to default” brings back the original subject and text of this one email. Your changes to it are lost."
 msgstr "„Auf Standard zurücksetzen“ holt Betreff und Text dieser einen Mail zurück. Deine Änderungen daran gehen verloren."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:444
+#: src/Admin/HelpCenter/Content/SetupArticles.php:443
 msgid "The emails"
 msgstr "Die Mails"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:446
+#: src/Admin/HelpCenter/Content/SetupArticles.php:445
 msgid "Order confirmation: to the customer right after ordering, with amount, IBAN, payment reference and deadline."
 msgstr "Bestellbestätigung: an den Kunden direkt nach der Bestellung, mit Betrag, IBAN, Zahlungsreferenz und Frist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:447
+#: src/Admin/HelpCenter/Content/SetupArticles.php:446
 msgid "New order: internal, for every new order."
 msgstr "Neue Bestellung: intern, bei jeder neuen Bestellung."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:448
+#: src/Admin/HelpCenter/Content/SetupArticles.php:447
 msgid "Payment reminder and invoice payment reminder: to the customer when you click “Send payment reminder” in the order."
 msgstr "Zahlungserinnerung und Zahlungserinnerung Rechnung: an den Kunden, wenn du in der Bestellung auf „Zahlungserinnerung senden“ klickst."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:449
+#: src/Admin/HelpCenter/Content/SetupArticles.php:448
 msgid "Payment received: to the customer when you mark the order as paid."
 msgstr "Zahlung erhalten: an den Kunden, wenn du die Bestellung als bezahlt markierst."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:450
+#: src/Admin/HelpCenter/Content/SetupArticles.php:449
 msgid "Shipping order to warehouse: internal, one email per warehouse with its products. For prepayment after the payment, for “On invoice” right after ordering."
 msgstr "Versandauftrag ans Lager: intern, eine Mail je Lager mit dessen Artikeln. Bei Vorkasse nach der Zahlung, bei „Auf Rechnung“ gleich nach der Bestellung."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:451
+#: src/Admin/HelpCenter/Content/SetupArticles.php:450
 msgid "Shipped / picked up: to the customer when the order is marked as shipped or picked up."
 msgstr "Versendet / abgeholt: an den Kunden, wenn die Bestellung als versendet oder abgeholt markiert wird."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:452
+#: src/Admin/HelpCenter/Content/SetupArticles.php:451
 msgid "Ready for pickup: to the customer of a pickup order when you click “Ready for pickup” in the order, with the warehouse address."
 msgstr "Abholbereit: an den Kunden einer Abhol-Bestellung, wenn du in der Bestellung auf „Abholbereit“ klickst, mit der Adresse des Lagers."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:453
+#: src/Admin/HelpCenter/Content/SetupArticles.php:452
 msgid "Order cancelled, Product cancelled and Return received: to the customer, with the refund or the new amount."
 msgstr "Bestellung storniert, Artikel storniert und Retoure eingegangen: an den Kunden, mit der Rückzahlung oder dem neuen Betrag."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:454
+#: src/Admin/HelpCenter/Content/SetupArticles.php:453
 msgid "Cancellation / refund: internal, e.g. so the cashier takes care of the refund."
 msgstr "Storno / Rückzahlung: intern, z. B. damit sich der Kassier um die Rückzahlung kümmert."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:455
+#: src/Admin/HelpCenter/Content/SetupArticles.php:454
 msgid "Pro adds more emails, e.g. for back-in-stock requests."
 msgstr "Pro bringt weitere Mails mit, z. B. für Verfügbarkeitsanfragen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:459
+#: src/Admin/HelpCenter/Content/SetupArticles.php:458
 msgid "Placeholders"
 msgstr "Platzhalter"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:461
+#: src/Admin/HelpCenter/Content/SetupArticles.php:460
 msgid "Placeholders look like {{order_number}}. Each email only offers the placeholders that fit it, with plain names like “Order number” or “Payment details (bank, deadline)”."
 msgstr "Platzhalter sehen so aus: {{order_number}}. Jede Mail bietet nur die Platzhalter an, die zu ihr passen, mit verständlichen Namen wie „Bestellnummer“ oder „Zahlungsdaten (Bank, Frist)“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:462
+#: src/Admin/HelpCenter/Content/SetupArticles.php:461
 msgid "Don’t change the text between the curly brackets, otherwise it isn’t replaced anymore."
 msgstr "Ändere den Text zwischen den geschweiften Klammern nicht, sonst wird er nicht mehr ersetzt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:463
+#: src/Admin/HelpCenter/Content/SetupArticles.php:462
 msgid "Sender and reply address aren’t set here but under Email sending."
 msgstr "Absender und Antwortadresse stellst du nicht hier ein, sondern unter E-Mail-Versand."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:468
+#: src/Admin/HelpCenter/Content/SetupArticles.php:467
 msgid "Can I turn off the order confirmation?"
 msgstr "Kann ich die Bestellbestätigung abschalten?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:468
+#: src/Admin/HelpCenter/Content/SetupArticles.php:467
 msgid "Yes, but then the customer only sees the amount, bank details and payment reference on the confirmation page in the browser. The shop warns you about this. “Resend confirmation” in the order still works."
 msgstr "Ja, aber dann sieht der Kunde Betrag, Bankdaten und Zahlungsreferenz nur auf der Bestätigungsseite im Browser. Der Shop warnt dich davor. „Bestätigung erneut senden“ in der Bestellung funktioniert weiterhin."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:469
+#: src/Admin/HelpCenter/Content/SetupArticles.php:468
 msgid "Where does the test email go?"
 msgstr "Wohin geht die Testmail?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:469
+#: src/Admin/HelpCenter/Content/SetupArticles.php:468
 msgid "To the email address of your own WordPress user. It contains sample data, not a real order."
 msgstr "An die E-Mail-Adresse deines eigenen WordPress-Benutzers. Sie enthält Beispieldaten, keine echte Bestellung."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:470
+#: src/Admin/HelpCenter/Content/SetupArticles.php:469
 msgid "I messed up a template. How do I get the original back?"
 msgstr "Ich habe eine Vorlage verhunzt. Wie bekomme ich das Original zurück?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:470
+#: src/Admin/HelpCenter/Content/SetupArticles.php:469
 msgid "Open the template and click “Reset to default”. Only this one email is reset."
 msgstr "Öffne die Vorlage und klick auf „Auf Standard zurücksetzen“. Nur diese eine Mail wird zurückgesetzt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:485
+#: src/Admin/HelpCenter/Content/SetupArticles.php:484
 msgid "Roles & permissions"
 msgstr "Rollen & Rechte"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:486
+#: src/Admin/HelpCenter/Content/SetupArticles.php:485
 msgid "Who may do what: administrator, shop manager, cashier."
 msgstr "Wer was darf: Administrator, Shop-Manager, Kassier."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:489
+#: src/Admin/HelpCenter/Content/SetupArticles.php:488
 msgid "Not everyone in the club needs full access. Here you make people cashiers, so they can record payments without changing products or settings."
 msgstr "Nicht jeder im Verein braucht vollen Zugriff. Hier machst du Personen zu Kassieren, damit sie Zahlungen erfassen können, ohne Artikel oder Einstellungen zu ändern."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:491
+#: src/Admin/HelpCenter/Content/SetupArticles.php:490
 msgid "If the person has no WordPress user yet, create one under Users → Add New."
 msgstr "Hat die Person noch keinen WordPress-Benutzer, leg unter Benutzer → Neu hinzufügen einen an."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:492
+#: src/Admin/HelpCenter/Content/SetupArticles.php:491
 msgid "For a shop manager: open the user under Users, choose the role “Shop manager” and save."
 msgstr "Für einen Shop-Manager: Öffne den Benutzer unter Benutzer, wähl die Rolle „Shop-Manager“ und speichere."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:493
+#: src/Admin/HelpCenter/Content/SetupArticles.php:492
 msgid "For a cashier: open Kontor Shop → Settings → Roles."
 msgstr "Für einen Kassier: Öffne Kontor Shop → Einstellungen → Rollen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:494
+#: src/Admin/HelpCenter/Content/SetupArticles.php:493
 msgid "Tick “Cashier” next to the person. If the list is long, use the search field."
 msgstr "Hake „Kassier“ neben der Person an. Ist die Liste lang, nimm das Suchfeld."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:495
-#: src/Admin/HelpCenter/Content/SetupArticles.php:601
+#: src/Admin/HelpCenter/Content/SetupArticles.php:494
+#: src/Admin/HelpCenter/Content/SetupArticles.php:600
 #: src/Admin/HelpCenter/Content/ShopArticles.php:38
 msgid "Click “Save”."
 msgstr "Klick auf „Speichern“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:498
+#: src/Admin/HelpCenter/Content/SetupArticles.php:497
 msgid "From their next page load, the person sees the Kontor Shop menu with the areas their role allows."
 msgstr "Ab dem nächsten Seitenaufruf sieht die Person das Menü Kontor Shop mit den Bereichen, die ihre Rolle erlaubt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:499
+#: src/Admin/HelpCenter/Content/SetupArticles.php:498
 msgid "If you untick someone, they lose these permissions right away."
 msgstr "Nimmst du bei jemandem das Häkchen weg, verliert er diese Rechte sofort."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:503
+#: src/Admin/HelpCenter/Content/SetupArticles.php:502
 msgid "Who sees what"
 msgstr "Wer was sieht"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:505
+#: src/Admin/HelpCenter/Content/SetupArticles.php:504
 msgid "Administrator: everything, including settings, email templates and logs. Administrators always have all permissions; their row shows “automatic”."
 msgstr "Administrator: alles, auch Einstellungen, E-Mail-Vorlagen und Protokolle. Administratoren haben immer alle Rechte; in ihrer Zeile steht „automatisch“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:506
+#: src/Admin/HelpCenter/Content/SetupArticles.php:505
 msgid "Shop manager (a WordPress role): orders, products, stock, categories and warehouse. No settings, no email templates, no logs."
 msgstr "Shop-Manager (eine WordPress-Rolle): Bestellungen, Artikel, Bestand, Kategorien und Lager. Keine Einstellungen, keine E-Mail-Vorlagen, keine Protokolle."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:507
+#: src/Admin/HelpCenter/Content/SetupArticles.php:506
 msgid "Cashier: sees the dashboard and the orders. Can mark orders as paid, send payment reminders, cancel orders and record returns and refunds. Can’t change products, book stock or ship orders."
 msgstr "Kassier: sieht die Übersicht und die Bestellungen. Darf Bestellungen als bezahlt markieren, Zahlungserinnerungen senden, Bestellungen stornieren und Retouren und Rückzahlungen erfassen. Darf keine Artikel ändern, keinen Bestand buchen und nichts versenden."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:508
+#: src/Admin/HelpCenter/Content/SetupArticles.php:507
 msgid "Warehouse manager: comes with Kontor Shop Pro. The person responsible for a warehouse only sees its orders and stock and packs its parcels."
 msgstr "Lagerverwalter: gibt es mit Kontor Shop Pro. Die zuständige Person eines Lagers sieht nur dessen Bestellungen und Bestand und packt dessen Pakete."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:513
+#: src/Admin/HelpCenter/Content/SetupArticles.php:512
 msgid "Why can’t a cashier mark an order as shipped?"
 msgstr "Warum kann ein Kassier eine Bestellung nicht als versendet markieren?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:513
+#: src/Admin/HelpCenter/Content/SetupArticles.php:512
 msgid "Shipping changes the stock. That is for administrators and shop managers, and with Pro also for the warehouse manager of the warehouse."
 msgstr "Versenden ändert den Bestand. Das dürfen Administratoren und Shop-Manager, mit Pro auch der Lagerverwalter des Lagers."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:514
+#: src/Admin/HelpCenter/Content/SetupArticles.php:513
 msgid "Why can’t I tick or untick some people?"
 msgstr "Warum kann ich bei manchen Personen kein Häkchen setzen oder wegnehmen?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:514
+#: src/Admin/HelpCenter/Content/SetupArticles.php:513
 msgid "They are administrators. Administrators always have all permissions."
 msgstr "Sie sind Administratoren. Administratoren haben immer alle Rechte."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:515
+#: src/Admin/HelpCenter/Content/SetupArticles.php:514
 msgid "Can a shop manager change the bank account?"
 msgstr "Kann ein Shop-Manager das Bankkonto ändern?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:515
+#: src/Admin/HelpCenter/Content/SetupArticles.php:514
 msgid "No. Bank accounts are in the settings, which only administrators can open."
 msgstr "Nein. Bankkonten stehen in den Einstellungen, und die können nur Administratoren öffnen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:530
+#: src/Admin/HelpCenter/Content/SetupArticles.php:529
 msgid "System check, test email & uninstall"
 msgstr "Systemprüfung, Testmail & Deinstallation"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:531
+#: src/Admin/HelpCenter/Content/SetupArticles.php:530
 msgid "Check that the shop runs, send a test email, choose what happens on deletion."
 msgstr "Prüfen, ob der Shop läuft, Testmail schicken, festlegen, was beim Löschen passiert."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:534
+#: src/Admin/HelpCenter/Content/SetupArticles.php:533
 msgid "Here you see in one place whether the shop is ready: database, background tasks, emails, shop pages and the most important settings. You also decide what happens to your data if the plugin is ever deleted."
 msgstr "Hier siehst du auf einen Blick, ob der Shop bereit ist: Datenbank, Hintergrund-Aufgaben, Mails, Shop-Seiten und die wichtigsten Einstellungen. Ausserdem legst du fest, was mit deinen Daten passiert, falls das Plugin einmal gelöscht wird."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:536
+#: src/Admin/HelpCenter/Content/SetupArticles.php:535
 msgid "Open Kontor Shop → Settings → System."
 msgstr "Öffne Kontor Shop → Einstellungen → System."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:537
+#: src/Admin/HelpCenter/Content/SetupArticles.php:536
 msgid "Go through the “System check”. A tick means fine, a warning sign means please check, a cross means something doesn’t work."
 msgstr "Geh die „Systemprüfung“ durch. Ein Haken heisst in Ordnung, ein Warndreieck heisst bitte prüfen, ein Kreuz heisst, etwas funktioniert nicht."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:538
+#: src/Admin/HelpCenter/Content/SetupArticles.php:537
 msgid "Click “Send test email”. It goes to the first recipient of “New order”."
 msgstr "Klick auf „Testmail senden“. Sie geht an den ersten Empfänger von „Neue Bestellung“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:539
+#: src/Admin/HelpCenter/Content/SetupArticles.php:538
 msgid "Check that inbox, including the spam folder."
 msgstr "Schau in diesem Postfach nach, auch im Spam-Ordner."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:540
+#: src/Admin/HelpCenter/Content/SetupArticles.php:539
 msgid "Under “Uninstall”, choose whether the data is kept or removed when the plugin is deleted, and click “Save”."
 msgstr "Wähl unter „Deinstallation“, ob die Daten beim Löschen des Plugins bleiben oder entfernt werden, und klick auf „Speichern“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:543
+#: src/Admin/HelpCenter/Content/SetupArticles.php:542
 msgid "The notices in the system check don’t block anything. Customers can order even if there is a warning."
 msgstr "Die Hinweise der Systemprüfung blockieren nichts. Kunden können auch bei einer Warnung bestellen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:544
+#: src/Admin/HelpCenter/Content/SetupArticles.php:543
 msgid "After the test email you see whether the server accepted it. Only your inbox shows whether it really arrived."
 msgstr "Nach der Testmail siehst du, ob der Server sie angenommen hat. Ob sie wirklich angekommen ist, zeigt nur dein Postfach."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:545
+#: src/Admin/HelpCenter/Content/SetupArticles.php:544
 msgid "The uninstall choice only matters when the plugin is deleted in the plugin list. Deactivating never changes any data."
 msgstr "Die Wahl bei der Deinstallation zählt nur, wenn das Plugin in der Plugin-Liste gelöscht wird. Deaktivieren ändert nie Daten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:549
+#: src/Admin/HelpCenter/Content/SetupArticles.php:548
 msgid "What the system check shows"
 msgstr "Was die Systemprüfung zeigt"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:551
+#: src/Admin/HelpCenter/Content/SetupArticles.php:550
 msgid "Database tables, database engine and cron: the technical basics. If tables are missing or the cron isn’t scheduled, deactivate and reactivate the plugin once."
 msgstr "Datenbanktabellen, Datenbank-Engine und Cron: die technischen Grundlagen. Fehlen Tabellen oder ist der Cron nicht geplant, deaktiviere das Plugin einmal und aktiviere es wieder."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:552
+#: src/Admin/HelpCenter/Content/SetupArticles.php:551
 msgid "Email: whether WordPress can send, whether an SMTP plugin is found, who gets “New order” and whether the last email failed."
 msgstr "Mail: ob WordPress Mails verschicken kann, ob ein SMTP-Plugin gefunden wurde, wer „Neue Bestellung“ bekommt und ob die letzte Mail fehlgeschlagen ist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:553
+#: src/Admin/HelpCenter/Content/SetupArticles.php:552
 msgid "Error log (24 h): errors of the last day. The details are under Kontor Shop → Logs."
 msgstr "Fehlerprotokoll (24 h): Fehler des letzten Tages. Die Details stehen unter Kontor Shop → Protokolle."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:554
+#: src/Admin/HelpCenter/Content/SetupArticles.php:553
 msgid "Shop page, cart page, checkout page: whether the three shop pages exist and are published."
 msgstr "Shop-Seite, Warenkorb-Seite, Kassen-Seite: ob die drei Shop-Seiten existieren und veröffentlicht sind."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:555
+#: src/Admin/HelpCenter/Content/SetupArticles.php:554
 msgid "Warehouse, bank account, legal texts and VAT: whether the basic settings are in place."
 msgstr "Lager, Bankkonto, Rechtstexte und USt: ob die Grundeinstellungen da sind."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:559
+#: src/Admin/HelpCenter/Content/SetupArticles.php:558
 msgid "Shop pages"
 msgstr "Shop-Seiten"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:561
+#: src/Admin/HelpCenter/Content/SetupArticles.php:560
 msgid "When the plugin is activated, it creates the pages Shop, Cart and Checkout with the matching shortcodes."
 msgstr "Beim Aktivieren legt das Plugin die Seiten Shop, Warenkorb und Kasse mit den passenden Shortcodes an."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:562
+#: src/Admin/HelpCenter/Content/SetupArticles.php:561
 msgid "If a page shows “missing or not published”, look under Pages → Trash in WordPress and restore it, or publish it again. If you deleted it permanently, deactivate and reactivate the plugin: missing pages are created again."
 msgstr "Steht bei einer Seite „fehlt oder nicht veröffentlicht“, schau in WordPress unter Seiten → Papierkorb nach und stell sie wieder her, oder veröffentliche sie erneut. Hast du sie endgültig gelöscht, deaktiviere das Plugin und aktiviere es wieder: Fehlende Seiten werden neu angelegt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:566
+#: src/Admin/HelpCenter/Content/SetupArticles.php:565
 #: src/Admin/Settings/SystemSection.php:149
 msgid "Uninstall"
 msgstr "Deinstallation"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:568
+#: src/Admin/HelpCenter/Content/SetupArticles.php:567
 msgid "“Remove only the plugin – keep data”: products, orders, warehouses, settings, pages and images stay. After a reinstall, everything is back. This is the safe choice."
 msgstr "„Nur das Plugin entfernen – Daten behalten“: Artikel, Bestellungen, Lager, Einstellungen, Seiten und Bilder bleiben. Nach einer Neuinstallation ist alles wieder da. Das ist die sichere Wahl."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:569
+#: src/Admin/HelpCenter/Content/SetupArticles.php:568
 msgid "“Remove the plugin and all data”: deletes all shop tables, settings, the shop pages, images uploaded only for the shop, the “Shop manager” role and all shop permissions. This can’t be undone, so make a backup first."
 msgstr "„Plugin und alle Daten entfernen“: löscht alle Shop-Tabellen, Einstellungen, die Shop-Seiten, nur für den Shop hochgeladene Bilder, die Rolle „Shop-Manager“ und alle Shop-Rechte. Das lässt sich nicht rückgängig machen, mach also vorher eine Sicherung."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:570
+#: src/Admin/HelpCenter/Content/SetupArticles.php:569
 msgid "The same question also appears when you deactivate the plugin."
 msgstr "Dieselbe Frage kommt auch, wenn du das Plugin deaktivierst."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:571
+#: src/Admin/HelpCenter/Content/SetupArticles.php:570
 msgid "If KONTOR_SHOP_UNINSTALL_PURGE_ALL is set in wp-config.php, all data is always removed and the choice is locked."
 msgstr "Ist in der wp-config.php KONTOR_SHOP_UNINSTALL_PURGE_ALL gesetzt, werden immer alle Daten entfernt, und die Auswahl ist gesperrt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:576
+#: src/Admin/HelpCenter/Content/SetupArticles.php:575
 msgid "The “Send test email” button is grayed out."
 msgstr "Der Knopf „Testmail senden“ ist ausgegraut."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:576
+#: src/Admin/HelpCenter/Content/SetupArticles.php:575
 msgid "There is no valid recipient for “New order”. Enter an address under Settings → Email sending → “Shop owner address”, and check the recipients under Email templates → “New order”."
 msgstr "Es gibt keinen gültigen Empfänger für „Neue Bestellung“. Trag unter Einstellungen → E-Mail-Versand → „Adresse Shop-Betreiber“ eine Adresse ein und prüf die Empfänger unter E-Mail-Vorlagen → „Neue Bestellung“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:577
+#: src/Admin/HelpCenter/Content/SetupArticles.php:576
 msgid "The server accepted the test email, but it didn’t arrive."
 msgstr "Der Server hat die Testmail angenommen, aber sie ist nicht angekommen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:577
+#: src/Admin/HelpCenter/Content/SetupArticles.php:576
 msgid "The email was lost on the way. Check the spam folder, then set up an SMTP plugin (see Email sending)."
 msgstr "Die Mail ist unterwegs verloren gegangen. Schau im Spam-Ordner nach und richte dann ein SMTP-Plugin ein (siehe E-Mail-Versand)."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:578
+#: src/Admin/HelpCenter/Content/SetupArticles.php:577
 msgid "The cron line says “WP-Cron is turned off”."
 msgstr "In der Cron-Zeile steht „WP-Cron ist abgeschaltet“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:578
+#: src/Admin/HelpCenter/Content/SetupArticles.php:577
 msgid "Your host has turned off the built-in WordPress timer. Ask them for a server cron that calls wp-cron.php regularly. Otherwise reservations aren’t released and failed emails aren’t retried."
 msgstr "Dein Hoster hat den eingebauten WordPress-Zeitgeber abgeschaltet. Bitte ihn um einen Server-Cron, der regelmässig wp-cron.php aufruft. Sonst werden Reservierungen nicht freigegeben und fehlgeschlagene Mails nicht erneut versucht."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:593
+#: src/Admin/HelpCenter/Content/SetupArticles.php:592
 msgid "AI assistants: shop access"
 msgstr "KI-Assistenten: Shop-Zugang"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:594
+#: src/Admin/HelpCenter/Content/SetupArticles.php:593
 msgid "Let your customers’ AI assistants find your products."
 msgstr "Lass die KI-Assistenten deiner Kunden deine Artikel finden."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:597
+#: src/Admin/HelpCenter/Content/SetupArticles.php:596
 msgid "Customers can ask AI assistants such as ChatGPT, Claude or Gemini about your shop. With shop access on, the assistant searches your shop directly and gets correct prices and availability."
 msgstr "Kunden können KI-Assistenten wie ChatGPT, Claude oder Gemini nach deinem Shop fragen. Mit eingeschaltetem Shop-Zugang durchsucht der Assistent deinen Shop direkt und bekommt richtige Preise und Verfügbarkeit."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:599
+#: src/Admin/HelpCenter/Content/SetupArticles.php:598
 msgid "Open Kontor Shop → Settings → AI assistants."
 msgstr "Öffne Kontor Shop → Einstellungen → KI-Assistenten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:600
+#: src/Admin/HelpCenter/Content/SetupArticles.php:599
 msgid "Tick “Shop access”."
 msgstr "Hake „Shop-Zugang“ an."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:602
+#: src/Admin/HelpCenter/Content/SetupArticles.php:601
 msgid "Click “Copy” next to “Address (MCP server URL)”."
 msgstr "Klick neben „Adresse (MCP-Server-URL)“ auf „Kopieren“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:603
+#: src/Admin/HelpCenter/Content/SetupArticles.php:602
 msgid "Share the address, e.g. on your shop page, with a note that customers can add it as a connector in their assistant."
 msgstr "Gib die Adresse weiter, z. B. auf deiner Shop-Seite, mit dem Hinweis, dass Kunden sie in ihrem Assistenten als Connector hinzufügen können."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:606
+#: src/Admin/HelpCenter/Content/SetupArticles.php:605
 msgid "The address now answers AI assistants. Before that, it is switched off."
 msgstr "Die Adresse antwortet jetzt KI-Assistenten. Vorher ist sie abgeschaltet."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:607
+#: src/Admin/HelpCenter/Content/SetupArticles.php:606
 msgid "Assistants only see what every visitor sees: products, regular prices and whether something is in stock. No customer data, no orders, no stock figures."
 msgstr "Assistenten sehen nur, was jeder Besucher sieht: Artikel, Normalpreise und ob etwas lieferbar ist. Keine Kundendaten, keine Bestellungen, keine Bestandszahlen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:608
+#: src/Admin/HelpCenter/Content/SetupArticles.php:607
 msgid "If you untick shop access and save, it stops right away."
 msgstr "Nimmst du das Häkchen bei Shop-Zugang weg und speicherst, ist sofort Schluss."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:612
+#: src/Admin/HelpCenter/Content/SetupArticles.php:611
 #: src/Admin/Settings/AgentsSection.php:78
 msgid "How customers connect"
 msgstr "So verbinden sich Kunden"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:613
+#: src/Admin/HelpCenter/Content/SetupArticles.php:612
 msgid "The section lists the steps for Claude, ChatGPT and Gemini. The menu names of these apps change from time to time; their help pages under “custom connector” or “MCP” have the current steps."
 msgstr "Der Bereich zeigt die Schritte für Claude, ChatGPT und Gemini. Die Menünamen dieser Apps ändern sich ab und zu; die aktuellen Schritte stehen in deren Hilfe unter „custom connector“ oder „MCP“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:616
+#: src/Admin/HelpCenter/Content/SetupArticles.php:615
 msgid "More with Pro"
 msgstr "Mehr mit Pro"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:617
+#: src/Admin/HelpCenter/Content/SetupArticles.php:616
 msgid "With Kontor Shop Pro, the assistant can also fill the cart and give the customer a ready checkout link. Your team can manage products, images, stock and orders by chat, each person with their own permissions."
 msgstr "Mit Kontor Shop Pro kann der Assistent auch den Warenkorb füllen und dem Kunden einen fertigen Kassen-Link geben. Dein Team kann Artikel, Bilder, Bestand und Bestellungen per Chat verwalten, jede Person mit ihren eigenen Rechten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:621
+#: src/Admin/HelpCenter/Content/SetupArticles.php:620
 msgid "Can the assistant place orders or see member prices?"
 msgstr "Kann der Assistent bestellen oder Mitgliedspreise sehen?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:621
+#: src/Admin/HelpCenter/Content/SetupArticles.php:620
 msgid "Not with the shop access of the free version. It only searches and sees regular prices."
 msgstr "Nicht mit dem Shop-Zugang der Free-Version. Er sucht nur und sieht Normalpreise."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:622
+#: src/Admin/HelpCenter/Content/SetupArticles.php:621
 msgid "Can an assistant overload my website?"
 msgstr "Kann ein Assistent meine Website überlasten?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:622
+#: src/Admin/HelpCenter/Content/SetupArticles.php:621
 msgid "No. Each sender may make at most 600 requests in 10 minutes."
 msgstr "Nein. Jeder Absender darf höchstens 600 Anfragen in 10 Minuten stellen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:638
+#: src/Admin/HelpCenter/Content/SetupArticles.php:637
 msgid "The filters in the shop: create, sort, color, sub-categories."
 msgstr "Die Filter im Shop: anlegen, sortieren, einfärben, Unterkategorien."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:641
+#: src/Admin/HelpCenter/Content/SetupArticles.php:640
 msgid "Categories group your products, e.g. “Jerseys”, “Caps” and “Accessories”. In the shop they appear as filter buttons above the products."
 msgstr "Kategorien fassen deine Artikel zusammen, z. B. „Trikots“, „Kappen“ und „Zubehör“. Im Shop erscheinen sie als Filter-Knöpfe über den Artikeln."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:643
+#: src/Admin/HelpCenter/Content/SetupArticles.php:642
 msgid "Open Kontor Shop → Categories."
 msgstr "Öffne Kontor Shop → Kategorien."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:644
+#: src/Admin/HelpCenter/Content/SetupArticles.php:643
 msgid "Click “Add new category”."
 msgstr "Klick auf „Neue Kategorie anlegen“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:645
+#: src/Admin/HelpCenter/Content/SetupArticles.php:644
 msgid "Enter a name. Optional: choose a “Parent category” and an “Accent color”."
 msgstr "Gib einen Namen ein. Optional: Wähl eine „Übergeordnete Kategorie“ und eine „Akzentfarbe“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:646
+#: src/Admin/HelpCenter/Content/SetupArticles.php:645
 msgid "Click “Add category”."
 msgstr "Klick auf „Kategorie anlegen“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:647
+#: src/Admin/HelpCenter/Content/SetupArticles.php:646
 msgid "In the list, drag a row or use the arrows to change the order."
 msgstr "Zieh in der Liste eine Zeile oder nimm die Pfeile, um die Reihenfolge zu ändern."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:648
+#: src/Admin/HelpCenter/Content/SetupArticles.php:647
 msgid "Assign the category to your products in the product form."
 msgstr "Weise die Kategorie im Artikelformular deinen Artikeln zu."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:651
+#: src/Admin/HelpCenter/Content/SetupArticles.php:650
 msgid "The shop shows “All” and a filter button for each category that has visible products. Empty categories get no button."
 msgstr "Der Shop zeigt „Alle“ und einen Filter-Knopf für jede Kategorie mit sichtbaren Artikeln. Leere Kategorien bekommen keinen Knopf."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:652
+#: src/Admin/HelpCenter/Content/SetupArticles.php:651
 msgid "The order in the list is the order of the buttons in the shop. It applies right away."
 msgstr "Die Reihenfolge in der Liste ist die Reihenfolge der Knöpfe im Shop. Sie gilt sofort."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:653
+#: src/Admin/HelpCenter/Content/SetupArticles.php:652
 msgid "The accent color colors the buttons and highlights on the product cards of this category. Without it, the main color from Design is used."
 msgstr "Die Akzentfarbe färbt Knöpfe und Hervorhebungen auf den Artikelkarten dieser Kategorie. Ohne sie gilt die Hauptfarbe aus Design."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:657
-#: src/Admin/HelpCenter/Content/SetupArticles.php:708
+#: src/Admin/HelpCenter/Content/SetupArticles.php:656
+#: src/Admin/HelpCenter/Content/SetupArticles.php:707
 msgid "The fields"
 msgstr "Die Felder"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:659
+#: src/Admin/HelpCenter/Content/SetupArticles.php:658
 msgid "Name: appears on the filter button and on the product page."
 msgstr "Name: steht auf dem Filter-Knopf und auf der Artikelseite."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:660
+#: src/Admin/HelpCenter/Content/SetupArticles.php:659
 msgid "Parent category: makes this a sub-category. It sets the breadcrumbs above the product page (Shop › Category › Subcategory › Product). With Kontor Shop Pro, every category also gets its own page."
 msgstr "Übergeordnete Kategorie: macht daraus eine Unterkategorie. Sie bestimmt die Brotkrümel über der Artikelseite (Shop › Kategorie › Unterkategorie › Artikel). Mit Kontor Shop Pro bekommt jede Kategorie zusätzlich eine eigene Seite."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:661
+#: src/Admin/HelpCenter/Content/SetupArticles.php:660
 msgid "Accent color: for buttons and highlights of this category. Tick “Use default color” to use the shop color."
 msgstr "Akzentfarbe: für Knöpfe und Hervorhebungen dieser Kategorie. Hake „Standardfarbe verwenden“ an, um die Shop-Farbe zu nehmen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:662
+#: src/Admin/HelpCenter/Content/SetupArticles.php:661
 msgid "Status: untick “Category can be selected in the catalog” to hide the category. Its products then disappear from the shop as well, but stay in the backend."
 msgstr "Status: Nimm das Häkchen bei „Kategorie ist im Katalog wählbar“ weg, um die Kategorie auszublenden. Ihre Artikel verschwinden dann ebenfalls aus dem Shop, bleiben aber im Backend."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:666
+#: src/Admin/HelpCenter/Content/SetupArticles.php:665
 msgid "Deleting a category"
 msgstr "Eine Kategorie löschen"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:667
+#: src/Admin/HelpCenter/Content/SetupArticles.php:666
 msgid "A category can only be deleted if no product is assigned to it, archived ones included. Move the products first (product list, bulk action “Assign category …”) or set the category to inactive."
 msgstr "Eine Kategorie lässt sich nur löschen, wenn ihr kein Artikel zugeordnet ist, auch kein archivierter. Verschieb die Artikel zuerst (Artikelliste, Sammelaktion „Kategorie zuweisen …“) oder schalte die Kategorie auf inaktiv."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:671
+#: src/Admin/HelpCenter/Content/SetupArticles.php:670
 msgid "I created a category but don’t see it in the shop."
 msgstr "Ich habe eine Kategorie angelegt, sehe sie aber nicht im Shop."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:671
+#: src/Admin/HelpCenter/Content/SetupArticles.php:670
 msgid "A button only appears once at least one visible product is in the category. Also check that the category is active."
 msgstr "Ein Knopf erscheint erst, wenn mindestens ein sichtbarer Artikel in der Kategorie ist. Prüf ausserdem, ob die Kategorie aktiv ist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:672
+#: src/Admin/HelpCenter/Content/SetupArticles.php:671
 msgid "Products suddenly disappeared from the shop."
 msgstr "Artikel sind plötzlich aus dem Shop verschwunden."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:672
+#: src/Admin/HelpCenter/Content/SetupArticles.php:671
 msgid "Check whether their category was set to inactive. Products of inactive categories aren’t shown in the shop."
 msgstr "Prüf, ob ihre Kategorie auf inaktiv gestellt wurde. Artikel aus inaktiven Kategorien zeigt der Shop nicht."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:673
+#: src/Admin/HelpCenter/Content/SetupArticles.php:672
 msgid "Can a product be in several categories?"
 msgstr "Kann ein Artikel in mehreren Kategorien sein?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:673
+#: src/Admin/HelpCenter/Content/SetupArticles.php:672
 msgid "No, each product has exactly one category. To group several categories, give them a common parent category."
 msgstr "Nein, jeder Artikel hat genau eine Kategorie. Um mehrere Kategorien zusammenzufassen, gib ihnen eine gemeinsame übergeordnete Kategorie."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:689
+#: src/Admin/HelpCenter/Content/SetupArticles.php:688
 msgid "Where products are shipped from and which account gets the money."
 msgstr "Von wo Artikel versendet werden und welches Konto das Geld bekommt."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:692
+#: src/Admin/HelpCenter/Content/SetupArticles.php:691
 msgid "Every product belongs to a warehouse: the place where it is stored and shipped from. The warehouse also decides which bank account customers transfer the money to."
 msgstr "Jeder Artikel gehört zu einem Lager: dem Ort, an dem er liegt und von dem er versendet wird. Das Lager bestimmt auch, auf welches Bankkonto Kunden das Geld überweisen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:694
+#: src/Admin/HelpCenter/Content/SetupArticles.php:693
 msgid "Open Kontor Shop → Warehouses."
 msgstr "Öffne Kontor Shop → Lager."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:695
+#: src/Admin/HelpCenter/Content/SetupArticles.php:694
 msgid "Click “Add new warehouse”, or “Edit” on your existing warehouse."
 msgstr "Klick auf „Neues Lager anlegen“ oder bei deinem bestehenden Lager auf „Bearbeiten“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:696
+#: src/Admin/HelpCenter/Content/SetupArticles.php:695
 msgid "Enter a name, e.g. “Main warehouse”, and a contact name if you like."
 msgstr "Gib einen Namen ein, z. B. „Hauptlager“, und wenn du magst einen Kontaktnamen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:697
+#: src/Admin/HelpCenter/Content/SetupArticles.php:696
 msgid "Enter the “Sender/return address”."
 msgstr "Trag die „Absender-/Retouradresse“ ein."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:698
+#: src/Admin/HelpCenter/Content/SetupArticles.php:697
 msgid "Choose a “Bank account (prepayment)” or leave “default account”."
 msgstr "Wähl ein „Bankkonto (Vorkasse)“ oder lass „Standardkonto“ stehen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:699
+#: src/Admin/HelpCenter/Content/SetupArticles.php:698
 msgid "Click “Create warehouse” or “Save”."
 msgstr "Klick auf „Lager anlegen“ oder „Speichern“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:702
+#: src/Admin/HelpCenter/Content/SetupArticles.php:701
 msgid "You can now assign products to this warehouse. Without a warehouse, you can’t create products."
 msgstr "Du kannst diesem Lager jetzt Artikel zuordnen. Ohne Lager kannst du keine Artikel anlegen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:703
+#: src/Admin/HelpCenter/Content/SetupArticles.php:702
 msgid "Customers who buy products from this warehouse transfer the money to its bank account."
 msgstr "Kunden, die Artikel aus diesem Lager kaufen, überweisen das Geld auf dessen Bankkonto."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:704
+#: src/Admin/HelpCenter/Content/SetupArticles.php:703
 msgid "The color helps you tell warehouses apart, e.g. in the “Record shipment” dialog."
 msgstr "Die Farbe hilft dir, Lager auseinanderzuhalten, z. B. im Dialog „Versand erfassen“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:710
+#: src/Admin/HelpCenter/Content/SetupArticles.php:709
 msgid "Name and contact name: for you and your team. The contact name is optional."
 msgstr "Name und Kontaktname: für dich und dein Team. Der Kontaktname ist optional."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:711
+#: src/Admin/HelpCenter/Content/SetupArticles.php:710
 msgid "Sender/return address: where your parcels are sent from and where returns go."
 msgstr "Absender-/Retouradresse: von wo deine Pakete verschickt werden und wohin Retouren gehen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:712
+#: src/Admin/HelpCenter/Content/SetupArticles.php:711
 msgid "Bank account (prepayment): the account for products from this warehouse. “Default account” uses the default account from Payment & sales tax. You manage the accounts there."
 msgstr "Bankkonto (Vorkasse): das Konto für Artikel aus diesem Lager. „Standardkonto“ nimmt das Standardkonto aus Zahlung & Umsatzsteuer. Dort verwaltest du auch die Konten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:713
+#: src/Admin/HelpCenter/Content/SetupArticles.php:712
 msgid "Color: an identifying color in the backend."
 msgstr "Farbe: eine Erkennungsfarbe im Backend."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:714
+#: src/Admin/HelpCenter/Content/SetupArticles.php:713
 msgid "Status: inactive warehouses are kept along with their products."
 msgstr "Status: Inaktive Lager bleiben samt ihren Artikeln erhalten."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:718
+#: src/Admin/HelpCenter/Content/SetupArticles.php:717
 msgid "One warehouse in the free version"
 msgstr "Ein Lager in der Free-Version"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:720
+#: src/Admin/HelpCenter/Content/SetupArticles.php:719
 msgid "The free version manages one warehouse, the main warehouse. Several warehouses, each with its own warehouse manager who gets the shipping orders, come with Kontor Shop Pro."
 msgstr "Die Free-Version verwaltet ein Lager, das Hauptlager. Mehrere Lager, jedes mit eigenem Lagerverwalter, der die Versandaufträge bekommt, gibt es mit Kontor Shop Pro."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:721
+#: src/Admin/HelpCenter/Content/SetupArticles.php:720
 msgid "If you switch from Pro back to the free version, the other warehouses stay visible and their products stay in the shop, but you can only view them."
 msgstr "Wechselst du von Pro zurück zur Free-Version, bleiben die weiteren Lager sichtbar und ihre Artikel im Shop, du kannst sie aber nur ansehen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:722
+#: src/Admin/HelpCenter/Content/SetupArticles.php:721
 msgid "A warehouse can only be deleted if no product belongs to it, archived ones included."
 msgstr "Ein Lager lässt sich nur löschen, wenn kein Artikel mehr dazugehört, auch kein archivierter."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:727
+#: src/Admin/HelpCenter/Content/SetupArticles.php:726
 msgid "Why can’t I add a second warehouse?"
 msgstr "Warum kann ich kein zweites Lager anlegen?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:727
+#: src/Admin/HelpCenter/Content/SetupArticles.php:726
 msgid "The free version has one warehouse. Several warehouses come with Kontor Shop Pro."
 msgstr "Die Free-Version hat ein Lager. Mehrere Lager gibt es mit Kontor Shop Pro."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:728
+#: src/Admin/HelpCenter/Content/SetupArticles.php:727
 msgid "Do I need a separate bank account per warehouse?"
 msgstr "Brauche ich je Lager ein eigenes Bankkonto?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:728
+#: src/Admin/HelpCenter/Content/SetupArticles.php:727
 msgid "No. Leave “default account”, and all money goes to the default account. Choose another account only if, e.g., a department of the club manages its own money."
 msgstr "Nein. Lass „Standardkonto“ stehen, dann geht alles Geld auf das Standardkonto. Wähl ein anderes Konto nur, wenn z. B. eine Abteilung des Vereins ihr eigenes Geld verwaltet."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:743
+#: src/Admin/HelpCenter/Content/SetupArticles.php:742
 msgid "The settings page"
 msgstr "Die Einstellungsseite"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:744
+#: src/Admin/HelpCenter/Content/SetupArticles.php:743
 msgid "How the settings are organized and where to start."
 msgstr "Wie die Einstellungen aufgebaut sind und wo du anfängst."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:747
+#: src/Admin/HelpCenter/Content/SetupArticles.php:746
 msgid "All shop settings are on one page, Kontor Shop → Settings. This guide shows how the page is organized and in which order to set it up."
 msgstr "Alle Shop-Einstellungen stehen auf einer Seite, Kontor Shop → Einstellungen. Diese Anleitung zeigt, wie die Seite aufgebaut ist und in welcher Reihenfolge du sie einrichtest."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:749
+#: src/Admin/HelpCenter/Content/SetupArticles.php:748
 msgid "Open Kontor Shop → Settings."
 msgstr "Öffne Kontor Shop → Einstellungen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:750
+#: src/Admin/HelpCenter/Content/SetupArticles.php:749
 msgid "Choose a section in the navigation on the left. On your phone, choose it from the “Area” list at the top."
 msgstr "Wähl links in der Navigation einen Bereich. Am Handy wählst du ihn oben aus der Liste „Bereich“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:751
+#: src/Admin/HelpCenter/Content/SetupArticles.php:750
 msgid "Start with the sections marked “open”. Something required is still missing there."
 msgstr "Fang mit den Bereichen an, die mit „offen“ markiert sind. Dort fehlt noch etwas Notwendiges."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:752
+#: src/Admin/HelpCenter/Content/SetupArticles.php:751
 msgid "Change the fields, then click “Save” in the bar at the bottom of the form."
 msgstr "Ändere die Felder und klick dann in der Leiste unten am Formular auf „Speichern“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:753
+#: src/Admin/HelpCenter/Content/SetupArticles.php:752
 msgid "Recommended order: Payment & sales tax, Shipping, Legal, Email sending, Design."
 msgstr "Empfohlene Reihenfolge: Zahlung & Umsatzsteuer, Versand, Rechtliches, E-Mail-Versand, Design."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:756
+#: src/Admin/HelpCenter/Content/SetupArticles.php:755
 msgid "Changes take effect in the shop right after saving."
 msgstr "Änderungen wirken im Shop gleich nach dem Speichern."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:757
+#: src/Admin/HelpCenter/Content/SetupArticles.php:756
 msgid "While a form has changes that aren’t saved yet, its save bar shows “Unsaved changes”."
 msgstr "Solange ein Formular Änderungen hat, die noch nicht gespeichert sind, zeigt seine Speicher-Leiste „Ungespeicherte Änderungen“."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:758
+#: src/Admin/HelpCenter/Content/SetupArticles.php:757
 msgid "Some sections have several forms, e.g. Payment and VAT. Each “Save” button only saves its own form."
 msgstr "Manche Bereiche haben mehrere Formulare, z. B. Zahlung und USt. Jeder „Speichern“-Knopf speichert nur sein eigenes Formular."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:762
+#: src/Admin/HelpCenter/Content/SetupArticles.php:761
 msgid "The four groups"
 msgstr "Die vier Gruppen"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:764
-msgid "Sell: Payment & sales tax, Shipping, Legal. With Pro also Membership."
-msgstr "Verkaufen: Zahlung & Umsatzsteuer, Versand, Rechtliches. Mit Pro auch Mitgliedschaft."
+#: src/Admin/HelpCenter/Content/SetupArticles.php:763
+msgid "Sell: Payment & sales tax, Invoices, Shipping, Checkout, Legal. With Pro also Membership."
+msgstr "Verkaufen: Zahlung & Umsatzsteuer, Rechnungen, Versand, Kasse, Rechtliches. Mit Pro auch Mitgliedschaft."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:765
+#: src/Admin/HelpCenter/Content/SetupArticles.php:764
 msgid "Communication: Email sending, Email templates. With Pro also Back-in-stock requests."
 msgstr "Kommunikation: E-Mail-Versand, E-Mail-Vorlagen. Mit Pro auch Verfügbarkeitsanfragen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:766
+#: src/Admin/HelpCenter/Content/SetupArticles.php:765
 msgid "Shop appearance: Design. With Pro also Shop types."
 msgstr "Shop-Auftritt: Design. Mit Pro auch Shoptypen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:767
+#: src/Admin/HelpCenter/Content/SetupArticles.php:766
 msgid "Technical: Roles, AI assistants, System. With Pro also APIs."
 msgstr "Technik: Rollen, KI-Assistenten, System. Mit Pro auch Schnittstellen."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:771
+#: src/Admin/HelpCenter/Content/SetupArticles.php:770
 msgid "What “open” means"
 msgstr "Was „offen“ bedeutet"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:773
+#: src/Admin/HelpCenter/Content/SetupArticles.php:772
 msgid "“open” appears next to a section when a required setup step is missing there: under Payment & sales tax when there is no bank account with an IBAN, under Legal when the terms and privacy pages aren’t linked. It disappears as soon as the step is done."
 msgstr "„offen“ steht neben einem Bereich, wenn dort ein notwendiger Einrichtungsschritt fehlt: bei Zahlung & Umsatzsteuer, wenn es kein Bankkonto mit IBAN gibt, bei Rechtliches, wenn AGB- und Datenschutzseite nicht verlinkt sind. Die Markierung verschwindet, sobald der Schritt erledigt ist."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:774
+#: src/Admin/HelpCenter/Content/SetupArticles.php:773
 msgid "Only administrators can open the settings. Shop managers and cashiers don’t see them."
 msgstr "Nur Administratoren können die Einstellungen öffnen. Shop-Manager und Kassiere sehen sie nicht."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:779
+#: src/Admin/HelpCenter/Content/SetupArticles.php:778
 msgid "I clicked “Save”, but my change is gone."
 msgstr "Ich habe auf „Speichern“ geklickt, aber meine Änderung ist weg."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:779
+#: src/Admin/HelpCenter/Content/SetupArticles.php:778
 msgid "You probably saved a different form. Sections like Payment & sales tax have two forms, each with its own “Save” button. Save each form before you change the next one."
 msgstr "Wahrscheinlich hast du ein anderes Formular gespeichert. Bereiche wie Zahlung & Umsatzsteuer haben zwei Formulare mit je einem eigenen „Speichern“-Knopf. Speichere jedes Formular, bevor du im nächsten etwas änderst."
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:780
+#: src/Admin/HelpCenter/Content/SetupArticles.php:779
 msgid "Where are the categories and the warehouse?"
 msgstr "Wo sind die Kategorien und das Lager?"
 
-#: src/Admin/HelpCenter/Content/SetupArticles.php:780
+#: src/Admin/HelpCenter/Content/SetupArticles.php:779
 msgid "They aren’t part of the settings. You find them in the Kontor Shop menu under Categories and Warehouse."
 msgstr "Sie gehören nicht zu den Einstellungen. Du findest sie im Menü Kontor Shop unter Kategorien und Lager."
 
@@ -5534,7 +5529,7 @@ msgid "Setting up"
 msgstr "Einrichten"
 
 #: src/Admin/HelpCenter/HelpCenter.php:77
-#: src/Admin/SettingsPage.php:208
+#: src/Admin/SettingsPage.php:215
 msgid "Shop appearance"
 msgstr "Shop-Auftritt"
 
@@ -5622,7 +5617,7 @@ msgid "Your progress"
 msgstr "Dein Fortschritt"
 
 #: src/Admin/HelpCenter/HelpCenter.php:378
-#: src/Admin/Settings/ShippingSection.php:137
+#: src/Admin/Settings/CheckoutSection.php:66
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:515
 msgid "optional"
 msgstr "optional"
@@ -5633,7 +5628,7 @@ msgstr "Prüfen"
 
 #: src/Admin/HelpCenter/HelpCenter.php:381
 #: src/Admin/OrdersList.php:740
-#: src/Modules/Checkout/CheckoutModule.php:1394
+#: src/Modules/Checkout/CheckoutModule.php:1401
 msgid "done"
 msgstr "erledigt"
 
@@ -5641,7 +5636,7 @@ msgstr "erledigt"
 #: src/Admin/OrderDetailView.php:207
 #: src/Admin/OrdersList.php:597
 #: src/Admin/OrdersList.php:800
-#: src/Admin/SettingsPage.php:236
+#: src/Admin/SettingsPage.php:243
 msgid "open"
 msgstr "offen"
 
@@ -5663,9 +5658,9 @@ msgstr "Protokoll geleert."
 
 #: src/Admin/LogPage.php:129
 #: src/Admin/Settings/AgentsSection.php:49
+#: src/Admin/Settings/CheckoutSection.php:53
 #: src/Admin/Settings/DesignSection.php:120
 #: src/Admin/Settings/InvoicesSection.php:78
-#: src/Admin/Settings/LegalSection.php:67
 msgid "Settings saved."
 msgstr "Einstellungen gespeichert."
 
@@ -5705,7 +5700,7 @@ msgid "Level"
 msgstr "Stufe"
 
 #: src/Admin/LogPage.php:161
-#: src/Admin/SettingsPage.php:247
+#: src/Admin/SettingsPage.php:254
 msgid "Area"
 msgstr "Bereich"
 
@@ -6278,7 +6273,7 @@ msgstr "Kunde & Lieferung"
 #: src/Admin/OrderDetailView.php:101
 #: src/Admin/Settings/InvoicesSection.php:120
 #: src/Admin/Settings/MailSection.php:105
-#: src/Modules/Checkout/CheckoutModule.php:871
+#: src/Modules/Checkout/CheckoutModule.php:876
 #: src/Modules/Privacy/PrivacyModule.php:105
 msgid "Email"
 msgstr "E-Mail"
@@ -6286,7 +6281,7 @@ msgstr "E-Mail"
 #: src/Admin/OrderDetailView.php:103
 #: src/Admin/Settings/DesignSection.php:423
 #: src/Admin/TemplatesPage.php:343
-#: src/Modules/Checkout/CheckoutModule.php:879
+#: src/Modules/Checkout/CheckoutModule.php:884
 #: src/Modules/Privacy/PrivacyModule.php:106
 msgid "Phone"
 msgstr "Telefon"
@@ -6318,12 +6313,12 @@ msgstr "nein"
 msgid "Delivery method"
 msgstr "Lieferart"
 
-#. translators: %s: amount
+#. translators: %s: amount such as "100 €"
 #: src/Admin/OrderDetailView.php:109
 #: src/Admin/OrdersList.php:471
 #: src/Admin/OrdersList.php:814
-#: src/Admin/Settings/ShippingSection.php:111
-#: src/Modules/Checkout/CheckoutModule.php:1634
+#: src/Admin/Settings/ShippingSection.php:314
+#: src/Modules/Checkout/CheckoutModule.php:1641
 msgid "Self pickup"
 msgstr "Selbstabholung"
 
@@ -6342,7 +6337,7 @@ msgstr "Zahlung & Verlauf"
 
 #: src/Admin/OrderDetailView.php:130
 #: src/Admin/TemplatesPage.php:355
-#: src/Modules/Checkout/CheckoutModule.php:949
+#: src/Modules/Checkout/CheckoutModule.php:954
 #: src/Pro__premium_only/Export/OrdersExport.php:114
 msgid "Payment method"
 msgstr "Zahlungsart"
@@ -6356,8 +6351,8 @@ msgstr "Bankkonto"
 #: src/Admin/OrderDetailView.php:138
 #: src/Admin/TemplatesPage.php:347
 #: src/Infrastructure/Invoices/InvoicePdf.php:205
-#: src/Modules/Checkout/CheckoutModule.php:1445
-#: src/Modules/Checkout/CheckoutModule.php:1583
+#: src/Modules/Checkout/CheckoutModule.php:1452
+#: src/Modules/Checkout/CheckoutModule.php:1590
 msgid "Payment reference"
 msgstr "Zahlungsreferenz"
 
@@ -6376,7 +6371,7 @@ msgid "%s € done"
 msgstr "%s € erledigt"
 
 #: src/Admin/OrderDetailView.php:153
-#: src/Modules/Checkout/CheckoutModule.php:1415
+#: src/Modules/Checkout/CheckoutModule.php:1422
 msgid "Ordered on"
 msgstr "Bestellt am"
 
@@ -6433,9 +6428,9 @@ msgstr "Positionen"
 
 #: src/Admin/OrderDetailView.php:186
 #: src/Admin/OrderDetailView.php:260
-#: src/Admin/Settings/ShippingSection.php:26
-#: src/Admin/Settings/ShippingSection.php:42
+#: src/Admin/Settings/ShippingSection.php:37
 #: src/Infrastructure/Invoices/InvoicePdf.php:140
+#: src/Modules/Checkout/CheckoutModule.php:1034
 msgid "Shipping"
 msgstr "Versand"
 
@@ -6477,8 +6472,8 @@ msgid "%d returned"
 msgstr "%d retour"
 
 #: src/Admin/OrderDetailView.php:240
-#: src/Modules/Checkout/CheckoutModule.php:1022
-#: src/Modules/Checkout/CheckoutModule.php:1530
+#: src/Modules/Checkout/CheckoutModule.php:1028
+#: src/Modules/Checkout/CheckoutModule.php:1537
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:557
 #: src/Pro__premium_only/Export/OrdersExport.php:113
 msgid "Order value"
@@ -6487,7 +6482,7 @@ msgstr "Warenwert"
 #. translators: %s: discount code
 #: src/Admin/OrderDetailView.php:255
 #: src/Infrastructure/Invoices/InvoicePdf.php:134
-#: src/Modules/Checkout/CheckoutModule.php:1078
+#: src/Modules/Checkout/CheckoutModule.php:1084
 msgid "Discount (%s)"
 msgstr "Rabatt (%s)"
 
@@ -6501,7 +6496,7 @@ msgid "included VAT %s %% (incl. share of shipping)"
 msgstr "enthaltene USt %s %% (inkl. Versandanteil)"
 
 #: src/Admin/OrderDetailView.php:328
-#: src/Modules/Checkout/CheckoutModule.php:1484
+#: src/Modules/Checkout/CheckoutModule.php:1491
 msgid "Shipments"
 msgstr "Sendungen"
 
@@ -7047,6 +7042,7 @@ msgid "Customers"
 msgstr "Kunden"
 
 #: src/Admin/OrdersList.php:447
+#: src/Admin/Settings/ShippingSection.php:203
 msgid "All customers"
 msgstr "Alle Kunden"
 
@@ -7104,7 +7100,7 @@ msgstr "%1$d Artikel · %2$d Stück"
 #: src/Admin/ShipmentDialog.php:76
 #: src/Admin/ShipmentDialog.php:282
 #: src/Domain/Order/OrderStatus.php:64
-#: src/Modules/Checkout/CheckoutModule.php:1511
+#: src/Modules/Checkout/CheckoutModule.php:1518
 msgid "shipped"
 msgstr "versendet"
 
@@ -7154,8 +7150,8 @@ msgstr "bezahlt bei Übergabe"
 #: src/Admin/OrdersList.php:620
 #: src/Admin/Settings/PaymentSection.php:248
 #: src/Domain/Order/PaymentMethod.php:49
-#: src/Modules/Agents/ShopTools.php:146
-#: src/Modules/Checkout/CheckoutModule.php:934
+#: src/Modules/Agents/ShopTools.php:147
+#: src/Modules/Checkout/CheckoutModule.php:939
 msgid "On invoice"
 msgstr "Auf Rechnung"
 
@@ -7176,7 +7172,7 @@ msgstr[1] "offen seit %d Tagen"
 
 #: src/Admin/OrdersList.php:632
 #: src/Infrastructure/Invoices/InvoicePdf.php:77
-#: src/Modules/Checkout/CheckoutModule.php:914
+#: src/Modules/Checkout/CheckoutModule.php:919
 #: src/Modules/Invoices/InvoicesModule.php:486
 #: src/Modules/Invoices/InvoicesModule.php:518
 msgid "Invoice"
@@ -7261,14 +7257,14 @@ msgid "Shipping %1$s € · Payment reference %2$s"
 msgstr "Versand %1$s € · Zahlungsreferenz %2$s"
 
 #: src/Admin/OrdersList.php:816
-#: src/Modules/Checkout/CheckoutModule.php:887
-#: src/Modules/Checkout/CheckoutModule.php:1639
+#: src/Modules/Checkout/CheckoutModule.php:892
+#: src/Modules/Checkout/CheckoutModule.php:1646
 msgid "Delivery"
 msgstr "Lieferung"
 
 #: src/Admin/OrdersList.php:817
 #: src/Admin/Settings/AgentsSection.php:71
-#: src/Modules/Checkout/CheckoutModule.php:1625
+#: src/Modules/Checkout/CheckoutModule.php:1632
 #: src/Pro__premium_only/Agents/AgentsPage.php:516
 #: src/Pro__premium_only/Api/ApiSection.php:85
 msgid "Copy"
@@ -7294,7 +7290,7 @@ msgid "Open all details →"
 msgstr "Alle Details öffnen →"
 
 #: src/Admin/OrdersPage.php:266
-#: src/Modules/Checkout/CheckoutModule.php:1253
+#: src/Modules/Checkout/CheckoutModule.php:1260
 #: src/Pro__premium_only/Agents/Tools/OrderTools.php:193
 msgid "Order not found."
 msgstr "Bestellung nicht gefunden."
@@ -7588,7 +7584,7 @@ msgid "Discontinued product"
 msgstr "Auslaufartikel"
 
 #: src/Admin/ProductForm.php:143
-#: src/Admin/Settings/Section.php:134
+#: src/Admin/Settings/Section.php:155
 #: src/Admin/Ui/EditHeader.php:30
 #: src/Pro__premium_only/ShopTypes/ShopTypesPage.php:322
 msgid "Unsaved changes"
@@ -8108,7 +8104,7 @@ msgstr "Suche: Name, SKU, Beschreibung"
 
 #: src/Admin/ProductsList.php:208
 #: src/Admin/StockOverview.php:552
-#: src/Modules/Agents/ShopTools.php:57
+#: src/Modules/Agents/ShopTools.php:58
 #: src/Modules/Catalog/CatalogModule.php:184
 msgid "Search products"
 msgstr "Artikel suchen"
@@ -8511,6 +8507,61 @@ msgstr "Kontor Shop Pro kann mehr: Der Assistent füllt den Warenkorb und gibt d
 msgid "See what it can do"
 msgstr "Ansehen, was er kann"
 
+#: src/Admin/Settings/CheckoutSection.php:24
+#: src/Admin/ShopSnapshot.php:166
+#: src/Infrastructure/Frontend/PageInstaller.php:38
+#: src/Modules/Blocks/BlocksModule.php:118
+msgid "Checkout"
+msgstr "Kasse"
+
+#: src/Admin/Settings/CheckoutSection.php:34
+msgid "What checkout asks your customers for, and how long they can follow their order."
+msgstr "Was die Kasse von euren Kunden abfragt und wie lange sie ihre Bestellung verfolgen können."
+
+#: src/Admin/Settings/CheckoutSection.php:62
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: src/Admin/Settings/CheckoutSection.php:62
+msgid "Phone number at checkout"
+msgstr "Telefonnummer im Checkout"
+
+#: src/Admin/Settings/CheckoutSection.php:65
+msgid "don’t ask"
+msgstr "nicht abfragen"
+
+#: src/Admin/Settings/CheckoutSection.php:73
+msgid "Whether customers must, may, or aren’t asked to enter a phone number at checkout. Useful for delivery questions."
+msgstr "Ob Kunden im Checkout eine Telefonnummer angeben müssen, dürfen oder gar nicht gefragt werden. Nützlich für Rückfragen zur Lieferung."
+
+#: src/Admin/Settings/CheckoutSection.php:75
+#: src/Admin/TemplatesPage.php:360
+#: src/Modules/Checkout/CheckoutModule.php:1649
+#: src/Modules/Privacy/PrivacyModule.php:107
+#: src/Pro__premium_only/Export/OrdersExport.php:112
+msgid "Billing address"
+msgstr "Rechnungsadresse"
+
+#: src/Admin/Settings/CheckoutSection.php:77
+msgid "offer a different billing address / company with VAT ID at checkout"
+msgstr "abweichende Rechnungsadresse / Firma mit UID im Checkout anbieten"
+
+#: src/Admin/Settings/CheckoutSection.php:79
+msgid "Order status link for customers"
+msgstr "Bestellstatus-Link für Kunden"
+
+#: src/Admin/Settings/CheckoutSection.php:80
+msgid "valid until"
+msgstr "gültig bis"
+
+#: src/Admin/Settings/CheckoutSection.php:82
+msgid "days after the order is completed"
+msgstr "Tage nach Abschluss der Bestellung"
+
+#: src/Admin/Settings/CheckoutSection.php:83
+msgid "Every email to the customer (confirmation, payment, shipping/pickup, cancellation) contains a personal link to a page with the current state of their order: status, payment, shipments with tracking, cancellations. The link works while the order is in progress, and afterward for this many more days from shipping, pickup, or cancellation."
+msgstr "In jeder Mail an den Kunden (Bestätigung, Zahlung, Versand/Abholung, Storno) steht ein persönlicher Link zu einer Seite mit dem aktuellen Stand seiner Bestellung: Status, Zahlung, Sendungen mit Tracking, Stornos. Der Link funktioniert, solange die Bestellung läuft, und danach noch so viele Tage ab Versand, Abholung oder Storno."
+
 #: src/Admin/Settings/DesignSection.php:37
 msgid "Design"
 msgstr "Design"
@@ -8823,6 +8874,7 @@ msgid "Only users who may edit CSS in WordPress (usually administrators) can cha
 msgstr "Nur Benutzer, die in WordPress CSS bearbeiten dürfen (meist Administratoren), können dieses Feld ändern."
 
 #: src/Admin/Settings/DesignSection.php:413
+#: src/Admin/Settings/ShippingSection.php:284
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:548
 msgid "Preview"
 msgstr "Vorschau"
@@ -9235,8 +9287,8 @@ msgid "Label"
 msgstr "Bezeichnung"
 
 #: src/Admin/Settings/PaymentSection.php:168
-#: src/Modules/Checkout/CheckoutModule.php:1442
-#: src/Modules/Checkout/CheckoutModule.php:1580
+#: src/Modules/Checkout/CheckoutModule.php:1449
+#: src/Modules/Checkout/CheckoutModule.php:1587
 msgid "Account holder"
 msgstr "Kontoinhaber"
 
@@ -9302,7 +9354,7 @@ msgstr "Das Konto mit dem Punkt ist das Standardkonto (Rückfall für Lager ohne
 
 #: src/Admin/Settings/PaymentSection.php:240
 #: src/Domain/Order/PaymentMethod.php:48
-#: src/Modules/Agents/ShopTools.php:142
+#: src/Modules/Agents/ShopTools.php:143
 msgid "Prepayment"
 msgstr "Vorkasse"
 
@@ -9372,7 +9424,6 @@ msgstr "Zahlungsfrist Vorkasse"
 
 #: src/Admin/Settings/PaymentSection.php:270
 #: src/Pro__premium_only/Reminders/RemindersModule.php:280
-#: src/Pro__premium_only/Seo/ReturnsForm.php:88
 #: src/Pro__premium_only/StockRequests/StockRequestSettings.php:56
 #: src/Pro__premium_only/StockRequests/StockRequestSettings.php:60
 msgid "days"
@@ -9535,133 +9586,240 @@ msgstr "automatisch"
 msgid "%s is a cashier"
 msgstr "%s ist Kassier"
 
-#: src/Admin/Settings/ShippingSection.php:26
+#: src/Admin/Settings/ShippingSection.php:37
 msgid "Shipping & returns"
 msgstr "Versand & Rückgabe"
 
+#: src/Admin/Settings/ShippingSection.php:48
+msgid "Where you deliver, what it costs and how long it takes. The preview shows right away what customers pay at checkout."
+msgstr "Wohin ihr liefert, was es kostet und wie lange es dauert. Die Vorschau zeigt sofort, was Kunden in der Kasse zahlen."
+
+#: src/Admin/Settings/ShippingSection.php:49
+msgid "Where you deliver and what it costs. The preview shows right away what customers pay at checkout."
+msgstr "Wohin ihr liefert und was es kostet. Die Vorschau zeigt sofort, was Kunden in der Kasse zahlen."
+
+#: src/Admin/Settings/ShippingSection.php:73
+msgid "Where do you deliver?"
+msgstr "Wohin liefert ihr?"
+
+#: src/Admin/Settings/ShippingSection.php:77
+msgid "What does shipping cost?"
+msgstr "Was kostet der Versand?"
+
+#. translators: %s: link "Sell › Checkout"
 #: src/Admin/Settings/ShippingSection.php:91
-msgid "Here you set what shipping costs and when it doesn’t apply. The values take effect immediately at checkout."
-msgstr "Hier stellst du ein, was der Versand kostet und wann er entfällt. Die Werte gelten sofort im Checkout."
+msgid "Phone number, billing address and the order status link have moved to %s."
+msgstr "Telefonnummer, Rechnungsadresse und Bestellstatus-Link sind umgezogen nach %s."
 
-#: src/Admin/Settings/ShippingSection.php:93
-msgid "This is how shipping is calculated (top to bottom, the first matching rule applies):"
-msgstr "So wird der Versand berechnet (von oben nach unten, die erste zutreffende Regel gilt):"
+#. translators: %s: link "Sell › Checkout"
+#: src/Admin/Settings/ShippingSection.php:92
+msgid "Sell › Checkout"
+msgstr "Verkaufen › Kasse"
 
-#: src/Admin/Settings/ShippingSection.php:94
-msgid "Self pickup selected → €0"
-msgstr "Selbstabholung gewählt → 0 €"
+#: src/Admin/Settings/ShippingSection.php:152
+msgid "Your domestic country"
+msgstr "Euer Inland"
 
-#: src/Admin/Settings/ShippingSection.php:96
-msgid "Order value reaches the “Free shipping from” threshold → €0"
-msgstr "Bestellwert erreicht die Grenze für „Versandkostenfrei ab“ → 0 €"
+#: src/Admin/Settings/ShippingSection.php:159
+msgid "Preselected at checkout."
+msgstr "Vorausgewählt in der Kasse."
 
-#: src/Admin/Settings/ShippingSection.php:97
-msgid "Otherwise → the flat shipping rate"
-msgstr "Sonst → die Versandpauschale"
+#: src/Admin/Settings/ShippingSection.php:161
+msgid "Also deliver abroad"
+msgstr "Auch ins Ausland liefern"
 
-#: src/Admin/Settings/ShippingSection.php:101
-msgid "Flat shipping rate"
-msgstr "Versandpauschale"
+#: src/Admin/Settings/ShippingSection.php:170
+msgid "+ Add country"
+msgstr "+ Land hinzufügen"
 
-#: src/Admin/Settings/ShippingSection.php:103
-msgid "What shipping costs per order (final price). 0 = free shipping for everyone."
-msgstr "Was der Versand pro Bestellung kostet (Endpreis). 0 = kostenloser Versand für alle."
+#: src/Admin/Settings/ShippingSection.php:180
+msgid "All EU countries at once"
+msgstr "Alle EU-Länder auf einmal"
 
-#: src/Admin/Settings/ShippingSection.php:105
+#: src/Admin/Settings/ShippingSection.php:183
+msgid "Offer self pickup"
+msgstr "Selbstabholung anbieten"
+
+#: src/Admin/Settings/ShippingSection.php:184
+msgid "Customers choose “I’ll pick it up myself” at checkout and pay no shipping."
+msgstr "Kunden wählen in der Kasse „Ich hole selbst ab“ und zahlen keinen Versand."
+
+#: src/Admin/Settings/ShippingSection.php:205
+msgid "as domestic"
+msgstr "wie Inland"
+
+#: src/Admin/Settings/ShippingSection.php:238
+#: src/Admin/Settings/ShippingSection.php:242
+msgid "Domestic"
+msgstr "Inland"
+
+#: src/Admin/Settings/ShippingSection.php:245
+#: src/Admin/Settings/ShippingSection.php:250
+msgid "Abroad"
+msgstr "Ausland"
+
+#: src/Admin/Settings/ShippingSection.php:255
+msgid "Final price per order. 0 = free of charge. “Abroad” empty = same as domestic."
+msgstr "Endpreis pro Bestellung. 0 = kostenlos. „Ausland“ leer = wie Inland."
+
+#: src/Admin/Settings/ShippingSection.php:264
+msgid "A member price is higher than the regular price. Members never pay more than everyone else – the regular price applies then."
+msgstr "Ein Mitgliederpreis ist höher als der normale Preis. Mitglieder zahlen nie mehr als alle anderen – es gilt dann der normale Preis."
+
+#: src/Admin/Settings/ShippingSection.php:275
 msgid "Free shipping from"
 msgstr "Versandkostenfrei ab"
 
-#: src/Admin/Settings/ShippingSection.php:107
-msgid "From this goods value, nobody pays shipping. 0 = no such threshold. Example: 50 → free shipping for orders of €50 or more."
-msgstr "Ab diesem Warenwert zahlt niemand Versand. 0 = keine solche Grenze. Beispiel: 50 → ab 50 € Bestellwert versandkostenfrei."
+#: src/Admin/Settings/ShippingSection.php:276
+msgid "Free shipping from goods value"
+msgstr "Versandkostenfrei ab Warenwert"
 
-#: src/Admin/Settings/ShippingSection.php:114
-msgid "Customers may pick up the goods themselves"
-msgstr "Kunden dürfen die Ware selbst abholen"
+#: src/Admin/Settings/ShippingSection.php:277
+msgid "goods value"
+msgstr "Warenwert"
 
-#: src/Admin/Settings/ShippingSection.php:115
-msgid "Checkout then offers the “Pickup” option; no shipping costs apply."
-msgstr "Im Checkout erscheint dann die Wahl „Abholung“; Versandkosten fallen dabei nicht an."
+#: src/Admin/Settings/ShippingSection.php:280
+msgid "also applies abroad"
+msgstr "gilt auch fürs Ausland"
 
-#: src/Admin/Settings/ShippingSection.php:117
-msgid "Shipping countries"
-msgstr "Lieferländer"
+#: src/Admin/Settings/ShippingSection.php:285
+msgid "This is how checkout calculates"
+msgstr "So rechnet die Kasse"
 
-#: src/Admin/Settings/ShippingSection.php:128
-msgid "You ship to these countries. Customers can only choose from these at checkout; the postal code is validated to match the country. The default country is the first in the list. Self pickup is independent of this."
-msgstr "In diese Länder liefert ihr. Kunden wählen im Checkout nur aus diesen; die Postleitzahl wird passend zum Land geprüft. Das Standard-Land ist das erste in der Liste. Selbstabholung ist davon unabhängig."
+#: src/Admin/Settings/ShippingSection.php:287
+msgid "The product page says"
+msgstr "Auf der Artikelseite steht"
 
-#: src/Admin/Settings/ShippingSection.php:133
-msgid "Phone number at checkout"
-msgstr "Telefonnummer im Checkout"
+#. translators: %s: country
+#: src/Admin/Settings/ShippingSection.php:307
+msgid "Guest to %s"
+msgstr "Gast nach %s"
 
-#: src/Admin/Settings/ShippingSection.php:136
-msgid "don’t ask"
-msgstr "nicht abfragen"
+#. translators: %s: country
+#: src/Admin/Settings/ShippingSection.php:309
+msgid "Member to %s"
+msgstr "Mitglied nach %s"
 
-#: src/Admin/Settings/ShippingSection.php:144
-msgid "Whether customers must, may, or aren’t asked to enter a phone number at checkout. Useful for delivery questions."
-msgstr "Ob Kunden im Checkout eine Telefonnummer angeben müssen, dürfen oder gar nicht gefragt werden. Nützlich für Rückfragen zur Lieferung."
+#. translators: 1: amount such as "100 €", 2: country
+#: src/Admin/Settings/ShippingSection.php:311
+msgid "Order from %1$s to %2$s"
+msgstr "Bestellung ab %1$s nach %2$s"
 
-#: src/Admin/Settings/ShippingSection.php:146
-#: src/Admin/TemplatesPage.php:360
-#: src/Modules/Checkout/CheckoutModule.php:1642
-#: src/Modules/Privacy/PrivacyModule.php:107
-#: src/Pro__premium_only/Export/OrdersExport.php:112
-msgid "Billing address"
-msgstr "Rechnungsadresse"
+#. translators: %s: amount such as "100 €"
+#: src/Admin/Settings/ShippingSection.php:313
+msgid "Order from %s abroad"
+msgstr "Bestellung ab %s ins Ausland"
 
-#: src/Admin/Settings/ShippingSection.php:148
-msgid "offer a different billing address / company with VAT ID at checkout"
-msgstr "abweichende Rechnungsadresse / Firma mit UID im Checkout anbieten"
+#. translators: %s: amount such as "30 €"
+#: src/Admin/Settings/ShippingSection.php:316
+msgid "Example: %s goods value"
+msgstr "Beispiel: %s Warenwert"
 
-#: src/Admin/Settings/ShippingSection.php:150
-msgid "Order status link for customers"
-msgstr "Bestellstatus-Link für Kunden"
+#. translators: %s: country
+#: src/Admin/Settings/ShippingSection.php:318
+msgid "%s and others"
+msgstr "%s u. a."
 
-#: src/Admin/Settings/ShippingSection.php:151
-msgid "valid until"
-msgstr "gültig bis"
+#. translators: 1: list of countries, 2: last country
+#: src/Admin/Settings/ShippingSection.php:320
+#: src/Admin/Settings/ShippingSection.php:419
+#: src/Modules/Catalog/ServiceInfo.php:156
+msgid "%1$s and %2$s"
+msgstr "%1$s und %2$s"
 
-#: src/Admin/Settings/ShippingSection.php:153
-msgid "days after the order is completed"
-msgstr "Tage nach Abschluss der Bestellung"
+#. translators: 1: list of countries, 2: last country
+#: src/Admin/Settings/ShippingSection.php:321
+#: src/Modules/Catalog/ServiceInfo.php:178
+msgid "free of charge"
+msgstr "kostenlos"
 
-#: src/Admin/Settings/ShippingSection.php:154
-msgid "Every email to the customer (confirmation, payment, shipping/pickup, cancellation) contains a personal link to a page with the current state of their order: status, payment, shipments with tracking, cancellations. The link works while the order is in progress, and afterward for this many more days from shipping, pickup, or cancellation."
-msgstr "In jeder Mail an den Kunden (Bestätigung, Zahlung, Versand/Abholung, Storno) steht ein persönlicher Link zu einer Seite mit dem aktuellen Stand seiner Bestellung: Status, Zahlung, Sendungen mit Tracking, Stornos. Der Link funktioniert, solange die Bestellung läuft, und danach noch so viele Tage ab Versand, Abholung oder Storno."
+#. translators: 1: countries, 2: shipping cost
+#: src/Admin/Settings/ShippingSection.php:323
+#: src/Modules/Catalog/ServiceInfo.php:39
+#: src/Modules/Catalog/ServiceInfo.php:44
+#: src/Modules/Catalog/ServiceInfo.php:60
+msgid "Shipping to %1$s: %2$s"
+msgstr "Versand nach %1$s: %2$s"
 
-#: src/Admin/Settings/ShippingSection.php:159
-msgid "If a cart contains products from warehouses with different bank accounts, it is automatically split into several orders (one per account). Here you set how shipping is then calculated."
-msgstr "Enthält ein Warenkorb Artikel aus Lagern mit verschiedenen Bankkonten, wird er automatisch in mehrere Bestellungen aufgeteilt (eine je Konto). Hier legst du fest, wie dann der Versand berechnet wird."
+#. translators: 1: countries, 2: shipping cost
+#: src/Admin/Settings/ShippingSection.php:325
+#: src/Modules/Catalog/ServiceInfo.php:44
+msgid "to %1$s: %2$s"
+msgstr "nach %1$s: %2$s"
 
-#: src/Admin/Settings/ShippingSection.php:163
-msgid "Example: a customer buys a sweater from warehouse A (account 1) and a cap from warehouse B (account 2) → two orders. With “Separate” they pay shipping twice, with “Unified” once."
-msgstr "Beispiel: Ein Kunde kauft einen Pulli aus Lager A (Konto 1) und eine Mütze aus Lager B (Konto 2) → zwei Bestellungen. Mit „Getrennt“ zahlt er zweimal Versand, mit „Vereinheitlicht“ einmal."
+#. translators: %s: countries
+#: src/Admin/Settings/ShippingSection.php:327
+#: src/Modules/Catalog/ServiceInfo.php:55
+msgid "Free shipping to %s"
+msgstr "Versandkostenfrei nach %s"
 
-#: src/Admin/Settings/ShippingSection.php:165
-msgid "Calculation"
-msgstr "Berechnung"
+#. translators: %s: order value such as "100 €"
+#: src/Admin/Settings/ShippingSection.php:329
+#: src/Modules/Catalog/ServiceInfo.php:172
+msgid "free from %s"
+msgstr "ab %s versandfrei"
 
-#: src/Admin/Settings/ShippingSection.php:170
-msgid "Separate: each partial order calculates its own shipping"
-msgstr "Getrennt: jede Teilbestellung berechnet ihren Versand selbst"
+#. translators: 1: order value such as "100 €", 2: country
+#: src/Admin/Settings/ShippingSection.php:331
+#: src/Modules/Catalog/ServiceInfo.php:168
+msgid "free from %1$s to %2$s"
+msgstr "ab %1$s versandfrei nach %2$s"
 
-#: src/Admin/Settings/ShippingSection.php:171
-msgid "Unified: shipping once based on the entire cart"
-msgstr "Vereinheitlicht: Versand einmal auf Basis des gesamten Warenkorbs"
+#. translators: 1: order value such as "100 €", 2: country
+#: src/Admin/Settings/ShippingSection.php:332
+#: src/Pro__premium_only/Membership/MembershipModule.php:230
+msgid "members ship for free"
+msgstr "Mitglieder versandfrei"
 
-#: src/Admin/Settings/ShippingSection.php:172
-msgid "Custom price: fixed flat rate for split orders"
-msgstr "Eigener Preis: feste Pauschale für aufgeteilte Bestellungen"
+#. translators: %s: shipping cost
+#: src/Admin/Settings/ShippingSection.php:334
+#: src/Pro__premium_only/Membership/MembershipModule.php:233
+msgid "members: %s"
+msgstr "Mitglieder: %s"
 
-#: src/Admin/Settings/ShippingSection.php:178
+#. translators: 1: domestic country, 2: shipping cost domestic, 3: shipping cost abroad
+#: src/Admin/Settings/ShippingSection.php:336
+#: src/Pro__premium_only/Membership/MembershipModule.php:237
+msgid "members: %1$s %2$s, abroad %3$s"
+msgstr "Mitglieder: %1$s %2$s, Ausland %3$s"
+
+#. translators: 1: domestic country, 2: shipping cost domestic, 3: shipping cost abroad
+#: src/Admin/Settings/ShippingSection.php:337
+#: src/Modules/Catalog/ServiceInfo.php:74
+msgid "Or pick it up yourself for free"
+msgstr "Oder kostenlos selbst abholen"
+
+#: src/Admin/Settings/ShippingSection.php:348
+msgid "Several warehouses with their own account"
+msgstr "Mehrere Lager mit eigenem Konto"
+
+#: src/Admin/Settings/ShippingSection.php:349
+msgid "not needed for you at the moment"
+msgstr "bei euch derzeit nicht nötig"
+
+#: src/Admin/Settings/ShippingSection.php:350
+msgid "Only when products from warehouses with different bank accounts end up in one cart is the order split. How often does the customer pay shipping then?"
+msgstr "Nur wenn Artikel aus Lagern mit verschiedenen Bankkonten in einem Warenkorb landen, wird die Bestellung geteilt. Wie oft zahlt der Kunde dann Versand?"
+
+#: src/Admin/Settings/ShippingSection.php:353
+msgid "For each partial order (simple, may cost twice)"
+msgstr "Für jede Teilbestellung (einfach, kann doppelt kosten)"
+
+#: src/Admin/Settings/ShippingSection.php:354
+msgid "Only once, based on the whole cart"
+msgstr "Nur einmal, nach dem ganzen Warenkorb"
+
+#: src/Admin/Settings/ShippingSection.php:355
+msgid "Once, a fixed amount:"
+msgstr "Einmal ein fester Betrag:"
+
+#: src/Admin/Settings/ShippingSection.php:360
 msgid "Flat rate for “Custom price”:"
 msgstr "Pauschale bei „Eigener Preis“:"
 
-#: src/Admin/Settings/ShippingSection.php:180
-msgid "With “Unified” and “Custom price”, shipping is charged only once (on the first partial order, the others €0). Free-shipping rules then apply to the entire cart and also set the custom price to 0."
-msgstr "Bei „Vereinheitlicht“ und „Eigener Preis“ wird der Versand nur einmal berechnet (auf der ersten Teilbestellung, die anderen 0 €). Freiversand-Regeln gelten dann für den gesamten Warenkorb und setzen auch den eigenen Preis auf 0."
+#: src/Admin/Settings/ShippingSection.php:366
+msgid "With “only once” and the fixed amount, shipping is charged on the first partial order. Free-shipping rules then apply to the whole cart."
+msgstr "Bei „nur einmal“ und dem festen Betrag steht der Versand auf der ersten Teilbestellung. Gratisversand-Regeln gelten dann für den ganzen Warenkorb."
 
 #: src/Admin/Settings/SystemSection.php:80
 msgid "Test email failed: "
@@ -9722,27 +9880,27 @@ msgstr "Entfernt alle Spuren: alle Shop-Tabellen (Artikel, Bestellungen, Lager, 
 msgid "KONTOR_SHOP_UNINSTALL_PURGE_ALL is set in wp-config.php: all data is always removed on deletion."
 msgstr "In wp-config.php ist KONTOR_SHOP_UNINSTALL_PURGE_ALL gesetzt: beim Löschen werden immer alle Daten entfernt."
 
-#: src/Admin/SettingsPage.php:206
+#: src/Admin/SettingsPage.php:213
 msgid "Sell"
 msgstr "Verkaufen"
 
-#: src/Admin/SettingsPage.php:207
+#: src/Admin/SettingsPage.php:214
 msgid "Communication"
 msgstr "Kommunikation"
 
-#: src/Admin/SettingsPage.php:209
+#: src/Admin/SettingsPage.php:216
 msgid "Technical"
 msgstr "Technik"
 
-#: src/Admin/SettingsPage.php:224
+#: src/Admin/SettingsPage.php:231
 msgid "Settings sections"
 msgstr "Bereiche der Einstellungen"
 
-#: src/Admin/SettingsPage.php:236
+#: src/Admin/SettingsPage.php:243
 msgid "Something is still missing for the setup."
 msgstr "Hier fehlt noch etwas für die Einrichtung."
 
-#: src/Admin/SettingsPage.php:261
+#: src/Admin/SettingsPage.php:268
 msgid "Go"
 msgstr "Öffnen"
 
@@ -9953,7 +10111,7 @@ msgstr "Jetzt als versendet speichern"
 #: src/Admin/ShipmentDialog.php:260
 #: src/Admin/Ui/Badge.php:51
 #: src/Infrastructure/Orders/ShipmentRecorder.php:142
-#: src/Modules/Checkout/CheckoutModule.php:1370
+#: src/Modules/Checkout/CheckoutModule.php:1377
 msgid "Picked up"
 msgstr "Abgeholt"
 
@@ -10036,12 +10194,6 @@ msgstr "Shop"
 #: src/Modules/Cart/CartModule.php:284
 msgid "Cart"
 msgstr "Warenkorb"
-
-#: src/Admin/ShopSnapshot.php:166
-#: src/Infrastructure/Frontend/PageInstaller.php:38
-#: src/Modules/Blocks/BlocksModule.php:118
-msgid "Checkout"
-msgstr "Kasse"
 
 #: src/Admin/ShopSnapshot.php:175
 msgid "Shop pages missing"
@@ -10933,22 +11085,22 @@ msgid "none on file - customers see no bank details for prepayment"
 msgstr "keines hinterlegt - Kunden sehen bei Vorkasse keine Kontodaten"
 
 #: src/Admin/SystemCheck.php:221
-#: src/Modules/Checkout/CheckoutModule.php:1218
+#: src/Modules/Checkout/CheckoutModule.php:1225
 msgid "Terms and conditions"
 msgstr "AGB"
 
 #: src/Admin/SystemCheck.php:221
-#: src/Modules/Checkout/CheckoutModule.php:1219
+#: src/Modules/Checkout/CheckoutModule.php:1226
 msgid "Right of withdrawal"
 msgstr "Widerruf"
 
 #: src/Admin/SystemCheck.php:221
-#: src/Modules/Checkout/CheckoutModule.php:1220
+#: src/Modules/Checkout/CheckoutModule.php:1227
 msgid "Privacy policy"
 msgstr "Datenschutz"
 
 #: src/Admin/SystemCheck.php:221
-#: src/Modules/Checkout/CheckoutModule.php:1221
+#: src/Modules/Checkout/CheckoutModule.php:1228
 msgid "Legal notice"
 msgstr "Impressum"
 
@@ -11126,7 +11278,7 @@ msgid "Warehouse name"
 msgstr "Lagername"
 
 #: src/Admin/TemplatesPage.php:346
-#: src/Modules/Checkout/CheckoutModule.php:1413
+#: src/Modules/Checkout/CheckoutModule.php:1420
 #: src/Modules/Privacy/PrivacyModule.php:102
 #: src/Pro__premium_only/Export/OrdersExport.php:110
 msgid "Order number"
@@ -11205,14 +11357,14 @@ msgid "Link to order (backend)"
 msgstr "Link zur Bestellung (Backend)"
 
 #: src/Admin/Ui/Badge.php:49
-#: src/Modules/Checkout/CheckoutModule.php:1377
-#: src/Modules/Checkout/CheckoutModule.php:1383
+#: src/Modules/Checkout/CheckoutModule.php:1384
+#: src/Modules/Checkout/CheckoutModule.php:1390
 msgid "Paid"
 msgstr "Bezahlt"
 
 #: src/Admin/Ui/Badge.php:50
 #: src/Infrastructure/Orders/ShipmentRecorder.php:142
-#: src/Modules/Checkout/CheckoutModule.php:1370
+#: src/Modules/Checkout/CheckoutModule.php:1377
 msgid "Shipped"
 msgstr "Versendet"
 
@@ -12424,7 +12576,7 @@ msgstr "UID des Kunden"
 
 #: src/Infrastructure/Invoices/InvoicePdf.php:101
 #: src/Infrastructure/Invoices/InvoicePdf.php:226
-#: src/Modules/Checkout/CheckoutModule.php:920
+#: src/Modules/Checkout/CheckoutModule.php:925
 #: src/Pro__premium_only/Export/OrdersExport.php:112
 msgid "VAT ID"
 msgstr "UID"
@@ -12434,15 +12586,15 @@ msgid "Qty"
 msgstr "Menge"
 
 #: src/Infrastructure/Invoices/InvoicePdf.php:124
-#: src/Modules/Checkout/CheckoutModule.php:1441
-#: src/Modules/Checkout/CheckoutModule.php:1579
+#: src/Modules/Checkout/CheckoutModule.php:1448
+#: src/Modules/Checkout/CheckoutModule.php:1586
 #: src/Pro__premium_only/BankStatement/BankStatementModule.php:358
 msgid "Amount"
 msgstr "Betrag"
 
 #. translators: %s: discount code
 #: src/Infrastructure/Invoices/InvoicePdf.php:135
-#: src/Modules/Checkout/CheckoutModule.php:1080
+#: src/Modules/Checkout/CheckoutModule.php:1086
 #: src/Pro__premium_only/Audit/AuditPage.php:518
 #: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:340
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:145
@@ -12972,36 +13124,36 @@ msgstr "Sicher bezahlen über Freemius · Pro-Download und Lizenz direkt nach de
 msgid "Opens the Kontor Shop website"
 msgstr "Öffnet die Website von Kontor Shop"
 
-#: src/Modules/Agents/ShopTools.php:41
+#: src/Modules/Agents/ShopTools.php:42
 msgid "Shop information"
 msgstr "Shop-Informationen"
 
-#: src/Modules/Agents/ShopTools.php:49
+#: src/Modules/Agents/ShopTools.php:50
 #: src/Pro__premium_only/Agents/Tools/CatalogTools.php:221
 msgid "List categories"
 msgstr "Kategorien auflisten"
 
-#: src/Modules/Agents/ShopTools.php:73
+#: src/Modules/Agents/ShopTools.php:74
 msgid "Get product details"
 msgstr "Artikeldetails abrufen"
 
-#: src/Modules/Agents/ShopTools.php:84
+#: src/Modules/Agents/ShopTools.php:85
 msgid "Check availability"
 msgstr "Verfügbarkeit prüfen"
 
-#: src/Modules/Agents/ShopTools.php:221
+#: src/Modules/Agents/ShopTools.php:227
 msgid "Unknown category – see shop_list_categories."
 msgstr "Unbekannte Kategorie – siehe shop_list_categories."
 
-#: src/Modules/Agents/ShopTools.php:285
+#: src/Modules/Agents/ShopTools.php:291
 msgid "This product has variants – please pass a variant_id (see shop_get_product)."
 msgstr "Dieser Artikel hat Varianten – bitte eine variant_id angeben (siehe shop_get_product)."
 
-#: src/Modules/Agents/ShopTools.php:291
+#: src/Modules/Agents/ShopTools.php:297
 msgid "This variant does not belong to the product or is not available."
 msgstr "Diese Variante gehört nicht zum Artikel oder ist nicht verfügbar."
 
-#: src/Modules/Agents/ShopTools.php:318
+#: src/Modules/Agents/ShopTools.php:324
 msgid "Product not found (or not visible in the shop)."
 msgstr "Artikel nicht gefunden (oder im Shop nicht sichtbar)."
 
@@ -13102,7 +13254,7 @@ msgid "Open cart"
 msgstr "Warenkorb öffnen"
 
 #: src/Modules/Cart/CartModule.php:317
-#: src/Modules/Checkout/CheckoutModule.php:398
+#: src/Modules/Checkout/CheckoutModule.php:399
 msgid "Your cart is empty."
 msgstr "Der Warenkorb ist leer."
 
@@ -13259,478 +13411,453 @@ msgid "Sold out – won't be reordered"
 msgstr "Ausverkauft – wird nicht nachbestellt"
 
 #. translators: %s: countries, e.g. "Austria and Germany"
-#: src/Modules/Catalog/ServiceInfo.php:33
-msgid "Free shipping to %s"
-msgstr "Versandkostenfrei nach %s"
-
-#. translators: %s: countries, e.g. "Austria and Germany"
-#: src/Modules/Catalog/ServiceInfo.php:34
+#: src/Modules/Catalog/ServiceInfo.php:56
 msgid "Free shipping"
 msgstr "Versandkostenfrei"
 
-#. translators: 1: countries, e.g. "Austria and Germany", 2: shipping cost such as "6,90 €"
-#: src/Modules/Catalog/ServiceInfo.php:38
-msgid "Shipping to %1$s: %2$s"
-msgstr "Versand nach %1$s: %2$s"
-
 #. translators: %s: shipping cost such as "6,90 €"
-#: src/Modules/Catalog/ServiceInfo.php:40
+#: src/Modules/Catalog/ServiceInfo.php:62
 msgid "Shipping: %s"
 msgstr "Versand: %s"
 
-#. translators: %s: order value such as "100 €"
-#: src/Modules/Catalog/ServiceInfo.php:44
-msgid "free from %s"
-msgstr "ab %s versandfrei"
-
-#: src/Modules/Catalog/ServiceInfo.php:54
+#: src/Modules/Catalog/ServiceInfo.php:73
 msgid "Or pick it up yourself for free – and pay in cash if you like"
 msgstr "Oder kostenlos selbst abholen – auf Wunsch bar bezahlen"
 
-#: src/Modules/Catalog/ServiceInfo.php:55
-msgid "Or pick it up yourself for free"
-msgstr "Oder kostenlos selbst abholen"
-
-#: src/Modules/Catalog/ServiceInfo.php:63
+#: src/Modules/Catalog/ServiceInfo.php:82
 msgid "bank transfer with QR code for your banking app"
 msgstr "Überweisung, mit QR-Code für deine Banking-App"
 
-#: src/Modules/Catalog/ServiceInfo.php:64
+#: src/Modules/Catalog/ServiceInfo.php:83
 msgid "bank transfer"
 msgstr "Überweisung"
 
-#: src/Modules/Catalog/ServiceInfo.php:68
+#: src/Modules/Catalog/ServiceInfo.php:87
 msgid "on invoice"
 msgstr "auf Rechnung"
 
 #. translators: %s: payment methods, e.g. "bank transfer, on invoice"
-#: src/Modules/Catalog/ServiceInfo.php:83
+#: src/Modules/Catalog/ServiceInfo.php:102
 msgid "Pay by %s"
 msgstr "Bezahlen per %s"
 
-#. translators: 1: list of countries, 2: last country
-#: src/Modules/Catalog/ServiceInfo.php:133
-msgid "%1$s and %2$s"
-msgstr "%1$s und %2$s"
-
 #. translators: %s: product name
-#: src/Modules/Checkout/CheckoutModule.php:318
-#: src/Modules/Checkout/CheckoutModule.php:342
+#: src/Modules/Checkout/CheckoutModule.php:319
+#: src/Modules/Checkout/CheckoutModule.php:343
 msgid "Sorry, \"%s\" is no longer available and was removed from your cart."
 msgstr "\"%s\" ist leider nicht mehr verfügbar und wurde aus dem Warenkorb entfernt."
 
 #. translators: 1: product name, 2: available quantity
-#: src/Modules/Checkout/CheckoutModule.php:330
+#: src/Modules/Checkout/CheckoutModule.php:331
 msgid "Only %2$d of \"%1$s\" are still available - the quantity was adjusted."
 msgstr "Von \"%1$s\" sind nur noch %2$d Stück verfügbar - die Menge wurde angepasst."
 
-#: src/Modules/Checkout/CheckoutModule.php:382
+#: src/Modules/Checkout/CheckoutModule.php:383
 msgid "This link is invalid or has expired. You'll find the details of your order in our emails – if you have questions, just reply to them."
 msgstr "Dieser Link ist ungültig oder abgelaufen. Die Details zu deiner Bestellung findest du in unseren E-Mails – bei Fragen antworte einfach darauf."
 
-#: src/Modules/Checkout/CheckoutModule.php:414
+#: src/Modules/Checkout/CheckoutModule.php:415
 #: src/Pro__premium_only/Coupons/CheckoutCoupons.php:141
 msgid "Your session has expired. Your entries are still there - just submit the form again."
 msgstr "Deine Sitzung ist abgelaufen. Deine Eingaben sind noch da - bitte sende das Formular einfach noch einmal ab."
 
-#: src/Modules/Checkout/CheckoutModule.php:438
+#: src/Modules/Checkout/CheckoutModule.php:439
 msgid "Please select a payment method."
 msgstr "Bitte wähle eine Zahlungsart."
 
-#: src/Modules/Checkout/CheckoutModule.php:440
+#: src/Modules/Checkout/CheckoutModule.php:441
 msgid "Cash payment is only possible if you pick up the order yourself. Please choose another payment method or self pickup."
 msgstr "Barzahlung ist nur möglich, wenn du die Bestellung selbst abholst. Bitte wähl eine andere Zahlungsart oder Selbstabholung."
 
-#: src/Modules/Checkout/CheckoutModule.php:444
+#: src/Modules/Checkout/CheckoutModule.php:445
 msgid "Please accept the terms and conditions and the right of withdrawal to place your order."
 msgstr "Bitte akzeptiere AGB und Widerrufsbelehrung, um zu bestellen."
 
-#: src/Modules/Checkout/CheckoutModule.php:448
+#: src/Modules/Checkout/CheckoutModule.php:449
 msgid "Please confirm that you've read the privacy policy to place your order."
 msgstr "Bitte bestätige die Kenntnisnahme der Datenschutzerklärung, um zu bestellen."
 
-#: src/Modules/Checkout/CheckoutModule.php:454
+#: src/Modules/Checkout/CheckoutModule.php:455
 msgid "Please check the highlighted field - your order hasn't been submitted yet."
 msgid_plural "Please check the highlighted fields - your order hasn't been submitted yet."
 msgstr[0] "Bitte prüfe das markierte Feld - deine Bestellung wurde noch nicht abgeschickt."
 msgstr[1] "Bitte prüfe die markierten Felder - deine Bestellung wurde noch nicht abgeschickt."
 
 #. translators: %s: product name
-#: src/Modules/Checkout/CheckoutModule.php:493
+#: src/Modules/Checkout/CheckoutModule.php:494
 msgid "There's not enough stock left of \"%s\". Please adjust the quantity in your cart - your entries will be kept."
 msgstr "Von \"%s\" ist nicht mehr genug Bestand verfügbar. Bitte passe die Menge im Warenkorb an - deine Eingaben bleiben erhalten."
 
 #. translators: %s: product name
-#: src/Modules/Checkout/CheckoutModule.php:509
+#: src/Modules/Checkout/CheckoutModule.php:510
 msgid "Sorry, the product \"%s\" is no longer available. Please remove it from your cart."
 msgstr "Der Artikel \"%s\" ist leider nicht mehr verfügbar. Bitte entferne ihn aus dem Warenkorb."
 
-#: src/Modules/Checkout/CheckoutModule.php:572
+#: src/Modules/Checkout/CheckoutModule.php:573
 msgid "Your order hasn't been submitted yet. Please check the total and then submit your order again."
 msgstr "Deine Bestellung wurde noch nicht abgeschickt. Bitte prüfe die Gesamtsumme und schicke die Bestellung dann erneut ab."
 
-#: src/Modules/Checkout/CheckoutModule.php:699
+#: src/Modules/Checkout/CheckoutModule.php:700
 msgid "Nothing to pay (€0.00) – automatically booked as paid when you order."
 msgstr "Nichts zu bezahlen (0,00 €) – beim Bestellen automatisch als bezahlt gebucht."
 
-#: src/Modules/Checkout/CheckoutModule.php:701
+#: src/Modules/Checkout/CheckoutModule.php:702
 msgid "Shop (automatic)"
 msgstr "Shop (automatisch)"
 
 #. translators: %s: error reference number, e.g. KS-1A2B3C
-#: src/Modules/Checkout/CheckoutModule.php:727
+#: src/Modules/Checkout/CheckoutModule.php:728
 msgid "Sorry, a technical error occurred while processing your order. Your order was NOT submitted and you haven't been charged. Please try again in a few minutes. If the problem persists, please contact the shop and mention this error code: %s"
 msgstr "Beim Verarbeiten deiner Bestellung ist leider ein technischer Fehler aufgetreten. Deine Bestellung wurde NICHT abgeschickt und es wurde nichts berechnet. Bitte versuche es in einigen Minuten erneut. Wenn das Problem bleibt, melde dich bitte beim Shop und nenne diesen Fehlercode: %s"
 
 #. translators: %s: time
-#: src/Modules/Checkout/CheckoutModule.php:829
+#: src/Modules/Checkout/CheckoutModule.php:834
 msgid "Your products are reserved for you until %s. After that, they'll be released again."
 msgstr "Deine Artikel sind bis %s Uhr für dich reserviert. Danach werden sie wieder freigegeben."
 
-#: src/Modules/Checkout/CheckoutModule.php:834
+#: src/Modules/Checkout/CheckoutModule.php:839
 msgid "Your order is being processed - please don't close this window ..."
 msgstr "Deine Bestellung wird verarbeitet - bitte dieses Fenster nicht schliessen ..."
 
 #. translators: %d: number of partial orders
-#: src/Modules/Checkout/CheckoutModule.php:852
+#: src/Modules/Checkout/CheckoutModule.php:857
 msgid "Your products come from different warehouses and will be split into %d separate orders, each with its own payment."
 msgstr "Deine Artikel stammen aus verschiedenen Lagern und werden in %d getrennte Bestellungen mit jeweils eigener Zahlung aufgeteilt."
 
-#: src/Modules/Checkout/CheckoutModule.php:866
-#: src/Modules/Checkout/CheckoutModule.php:1638
+#: src/Modules/Checkout/CheckoutModule.php:871
+#: src/Modules/Checkout/CheckoutModule.php:1645
 msgid "Your details"
 msgstr "Deine Daten"
 
-#: src/Modules/Checkout/CheckoutModule.php:868
+#: src/Modules/Checkout/CheckoutModule.php:873
 msgid "First name"
 msgstr "Vorname"
 
-#: src/Modules/Checkout/CheckoutModule.php:869
+#: src/Modules/Checkout/CheckoutModule.php:874
 msgid "Last name"
 msgstr "Nachname"
 
-#: src/Modules/Checkout/CheckoutModule.php:873
+#: src/Modules/Checkout/CheckoutModule.php:878
 msgid "This is where we send the order confirmation."
 msgstr "Hierhin schicken wir die Bestellbestätigung."
 
-#: src/Modules/Checkout/CheckoutModule.php:879
-#: src/Modules/Checkout/CheckoutModule.php:901
-#: src/Modules/Checkout/CheckoutModule.php:919
-#: src/Modules/Checkout/CheckoutModule.php:922
+#: src/Modules/Checkout/CheckoutModule.php:884
+#: src/Modules/Checkout/CheckoutModule.php:906
+#: src/Modules/Checkout/CheckoutModule.php:924
+#: src/Modules/Checkout/CheckoutModule.php:927
 msgid "(optional)"
 msgstr "(optional)"
 
-#: src/Modules/Checkout/CheckoutModule.php:881
+#: src/Modules/Checkout/CheckoutModule.php:886
 msgid "For questions about the delivery."
 msgstr "Für Rückfragen zur Lieferung."
 
-#: src/Modules/Checkout/CheckoutModule.php:892
+#: src/Modules/Checkout/CheckoutModule.php:897
 msgid "I'll pick it up myself (no shipping cost)"
 msgstr "Ich hole selbst ab (keine Versandkosten)"
 
-#: src/Modules/Checkout/CheckoutModule.php:901
-#: src/Modules/Checkout/CheckoutModule.php:919
+#: src/Modules/Checkout/CheckoutModule.php:906
+#: src/Modules/Checkout/CheckoutModule.php:924
 msgid "Company"
 msgstr "Firma"
 
-#: src/Modules/Checkout/CheckoutModule.php:902
-#: src/Modules/Checkout/CheckoutModule.php:921
+#: src/Modules/Checkout/CheckoutModule.php:907
+#: src/Modules/Checkout/CheckoutModule.php:926
 msgid "Street and house number"
 msgstr "Strasse und Hausnummer"
 
-#: src/Modules/Checkout/CheckoutModule.php:903
-#: src/Modules/Checkout/CheckoutModule.php:922
+#: src/Modules/Checkout/CheckoutModule.php:908
+#: src/Modules/Checkout/CheckoutModule.php:927
 msgid "Address line 2"
 msgstr "Adresszusatz"
 
-#: src/Modules/Checkout/CheckoutModule.php:903
+#: src/Modules/Checkout/CheckoutModule.php:908
 msgid "(optional, e.g. staircase/unit)"
 msgstr "(optional, z. B. Stiege/Top)"
 
-#: src/Modules/Checkout/CheckoutModule.php:905
-#: src/Modules/Checkout/CheckoutModule.php:924
+#: src/Modules/Checkout/CheckoutModule.php:910
+#: src/Modules/Checkout/CheckoutModule.php:929
 msgid "Postal code"
 msgstr "PLZ"
 
-#: src/Modules/Checkout/CheckoutModule.php:906
-#: src/Modules/Checkout/CheckoutModule.php:925
+#: src/Modules/Checkout/CheckoutModule.php:911
+#: src/Modules/Checkout/CheckoutModule.php:930
 msgid "City"
 msgstr "Ort"
 
-#: src/Modules/Checkout/CheckoutModule.php:908
-#: src/Modules/Checkout/CheckoutModule.php:927
-#: src/Pro__premium_only/Seo/ReturnsForm.php:84
+#: src/Modules/Checkout/CheckoutModule.php:913
+#: src/Modules/Checkout/CheckoutModule.php:932
 msgid "Country"
 msgstr "Land"
 
-#: src/Modules/Checkout/CheckoutModule.php:916
+#: src/Modules/Checkout/CheckoutModule.php:921
 msgid "Billing address is different / invoice to a company"
 msgstr "Rechnungsadresse weicht ab / Rechnung an eine Firma"
 
-#: src/Modules/Checkout/CheckoutModule.php:920
+#: src/Modules/Checkout/CheckoutModule.php:925
 msgid "(optional, e.g. ATU12345678)"
 msgstr "(optional, z. B. ATU12345678)"
 
-#: src/Modules/Checkout/CheckoutModule.php:933
+#: src/Modules/Checkout/CheckoutModule.php:938
 msgid "Prepayment (bank transfer)"
 msgstr "Vorkasse (Banküberweisung)"
 
-#: src/Modules/Checkout/CheckoutModule.php:938
+#: src/Modules/Checkout/CheckoutModule.php:943
 msgid "We set your order aside, and you pay in cash when you pick it up."
 msgstr "Wir legen deine Bestellung zurück, und du zahlst bar beim Abholen."
 
-#: src/Modules/Checkout/CheckoutModule.php:939
+#: src/Modules/Checkout/CheckoutModule.php:944
 msgid "You transfer first, and we ship after we receive your payment."
 msgstr "Du überweist zuerst, wir versenden nach Zahlungseingang."
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:943
+#: src/Modules/Checkout/CheckoutModule.php:948
 msgid "We ship right away, and you pay by bank transfer within %d days of shipping."
 msgstr "Wir versenden sofort, du bezahlst per Überweisung innerhalb von %d Tagen ab Versand."
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:946
+#: src/Modules/Checkout/CheckoutModule.php:951
 msgid "We ship right away, and you pay by bank transfer after receiving the goods."
 msgstr "Wir versenden sofort, du bezahlst nach Erhalt per Überweisung."
 
-#: src/Modules/Checkout/CheckoutModule.php:976
+#: src/Modules/Checkout/CheckoutModule.php:981
 msgid "All prices are final prices including the VAT shown, plus shipping."
 msgstr "Alle Preise sind Endpreise inkl. der ausgewiesenen Umsatzsteuer, zzgl. Versandkosten."
 
-#: src/Modules/Checkout/CheckoutModule.php:977
+#: src/Modules/Checkout/CheckoutModule.php:982
 msgid "All prices plus shipping."
 msgstr "Alle Preise zzgl. Versandkosten."
 
-#: src/Modules/Checkout/CheckoutModule.php:1007
+#: src/Modules/Checkout/CheckoutModule.php:1013
 msgid "Your order"
 msgstr "Deine Bestellung"
 
 #. translators: %s: tax rate in percent
-#: src/Modules/Checkout/CheckoutModule.php:1066
+#: src/Modules/Checkout/CheckoutModule.php:1072
 msgid "included VAT %s %% (goods)"
 msgstr "enthaltene USt %s %% (Waren)"
 
 #. translators: %s: tax rate in percent
-#: src/Modules/Checkout/CheckoutModule.php:1066
+#: src/Modules/Checkout/CheckoutModule.php:1072
 msgid "included VAT %s %%"
 msgstr "enthaltene USt %s %%"
 
-#: src/Modules/Checkout/CheckoutModule.php:1269
+#: src/Modules/Checkout/CheckoutModule.php:1276
 msgid "Thank you – we've received your order!"
 msgstr "Vielen Dank – deine Bestellung ist eingegangen!"
 
 #. translators: %s: email address
-#: src/Modules/Checkout/CheckoutModule.php:1273
+#: src/Modules/Checkout/CheckoutModule.php:1280
 msgid "We've sent a confirmation with all the details to %s. Didn't arrive? Please check your spam folder, too."
 msgstr "Wir haben dir eine Bestätigung mit allen Angaben an %s geschickt. Nicht angekommen? Bitte schau auch im Spam-Ordner nach."
 
 #. translators: %s: email address
-#: src/Modules/Checkout/CheckoutModule.php:1276
+#: src/Modules/Checkout/CheckoutModule.php:1283
 msgid "Please save or print this page – it has all the details about your order and payment."
 msgstr "Bitte speichere oder drucke diese Seite – hier stehen alle Angaben zu deiner Bestellung und Zahlung."
 
 #. translators: %s: order number(s)
-#: src/Modules/Checkout/CheckoutModule.php:1282
+#: src/Modules/Checkout/CheckoutModule.php:1289
 msgid "Your order %s"
 msgstr "Deine Bestellung %s"
 
 #. translators: %s: date/time
-#: src/Modules/Checkout/CheckoutModule.php:1287
+#: src/Modules/Checkout/CheckoutModule.php:1294
 msgid "Status as of %s"
 msgstr "Aktueller Stand vom %s"
 
-#: src/Modules/Checkout/CheckoutModule.php:1293
+#: src/Modules/Checkout/CheckoutModule.php:1300
 msgid "Your products were split into several orders (different warehouses). Please pay each order separately with its own payment reference."
 msgstr "Deine Artikel wurden auf mehrere Bestellungen aufgeteilt (verschiedene Lager). Bitte jede Bestellung einzeln mit ihrer eigenen Zahlungsreferenz bezahlen."
 
-#: src/Modules/Checkout/CheckoutModule.php:1323
+#: src/Modules/Checkout/CheckoutModule.php:1330
 msgid "Print / save as PDF"
 msgstr "Drucken / als PDF speichern"
 
-#: src/Modules/Checkout/CheckoutModule.php:1324
+#: src/Modules/Checkout/CheckoutModule.php:1331
 msgid "Continue shopping"
 msgstr "Weiter einkaufen"
 
 #. translators: %d: number of days
-#: src/Modules/Checkout/CheckoutModule.php:1329
+#: src/Modules/Checkout/CheckoutModule.php:1336
 msgid "You can reach this page through the link in our emails – while your order is in progress and for %d days after."
 msgstr "Diese Seite erreichst du über den Link in unseren Mails – solange deine Bestellung läuft und noch %d Tage danach."
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1361
+#: src/Modules/Checkout/CheckoutModule.php:1368
 msgid "This order was cancelled on %s."
 msgstr "Diese Bestellung wurde am %s storniert."
 
-#: src/Modules/Checkout/CheckoutModule.php:1373
+#: src/Modules/Checkout/CheckoutModule.php:1380
 msgid "Ordered"
 msgstr "Bestellt"
 
-#: src/Modules/Checkout/CheckoutModule.php:1380
+#: src/Modules/Checkout/CheckoutModule.php:1387
 msgid "Partly picked up"
 msgstr "Teilweise abgeholt"
 
-#: src/Modules/Checkout/CheckoutModule.php:1380
+#: src/Modules/Checkout/CheckoutModule.php:1387
 msgid "Partly shipped"
 msgstr "Teilweise versendet"
 
-#: src/Modules/Checkout/CheckoutModule.php:1427
+#: src/Modules/Checkout/CheckoutModule.php:1434
 msgid "Pay now: by bank transfer (prepayment)"
 msgstr "Jetzt bezahlen: per Überweisung (Vorkasse)"
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1433
+#: src/Modules/Checkout/CheckoutModule.php:1440
 msgid "Please transfer the amount by %s at the latest. The goods are reserved for you until then – after that, the order will be cancelled automatically."
 msgstr "Bitte überweise bis spätestens %s. So lange ist die Ware für dich reserviert – danach wird die Bestellung automatisch storniert."
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1435
+#: src/Modules/Checkout/CheckoutModule.php:1442
 msgid "Please transfer the amount by %s at the latest. The goods are reserved for you until then."
 msgstr "Bitte überweise bis spätestens %s. So lange ist die Ware für dich reserviert."
 
-#: src/Modules/Checkout/CheckoutModule.php:1448
-#: src/Modules/Checkout/CheckoutModule.php:1587
+#: src/Modules/Checkout/CheckoutModule.php:1455
+#: src/Modules/Checkout/CheckoutModule.php:1594
 msgid "Please be sure to include the payment reference with your transfer – it's the only way we can match your payment."
 msgstr "Bitte gib die Zahlungsreferenz unbedingt als Verwendungszweck an – nur so können wir deine Zahlung zuordnen."
 
-#: src/Modules/Checkout/CheckoutModule.php:1455
+#: src/Modules/Checkout/CheckoutModule.php:1462
 msgid "Pay on pickup: in cash"
 msgstr "Bezahlen bei Abholung: bar"
 
 #. translators: %s: amount
-#: src/Modules/Checkout/CheckoutModule.php:1457
+#: src/Modules/Checkout/CheckoutModule.php:1464
 msgid "Please bring %s € in cash when you pick up your order. We'll let you know by email as soon as it's ready."
 msgstr "Bitte bring %s € bar mit, wenn du deine Bestellung abholst. Wir sagen dir per Mail Bescheid, sobald sie bereitliegt."
 
-#: src/Modules/Checkout/CheckoutModule.php:1461
+#: src/Modules/Checkout/CheckoutModule.php:1468
 msgid "Nothing to pay"
 msgstr "Nichts zu bezahlen"
 
-#: src/Modules/Checkout/CheckoutModule.php:1462
+#: src/Modules/Checkout/CheckoutModule.php:1469
 msgid "Your discount code covers the full amount. We'll set your order aside for pickup."
 msgstr "Dein Rabattcode deckt den ganzen Betrag. Wir legen deine Bestellung zur Abholung bereit."
 
-#: src/Modules/Checkout/CheckoutModule.php:1463
+#: src/Modules/Checkout/CheckoutModule.php:1470
 msgid "Your discount code covers the full amount. We'll ship your order as soon as it's packed."
 msgstr "Dein Rabattcode deckt den ganzen Betrag. Wir versenden deine Bestellung, sobald sie gepackt ist."
 
 #. translators: %s: amount
-#: src/Modules/Checkout/CheckoutModule.php:1472
+#: src/Modules/Checkout/CheckoutModule.php:1479
 msgid "We're transferring %s € back to you – this is being processed."
 msgstr "Wir überweisen dir %s € zurück – das ist in Bearbeitung."
 
 #. translators: %s: amount
-#: src/Modules/Checkout/CheckoutModule.php:1477
+#: src/Modules/Checkout/CheckoutModule.php:1484
 msgid "%s € has been transferred back to you."
 msgstr "%s € wurden dir zurücküberwiesen."
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1492
+#: src/Modules/Checkout/CheckoutModule.php:1499
 msgid "Shipped on %s"
 msgstr "Versendet am %s"
 
-#: src/Modules/Checkout/CheckoutModule.php:1496
+#: src/Modules/Checkout/CheckoutModule.php:1503
 msgid "Track shipment"
 msgstr "Sendung verfolgen"
 
-#: src/Modules/Checkout/CheckoutModule.php:1502
+#: src/Modules/Checkout/CheckoutModule.php:1509
 msgid "Your products"
 msgstr "Deine Artikel"
 
-#: src/Modules/Checkout/CheckoutModule.php:1515
+#: src/Modules/Checkout/CheckoutModule.php:1522
 msgid "returned"
 msgstr "retourniert"
 
 #. translators: %d: pieces
-#: src/Modules/Checkout/CheckoutModule.php:1517
+#: src/Modules/Checkout/CheckoutModule.php:1524
 msgid "%d pcs returned"
 msgstr "%d Stk. retourniert"
 
-#: src/Modules/Checkout/CheckoutModule.php:1536
+#: src/Modules/Checkout/CheckoutModule.php:1543
 msgid "Shipping (self pickup)"
 msgstr "Versand (Selbstabholung)"
 
-#: src/Modules/Checkout/CheckoutModule.php:1560
+#: src/Modules/Checkout/CheckoutModule.php:1567
 msgid "Payment: on invoice"
 msgstr "Zahlung: auf Rechnung"
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:1566
+#: src/Modules/Checkout/CheckoutModule.php:1573
 msgid "You get the goods first – there's nothing to do right now. You pay by bank transfer within %d days of shipping; the payment details are also in the shipping email."
 msgstr "Du bekommst die Ware zuerst – jetzt ist nichts zu tun. Bezahlt wird per Überweisung innerhalb von %d Tagen ab Versand; die Zahlungsdaten stehen auch in der Versandmail."
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:1569
+#: src/Modules/Checkout/CheckoutModule.php:1576
 msgid "You get the goods first – there's nothing to do right now. You pay by bank transfer after receiving them; the payment details are also in the shipping email."
 msgstr "Du bekommst die Ware zuerst – jetzt ist nichts zu tun. Bezahlt wird nach Erhalt per Überweisung; die Zahlungsdaten stehen auch in der Versandmail."
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1573
+#: src/Modules/Checkout/CheckoutModule.php:1580
 msgid "Please transfer the amount by %s at the latest."
 msgstr "Bitte überweise bis spätestens %s."
 
-#: src/Modules/Checkout/CheckoutModule.php:1604
+#: src/Modules/Checkout/CheckoutModule.php:1611
 msgid "QR code for the bank transfer"
 msgstr "QR-Code für die Überweisung"
 
-#: src/Modules/Checkout/CheckoutModule.php:1611
+#: src/Modules/Checkout/CheckoutModule.php:1618
 msgid "Scan with your banking app – amount, IBAN and payment reference are filled in automatically."
 msgstr "Mit der Banking-App scannen – Betrag, IBAN und Zahlungsreferenz werden automatisch ausgefüllt."
 
-#: src/Modules/Checkout/CheckoutModule.php:1624
+#: src/Modules/Checkout/CheckoutModule.php:1631
 msgid "Copied"
 msgstr "Kopiert"
 
-#: src/Modules/Checkout/CheckoutModule.php:1639
+#: src/Modules/Checkout/CheckoutModule.php:1646
 #: src/Modules/Privacy/PrivacyModule.php:108
 #: src/Pro__premium_only/Export/OrdersExport.php:112
 msgid "Shipping address"
 msgstr "Lieferadresse"
 
-#: src/Modules/Checkout/CheckoutModule.php:1645
+#: src/Modules/Checkout/CheckoutModule.php:1652
 msgid "VAT ID:"
 msgstr "UID:"
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1661
+#: src/Modules/Checkout/CheckoutModule.php:1668
 msgid "Transfer the amount with the payment reference by %s."
 msgstr "Überweise den Betrag mit der Zahlungsreferenz bis %s."
 
 #. translators: %s: date
-#: src/Modules/Checkout/CheckoutModule.php:1664
+#: src/Modules/Checkout/CheckoutModule.php:1671
 msgid "Transfer the amount with the payment reference."
 msgstr "Überweise den Betrag mit der Zahlungsreferenz."
 
-#: src/Modules/Checkout/CheckoutModule.php:1666
+#: src/Modules/Checkout/CheckoutModule.php:1673
 msgid "As soon as your money has arrived, we'll set the goods aside for pickup."
 msgstr "Sobald dein Geld bei uns eingegangen ist, legen wir die Ware zur Abholung bereit."
 
-#: src/Modules/Checkout/CheckoutModule.php:1667
+#: src/Modules/Checkout/CheckoutModule.php:1674
 msgid "As soon as your money has arrived, we'll ship your order."
 msgstr "Sobald dein Geld bei uns eingegangen ist, verschicken wir deine Bestellung."
 
-#: src/Modules/Checkout/CheckoutModule.php:1670
+#: src/Modules/Checkout/CheckoutModule.php:1677
 msgid "We'll set the goods aside for you to pick up."
 msgstr "Wir legen die Ware für dich zur Abholung bereit."
 
-#: src/Modules/Checkout/CheckoutModule.php:1671
+#: src/Modules/Checkout/CheckoutModule.php:1678
 msgid "We'll ship your order."
 msgstr "Wir verschicken deine Bestellung."
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:1676
+#: src/Modules/Checkout/CheckoutModule.php:1683
 msgid "After receiving the goods, you transfer the amount with the payment reference – within %d days of shipping."
 msgstr "Nach Erhalt der Ware überweist du den Betrag mit der Zahlungsreferenz – innerhalb von %d Tagen ab Versand."
 
 #. translators: %d: days
-#: src/Modules/Checkout/CheckoutModule.php:1679
+#: src/Modules/Checkout/CheckoutModule.php:1686
 msgid "After receiving the goods, you transfer the amount with the payment reference."
 msgstr "Nach Erhalt der Ware überweist du den Betrag mit der Zahlungsreferenz."
 
-#: src/Modules/Checkout/CheckoutModule.php:1683
+#: src/Modules/Checkout/CheckoutModule.php:1690
 msgid "You'll get another email from us when it ships."
 msgstr "Beim Versand bekommst du eine weitere Mail von uns."
 
-#: src/Modules/Checkout/CheckoutModule.php:1686
+#: src/Modules/Checkout/CheckoutModule.php:1693
 msgid "What happens next"
 msgstr "So geht es weiter"
 
@@ -14819,7 +14946,7 @@ msgid "Please enter a price."
 msgstr "Bitte einen Preis eingeben."
 
 #: src/Pro__premium_only/Agents/ProductWriter.php:273
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:133
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:134
 msgid "A percentage discount must be between 0 and 100."
 msgstr "Ein Prozent-Rabatt muss zwischen 0 und 100 liegen."
 
@@ -15391,8 +15518,8 @@ msgid "all areas"
 msgstr "alle Bereiche"
 
 #: src/Pro__premium_only/Audit/AuditPage.php:181
-#: src/Pro__premium_only/Seo/ReturnsForm.php:94
-#: src/Pro__premium_only/Seo/ReturnsForm.php:97
+#: src/Pro__premium_only/Seo/ReturnsForm.php:101
+#: src/Pro__premium_only/Seo/ReturnsForm.php:101
 msgid "to"
 msgstr "bis"
 
@@ -16146,7 +16273,7 @@ msgstr "Mindestwert"
 #: src/Pro__premium_only/Coupons/Admin/CouponDetail.php:341
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:375
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:381
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:76
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:77
 msgid "none"
 msgstr "keiner"
 
@@ -16355,7 +16482,7 @@ msgid "Internal"
 msgstr "Intern"
 
 #: src/Pro__premium_only/Coupons/Admin/CouponEditor.php:348
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:86
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:87
 msgid "Discount type"
 msgstr "Art des Rabatts"
 
@@ -17409,78 +17536,71 @@ msgstr "z. B. Bank: … · Vorstand: … · www.beispiel.at"
 msgid "member price"
 msgstr "Mitgliedspreis"
 
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:58
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:59
 msgid "Member price:"
 msgstr "Mitgliedspreis:"
 
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:84
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:85
 msgid "Member discount"
 msgstr "Mitgliedsrabatt"
 
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:87
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:88
 msgid "Discount value"
 msgstr "Rabattwert"
 
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:89
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:90
 msgid "Only one discount type at a time; only applies to recognized members (Settings → Membership)."
 msgstr "Nur eine Rabattart gleichzeitig; wirkt nur bei erkannten Mitgliedern (Einstellungen → Mitgliedschaft)."
 
 #. translators: %s: member price
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:153
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:154
 msgid "Members: %s €"
 msgstr "Mitglieder: %s €"
 
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:165
-msgid "Customer is a member and “Free shipping for members” is active → €0"
-msgstr "Kunde ist Mitglied und „Mitglieder versandkostenfrei“ ist aktiv → 0 €"
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:172
+msgid "Members"
+msgstr "Mitglieder"
 
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:173
 #: src/Pro__premium_only/Membership/MembershipAdmin.php:174
-msgid "Free shipping for members"
-msgstr "Mitglieder versandkostenfrei"
+msgid "as everyone"
+msgstr "wie alle"
 
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:177
-msgid "Members don’t pay shipping"
-msgstr "Mitglieder zahlen keinen Versand"
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:175
+msgid "Members: empty = they pay the regular price, 0 = free shipping. Only takes effect if members are recognized (“Membership” section)."
+msgstr "Mitglieder: leer = sie zahlen den normalen Preis, 0 = versandkostenfrei. Wirkt nur, wenn Mitglieder erkannt werden (Bereich „Mitgliedschaft“)."
 
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:178
-msgid "Only takes effect if members are recognized (“Membership” section)."
-msgstr "Wirkt nur, wenn Mitglieder erkannt werden (Bereich „Mitgliedschaft“)."
-
-#: src/Pro__premium_only/Membership/MembershipAdmin.php:207
+#: src/Pro__premium_only/Membership/MembershipAdmin.php:210
 msgid "only for recognized members"
 msgstr "nur für erkannte Mitglieder"
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:192
+#: src/Pro__premium_only/Membership/MembershipModule.php:195
 msgid "on invoice (members only)"
 msgstr "auf Rechnung (nur für Mitglieder)"
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:210
-msgid "members ship for free"
-msgstr "Mitglieder versandfrei"
-
 #. translators: %s: member name
-#: src/Pro__premium_only/Membership/MembershipModule.php:275
+#: src/Pro__premium_only/Membership/MembershipModule.php:308
 msgid "Logged in as a member (%s) – member benefits apply."
 msgstr "Angemeldet als Mitglied (%s) – Mitgliedsvorteile gelten."
 
 #. translators: %s: member name
-#: src/Pro__premium_only/Membership/MembershipModule.php:278
+#: src/Pro__premium_only/Membership/MembershipModule.php:311
 msgid "Logged in as a member – member benefits apply."
 msgstr "Angemeldet als Mitglied – Mitgliedsvorteile gelten."
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:288
+#: src/Pro__premium_only/Membership/MembershipModule.php:321
 msgid "You're logged in, but no member benefits currently apply to your account (for example, because the membership fee hasn't been recorded yet). If you have questions, please contact the club."
 msgstr "Du bist angemeldet, für dein Konto gelten derzeit aber keine Mitgliedsvorteile (zum Beispiel, weil der Mitgliedsbeitrag noch nicht erfasst ist). Bei Fragen wende dich bitte an den Verein."
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:301
+#: src/Pro__premium_only/Membership/MembershipModule.php:334
 msgid "Member?"
 msgstr "Mitglied?"
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:302
+#: src/Pro__premium_only/Membership/MembershipModule.php:335
 msgid "Log in now"
 msgstr "Jetzt anmelden"
 
-#: src/Pro__premium_only/Membership/MembershipModule.php:303
+#: src/Pro__premium_only/Membership/MembershipModule.php:336
 msgid "and enjoy member benefits."
 msgstr "und Mitgliedsvorteile nutzen."
 
@@ -18010,118 +18130,118 @@ msgid "Kontor Shop: The SEO/AI integration requires Meridian SEO version %1$s or
 msgstr "Kontor Shop: Für die SEO-/KI-Anbindung wird Meridian SEO ab Version %1$s benötigt (installiert: %2$s). Bis zum Update liefert der Shop keine Suchmaschinen-Daten."
 
 #. translators: %d: number of days
-#: src/Pro__premium_only/Seo/Policies.php:139
-#: src/Pro__premium_only/Seo/ReturnsForm.php:88
+#: src/Pro__premium_only/Seo/Policies.php:149
+#: src/Pro__premium_only/Seo/ReturnsForm.php:108
 msgid "Returns"
 msgstr "Rückgabe"
 
 #. translators: %d: number of days
-#: src/Pro__premium_only/Seo/Policies.php:139
+#: src/Pro__premium_only/Seo/Policies.php:149
 #: src/Pro__premium_only/Warehouses/WarehouseCard.php:77
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d Tag"
 msgstr[1] "%d Tage"
 
-#: src/Pro__premium_only/Seo/Policies.php:140
+#: src/Pro__premium_only/Seo/Policies.php:150
 msgid "free return shipping"
 msgstr "Rücksendung kostenlos"
 
-#: src/Pro__premium_only/Seo/Policies.php:140
+#: src/Pro__premium_only/Seo/Policies.php:150
 msgid "return shipping paid by the buyer"
 msgstr "Rücksendekosten trägt der Käufer"
 
 #. translators: %d: number of months
-#: src/Pro__premium_only/Seo/Policies.php:148
+#: src/Pro__premium_only/Seo/Policies.php:158
 #: src/Pro__premium_only/Seo/WarrantyForm.php:29
 #: src/Pro__premium_only/Seo/WarrantyForm.php:72
 msgid "Warranty"
 msgstr "Gewährleistung"
 
 #. translators: %d: number of months
-#: src/Pro__premium_only/Seo/Policies.php:148
+#: src/Pro__premium_only/Seo/Policies.php:158
 msgid "%d month"
 msgid_plural "%d months"
 msgstr[0] "%d Monat"
 msgstr[1] "%d Monate"
 
-#: src/Pro__premium_only/Seo/Policies.php:154
+#: src/Pro__premium_only/Seo/Policies.php:164
 msgctxt "product page"
 msgid "Delivery time"
 msgstr "Lieferzeit"
 
 #. translators: %d: number of business days
-#: src/Pro__premium_only/Seo/Policies.php:156
+#: src/Pro__premium_only/Seo/Policies.php:166
 msgid "%d business day"
 msgid_plural "%d business days"
 msgstr[0] "%d Werktag"
 msgstr[1] "%d Werktage"
 
 #. translators: 1: minimum, 2: maximum number of business days
-#: src/Pro__premium_only/Seo/Policies.php:158
+#: src/Pro__premium_only/Seo/Policies.php:168
 msgid "%1$d–%2$d business days"
 msgstr "%1$d–%2$d Werktage"
 
-#: src/Pro__premium_only/Seo/ReturnsForm.php:29
-msgid "Returns & delivery time"
-msgstr "Rückgabe & Lieferzeit"
+#: src/Pro__premium_only/Seo/ReturnsForm.php:32
+msgid "Delivery time & returns"
+msgstr "Lieferzeit & Rückgabe"
 
-#: src/Pro__premium_only/Seo/ReturnsForm.php:75
-msgid "The club’s returns and delivery time. There are deliberately no default values: details appear on product pages and in the data for Google and AI search only once you enter them and approve them below. The texts must match your terms and conditions and withdrawal notice (“Legal & warranty” section) – have them legally reviewed if in doubt."
-msgstr "Rückgabe und Lieferzeit des Vereins. Es gibt bewusst keine Vorgabewerte: Angaben erscheinen auf den Artikelseiten und in den Daten für Google und KI-Suche erst, wenn du sie einträgst und unten freigibst. Die Texte müssen zu euren AGB und der Widerrufsbelehrung passen (Bereich „Rechtliches & Gewährleistung“) – im Zweifel rechtlich prüfen lassen."
+#: src/Pro__premium_only/Seo/ReturnsForm.php:37
+msgid "appears on product pages and for Google"
+msgstr "erscheint auf Artikelseiten und für Google"
 
-#: src/Pro__premium_only/Seo/ReturnsForm.php:79
-msgid "Approval"
-msgstr "Freigabe"
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:81
-msgid "This information has been reviewed by the club and may be published"
-msgstr "Diese Angaben sind vom Verein geprüft und dürfen veröffentlicht werden"
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:82
-msgid "Together with the country below, this also applies to the warranty information in the “Legal & warranty” section."
-msgstr "Gilt zusammen mit dem Land unten auch für die Gewährleistungsangaben im Bereich „Rechtliches & Gewährleistung“."
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:86
-msgid "Two-letter country code that returns and shipping apply to (e.g. AT). Without a country, nothing appears in the structured data."
-msgstr "Zweistelliger Ländercode, für den Rückgabe und Versand gelten (z. B. AT). Ohne Land erscheint nichts in den strukturierten Daten."
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:89
-msgid "Return shipping costs:"
-msgstr "Rücksendekosten:"
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:90
-msgid "paid by the buyer"
-msgstr "trägt der Käufer"
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:91
-msgid "paid by the club"
-msgstr "trägt der Verein"
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:92
-msgid "0 days = not specified. Returns by mail."
-msgstr "0 Tage = keine Angabe. Rückgabe per Post."
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:94
-msgid "Processing time"
-msgstr "Bearbeitungszeit"
-
-#: src/Pro__premium_only/Seo/ReturnsForm.php:94
-#: src/Pro__premium_only/Seo/ReturnsForm.php:97
+#: src/Pro__premium_only/Seo/ReturnsForm.php:101
 msgid "business days"
 msgstr "Werktage"
 
-#: src/Pro__premium_only/Seo/ReturnsForm.php:95
-msgid "Until the club ships the goods. “to” 0 = not specified."
-msgstr "Bis der Verein die Ware versendet. „bis“ 0 = keine Angabe."
+#: src/Pro__premium_only/Seo/ReturnsForm.php:106
+msgid "Until you ship"
+msgstr "Bis ihr versendet"
 
-#: src/Pro__premium_only/Seo/ReturnsForm.php:97
+#: src/Pro__premium_only/Seo/ReturnsForm.php:106
+msgid "Processing time"
+msgstr "Bearbeitungszeit"
+
+#: src/Pro__premium_only/Seo/ReturnsForm.php:107
+msgid "In transit"
+msgstr "Unterwegs (Post)"
+
+#: src/Pro__premium_only/Seo/ReturnsForm.php:107
 msgid "Delivery time"
 msgstr "Versanddauer"
 
-#: src/Pro__premium_only/Seo/ReturnsForm.php:98
-msgid "Transit time from shipping. You set the shipping costs above under “Shipping” (“free shipping from” is not output here)."
-msgstr "Transportzeit ab Versand. Die Versandkosten legst du oben unter „Versand“ fest („versandkostenfrei ab“ wird hier nicht ausgegeben)."
+#: src/Pro__premium_only/Seo/ReturnsForm.php:108
+msgid "Return period in days"
+msgstr "Rückgabefrist in Tagen"
+
+#: src/Pro__premium_only/Seo/ReturnsForm.php:109
+msgid "days, return shipping paid by"
+msgstr "Tage, Rücksendung zahlt"
+
+#: src/Pro__premium_only/Seo/ReturnsForm.php:111
+msgid "Return shipping costs:"
+msgstr "Rücksendekosten:"
+
+#: src/Pro__premium_only/Seo/ReturnsForm.php:112
+msgid "Buyer"
+msgstr "Käufer"
+
+#: src/Pro__premium_only/Seo/ReturnsForm.php:113
+msgid "Club"
+msgstr "Verein"
+
+#. translators: %s: country, e.g. "Austria"
+#: src/Pro__premium_only/Seo/ReturnsForm.php:118
+msgid "Applies to %s (your domestic country). Left empty = not shown."
+msgstr "Gilt für %s (euer Inland). Leer gelassen = wird nicht angezeigt."
+
+#: src/Pro__premium_only/Seo/ReturnsForm.php:123
+msgid "Reviewed – may be published"
+msgstr "Geprüft – darf veröffentlicht werden"
+
+#: src/Pro__premium_only/Seo/ReturnsForm.php:124
+msgid "The details must match your terms and conditions and withdrawal notice (“Legal & warranty” section). They appear only with this tick – the warranty information there, too."
+msgstr "Die Angaben müssen zu euren AGB und der Widerrufsbelehrung passen (Bereich „Rechtliches & Gewährleistung“). Erst mit diesem Häkchen erscheinen sie – auch die Gewährleistung dort."
 
 #: src/Pro__premium_only/Seo/SeoProModule.php:114
 msgid "Products per category page"

@@ -101,7 +101,7 @@ final class ProArticles
                     __('With roles, tick the roles that count as members. With Paid Memberships Pro or MemberPress, enter the level IDs that count, or leave the field empty for every active level.', 'kontor-shop'),
                     __('With the paid fee rule, enter until which day last year’s fee still counts, for example 31.03. Then save.', 'kontor-shop'),
                     ['text' => __('Open a product and set the “Member discount” in the “Price & tax” card, in percent or in euros. Save the product.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-products')],
-                    ['text' => __('Optional: under Settings → Shipping & returns, tick “Members don’t pay shipping”.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=shipping')],
+                    ['text' => __('Optional: under Settings → Shipping & returns, enter a price for members in the “Members” column, for domestic and abroad (0 = free shipping).', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=shipping')],
                     ['text' => __('Optional: under Settings → Payment & sales tax, tick “only for recognized members” for payment on invoice.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=payment')],
                 ],
                 'effect'   => [
@@ -674,9 +674,9 @@ final class ProArticles
                 'keywords' => __('seo google search engine structured data json-ld schema category pages meridian returns warranty delivery time sitemap', 'kontor-shop'),
                 'what'     => __('Pro helps search engines and AI search understand your products. Product pages get structured data with price and availability, each category gets its own page, and approved notes on returns, delivery time and warranty appear on product pages.', 'kontor-shop'),
                 'steps'    => [
-                    ['text' => __('Open Settings → Shipping & returns and scroll down to “Returns & delivery time”.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=shipping')],
+                    ['text' => __('Open Settings → Shipping & returns and go to step 3 “Delivery time & returns”.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=shipping')],
                     __('Enter the return period in days, who pays for return shipping, the processing time and the delivery time.', 'kontor-shop'),
-                    __('Enter the two-letter country code, for example AT, tick “This information has been reviewed by the club and may be published” and save.', 'kontor-shop'),
+                    __('Tick “Reviewed – may be published” and save. The details apply to your domestic country from step 1.', 'kontor-shop'),
                     ['text' => __('Under Settings → Legal & warranty, enter the warranty in months and an optional note, and save.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=legal')],
                     ['text' => __('Under Settings → Design, set “Products per category page”.', 'kontor-shop'), 'url' => admin_url('admin.php?page=kontor-shop-settings&tab=design')],
                     __('If you use the Meridian SEO plugin, keep it at version 0.7.0 or newer.', 'kontor-shop'),

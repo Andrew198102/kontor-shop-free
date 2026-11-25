@@ -50,6 +50,7 @@
     var billingToggle = root.querySelector('input[name="billing_different"]');
     var billing = root.querySelector('.kontor-shop-billing');
     var summary = root.querySelector('[data-checkout-summary]');
+    var country = root.querySelector('select[name="country"]');
 
     function format(value) {
         return value.toLocaleString(document.documentElement.lang || 'de-AT', {
@@ -123,7 +124,9 @@
 
         if (summary) {
             var items = parseFloat(summary.getAttribute('data-items')) || 0;
-            var shipping = isPickup ? 0 : parseFloat(summary.getAttribute('data-shipping')) || 0;
+            // Versand ins Ausland, wenn ein anderes Land als das Inland gewaehlt ist.
+            var abroad = country && summary.hasAttribute('data-shipping-abroad') && country.value !== summary.getAttribute('data-home-country');
+            var shipping = isPickup ? 0 : parseFloat(summary.getAttribute(abroad ? 'data-shipping-abroad' : 'data-shipping')) || 0;
             var shippingEl = summary.querySelector('[data-shipping-value]');
             var totalEl = summary.querySelector('[data-total-value]');
 
@@ -146,7 +149,7 @@
     }
 
     root.querySelectorAll('select[data-country]').forEach(function (select) {
-        select.addEventListener('change', function () { applyPostalPattern(select); });
+        select.addEventListener('change', function () { applyPostalPattern(select); update(); });
         applyPostalPattern(select);
     });
 

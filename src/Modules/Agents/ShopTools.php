@@ -10,6 +10,7 @@ use Kontor\Shop\Modules\Agents\Mcp\Args;
 use Kontor\Shop\Modules\Agents\Mcp\Tool;
 use Kontor\Shop\Modules\Agents\Mcp\ToolError;
 use Kontor\Shop\Modules\Payments\PaymentOptions;
+use Kontor\Shop\Modules\Shipping\ShippingRates;
 use Kontor\Shop\Settings\Repository;
 use Kontor\Shop\Support\Countries;
 use Kontor\Shop\Support\Translation;
@@ -166,8 +167,13 @@ final class ShopTools
             'prices'          => 'Regular prices incl. VAT.',
             'payment_methods' => $methods,
             'shipping'        => [
-                'flat_rate'         => round((float) $this->settings->get('shipping.flat_rate', 0), 2),
+                'flat_rate'         => ShippingRates::domestic($this->settings),
+                'flat_rate_country' => Countries::name(ShippingRates::home_country($this->settings)),
+                'flat_rate_abroad'  => ShippingRates::abroad_countries($this->settings) !== [] && ShippingRates::has_own_abroad_rate($this->settings)
+                    ? ShippingRates::abroad($this->settings)
+                    : null,
                 'free_from_amount'  => $free_from > 0 ? round($free_from, 2) : null,
+                'free_from_abroad'  => $free_from > 0 ? (bool) $this->settings->get('shipping.free_abroad', true) : null,
                 'self_pickup'       => (bool) $this->settings->get('shipping.allow_self_pickup', true),
                 'countries'         => array_map(static fn (string $code): array => ['code' => $code, 'name' => Countries::name($code)], $countries),
                 'note'              => 'Products from different warehouses may ship separately; the checkout shows the exact amount.',

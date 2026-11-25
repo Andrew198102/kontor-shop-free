@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Kontor\Shop\Modules\Catalog;
 
 use Kontor\Shop\Modules\Payments\PaymentOptions;
+use Kontor\Shop\Modules\Shipping\ShippingRates;
 use Kontor\Shop\Settings\Repository;
 use Kontor\Shop\Support\Countries;
 
@@ -22,12 +23,33 @@ final class ServiceInfo
     public static function lines(Repository $settings): array
     {
         $lines   = [];
-        $rate    = round((float) $settings->get('shipping.flat_rate', 0), 2);
+        $rate    = ShippingRates::domestic($settings);
+        $abroad  = ShippingRates::abroad($settings);
+        $foreign = ShippingRates::abroad_countries($settings);
         $free    = round((float) $settings->get('shipping.free_from_amount', 0), 2);
-        $where   = self::countries($settings);
+        $where   = self::countries((array) $settings->get('checkout.countries', []));
         $payment = new PaymentOptions($settings);
 
-        if ($rate <= 0) {
+        if ($foreign !== [] && abs($abroad - $rate) > 0.004) {
+            // Inland und Ausland kosten verschieden: "Versand nach Österreich: 4,90 €, nach Deutschland: 9,90 €".
+            $parts = [];
+
+            if (ShippingRates::ships_home($settings)) {
+                /* translators: 1: countries, e.g. "Austria", 2: shipping cost such as "6,90 €" or "free" */
+                $parts[] = sprintf(__('Shipping to %1$s: %2$s', 'kontor-shop'), Countries::name(ShippingRates::home_country($settings)), self::rate_label($rate));
+            }
+
+            $parts[] = sprintf(
+                /* translators: 1: countries, e.g. "Germany and Switzerland", 2: shipping cost such as "9,90 €" or "free" */
+                $parts === [] ? __('Shipping to %1$s: %2$s', 'kontor-shop') : __('to %1$s: %2$s', 'kontor-shop'),
+                self::countries($foreign),
+                self::rate_label($abroad)
+            );
+
+            $text = implode(', ', $parts);
+
+            $text .= self::free_note($settings, $free, $foreign !== []);
+        } elseif ($rate <= 0) {
             $text = $where !== ''
                 /* translators: %s: countries, e.g. "Austria and Germany" */
                 ? sprintf(__('Free shipping to %s', 'kontor-shop'), $where)
@@ -39,10 +61,7 @@ final class ServiceInfo
                 /* translators: %s: shipping cost such as "6,90 €" */
                 : sprintf(__('Shipping: %s', 'kontor-shop'), self::money($rate));
 
-            if ($free > 0) {
-                /* translators: %s: order value such as "100 €" */
-                $text .= ' – ' . sprintf(__('free from %s', 'kontor-shop'), self::money($free));
-            }
+            $text .= self::free_note($settings, $free, $foreign !== []);
         }
 
         $lines['shipping'] = ['icon' => 'truck', 'text' => $text];
@@ -115,12 +134,16 @@ final class ServiceInfo
         return $html . '</ul>';
     }
 
-    /** "Österreich und Deutschland", "Österreich, Deutschland und Schweiz"; '' ohne Laenderliste. */
-    private static function countries(Repository $settings): string
+    /**
+     * "Österreich und Deutschland", "Österreich, Deutschland und Schweiz"; '' ohne Laenderliste.
+     *
+     * @param array<int|string, mixed> $codes
+     */
+    private static function countries(array $codes): string
     {
         $names = array_values(array_filter(array_map(
             static fn ($code): string => Countries::name((string) $code),
-            (array) $settings->get('checkout.countries', [])
+            $codes
         )));
 
         if (count($names) <= 1) {
@@ -131,6 +154,28 @@ final class ServiceInfo
 
         /* translators: 1: list of countries, 2: last country */
         return sprintf(__('%1$s and %2$s', 'kontor-shop'), implode(', ', $names), $last);
+    }
+
+    /** " – ab 50 € versandfrei" bzw. " – ab 50 € versandfrei nach Österreich" (gilt nicht im Ausland); '' ohne Grenze. */
+    private static function free_note(Repository $settings, float $free, bool $has_abroad): string
+    {
+        if ($free <= 0) {
+            return '';
+        }
+
+        if ($has_abroad && !(bool) $settings->get('shipping.free_abroad', true)) {
+            /* translators: 1: order value such as "100 €", 2: country */
+            return ' – ' . sprintf(__('free from %1$s to %2$s', 'kontor-shop'), self::money($free), Countries::name(ShippingRates::home_country($settings)));
+        }
+
+        /* translators: %s: order value such as "100 €" */
+        return ' – ' . sprintf(__('free from %s', 'kontor-shop'), self::money($free));
+    }
+
+    /** "4,90 €" oder "kostenlos". */
+    public static function rate_label(float $amount): string
+    {
+        return $amount > 0 ? self::money($amount) : __('free of charge', 'kontor-shop');
     }
 
     private static function money(float $amount): string

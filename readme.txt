@@ -4,7 +4,7 @@ Tags: club shop, shop, bank transfer, stock, association
 Requires at least: 6.4
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 2.9.13
+Stable tag: 2.9.14
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,14 @@ PDF invoices are created with [Dompdf](https://github.com/dompdf/dompdf) 3.1.6 (
 7. Payment settings: bank accounts, payment methods and QR code.
 
 == Changelog ==
+
+= 2.9.14 =
+* New: shipping prices for domestic and abroad. Your domestic country gets its own price, all other shipping countries another one ("Abroad" left empty = same as domestic). Checkout switches the shipping price as soon as the customer picks a country; the product page shows both, e.g. "Shipping to Austria: €5.90, to Germany: €12".
+* New (Pro): member prices for shipping, domestic and abroad, in a "Members" column (empty = regular price, 0 = free). The former switch "Members don't pay shipping" becomes €0 in both fields – nothing changes without being asked.
+* New: Settings → Shipping redesigned in steps: "Where do you deliver?" (domestic country, foreign countries as chips, "All EU countries" in one click, self pickup), "What does shipping cost?" with a live preview of what guests and members pay and of the product page line, and (Pro) "Delivery time & returns" on the same page with one Save button – its country is now your domestic country, no code to type.
+* New: "Free shipping from" is switched on with a tick and can be limited to domestic orders ("also applies abroad").
+* New: Settings → Checkout. Phone number, billing address and the order status link moved there from Shipping.
+* Changed: "Several warehouses with their own account" is collapsed while you only have one bank account.
 
 = 2.9.13 =
 * New: sold-out products no longer break the row. On "Label" cards they keep the same buy row as all others – on the left quietly "3 variants", on the right (Pro) a slim "Notify me" button; on phones only the bell. The red "Currently unavailable" line and the large two-line button are gone; the photo is slightly faded, the price tag grey, and the "Sold out" badge stays.

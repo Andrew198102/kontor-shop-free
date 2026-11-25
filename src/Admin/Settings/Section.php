@@ -99,6 +99,27 @@ abstract class Section
     }
 
     /**
+     * Fuegt sich dieses Formular einer Erweiterung als Karte in das Formular
+     * des Bereichs ein (ein gemeinsames Speichern)? Dann ruft der Bereich
+     * render_embedded() und save_embedded() auf, und SettingsPage zeichnet es
+     * nicht noch einmal einzeln. Bisher nur unter Versand.
+     */
+    public function embedded(): bool
+    {
+        return false;
+    }
+
+    /** Felder der Karte (ohne <form> und Speichern-Leiste). */
+    public function render_embedded(): void
+    {
+    }
+
+    /** Speichert die Felder der Karte mit dem Formular des Bereichs (Nonce und Recht sind geprueft). */
+    public function save_embedded(): void
+    {
+    }
+
+    /**
      * @return array<int, string>
      */
     public function warnings(): array

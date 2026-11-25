@@ -42,6 +42,7 @@ use Kontor\Shop\Modules\Notifications\NotificationsModule;
 use Kontor\Shop\Modules\Payments\PaymentMethodResolver;
 use Kontor\Shop\Modules\Payments\PaymentOptions;
 use Kontor\Shop\Modules\Shipping\ShippingCalculator;
+use Kontor\Shop\Modules\Shipping\ShippingRates;
 use Kontor\Shop\Settings\Repository;
 use Kontor\Shop\Support\Countries;
 use Kontor\Shop\Support\LegalText;
@@ -562,7 +563,7 @@ final class CheckoutModule implements Registerable
                 $group_totals[$account_id]    = round(array_sum(array_column($group_items, 'line_total')) - $group_discounts[$account_id], 2);
             }
 
-            $shipping_costs = $this->shipping->calculate_for_groups($self_pickup, $is_member, $group_totals);
+            $shipping_costs = $this->shipping->calculate_for_groups($self_pickup, $is_member, $group_totals, ShippingRates::is_abroad($this->settings, (string) ($values['country'] ?? '')));
             $token          = wp_generate_password(32, false, false);
             $orders_created = $this->create_orders($groups, $group_totals, $shipping_costs, $values, $is_member, $payment_method, $token, $group_discounts);
         } catch (CheckoutAborted $e) {
@@ -800,12 +801,16 @@ final class CheckoutModule implements Registerable
             $group_totals[$key] = ($group_totals[$key] ?? 0.0) + ($row['net_total'] ?? $row['line_total']);
         }
 
-        $shipping_flat = array_sum($this->shipping->calculate_for_groups(false, $is_member, $group_totals));
+        // Versand ins Inland und ins Ausland; die Kasse zeigt den Betrag passend zum gewaehlten Land (checkout.js).
+        $shipping_flat   = array_sum($this->shipping->calculate_for_groups(false, $is_member, $group_totals));
+        $shipping_abroad = array_sum($this->shipping->calculate_for_groups(false, $is_member, $group_totals, true));
+        $home_country    = ShippingRates::home_country($this->settings);
 
         $allow_pickup    = (bool) $this->settings->get('shipping.allow_self_pickup', true);
         $allowed_methods = $this->payment_methods->available_methods($is_member);
         $is_pickup       = $allow_pickup && !empty($_POST['self_pickup']); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- nur Wiederanzeige der eigenen Eingaben; verarbeitet wird erst nach der Nonce-Pruefung in handle_submit()
-        $shown_shipping  = $is_pickup ? 0.0 : $shipping_flat;
+        $shown_country   = strtoupper($this->old('country')) ?: $home_country;
+        $shown_shipping  = $is_pickup ? 0.0 : (ShippingRates::is_abroad($this->settings, $shown_country) ? $shipping_abroad : $shipping_flat);
 
         $hold_html = '';
 
@@ -1003,7 +1008,8 @@ final class CheckoutModule implements Registerable
 
         // ---------- Zusammenfassung ----------
         $html .= '<aside class="kontor-shop-checkout__summary" data-checkout-summary data-items="'
-            . esc_attr(number_format($net_total, 2, '.', '')) . '" data-shipping="' . esc_attr(number_format($shipping_flat, 2, '.', '')) . '">';
+            . esc_attr(number_format($net_total, 2, '.', '')) . '" data-shipping="' . esc_attr(number_format($shipping_flat, 2, '.', ''))
+            . '" data-shipping-abroad="' . esc_attr(number_format($shipping_abroad, 2, '.', '')) . '" data-home-country="' . esc_attr($home_country) . '">';
         $html .= '<h2>' . esc_html__('Your order', 'kontor-shop') . '</h2><ul class="kontor-shop-checkout__items">';
 
         foreach ($rows as $row) {
@@ -1146,7 +1152,8 @@ final class CheckoutModule implements Registerable
     {
         $id        = 'ks-field-' . $name;
         $has_error = isset($this->field_errors[$name]);
-        $selected  = strtoupper($this->old($name)) ?: ($codes[0] ?? 'AT');
+        $home      = ShippingRates::home_country($this->settings);
+        $selected  = strtoupper($this->old($name)) ?: (in_array($home, $codes, true) ? $home : ($codes[0] ?? 'AT'));
 
         $html = '<div class="kontor-shop-field' . ($has_error ? ' has-error' : '') . '"><label for="' . esc_attr($id) . '">' . esc_html($label) . '</label>';
         $html .= '<select id="' . esc_attr($id) . '" name="' . esc_attr($name) . '" autocomplete="' . esc_attr($autocomplete) . '" data-country'
